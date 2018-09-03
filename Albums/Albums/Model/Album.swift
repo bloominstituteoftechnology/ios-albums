@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Album: Decodable {
+struct Album: Codable {
     
     enum CodingKeys: String, CodingKey {
         case albumCover = "coverArt"
@@ -59,29 +59,29 @@ struct Album: Decodable {
         
     }
     
-//    func encode(to encoder: Encoder) throws {
-//
-//        var container = encoder.container(keyedBy: CodingKeys.self)
-//
-//        try container.encode(artist, forKey: .artist)
-//
-//        try container.encode(albumName, forKey: .albumName)
-//
-//        try container.encode(genres, forKey: .genres)
-//
-//        try container.encode(id, forKey: .id)
-//
-//        try container.encode(songs, forKey: .songs)
-//
-//        var albumCoverContainer = container.nestedUnkeyedContainer(forKey: .albumCover)
-//        for cover in albumCover {
-//
-//            var coverContainer = albumCoverContainer.nestedContainer(keyedBy: CodingKeys.CoverCodingKeys.self)
-//
-//            try coverContainer.encode(cover, forKey: .url)
-//        }
-//
-//    }
+    func encode(to encoder: Encoder) throws {
+
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(artist, forKey: .artist)
+
+        try container.encode(albumName, forKey: .albumName)
+
+        try container.encode(genres, forKey: .genres)
+
+        try container.encode(id, forKey: .id)
+
+        try container.encode(songs, forKey: .songs)
+
+        var albumCoverContainer = container.nestedUnkeyedContainer(forKey: .albumCover)
+        for cover in albumCover {
+
+            var coverContainer = albumCoverContainer.nestedContainer(keyedBy: CodingKeys.CoverCodingKeys.self)
+
+            try coverContainer.encode(cover, forKey: .url)
+        }
+
+    }
     
     var albumCover: [String]
     var artist: String
@@ -92,7 +92,7 @@ struct Album: Decodable {
     
 }
 
-struct Song: Decodable {
+struct Song: Codable {
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -126,10 +126,19 @@ struct Song: Decodable {
         self.songName = songName
     }
     
-//    func encode(to encoder: Encoder) throws {
-//
-//
-//    }
+    func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(id, forKey: .id)
+        
+        var durationContainer = container.nestedContainer(keyedBy: CodingKeys.DurationCodingKeys.self, forKey: .duration)
+        try durationContainer.encode(duration, forKey: .duration)
+        
+        var songNameContainer = container.nestedContainer(keyedBy: CodingKeys.SongNameCodingKeys.self, forKey: .songName)
+        try songNameContainer.encode(songName, forKey: .title)
+        
+    }
     
     var id: String
     var duration: String
