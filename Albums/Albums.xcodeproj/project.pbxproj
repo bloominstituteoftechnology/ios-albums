@@ -15,6 +15,8 @@
 		FF5A8DDC2139EF01000BA5F2 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A8DDB2139EF01000BA5F2 /* AlbumDetailTableViewController.swift */; };
 		FF5A8DDE2139F031000BA5F2 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A8DDD2139F031000BA5F2 /* SongTableViewCell.swift */; };
 		FF5A8DE52139F0D9000BA5F2 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = FF5A8DE42139F0D9000BA5F2 /* exampleAlbum.json */; };
+		FF5A8DE72139F4E1000BA5F2 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A8DE62139F4E1000BA5F2 /* Album.swift */; };
+		FF5A8DE9213CDC88000BA5F2 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A8DE8213CDC88000BA5F2 /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		FF5A8DDB2139EF01000BA5F2 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		FF5A8DDD2139F031000BA5F2 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		FF5A8DE42139F0D9000BA5F2 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../exampleAlbum.json; sourceTree = "<group>"; };
+		FF5A8DE62139F4E1000BA5F2 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		FF5A8DE8213CDC88000BA5F2 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 		FF5A8DDF2139F071000BA5F2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FF5A8DE62139F4E1000BA5F2 /* Album.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -83,6 +88,7 @@
 		FF5A8DE02139F078000BA5F2 /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FF5A8DE8213CDC88000BA5F2 /* AlbumController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -186,9 +192,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF5A8DDE2139F031000BA5F2 /* SongTableViewCell.swift in Sources */,
+				FF5A8DE9213CDC88000BA5F2 /* AlbumController.swift in Sources */,
 				FF5A8DC82139EB73000BA5F2 /* AppDelegate.swift in Sources */,
 				FF5A8DDC2139EF01000BA5F2 /* AlbumDetailTableViewController.swift in Sources */,
 				FF5A8DDA2139EBE6000BA5F2 /* AlbumsTableViewController.swift in Sources */,
+				FF5A8DE72139F4E1000BA5F2 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
