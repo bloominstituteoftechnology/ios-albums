@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         albumController.testDecodingExampleAlbum()
         albumController.testEncodingExampleAlbum()
         
+        albumController.createAlbum(albumCover: ["someurlhere", "someotherurlhere"], artist: "some artist here", albumName: "some slbum here", genres: ["some genre here", "some other genre here"], id: UUID().uuidString, songs: [
+            Song(id: UUID().uuidString, duration: "2:45", songName: "This is my awesome song")
+        ])
+        
         return true
     }
 
