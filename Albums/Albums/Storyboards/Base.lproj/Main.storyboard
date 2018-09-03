@@ -76,45 +76,42 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="164"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Album Name: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LOR-N7-HNW">
-                                    <rect key="frame" x="8" y="8" width="359" height="30"/>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eNY-kG-m4a">
-                                    <rect key="frame" x="8" y="46" width="359" height="30"/>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Genres (separated by commas): " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i8h-E6-r2p">
-                                    <rect key="frame" x="8" y="84" width="359" height="30"/>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cover Art URLs (separated by commas): " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kwR-cW-XEG">
-                                    <rect key="frame" x="8" y="122" width="359" height="30"/>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dQb-Rf-7N4">
+                                    <rect key="frame" x="8" y="8" width="359" height="148"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Album Name: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LOR-N7-HNW">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="31"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eNY-kG-m4a">
+                                            <rect key="frame" x="0.0" y="39" width="359" height="31"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Genres (separated by commas): " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i8h-E6-r2p">
+                                            <rect key="frame" x="0.0" y="78" width="359" height="31"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cover Art URLs (separated by commas): " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kwR-cW-XEG">
+                                            <rect key="frame" x="0.0" y="117" width="359" height="31"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="kwR-cW-XEG" firstAttribute="leading" secondItem="dKL-eZ-BP3" secondAttribute="leading" constant="8" id="2ZH-t3-chu"/>
-                                <constraint firstItem="i8h-E6-r2p" firstAttribute="top" secondItem="eNY-kG-m4a" secondAttribute="bottom" constant="8" id="4FP-cb-gfm"/>
-                                <constraint firstAttribute="trailing" secondItem="eNY-kG-m4a" secondAttribute="trailing" constant="8" id="7eJ-7I-4KW"/>
-                                <constraint firstAttribute="trailing" secondItem="kwR-cW-XEG" secondAttribute="trailing" constant="8" id="BDi-FC-PsB"/>
-                                <constraint firstItem="eNY-kG-m4a" firstAttribute="leading" secondItem="dKL-eZ-BP3" secondAttribute="leading" constant="8" id="CTd-jw-QAq"/>
-                                <constraint firstAttribute="trailing" secondItem="i8h-E6-r2p" secondAttribute="trailing" constant="8" id="M0r-Ep-UUQ"/>
-                                <constraint firstItem="LOR-N7-HNW" firstAttribute="top" secondItem="dKL-eZ-BP3" secondAttribute="top" constant="8" id="Ny4-g1-JHF"/>
-                                <constraint firstAttribute="trailing" secondItem="LOR-N7-HNW" secondAttribute="trailing" constant="8" id="Qqf-qO-9sY"/>
-                                <constraint firstItem="kwR-cW-XEG" firstAttribute="top" secondItem="i8h-E6-r2p" secondAttribute="bottom" constant="8" id="fXS-we-CLP"/>
-                                <constraint firstItem="i8h-E6-r2p" firstAttribute="leading" secondItem="dKL-eZ-BP3" secondAttribute="leading" constant="8" id="i9D-Lm-d9Q"/>
-                                <constraint firstItem="eNY-kG-m4a" firstAttribute="top" secondItem="LOR-N7-HNW" secondAttribute="bottom" constant="8" id="qbS-Tg-CZG"/>
-                                <constraint firstItem="LOR-N7-HNW" firstAttribute="leading" secondItem="dKL-eZ-BP3" secondAttribute="leading" constant="8" id="vj1-k3-Bru"/>
+                                <constraint firstItem="dQb-Rf-7N4" firstAttribute="leading" secondItem="dKL-eZ-BP3" secondAttribute="leading" constant="8" id="01w-1D-wiL"/>
+                                <constraint firstAttribute="trailing" secondItem="dQb-Rf-7N4" secondAttribute="trailing" constant="8" id="eAo-fI-qHg"/>
+                                <constraint firstAttribute="bottom" secondItem="dQb-Rf-7N4" secondAttribute="bottom" constant="8" id="rRu-6m-SYq"/>
+                                <constraint firstItem="dQb-Rf-7N4" firstAttribute="top" secondItem="dKL-eZ-BP3" secondAttribute="top" constant="8" id="vA3-0R-hKE"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -125,36 +122,36 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song Title: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NuQ-gf-CtA">
-                                            <rect key="frame" x="16" y="11" width="343" height="30"/>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cEE-RM-gqp">
-                                            <rect key="frame" x="16" y="49" width="343" height="30"/>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiH-L2-b4L">
-                                            <rect key="frame" x="16" y="87" width="343" height="30"/>
-                                            <state key="normal" title="Add Song"/>
-                                            <connections>
-                                                <action selector="addSongButtonTapped:" destination="6ay-vY-r7J" eventType="touchUpInside" id="NgI-Zs-Z3H"/>
-                                            </connections>
-                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IXs-YC-bht">
+                                            <rect key="frame" x="16" y="11" width="343" height="108"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song Title: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NuQ-gf-CtA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cEE-RM-gqp">
+                                                    <rect key="frame" x="0.0" y="38" width="343" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiH-L2-b4L">
+                                                    <rect key="frame" x="0.0" y="76" width="343" height="32"/>
+                                                    <state key="normal" title="Add Song"/>
+                                                    <connections>
+                                                        <action selector="addSongButtonTapped:" destination="6ay-vY-r7J" eventType="touchUpInside" id="NgI-Zs-Z3H"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="NuQ-gf-CtA" firstAttribute="leading" secondItem="PUh-Tp-Eui" secondAttribute="leadingMargin" id="2aT-dY-jlP"/>
-                                        <constraint firstItem="LiH-L2-b4L" firstAttribute="top" secondItem="cEE-RM-gqp" secondAttribute="bottom" constant="8" id="2f3-LD-YYS"/>
-                                        <constraint firstItem="cEE-RM-gqp" firstAttribute="trailing" secondItem="PUh-Tp-Eui" secondAttribute="trailingMargin" id="3Pa-GK-ur7"/>
-                                        <constraint firstItem="NuQ-gf-CtA" firstAttribute="top" secondItem="PUh-Tp-Eui" secondAttribute="topMargin" id="WtC-k9-y4J"/>
-                                        <constraint firstItem="NuQ-gf-CtA" firstAttribute="trailing" secondItem="PUh-Tp-Eui" secondAttribute="trailingMargin" id="kdu-ue-Gi1"/>
-                                        <constraint firstItem="cEE-RM-gqp" firstAttribute="top" secondItem="NuQ-gf-CtA" secondAttribute="bottom" constant="8" id="ldv-hz-guC"/>
-                                        <constraint firstItem="LiH-L2-b4L" firstAttribute="leading" secondItem="PUh-Tp-Eui" secondAttribute="leadingMargin" id="tQG-JZ-y3u"/>
-                                        <constraint firstItem="cEE-RM-gqp" firstAttribute="leading" secondItem="PUh-Tp-Eui" secondAttribute="leadingMargin" id="uSI-Xb-R4s"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="LiH-L2-b4L" secondAttribute="trailing" id="z0t-MH-AH2"/>
+                                        <constraint firstItem="IXs-YC-bht" firstAttribute="leading" secondItem="PUh-Tp-Eui" secondAttribute="leadingMargin" id="Ov9-TT-pHr"/>
+                                        <constraint firstItem="IXs-YC-bht" firstAttribute="top" secondItem="PUh-Tp-Eui" secondAttribute="topMargin" id="cLf-sD-NqO"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="IXs-YC-bht" secondAttribute="bottom" id="gYi-jd-PZB"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="IXs-YC-bht" secondAttribute="trailing" id="vaV-nN-0R0"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
