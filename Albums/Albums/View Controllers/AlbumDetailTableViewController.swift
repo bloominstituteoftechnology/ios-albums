@@ -96,6 +96,9 @@ class AlbumDetailTableViewController: UITableViewController {
     }
     */
     
+    var albumController: AlbumController?
+    var album: Album?
+    
     @IBOutlet weak var albumNameLabel: UITextField!
     @IBOutlet weak var artistLabel: UITextField!
     @IBOutlet weak var genreLabel: UITextField!
