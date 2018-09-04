@@ -15,13 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
-        albumController.testDecodingExampleAlbum()
-        albumController.testEncodingExampleAlbum()
-        
-        albumController.createAlbum(albumCover: ["someurlhere", "someotherurlhere"], artist: "some artist here", albumName: "some slbum here", genres: ["some genre here", "some other genre here"], id: UUID().uuidString, songs: [
-            Song(id: UUID().uuidString, duration: "2:45", songName: "This is my awesome song")
-        ])
         
         return true
     }
@@ -47,8 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-    let albumController = AlbumController()
 
 }
 

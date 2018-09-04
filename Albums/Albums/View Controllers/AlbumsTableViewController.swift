@@ -13,25 +13,31 @@ class AlbumsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        albumController?.getAlbums(completion: { (success) in
+        albumController.getAlbums(completion: { (success) in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         })
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return albumController?.albums.count ?? 0
+        return albumController.albums.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
 
-        let album = albumController?.albums[indexPath.row]
-        cell.textLabel?.text = album?.albumName
-        cell.detailTextLabel?.text = album?.artist
+        let album = albumController.albums[indexPath.row]
+        cell.textLabel?.text = album.albumName
+        cell.detailTextLabel?.text = album.artist
 
         return cell
     }
@@ -45,11 +51,11 @@ class AlbumsTableViewController: UITableViewController {
         
         if segue.identifier == "ToDetailView" {
             guard let index = tableView.indexPathForSelectedRow else { return }
-            let album = albumController?.albums[index.row]
+            let album = albumController.albums[index.row]
             detailTVC.album = album
         }
     }
     
-    var albumController: AlbumController?
+    let albumController = AlbumController()
 
 }

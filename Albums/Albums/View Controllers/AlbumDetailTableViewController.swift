@@ -13,9 +13,7 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if isViewLoaded {
         updatesViews()
-        }
     }
 
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -65,9 +63,14 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as! SongTableViewCell
-
-        let song = tempSongs[indexPath.row]
-        cell.song = song
+        
+        if indexPath.row < tempSongs.count {
+            let song = tempSongs[indexPath.row]
+            cell.song = song
+        } else {
+            cell.song = nil
+        }
+        
         cell.delegate = self
 
         return cell
@@ -86,7 +89,9 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
     var albumController: AlbumController?
     var album: Album? {
         didSet {
+            if isViewLoaded {
             updatesViews()
+            }
         }
     }
     var tempSongs: [Song] = []

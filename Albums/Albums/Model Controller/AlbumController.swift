@@ -65,6 +65,8 @@ class AlbumController {
         
         let newAlbum = Album(albumCover: albumCover, artist: artist, albumName: albumName, genres: genres, id: id, songs: songs)
         
+        albums.append(newAlbum)
+        
         put(album: newAlbum)
     }
     

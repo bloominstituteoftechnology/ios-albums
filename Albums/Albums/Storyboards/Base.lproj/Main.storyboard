@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--My Albums!-->
         <scene sceneID="sLD-s0-sz6">
             <objects>
                 <tableViewController id="Uea-Fj-7qn" customClass="AlbumsTableViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,7 +52,7 @@
                             <outlet property="delegate" destination="Uea-Fj-7qn" id="BVm-U1-ncc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="WZu-xj-AgW">
+                    <navigationItem key="navigationItem" title="My Albums!" id="WZu-xj-AgW">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7qO-yY-MAC">
                             <connections>
                                 <segue destination="ytE-FU-dHC" kind="show" identifier="AddAlbumView" id="B3w-3I-SLy"/>
