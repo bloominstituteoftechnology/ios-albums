@@ -144,6 +144,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMc-EW-AXg">
                                                     <rect key="frame" x="292" y="0.0" width="67" height="68.5"/>
                                                     <state key="normal" title="Add Song"/>
+                                                    <connections>
+                                                        <action selector="addSongButtonTapped:" destination="qwi-eV-PTA" eventType="touchUpInside" id="xVD-65-bE1"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -155,6 +158,10 @@
                                         <constraint firstItem="S7h-FX-pMg" firstAttribute="leading" secondItem="NJ6-rh-lZp" secondAttribute="leading" constant="8" id="opn-cr-ugf"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="songDuration" destination="NXx-xN-IhT" id="4GP-CU-OGL"/>
+                                    <outlet property="songTitle" destination="d3A-in-Tq3" id="Rgi-yI-O6W"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
