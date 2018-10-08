@@ -18,6 +18,7 @@
 		346B19A8216BA86F001485EF /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B19A7216BA86F001485EF /* Song.swift */; };
 		346B19AA216BAE1F001485EF /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 346B19A9216BAE1F001485EF /* exampleAlbum.json */; };
 		346B19AC216BAE9A001485EF /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B19AB216BAE9A001485EF /* AlbumController.swift */; };
+		346B19AF216BBF08001485EF /* Network Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B19AE216BBF08001485EF /* Network Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		346B19A7216BA86F001485EF /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		346B19A9216BAE1F001485EF /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../../exampleAlbum.json; sourceTree = "<group>"; };
 		346B19AB216BAE9A001485EF /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
+		346B19AE216BBF08001485EF /* Network Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				346B19A2216BA6E7001485EF /* View */,
 				346B19A3216BA6F0001485EF /* View Controller */,
 				346B19A1216BA6D9001485EF /* Resources */,
+				346B19B0216BBF1B001485EF /* Helpers */,
 			);
 			path = "iOS Albums";
 			sourceTree = "<group>";
@@ -120,6 +123,14 @@
 				346B19AB216BAE9A001485EF /* AlbumController.swift */,
 			);
 			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		346B19B0216BBF1B001485EF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				346B19AE216BBF08001485EF /* Network Helpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +210,7 @@
 				346B19A0216BA4C8001485EF /* SongTableViewCell.swift in Sources */,
 				346B199E216BA340001485EF /* AlbumDetailTableViewController.swift in Sources */,
 				346B19AC216BAE9A001485EF /* AlbumController.swift in Sources */,
+				346B19AF216BBF08001485EF /* Network Helpers.swift in Sources */,
 				346B198A216B9E96001485EF /* AppDelegate.swift in Sources */,
 				346B19A5216BA703001485EF /* Album.swift in Sources */,
 			);

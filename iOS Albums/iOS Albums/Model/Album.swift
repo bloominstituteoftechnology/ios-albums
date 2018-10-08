@@ -33,6 +33,15 @@ class Album: Codable, CustomStringConvertible {
         }
     }
     
+    init(name: String, artist: String, genres: [String], coverArtURLs: [URL]) {
+        self.name = name
+        self.artist = artist
+        self.genres = genres
+        self.coverArtURLs = coverArtURLs
+        self.id = UUID().uuidString
+        self.songs = []
+    }
+    
     required init (from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
