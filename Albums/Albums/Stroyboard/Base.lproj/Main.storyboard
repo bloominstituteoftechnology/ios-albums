@@ -31,7 +31,9 @@
                             <outlet property="delegate" destination="soE-b1-ih1" id="1wn-0z-rGc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="DFh-NT-0Va"/>
+                    <navigationItem key="navigationItem" id="DFh-NT-0Va">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="10W-nl-03x"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKn-DA-CcK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
