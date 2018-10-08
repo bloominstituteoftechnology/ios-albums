@@ -30,12 +30,14 @@ struct Song: Decodable {
     // DECODING
     init(from decoder: Decoder) throws {
         let songContainer = try decoder.container(keyedBy: SongKeys.self)
+        
         let durationContainer = try songContainer.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
         let duration = try durationContainer.decode(String.self, forKey: .duration)
+        
         let id = try songContainer.decode(String.self, forKey: .id)
+        
         let nameContainer = try songContainer.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
         let name = try nameContainer.decode(String.self, forKey: .title)
-        
         
         self.duration = duration
         self.id = id

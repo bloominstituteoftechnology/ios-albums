@@ -15,8 +15,9 @@
 		8255BEDC216BCEA10068AEC0 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255BEDB216BCEA10068AEC0 /* AlbumDetailTableViewController.swift */; };
 		8255BEDE216BD1490068AEC0 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255BEDD216BD1490068AEC0 /* SongTableViewCell.swift */; };
 		8255BEE1216BD4CB0068AEC0 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255BEE0216BD4CB0068AEC0 /* Album.swift */; };
-		8255BEE5216BD6030068AEC0 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 8255BEE4216BD6030068AEC0 /* exampleAlbum.json */; };
 		8255BEEA216BEE2F0068AEC0 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255BEE9216BEE2F0068AEC0 /* Song.swift */; };
+		8255BEF0216BFEF00068AEC0 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 8255BEEF216BFEF00068AEC0 /* exampleAlbum.json */; };
+		8255BEF2216BFF3E0068AEC0 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255BEF1216BFF3E0068AEC0 /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +31,9 @@
 		8255BEDB216BCEA10068AEC0 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		8255BEDD216BD1490068AEC0 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		8255BEE0216BD4CB0068AEC0 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
-		8255BEE4216BD6030068AEC0 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleAlbum.json; sourceTree = "<group>"; };
 		8255BEE9216BEE2F0068AEC0 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		8255BEEF216BFEF00068AEC0 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleAlbum.json; sourceTree = "<group>"; };
+		8255BEF1216BFF3E0068AEC0 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +66,8 @@
 		8255BEC3216BC97F0068AEC0 /* Albums */ = {
 			isa = PBXGroup;
 			children = (
-				8255BEE6216BD6060068AEC0 /* JSON */,
 				8255BEE3216BD5000068AEC0 /* Model */,
+				8255BEF3216BFF440068AEC0 /* Model Controller */,
 				8255BEE2216BD4CF0068AEC0 /* Codable */,
 				8255BEDF216BD14E0068AEC0 /* View */,
 				8255BEDA216BCAC00068AEC0 /* View Controller */,
@@ -82,6 +84,7 @@
 				8255BECB216BC9800068AEC0 /* Assets.xcassets */,
 				8255BECD216BC9800068AEC0 /* LaunchScreen.storyboard */,
 				8255BED0216BC9800068AEC0 /* Info.plist */,
+				8255BEEF216BFEF00068AEC0 /* exampleAlbum.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -127,12 +130,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		8255BEE6216BD6060068AEC0 /* JSON */ = {
+		8255BEF3216BFF440068AEC0 /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8255BEE4216BD6030068AEC0 /* exampleAlbum.json */,
+				8255BEF1216BFF3E0068AEC0 /* AlbumController.swift */,
 			);
-			path = JSON;
+			path = "Model Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,7 +198,7 @@
 			files = (
 				8255BECF216BC9800068AEC0 /* LaunchScreen.storyboard in Resources */,
 				8255BECC216BC9800068AEC0 /* Assets.xcassets in Resources */,
-				8255BEE5216BD6030068AEC0 /* exampleAlbum.json in Resources */,
+				8255BEF0216BFEF00068AEC0 /* exampleAlbum.json in Resources */,
 				8255BECA216BC97F0068AEC0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,6 +214,7 @@
 				8255BEDE216BD1490068AEC0 /* SongTableViewCell.swift in Sources */,
 				8255BED8216BCAA30068AEC0 /* AlbumsTableViewController.swift in Sources */,
 				8255BEDC216BCEA10068AEC0 /* AlbumDetailTableViewController.swift in Sources */,
+				8255BEF2216BFF3E0068AEC0 /* AlbumController.swift in Sources */,
 				8255BEC5216BC97F0068AEC0 /* AppDelegate.swift in Sources */,
 				8255BEE1216BD4CB0068AEC0 /* Album.swift in Sources */,
 			);
