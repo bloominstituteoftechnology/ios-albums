@@ -12,6 +12,7 @@
 		8255BECC216BC9800068AEC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8255BECB216BC9800068AEC0 /* Assets.xcassets */; };
 		8255BECF216BC9800068AEC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8255BECD216BC9800068AEC0 /* LaunchScreen.storyboard */; };
 		8255BED8216BCAA30068AEC0 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255BED7216BCAA30068AEC0 /* AlbumsTableViewController.swift */; };
+		8255BEDC216BCEA10068AEC0 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255BEDB216BCEA10068AEC0 /* AlbumDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		8255BECE216BC9800068AEC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8255BED0216BC9800068AEC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8255BED7216BCAA30068AEC0 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		8255BEDB216BCEA10068AEC0 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		8255BEDA216BCAC00068AEC0 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8255BEDB216BCEA10068AEC0 /* AlbumDetailTableViewController.swift */,
 				8255BED7216BCAA30068AEC0 /* AlbumsTableViewController.swift */,
 			);
 			path = "View Controller";
@@ -160,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8255BED8216BCAA30068AEC0 /* AlbumsTableViewController.swift in Sources */,
+				8255BEDC216BCEA10068AEC0 /* AlbumDetailTableViewController.swift in Sources */,
 				8255BEC5216BC97F0068AEC0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
