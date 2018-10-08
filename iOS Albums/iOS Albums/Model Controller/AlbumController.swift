@@ -30,6 +30,11 @@ class AlbumController {
         put(album: album)
     }
     
+    func createSong(title: String, duration: String, id: String = UUID().uuidString) -> Song {
+        let song = Song(title: title, duration: duration, id: id)
+        return song
+    }
+    
     func update(album: Album, with name: String, artist: String, genres: [String], coverArtURLs: [URL], songs: [Song]) {
         album.name = name
         album.artist = artist

@@ -27,6 +27,12 @@ struct Song: Codable {
         }
     }
     
+    init (title: String, duration: String, id: String) {
+        self.name = title
+        self.duration = duration
+        self.id = id
+    }
+    
     init (from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
