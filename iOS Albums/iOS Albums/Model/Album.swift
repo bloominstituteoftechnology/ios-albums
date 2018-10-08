@@ -8,7 +8,11 @@
 
 import Foundation
 
-class Album: Codable {
+class Album: Codable, CustomStringConvertible {
+    var description: String {
+        return "'\(name)' by \(artist)"
+    }
+    
     var id: String
     var name: String
     var artist: String
@@ -69,6 +73,25 @@ class Album: Codable {
         self.coverArtURLs = coverArtURLs
         self.genres = genres
         self.songs = songs
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(artist, forKey: .artist)
+        try container.encode(name, forKey: .name)
+        try container.encode(id, forKey: .id)
+        
+        var coverArtsContainer = container.nestedUnkeyedContainer(forKey: .coverArtURLs)
+        for coverArtURL in coverArtURLs {
+            var coverArtContainer = coverArtsContainer.nestedContainer(keyedBy: CodingKeys.CoverArtCodingKeys.self)
+            try coverArtContainer.encode(coverArtURL.absoluteString, forKey: .url)
+        }
+        
+
+        try container.encode(genres, forKey: .genres)
+        
+        try container.encode(songs, forKey: .songs)
     }
 }
 
