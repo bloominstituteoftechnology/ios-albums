@@ -9,6 +9,12 @@
 import UIKit
 
 class AlbumDetailTableViewController: UITableViewController {
+    
+    @IBOutlet weak var albumName: UITextField!
+    @IBOutlet weak var artist: UITextField!
+    @IBOutlet weak var genre: UITextField!
+    @IBOutlet weak var coverURL: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +25,10 @@ class AlbumDetailTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    @IBAction func saveBarButtonTapped(_ sender: Any) {
+    }
+    
 
     // MARK: - Table view data source
 
