@@ -10,6 +10,7 @@ import UIKit
 
 class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDelegate {
     
+    // MARK: - Properties
     var albumController: AlbumController?
     var album: Album?
     
@@ -20,25 +21,32 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
     @IBOutlet weak var genresTextField: UITextField!
     @IBOutlet weak var coverArtURLTextField: UITextField!
     
-    
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateViews()
     }
     
+    // MARK: - UI Methods
     @IBAction func saveAlbum(_ sender: Any) {
+        // Unwrap all the text fields
         guard let name = albumNameTextField.text, !name.isEmpty,
         let artist = artistNameTextField.text, !artist.isEmpty,
         let genresString = genresTextField.text,
             let coverArtURLString = coverArtURLTextField.text else { return }
+        // Split the genres string into an array
         let genres = genresString.split(separator: ",").map() { String($0) }
+        // Split the cover art string into an array and map it into an array of URLs
         let coverArtURLStrings = coverArtURLString.split(separator: ",").map() { String($0) }
         let coverArtURLs = coverArtURLStrings.compactMap() { URL(string: $0) }
         
+        
         if let album = album {
+            // If there is an album, update it
             albumController?.update(album: album, with: name, artist: artist, genres: genres, coverArtURLs: coverArtURLs, songs: tempSongs)
         } else {
+            // Otherwise, create a new one
             albumController?.createAlbum(name: name, artist: artist, genres: genres, coverArtURLs: coverArtURLs, songs: tempSongs)
         }
         
@@ -55,10 +63,12 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as! SongTableViewCell
         
         if indexPath.row < tempSongs.count {
+            // If there is a song that corresponds with the cell, pass it to the cell
             let song = tempSongs[indexPath.row]
             cell.song = song
         }
         
+        // Set the cell's delegate no matter what
         cell.delegate = self
 
         return cell
@@ -82,6 +92,7 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
         tableView.scrollToRow(at: indexPath, at: .none, animated: true)
     }
     
+    // MARK: - Utility Methods
     private func updateViews() {
         guard let album = album else {
             title = "New Album"

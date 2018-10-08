@@ -9,6 +9,8 @@
 import Foundation
 
 class AlbumController {
+    
+    // MARK: - Properties
     private var testJSONurl: URL? {
         return Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")
     }
@@ -17,6 +19,7 @@ class AlbumController {
     var albums: [Album] = []
     
     // MARK: - CRUD Methods
+    /// Creates an album with the given properties, adds it to the albums array and PUTs it to the server
     func createAlbum(name: String, artist: String, genres: [String], coverArtURLs: [URL], songs: [Song]? = nil) {
         let album = Album(name: name, artist: artist, genres: genres, coverArtURLs: coverArtURLs)
         
@@ -30,11 +33,13 @@ class AlbumController {
         put(album: album)
     }
     
+    /// Creates a song with the given properties and returns it
     func createSong(title: String, duration: String, id: String = UUID().uuidString) -> Song {
         let song = Song(title: title, duration: duration, id: id)
         return song
     }
     
+    /// Updates an album with the given properties and PUTs it to the server
     func update(album: Album, with name: String, artist: String, genres: [String], coverArtURLs: [URL], songs: [Song]) {
         album.name = name
         album.artist = artist
@@ -46,6 +51,7 @@ class AlbumController {
     }
     
     // MARK: - Netorking
+    /// Fetches all the albums from the server and stores it in the albums array
     func fetchAlbums(completion: @escaping CompletionHandler = { _ in }) {
         let requestURL = baseURL.appendingPathExtension("json")
         
@@ -74,7 +80,8 @@ class AlbumController {
         }.resume()
     }
     
-    func put(album: Album) {
+    /// PUTs an album to the server
+    private func put(album: Album) {
         let requestURL = baseURL.appendingPathComponent("\(album.id)").appendingPathExtension("json")
         
         var request = URLRequest(url: requestURL)
@@ -96,7 +103,8 @@ class AlbumController {
     
     
     // MARK: - Testing Methods
-    func testDecodingExampleAlbum() {
+    /// Tests decoding an album from the example JSON
+    private func testDecodingExampleAlbum() {
         guard let url = testJSONurl else {
             NSLog("JSON file doesn't exist. Check your spelling.")
             return
@@ -113,7 +121,8 @@ class AlbumController {
         }
     }
     
-    func testEncodingExampleAlbum() {
+    /// Test encoding the example JSON
+    private func testEncodingExampleAlbum() {
         guard let url = testJSONurl else {
             NSLog("JSON file doesn't exist. Check your spelling.")
             return
