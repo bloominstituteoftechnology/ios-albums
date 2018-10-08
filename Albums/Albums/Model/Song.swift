@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Song: Decodable {
+struct Song: Codable {
     var duration: String
     var id: String
     var name: String
@@ -43,4 +43,18 @@ struct Song: Decodable {
         self.id = id
         self.name = name
     }
+    
+    // ENCODING
+    func encode(to encoder: Encoder) throws {
+        var songContainer = encoder.container(keyedBy: SongKeys.self)
+        
+        var durationContainer = songContainer.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
+        try durationContainer.encode(duration, forKey: .duration)
+        
+        try songContainer.encode(id, forKey: .id)
+        
+        var nameContainer = songContainer.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
+        try nameContainer.encode(name, forKey: .title)
+    }
+    
 }

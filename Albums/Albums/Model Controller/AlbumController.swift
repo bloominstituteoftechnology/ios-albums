@@ -24,4 +24,8 @@ class AlbumController {
             NSLog("Couldn't decoded")
         }
     }
+    
+    static func testEncodingExampleAlbum() {
+        
+    }
 }
