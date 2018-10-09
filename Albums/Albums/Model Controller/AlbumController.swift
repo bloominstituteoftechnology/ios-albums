@@ -19,6 +19,7 @@ class AlbumController {
     // MARK: - Get
     
     func getAlbums(completion: @escaping Completion) {
+        // Add path extension to the baseURL
         let url = baseURL.appendingPathExtension("json")
         
         URLSession.shared.dataTask(with: url) { (data, _, error) in
@@ -52,6 +53,41 @@ class AlbumController {
             }
         }.resume()
         
+    }
+    
+    // MARK: - Put
+    
+    func put(album: Album, completion: @escaping Completion) {
+        // Create a request URL
+        // Add id's for unique loaction
+        // Add extension path
+        let url = baseURL.appendingPathComponent(album.id).appendingPathExtension("json")
+        
+        var requestURL = URLRequest(url: url)
+        requestURL.httpMethod = "PUT"
+        
+        // Encode the Album
+        let encoder = JSONEncoder()
+        
+        do {
+            let encodedAlbum = try encoder.encode(album)
+            requestURL.httpBody = encodedAlbum
+            completion(nil)
+        } catch {
+            NSLog("Error encoding Album:\(error)")
+            completion(error)
+            return
+        }
+        
+        // Create a task
+        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+            if error != nil {
+                NSLog("Error econding Album")
+                completion(error)
+                return
+            }
+            completion(nil)
+        }.resume()
     }
     
     
