@@ -12,7 +12,7 @@ class AlbumController {
     
     // MARK: - Properties
     
-    var album: [Album] = []
+    var albums: [Album] = []
     let baseURL = URL(string: "https://albums-3e830.firebaseio.com/")!
     typealias Completion = (Error?) -> Void
     
@@ -45,7 +45,7 @@ class AlbumController {
                 // Key String, Value Album
                 let albumDictionary = try decoder.decode([String:Album].self, from: data)
                 let values = albumDictionary.map( { $0.value }) // Get values
-                self.album = values
+                self.albums = values
             } catch {
                 NSLog("Error decoding data: \(error)")
                 completion(error)
@@ -90,6 +90,20 @@ class AlbumController {
         }.resume()
     }
     
+    // MARK: - Create Album
+    func createAlbum(artist: String, coverArt: [String], genres: [String], name: String, songs: [Song]) {
+        let newAlbum = Album(artist: artist, coverArt: coverArt, genres: genres, name: name, songs: songs)
+        albums.append(newAlbum)
+        put(album: newAlbum) { (error) in
+            if error != nil {
+                NSLog("Error putting newAlbum to the server")
+            }
+        }
+    }
+    
+    // MARK: -
+    
+    
     
     // MARK: - Testing
 
@@ -120,7 +134,7 @@ class AlbumController {
             let _ = try JSONEncoder().encode(album)
             print("Encoding successfull")
         } catch {
-            NSLog("Error encoding album")
+            NSLog("Error encoding albums")
         }
     }
     

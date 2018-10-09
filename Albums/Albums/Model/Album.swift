@@ -17,6 +17,15 @@ struct Album: Codable {
     var name: String
     var songs: [Song]
     
+    init(artist: String, coverArt: [String], genres: [String], id: String = UUID().uuidString, name: String, songs: [Song]) {
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.id = id
+        self.name = name
+        self.songs = songs
+    }
+    
     enum AlbumKeys: String, CodingKey {
         case artist
         case coverArt
