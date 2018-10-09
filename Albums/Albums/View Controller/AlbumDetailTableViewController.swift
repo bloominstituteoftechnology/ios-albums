@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlbumDetailTableViewController: UITableViewController {
+class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDelegate {
     
     // MARK: - Properties
     
@@ -40,7 +40,7 @@ class AlbumDetailTableViewController: UITableViewController {
     // MARK: - Update views
     
     func updateViews() {
-        if let album = album {
+        if let album = album, isViewLoaded {
             albumName.text = album.name
             artist.text = album.artist
             genre.text = album.genres.joined()
@@ -53,6 +53,15 @@ class AlbumDetailTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - SongTableViewCellDelegate
+    
+    func addSong(with title: String, duration: String) {
+        guard let newSong = albumController?.createSong(duration: duration, name: title) else { return }
+        tempSongs.append(newSong)
+        tableView.reloadData()
+        let indexPath = IndexPath(row: tempSongs.count, section: 0)
+        tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition(rawValue: indexPath.row)!, animated: true)
+    }
     
     // MARK: - Table view data source
 
