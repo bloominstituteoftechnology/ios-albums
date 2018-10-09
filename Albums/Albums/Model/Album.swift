@@ -53,18 +53,25 @@ struct Album: Codable, Equatable {
         
         // Why it is unkeyed? I think it's keyed container.
         // But when construction like that I couldn't loop through
-        var coverArtContainer = try albumContainer.nestedUnkeyedContainer(forKey: .coverArt)
+        var loopCoverArtContainer = try albumContainer.nestedUnkeyedContainer(forKey: .coverArt)
         var coverArt: [String] = []
-        while !coverArtContainer.isAtEnd {
-            let subCoverArtContainer = try coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
-            let subCoverArt = try subCoverArtContainer.decode(String.self, forKey: .url)
-            coverArt.append(subCoverArt)
+        while !loopCoverArtContainer.isAtEnd {
+            let coverArtContainer = try loopCoverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
+            let aCoverArt = try coverArtContainer.decode(String.self, forKey: .url)
+            coverArt.append(aCoverArt)
         }
         
         let genres = try albumContainer.decode([String].self, forKey: .genres)
         let id = try albumContainer.decode(String.self, forKey: .id)
         let name = try albumContainer.decode(String.self, forKey: .name)
         let songs = try albumContainer.decode([Song].self, forKey: .songs)
+        
+//        let loopSongsContainer = try albumContainer.nestedUnkeyedContainer(forKey: .songs)
+//        var songs:[Song] = []
+//        while !loopSongsContainer.isAtEnd {
+//            let song = try albumContainer.decode(Song.self, forKey: .songs)
+//            songs.append(song)
+//        }
 
         self.artist = artist
         self.coverArt = coverArt
