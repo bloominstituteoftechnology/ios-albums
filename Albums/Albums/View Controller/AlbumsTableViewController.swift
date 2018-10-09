@@ -13,6 +13,8 @@ class AlbumsTableViewController: UITableViewController {
     // MARK: - Properties
     var albumController: AlbumController?
     let reuseIdentifier = "AlbumTableCell"
+    let cellSegue = "CellShowSegue"
+    let barButtonSegue = "AddBarButtonShowSegue"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,14 +78,20 @@ class AlbumsTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == barButtonSegue {
+            guard let destinationVC = segue.destination as? AlbumDetailTableViewController else { return }
+            destinationVC.albumController = albumController
+        } else if segue.identifier == cellSegue {
+            guard let indexPath = tableView.indexPathForSelectedRow,
+                let album = albumController?.albums[indexPath.row],
+                let destinationVC = segue.destination as? AlbumDetailTableViewController else { return }
+            
+            destinationVC.albumController = albumController
+            destinationVC.album = album
+        }
+        
     }
-    */
-
 }
