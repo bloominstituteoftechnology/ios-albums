@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Song: Codable {
+struct Song: Codable, Equatable {
     var duration: String
     var id: String
     var name: String

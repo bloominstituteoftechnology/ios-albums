@@ -112,6 +112,28 @@ class AlbumController {
     }
     
     
+    // MARK: - Update
+    
+    func update(album: Album, artist: String, coverArt: [String], genres: [String], name: String, songs: [Song]) {
+        guard let index = albums.index(of: album) else { return }
+        var theAlbum = albums[index]
+        
+        theAlbum.artist = artist
+        theAlbum.coverArt = coverArt
+        theAlbum.genres = genres
+        theAlbum.name = name
+        theAlbum.songs = songs
+        
+        albums.remove(at: index)
+        albums.insert(theAlbum, at: index)
+        
+        put(album: theAlbum) { (error) in
+            if error != nil {
+                NSLog("Error putting updated album to the server")
+            }
+        }
+    }
+    
     
     // MARK: - Testing
 
