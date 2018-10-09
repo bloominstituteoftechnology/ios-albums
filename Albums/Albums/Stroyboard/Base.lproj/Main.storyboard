@@ -76,30 +76,30 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ye9-9X-IOF">
-                                    <rect key="frame" x="8" y="1" width="359" height="204"/>
+                                    <rect key="frame" x="8" y="8" width="359" height="197"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Album Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fSe-lm-OZG">
-                                            <rect key="frame" x="0.0" y="0.0" width="359" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dIG-fx-uzw">
-                                            <rect key="frame" x="0.0" y="53" width="359" height="45"/>
+                                            <rect key="frame" x="0.0" y="51.5" width="359" height="43"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Genres (separated by commas):" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8bq-Bz-jPW">
-                                            <rect key="frame" x="0.0" y="106" width="359" height="45"/>
+                                            <rect key="frame" x="0.0" y="102.5" width="359" height="43.5"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cover URLs (separated by commas):" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RHu-Dc-dLR">
-                                            <rect key="frame" x="0.0" y="159" width="359" height="45"/>
+                                            <rect key="frame" x="0.0" y="154" width="359" height="43"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -110,7 +110,7 @@
                                 <constraint firstAttribute="bottom" secondItem="ye9-9X-IOF" secondAttribute="bottom" constant="1" id="GfV-Q8-ayd"/>
                                 <constraint firstAttribute="trailing" secondItem="ye9-9X-IOF" secondAttribute="trailing" constant="8" id="bJk-lj-dsT"/>
                                 <constraint firstItem="ye9-9X-IOF" firstAttribute="leading" secondItem="Y2O-In-U1J" secondAttribute="leading" constant="8" id="daG-QC-XDW"/>
-                                <constraint firstItem="ye9-9X-IOF" firstAttribute="top" secondItem="Y2O-In-U1J" secondAttribute="top" constant="1" id="lsi-jR-vS7"/>
+                                <constraint firstItem="ye9-9X-IOF" firstAttribute="top" secondItem="Y2O-In-U1J" secondAttribute="top" constant="8" id="lsi-jR-vS7"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -122,19 +122,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S7h-FX-pMg">
-                                            <rect key="frame" x="8" y="1" width="359" height="68.5"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="54.5"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lxN-6E-Ehr">
-                                                    <rect key="frame" x="0.0" y="0.0" width="284" height="68.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="284" height="54.5"/>
                                                     <subviews>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d3A-in-Tq3">
-                                                            <rect key="frame" x="0.0" y="0.0" width="284" height="30.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="284" height="23.5"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NXx-xN-IhT">
-                                                            <rect key="frame" x="0.0" y="38.5" width="284" height="30"/>
+                                                            <rect key="frame" x="0.0" y="31.5" width="284" height="23"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -142,7 +142,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMc-EW-AXg">
-                                                    <rect key="frame" x="292" y="0.0" width="67" height="68.5"/>
+                                                    <rect key="frame" x="292" y="0.0" width="67" height="54.5"/>
                                                     <state key="normal" title="Add Song"/>
                                                     <connections>
                                                         <action selector="addSongButtonTapped:" destination="qwi-eV-PTA" eventType="touchUpInside" id="xVD-65-bE1"/>
@@ -152,9 +152,9 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="S7h-FX-pMg" firstAttribute="top" secondItem="NJ6-rh-lZp" secondAttribute="top" constant="1" id="CQx-lb-ZHc"/>
+                                        <constraint firstItem="S7h-FX-pMg" firstAttribute="top" secondItem="NJ6-rh-lZp" secondAttribute="top" constant="8" id="CQx-lb-ZHc"/>
                                         <constraint firstAttribute="trailing" secondItem="S7h-FX-pMg" secondAttribute="trailing" constant="8" id="caS-2j-0Zr"/>
-                                        <constraint firstAttribute="bottom" secondItem="S7h-FX-pMg" secondAttribute="bottom" constant="1" id="l7U-Xf-vr5"/>
+                                        <constraint firstAttribute="bottom" secondItem="S7h-FX-pMg" secondAttribute="bottom" constant="8" id="l7U-Xf-vr5"/>
                                         <constraint firstItem="S7h-FX-pMg" firstAttribute="leading" secondItem="NJ6-rh-lZp" secondAttribute="leading" constant="8" id="opn-cr-ugf"/>
                                     </constraints>
                                 </tableViewCellContentView>

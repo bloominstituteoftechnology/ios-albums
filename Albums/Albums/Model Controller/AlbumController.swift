@@ -167,6 +167,4 @@ class AlbumController {
             NSLog("Error encoding albums")
         }
     }
-    
-    
 }
