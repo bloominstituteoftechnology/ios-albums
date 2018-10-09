@@ -68,7 +68,6 @@
 			children = (
 				8255BEE3216BD5000068AEC0 /* Model */,
 				8255BEF3216BFF440068AEC0 /* Model Controller */,
-				8255BEE2216BD4CF0068AEC0 /* Codable */,
 				8255BEDF216BD14E0068AEC0 /* View */,
 				8255BEDA216BCAC00068AEC0 /* View Controller */,
 				8255BED9216BCAB20068AEC0 /* Stroyboard */,
@@ -112,13 +111,6 @@
 				8255BEDD216BD1490068AEC0 /* SongTableViewCell.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		8255BEE2216BD4CF0068AEC0 /* Codable */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Codable;
 			sourceTree = "<group>";
 		};
 		8255BEE3216BD5000068AEC0 /* Model */ = {
