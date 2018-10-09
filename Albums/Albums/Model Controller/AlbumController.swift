@@ -90,7 +90,9 @@ class AlbumController {
         }.resume()
     }
     
+    
     // MARK: - Create Album
+    
     func createAlbum(artist: String, coverArt: [String], genres: [String], name: String, songs: [Song]) {
         let newAlbum = Album(artist: artist, coverArt: coverArt, genres: genres, name: name, songs: songs)
         albums.append(newAlbum)
@@ -101,7 +103,13 @@ class AlbumController {
         }
     }
     
-    // MARK: -
+    
+    // MARK: - Create Song
+    
+    func createSong(duration: String, name: String) -> Song {
+        let newSong = Song(duration: duration, name: name)
+        return newSong
+    }
     
     
     

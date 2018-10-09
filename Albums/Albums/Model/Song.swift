@@ -13,6 +13,12 @@ struct Song: Codable {
     var id: String
     var name: String
     
+    init(duration: String, id: String = UUID().uuidString, name: String) {
+        self.duration = duration
+        self.id = id
+        self.name = name
+    }
+    
     enum SongKeys: String, CodingKey {
         case duration
         case id
