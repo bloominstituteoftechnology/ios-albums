@@ -13,7 +13,8 @@ class AlbumDetailTableViewController: UITableViewController {
     // MARK: - Properties
     
     var albumController: AlbumController?
-    var album: Album?
+    var album: Album? { didSet { updateViews()}}
+    var tempSongs: [Song] = []
     
     // MARK: - Outlets
     
@@ -23,20 +24,36 @@ class AlbumDetailTableViewController: UITableViewController {
     @IBOutlet weak var coverURL: UITextField!
     
 
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
+    
+    // MARK: - Actions
     
     @IBAction func saveBarButtonTapped(_ sender: Any) {
+        
+    }
+
+    // MARK: - Update views
+    
+    func updateViews() {
+        if let album = album {
+            albumName.text = album.name
+            artist.text = album.artist
+            genre.text = album.genres.joined()
+            coverURL.text = album.coverArt.joined()
+            tempSongs = album.songs
+            
+            navigationItem.title = album.name
+        } else {
+            navigationItem.title = "New Album"
+        }
     }
     
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

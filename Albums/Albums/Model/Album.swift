@@ -10,12 +10,16 @@ import Foundation
 
 struct Album: Codable, Equatable {
     
+    // MARK: - Properties
+    
     var artist: String
     var coverArt: [String]
     var genres: [String]
     var id: String
     var name: String
     var songs: [Song]
+    
+    // MARK: - MODEL Initializer
     
     init(artist: String, coverArt: [String], genres: [String], id: String = UUID().uuidString, name: String, songs: [Song]) {
         self.artist = artist
@@ -25,6 +29,8 @@ struct Album: Codable, Equatable {
         self.name = name
         self.songs = songs
     }
+    
+    // MARK: - CodingKey
     
     enum AlbumKeys: String, CodingKey {
         case artist
@@ -39,7 +45,8 @@ struct Album: Codable, Equatable {
         }
     }
     
-    // DECODING
+    // MARK: - Decoding
+    
     init(from decoder: Decoder) throws {
         let albumContainer = try decoder.container(keyedBy: AlbumKeys.self)
         let artist = try albumContainer.decode(String.self, forKey: .artist)
@@ -67,7 +74,8 @@ struct Album: Codable, Equatable {
         self.songs = songs
     }
     
-    // ENCODING
+    // MARK: - Encoding
+    
     func encode(to encoder: Encoder) throws {
         var albumContainer = encoder.container(keyedBy: AlbumKeys.self)
         try albumContainer.encode(artist, forKey: .artist)

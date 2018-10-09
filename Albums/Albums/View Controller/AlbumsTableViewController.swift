@@ -11,6 +11,7 @@ import UIKit
 class AlbumsTableViewController: UITableViewController {
     
     // MARK: - Properties
+    
     var albumController: AlbumController?
     let reuseIdentifier = "AlbumTableCell"
     let cellSegue = "CellShowSegue"

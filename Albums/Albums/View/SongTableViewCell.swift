@@ -34,7 +34,7 @@ class SongTableViewCell: UITableViewCell {
         delegate?.addSong(with: title, duration: duration)
     }
     
-    // MARK: - Update
+    // MARK: - Update views
     
     func updateViews() {
         if let song = song {
@@ -45,6 +45,7 @@ class SongTableViewCell: UITableViewCell {
     }
     
     // MARK: - Reuse the cell
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         songTitle.text = ""

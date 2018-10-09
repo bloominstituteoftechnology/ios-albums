@@ -9,15 +9,22 @@
 import Foundation
 
 struct Song: Codable, Equatable {
+    
+    // MARK: - Properties
+    
     var duration: String
     var id: String
     var name: String
+    
+    // MARK: - Model initializer
     
     init(duration: String, id: String = UUID().uuidString, name: String) {
         self.duration = duration
         self.id = id
         self.name = name
     }
+    
+    // MARK: - CodingKey
     
     enum SongKeys: String, CodingKey {
         case duration
@@ -33,7 +40,8 @@ struct Song: Codable, Equatable {
         }
     }
     
-    // DECODING
+    // MARK: - Decoding
+    
     init(from decoder: Decoder) throws {
         let songContainer = try decoder.container(keyedBy: SongKeys.self)
         
@@ -50,7 +58,8 @@ struct Song: Codable, Equatable {
         self.name = name
     }
     
-    // ENCODING
+    // MARK: - Encoding
+    
     func encode(to encoder: Encoder) throws {
         var songContainer = encoder.container(keyedBy: SongKeys.self)
         

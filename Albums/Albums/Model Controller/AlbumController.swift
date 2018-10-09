@@ -112,7 +112,7 @@ class AlbumController {
     }
     
     
-    // MARK: - Update
+    // MARK: - Update Album
     
     func update(album: Album, artist: String, coverArt: [String], genres: [String], name: String, songs: [Song]) {
         guard let index = albums.index(of: album) else { return }
@@ -135,7 +135,7 @@ class AlbumController {
     }
     
     
-    // MARK: - Testing
+    // MARK: - Testing Codable
 
     static func testDecodingExampleAlbum() -> Album? {
         guard let url = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else {
