@@ -1,4 +1,4 @@
-# Journal
+# Albums
 
 ## Introduction
 
