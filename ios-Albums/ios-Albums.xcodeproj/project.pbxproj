@@ -8,22 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		473DA4A221AC68FB005DF332 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DA4A121AC68FB005DF332 /* AppDelegate.swift */; };
-		473DA4A421AC68FB005DF332 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DA4A321AC68FB005DF332 /* ViewController.swift */; };
 		473DA4A721AC68FB005DF332 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 473DA4A521AC68FB005DF332 /* Main.storyboard */; };
 		473DA4A921AC68FC005DF332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 473DA4A821AC68FC005DF332 /* Assets.xcassets */; };
 		473DA4AC21AC68FC005DF332 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 473DA4AA21AC68FC005DF332 /* LaunchScreen.storyboard */; };
 		473DA4B421AC737F005DF332 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DA4B321AC737F005DF332 /* AlbumsTableViewController.swift */; };
+		473DA4B621AC9C07005DF332 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 473DA4B521AC9C07005DF332 /* exampleAlbum.json */; };
+		473DA4B821ACA044005DF332 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DA4B721ACA044005DF332 /* AlbumDetailTableViewController.swift */; };
+		473DA4BA21ACA577005DF332 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DA4B921ACA577005DF332 /* SongTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		473DA49E21AC68FB005DF332 /* ios-Albums.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-Albums.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		473DA4A121AC68FB005DF332 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		473DA4A321AC68FB005DF332 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		473DA4A621AC68FB005DF332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		473DA4A821AC68FC005DF332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		473DA4AB21AC68FC005DF332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		473DA4AD21AC68FC005DF332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		473DA4B321AC737F005DF332 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		473DA4B521AC9C07005DF332 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleAlbum.json; sourceTree = SOURCE_ROOT; };
+		473DA4B721ACA044005DF332 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		473DA4B921ACA577005DF332 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,8 @@
 			isa = PBXGroup;
 			children = (
 				473DA4A021AC68FB005DF332 /* ios-Albums */,
+				473DA4BC21ACA634005DF332 /* View Controllers */,
+				473DA4BB21ACA617005DF332 /* Resources */,
 				473DA49F21AC68FB005DF332 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,15 +62,31 @@
 		473DA4A021AC68FB005DF332 /* ios-Albums */ = {
 			isa = PBXGroup;
 			children = (
-				473DA4A121AC68FB005DF332 /* AppDelegate.swift */,
-				473DA4A321AC68FB005DF332 /* ViewController.swift */,
 				473DA4A521AC68FB005DF332 /* Main.storyboard */,
-				473DA4B321AC737F005DF332 /* AlbumsTableViewController.swift */,
-				473DA4A821AC68FC005DF332 /* Assets.xcassets */,
-				473DA4AA21AC68FC005DF332 /* LaunchScreen.storyboard */,
+				473DA4B521AC9C07005DF332 /* exampleAlbum.json */,
 				473DA4AD21AC68FC005DF332 /* Info.plist */,
 			);
 			path = "ios-Albums";
+			sourceTree = "<group>";
+		};
+		473DA4BB21ACA617005DF332 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				473DA4A121AC68FB005DF332 /* AppDelegate.swift */,
+				473DA4A821AC68FC005DF332 /* Assets.xcassets */,
+				473DA4AA21AC68FC005DF332 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		473DA4BC21ACA634005DF332 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				473DA4B921ACA577005DF332 /* SongTableViewCell.swift */,
+				473DA4B721ACA044005DF332 /* AlbumDetailTableViewController.swift */,
+				473DA4B321AC737F005DF332 /* AlbumsTableViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +149,7 @@
 			files = (
 				473DA4AC21AC68FC005DF332 /* LaunchScreen.storyboard in Resources */,
 				473DA4A921AC68FC005DF332 /* Assets.xcassets in Resources */,
+				473DA4B621AC9C07005DF332 /* exampleAlbum.json in Resources */,
 				473DA4A721AC68FB005DF332 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,8 +161,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				473DA4A421AC68FB005DF332 /* ViewController.swift in Sources */,
 				473DA4B421AC737F005DF332 /* AlbumsTableViewController.swift in Sources */,
+				473DA4BA21ACA577005DF332 /* SongTableViewCell.swift in Sources */,
+				473DA4B821ACA044005DF332 /* AlbumDetailTableViewController.swift in Sources */,
 				473DA4A221AC68FB005DF332 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
