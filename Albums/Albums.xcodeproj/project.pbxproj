@@ -16,6 +16,7 @@
 		399775F121AC99D800C60E4A /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399775F021AC99D800C60E4A /* AlbumDetailTableViewController.swift */; };
 		399775F321AC9EC400C60E4A /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399775F221AC9EC400C60E4A /* SongTableViewCell.swift */; };
 		399775F521ACA06E00C60E4A /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399775F421ACA06E00C60E4A /* Album.swift */; };
+		399775F721ACB31200C60E4A /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399775F621ACB31200C60E4A /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		399775F021AC99D800C60E4A /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		399775F221AC9EC400C60E4A /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		399775F421ACA06E00C60E4A /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		399775F621ACB31200C60E4A /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				399775DA21AC908500C60E4A /* AppDelegate.swift */,
 				399775DE21AC908500C60E4A /* Main.storyboard */,
 				399775F421ACA06E00C60E4A /* Album.swift */,
+				399775F621ACB31200C60E4A /* AlbumController.swift */,
 				399775EE21AC929100C60E4A /* AlbumTableViewController.swift */,
 				399775F021AC99D800C60E4A /* AlbumDetailTableViewController.swift */,
 				399775F221AC9EC400C60E4A /* SongTableViewCell.swift */,
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				399775F321AC9EC400C60E4A /* SongTableViewCell.swift in Sources */,
+				399775F721ACB31200C60E4A /* AlbumController.swift in Sources */,
 				399775EF21AC929100C60E4A /* AlbumTableViewController.swift in Sources */,
 				399775F121AC99D800C60E4A /* AlbumDetailTableViewController.swift in Sources */,
 				399775DB21AC908500C60E4A /* AppDelegate.swift in Sources */,
