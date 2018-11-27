@@ -17,9 +17,18 @@ struct Album: Decodable {
         }
     }
     
-    func encode(to encoder: Encoder) {
+    func encode(to encoder: Encoder) throws {
         
-        // encoder here
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(artist, forKey: .artist)
+        
+        var coverArtContainer = container.nestedContainer(keyedBy: CodingKeys.CoverArtCodingKeys.self, forKey: .coverArt)
+        
+        try coverArtContainer.encode(coverArt, forKey: .url)
+        
+        
+        
         
     }
     
