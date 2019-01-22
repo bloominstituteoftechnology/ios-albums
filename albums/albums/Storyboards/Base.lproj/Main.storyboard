@@ -191,6 +191,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="albumNameTextField" destination="QLG-dH-32f" id="FO0-BJ-j42"/>
+                        <outlet property="artistNameTextField" destination="rvz-C3-Qfl" id="iuf-04-RLF"/>
+                        <outlet property="coverImageURLsTextField" destination="0bp-RN-AD0" id="91C-Gt-b4P"/>
+                        <outlet property="genreNameTextField" destination="Dc3-nW-nCs" id="1s7-qm-3dB"/>
                         <outlet property="saveButton" destination="py2-rd-9KN" id="qtH-cm-COC"/>
                     </connections>
                 </tableViewController>
