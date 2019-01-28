@@ -14,6 +14,7 @@
 		4C43183E21AD294D0021E999 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C43183C21AD294D0021E999 /* LaunchScreen.storyboard */; };
 		4C43184821AD2A1C0021E999 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C43184721AD2A1C0021E999 /* exampleAlbum.json */; };
 		4CA6F15821FFA44300FE8F1A /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6F15721FFA44300FE8F1A /* AlbumsTableViewController.swift */; };
+		4CA6F15A21FFA6E500FE8F1A /* AlbumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6F15921FFA6E500FE8F1A /* AlbumDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4C43183F21AD294D0021E999 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C43184721AD2A1C0021E999 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleAlbum.json; sourceTree = "<group>"; };
 		4CA6F15721FFA44300FE8F1A /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		4CA6F15921FFA6E500FE8F1A /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				4C43183521AD294C0021E999 /* ViewController.swift */,
 				4C43184721AD2A1C0021E999 /* exampleAlbum.json */,
 				4C43183721AD294C0021E999 /* Main.storyboard */,
+				4CA6F15921FFA6E500FE8F1A /* AlbumDetailViewController.swift */,
 				4C43183A21AD294D0021E999 /* Assets.xcassets */,
 				4C43183C21AD294D0021E999 /* LaunchScreen.storyboard */,
 				4C43183F21AD294D0021E999 /* Info.plist */,
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C43183621AD294C0021E999 /* ViewController.swift in Sources */,
+				4CA6F15A21FFA6E500FE8F1A /* AlbumDetailViewController.swift in Sources */,
 				4CA6F15821FFA44300FE8F1A /* AlbumsTableViewController.swift in Sources */,
 				4C43183421AD294C0021E999 /* AppDelegate.swift in Sources */,
 			);
