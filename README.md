@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Please look at the screen recording below to know what the finished project should look like:
+Please look at the screen recording below to know what the finished project should look like
 
 ![large gif 446x960](https://user-images.githubusercontent.com/16965587/44930824-c7592d80-ad1c-11e8-9997-c37da54842b4.gif)
 
