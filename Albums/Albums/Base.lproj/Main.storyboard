@@ -114,7 +114,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="124" id="oIS-Ek-kDZ" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" rowHeight="124" id="oIS-Ek-kDZ" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="189" width="375" height="124"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oIS-Ek-kDZ" id="zSS-su-bi3">

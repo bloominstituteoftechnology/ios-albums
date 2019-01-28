@@ -14,6 +14,9 @@
 		A55FF57021FFA794008C69CE /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FF56F21FFA794008C69CE /* AlbumsTableViewController.swift */; };
 		A55FF57221FFAA17008C69CE /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FF57121FFAA17008C69CE /* AlbumDetailTableViewController.swift */; };
 		A55FF57421FFAC14008C69CE /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FF57321FFAC14008C69CE /* SongTableViewCell.swift */; };
+		A55FF57621FFACE9008C69CE /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FF57521FFACE8008C69CE /* Album.swift */; };
+		A55FF57921FFAFC0008C69CE /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = A55FF57821FFAFC0008C69CE /* exampleAlbum.json */; };
+		A55FF57B21FFC778008C69CE /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FF57A21FFC778008C69CE /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		A55FF56F21FFA794008C69CE /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		A55FF57121FFAA17008C69CE /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		A55FF57321FFAC14008C69CE /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		A55FF57521FFACE8008C69CE /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		A55FF57821FFAFC0008C69CE /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
+		A55FF57A21FFC778008C69CE /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +66,25 @@
 			children = (
 				A55FF55D21FF9B54008C69CE /* AppDelegate.swift */,
 				A55FF56121FF9B54008C69CE /* Main.storyboard */,
-				A55FF56F21FFA794008C69CE /* AlbumsTableViewController.swift */,
-				A55FF57121FFAA17008C69CE /* AlbumDetailTableViewController.swift */,
+				A55FF57721FFACF9008C69CE /* Controllers */,
+				A55FF57521FFACE8008C69CE /* Album.swift */,
+				A55FF57A21FFC778008C69CE /* AlbumController.swift */,
 				A55FF57321FFAC14008C69CE /* SongTableViewCell.swift */,
 				A55FF56421FF9B55008C69CE /* Assets.xcassets */,
 				A55FF56621FF9B55008C69CE /* LaunchScreen.storyboard */,
+				A55FF57821FFAFC0008C69CE /* exampleAlbum.json */,
 				A55FF56921FF9B55008C69CE /* Info.plist */,
 			);
 			path = Albums;
+			sourceTree = "<group>";
+		};
+		A55FF57721FFACF9008C69CE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A55FF56F21FFA794008C69CE /* AlbumsTableViewController.swift */,
+				A55FF57121FFAA17008C69CE /* AlbumDetailTableViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +147,7 @@
 			files = (
 				A55FF56821FF9B55008C69CE /* LaunchScreen.storyboard in Resources */,
 				A55FF56521FF9B55008C69CE /* Assets.xcassets in Resources */,
+				A55FF57921FFAFC0008C69CE /* exampleAlbum.json in Resources */,
 				A55FF56321FF9B54008C69CE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,9 +160,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A55FF57421FFAC14008C69CE /* SongTableViewCell.swift in Sources */,
+				A55FF57B21FFC778008C69CE /* AlbumController.swift in Sources */,
 				A55FF57021FFA794008C69CE /* AlbumsTableViewController.swift in Sources */,
 				A55FF57221FFAA17008C69CE /* AlbumDetailTableViewController.swift in Sources */,
 				A55FF55E21FF9B54008C69CE /* AppDelegate.swift in Sources */,
+				A55FF57621FFACE9008C69CE /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
