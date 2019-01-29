@@ -10,6 +10,15 @@ import UIKit
 
 class AlbumDetailTableViewController: UITableViewController {
 
+    var albumController: AlbumController?
+    var album: Album? {
+        didSet {
+            updateViews()
+        }
+    }
+    var tempSongs: [Album.Song] = []
+    var songTableViewCellDelegate: SongTableViewCellDelegate?
+    
     @IBOutlet weak var albumName: UITextField!
     @IBOutlet weak var artist: UITextField!
     @IBOutlet weak var genres: UITextField!
@@ -20,10 +29,25 @@ class AlbumDetailTableViewController: UITableViewController {
         
     }
     
+    func updateViews() {
+        
+        if isViewLoaded == true {
+        guard let album = album else { title = "New Album"
+            return }
+        
+        albumName.text = album.name
+        artist.text = album.artist
+        genres.text = album.genres.joined(separator: ",")
+        //coverURL.text = album.coverArt.
+        title = album.name
+        tempSongs = album.songs
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -43,7 +67,7 @@ class AlbumDetailTableViewController: UITableViewController {
         return 0
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
@@ -51,7 +75,7 @@ class AlbumDetailTableViewController: UITableViewController {
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
