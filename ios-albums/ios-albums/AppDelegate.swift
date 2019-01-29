@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: - Testing
         AlbumController.testDecodingExampleAlbum()
         
+        AlbumController.testEncodingExampleAlbum()
+        
         
         return true
     }

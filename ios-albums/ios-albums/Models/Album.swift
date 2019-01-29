@@ -48,6 +48,22 @@ struct Album: Codable {
         
         
     }
+    
+    func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.container(keyedBy: AlbumKeys.self)
+        try container.encode(artist, forKey: .artist)
+        try container.encode(name, forKey: .name)
+        try container.encode(id, forKey: .id)
+        try container.encode(genres, forKey: .genres)
+        try container.encode(songs, forKey: .songs)
+        
+        var coverArtTopContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        var coverArtContainer = coverArtTopContainer.nestedContainer(keyedBy: AlbumKeys.CoverArt.self)
+        
+        try coverArtContainer.encode(coverArt, forKey: .url)
+    
+    }
 }
 
 struct Song: Codable {
@@ -81,6 +97,15 @@ struct Song: Codable {
         let nameContainer = try container.nestedContainer(keyedBy: SongKeys.Name.self, forKey: .name)
         name = try nameContainer.decode(String.self, forKey: .title)
         
+        
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: SongKeys.self)
+        try container.encode(id, forKey: .id)
+        
+        _ = container.nestedContainer(keyedBy: SongKeys.self, forKey: .duration)
+        _ = container.nestedContainer(keyedBy: SongKeys.Name.self, forKey: .name)
         
     }
 }
