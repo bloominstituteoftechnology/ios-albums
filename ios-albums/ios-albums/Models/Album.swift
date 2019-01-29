@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Album: Decodable {
+struct Album: Codable {
     
     let artist: String
     let coverArt: URL
@@ -50,7 +50,7 @@ struct Album: Decodable {
     }
 }
 
-struct Song: Decodable {
+struct Song: Codable {
     
     let duration: String
     let id: String

@@ -19,7 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //FIXME: - fix section headers later, good enough for now
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.preferredFont(forTextStyle: .headline).withSize(28.0)
             // UIFont.boldSystemFont(ofSize: 28)
-
+        
+        
+        // MARK: - Testing
+        AlbumController.testDecodingExampleAlbum()
+        
+        
         return true
     }
 
