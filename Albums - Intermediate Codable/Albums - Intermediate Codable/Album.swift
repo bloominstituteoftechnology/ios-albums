@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct Album: Decodable {
+struct Album: Decodable, Encodable {
     
     enum AlbumKeys: String, CodingKey {
         
@@ -58,9 +58,21 @@ struct Album: Decodable {
         songs = try container.decode([Songs].self, forKey: .songs)
         
     }
+    
+    func encode(to encoder: Encoder) throws {
+        
+        var container = try encoder.container(keyedBy: AlbumKeys.self)
+        
+        
+        
+        
+        
+        
+        
+    }
 }
 
-struct Songs: Decodable {
+struct Songs: Decodable, Encodable {
     
     enum SongKeys: String, CodingKey {
         
@@ -97,6 +109,20 @@ struct Songs: Decodable {
         
         // Not nested inside anything
         id = try container.decode(String.self, forKey: .id)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        
+        var container = try encoder.container(keyedBy: SongKeys.self)
+        
+        var durationContainer = container.nestedContainer(keyedBy: SongKeys.Duration.self, forKey: .duration)
+        try durationContainer.encode(duration, forKey: .duration)
+        
+        var nameContainer = container.nestedContainer(keyedBy: SongKeys.Name.self, forKey: .name)
+        try nameContainer.encode(name, forKey: .title)
+        
+        try container.encode(id, forKey: .id)
+        
     }
     
 }
