@@ -86,14 +86,16 @@ class AlbumController {
     
     func update(album: Album, artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Songs]) {
         
-        album.artist = artist
-        album.coverArt = coverArt
-        album.genres = genres
-        album.id = id
-        album.name = name
-        album.songs = songs
+        var updatedAlbum = album
         
-        put(album: album)
+        updatedAlbum.artist = artist
+        updatedAlbum.coverArt = coverArt
+        updatedAlbum.genres = genres
+        updatedAlbum.id = id
+        updatedAlbum.name = name
+        updatedAlbum.songs = songs
+        
+        put(album: updatedAlbum)
         
     }
     
