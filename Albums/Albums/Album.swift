@@ -13,12 +13,12 @@
 import Foundation
 
 struct Album: Codable {
-    let artist: String
-    let coverArt: [URL]
-    let genres: [String]
-    let id: String
-    let name: String
-    let songs: [Song]
+    var artist: String
+    var coverArt: [URL]
+    var genres: [String]
+    var id: String
+    var name: String
+    var songs: [Song]
     
     enum AlbumKeys: String, CodingKey {
         case artist
@@ -33,6 +33,14 @@ struct Album: Codable {
         }
     }
     
+    init(name: String, artist: String, genres: [String], coverArt: [URL]) {
+        self.name = name
+        self.artist = artist
+        self.genres = genres
+        self.coverArt = coverArt
+        self.id = UUID().uuidString
+        self.songs = []
+    }
     init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: AlbumKeys.self)
@@ -55,14 +63,16 @@ struct Album: Codable {
         genres = try container.decode([String].self, forKey: .genres)
         songs = try container.decode([Song].self, forKey: .songs)
        
+        
+        
 }
     
 
 
 struct Song: Codable {
-    let duration: String
-    let id: String
-    let name: String
+    var duration: String
+    var id: String
+    var name: String
     
     enum SongKeys: String, CodingKey {
         case duration
@@ -76,6 +86,11 @@ struct Song: Codable {
             case title
         }
     }
+    init (title: String, duration: String, id: String) {
+        self.name = title
+        self.duration = duration
+        self.id = id
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: SongKeys.self)
@@ -84,6 +99,8 @@ struct Song: Codable {
         duration = try durationContainer.decode(String.self, forKey: .duration)
         let nameContainer = try container.nestedContainer(keyedBy: SongKeys.Name.self, forKey: .name)
         name = try nameContainer.decode(String.self, forKey: .title)
+        
+       
     }
     
 }
@@ -96,9 +113,11 @@ struct Song: Codable {
         var coverArtContainer = albumContainer.nestedUnkeyedContainer(forKey: .coverArt)
         
        for art in coverArt {
-            try coverArtContainer.encode(art.absoluteString)
+            var artContainer = coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArt.self)
+        try artContainer.encode(art.absoluteString, forKey: .url)
             }
          try albumContainer.encode(genres, forKey: .genres)
+         try albumContainer.encode(songs, forKey: .songs)
         
         var songContainer = albumContainer.nestedUnkeyedContainer(forKey: .songs)
         for item in songs {
