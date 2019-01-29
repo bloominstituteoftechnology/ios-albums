@@ -16,8 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //FIXME: - fix section headers later, good enough for now
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.preferredFont(forTextStyle: .headline).withSize(28.0)
-        //boldSystemFont(ofSize: 28)
+            // UIFont.boldSystemFont(ofSize: 28)
 
         return true
     }
