@@ -17,6 +17,7 @@
 		8405FB9221FFA90E0029960D /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8405FB9121FFA90E0029960D /* Album.swift */; };
 		8405FB9421FFE2870029960D /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 8405FB9321FFE2870029960D /* exampleAlbum.json */; };
 		8405FB9621FFE2D10029960D /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8405FB9521FFE2D10029960D /* AlbumController.swift */; };
+		84F78B672200043700CCFC4E /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F78B662200043700CCFC4E /* Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		8405FB9121FFA90E0029960D /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		8405FB9321FFE2870029960D /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
 		8405FB9521FFE2D10029960D /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
+		84F78B662200043700CCFC4E /* Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				8405FB7C21FFA2D10029960D /* Main.storyboard */,
 				8405FB7821FFA2D10029960D /* AppDelegate.swift */,
 				8405FB9521FFE2D10029960D /* AlbumController.swift */,
+				84F78B662200043700CCFC4E /* Convenience.swift */,
 				8405FB9121FFA90E0029960D /* Album.swift */,
 				8405FB9021FFA8E60029960D /* View Controllers */,
 				8405FB7F21FFA2D20029960D /* Assets.xcassets */,
@@ -163,6 +166,7 @@
 				8405FB9621FFE2D10029960D /* AlbumController.swift in Sources */,
 				8405FB8B21FFA36B0029960D /* AlbumsTableViewController.swift in Sources */,
 				8405FB8D21FFA6670029960D /* AlbumDetailTableViewController.swift in Sources */,
+				84F78B672200043700CCFC4E /* Convenience.swift in Sources */,
 				8405FB7921FFA2D10029960D /* AppDelegate.swift in Sources */,
 				8405FB9221FFA90E0029960D /* Album.swift in Sources */,
 			);
