@@ -31,6 +31,16 @@ struct Album: Codable {
         
     }
     
+    init(artist: String, coverArt: URL, genres: [String], id: String = UUID().uuidString, name: String, songs: [Song]) {
+        
+        self.init(artist: artist,
+                  coverArt: coverArt,
+                  genres: genres,
+                  id: id,
+                  name: name,
+                  songs: songs)
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumKeys.self)
         
@@ -72,6 +82,7 @@ struct Song: Codable {
     let id: String
     let name: String
     
+    
     enum SongKeys: CodingKey {
         case duration
         case id
@@ -84,6 +95,12 @@ struct Song: Codable {
         enum Name: String, CodingKey {
             case title
         }
+    }
+    
+    init(duration: String, id: String, name: String) {
+        self.init(duration: duration,
+                  id: id,
+                  name: name)
     }
     
     init(from decoder: Decoder) throws {
