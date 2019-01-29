@@ -11,10 +11,10 @@ import Foundation
 
 struct Album: Decodable {
     let artist: String
-    let coverArt: [URL]
-    let genres: [String]
+    var coverArt: [URL]
+    var genres: [String]
     let id, name: String
-    let songs: [Song]
+    var songs: [Song]
     
     enum CodingKeys: String, CodingKey {
         case artist
@@ -33,24 +33,25 @@ struct Album: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         artist = try container.decode(String.self, forKey: .artist)
         
-        /*
-         // This is the super long wait of doing it...
-         // I have to make a container for the array of url string in coverArt array
-         var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
-         // Make an empty array to hold the coverArt URLs
-         var coverArts: [URL] = []
-         while !coverArtContainer.isAtEnd {
-         // Make a constant to hold the string(URL)
-         let coverArtString = try coverArtContainer.decode(String.self)
-         // Convert the URL string into a URL type
-         if let coverArtURL = URL(string: coverArtString) {
-         coverArts.append(coverArtURL)
-         }
-         }
-         coverArt = coverArts
-         */
         
-        coverArt = try container.decode([URL].self, forKey: .coverArt)
+        // This is the super long wait of doing it...
+        // I have to make a container for the array of url string in coverArt array
+        var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+        // Make an empty array to hold the coverArt URLs
+        var coverArts: [URL] = []
+        while !coverArtContainer.isAtEnd {
+            let coverArtURLsContainer = try coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArt.self)
+            // Make a constant to hold the string(URL)
+            let coverArtString = try coverArtURLsContainer.decode(String.self, forKey: .url)
+            // Convert the URL string into a URL type
+            if let coverArtURL = URL(string: coverArtString) {
+                coverArts.append(coverArtURL)
+            }
+        }
+        coverArt = coverArts
+        
+        
+        //coverArt = try container.decode([URL].self, forKey: .coverArt)
         genres = try container.decode([String].self, forKey: .genres)
         id = try container.decode(String.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
