@@ -26,6 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AlbumController.testEncodingExampleAlbum()
         
+        var testSong = Song(duration: "3:25", name: "Holiday")
+        
+        AlbumController.shared.createAlbum(artist: "UB40", coverArt: URL(string:"https://lastfm-img2.akamaized.net/i/u/174s/1918fe81bb68441d96b2247682bfda21.png")!, genres: [ "Alternative" ], name: "Weezer (The Blue Album)", songs: [testSong])
+        
+    
+        
         
         return true
     }

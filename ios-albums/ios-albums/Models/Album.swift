@@ -10,12 +10,12 @@ import Foundation
 
 struct Album: Codable {
     
-    let artist: String
-    let coverArt: URL
-    let genres: [String]
-    let id: String
-    let name: String
-    let songs: [Song]
+    var artist: String
+    var coverArt: URL
+    var genres: [String]
+    var id: String
+    var name: String
+    var songs: [Song]
     
     enum AlbumKeys: CodingKey {
         case artist
@@ -32,13 +32,13 @@ struct Album: Codable {
     }
     
     init(artist: String, coverArt: URL, genres: [String], id: String = UUID().uuidString, name: String, songs: [Song]) {
-        
-        self.init(artist: artist,
-                  coverArt: coverArt,
-                  genres: genres,
-                  id: id,
-                  name: name,
-                  songs: songs)
+
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.id = id
+        self.name = name
+        self.songs = songs
     }
     
     init(from decoder: Decoder) throws {
@@ -78,9 +78,9 @@ struct Album: Codable {
 
 struct Song: Codable {
     
-    let duration: String
-    let id: String
-    let name: String
+    var duration: String
+    var id: String
+    var name: String
     
     
     enum SongKeys: CodingKey {
@@ -97,10 +97,12 @@ struct Song: Codable {
         }
     }
     
-    init(duration: String, id: String, name: String) {
-        self.init(duration: duration,
-                  id: id,
-                  name: name)
+    init(duration: String, id: String = UUID().uuidString, name: String) {
+
+        self.duration = duration
+        self.id = id
+        self.name = name
+
     }
     
     init(from decoder: Decoder) throws {

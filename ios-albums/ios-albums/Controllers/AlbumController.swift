@@ -10,6 +10,8 @@ import Foundation
 
 class AlbumController {
     
+    static let shared = AlbumController()
+    
     init() {
         getAlbums()
     }
@@ -17,7 +19,7 @@ class AlbumController {
     typealias CompletionHandler = (Error?) -> Void
     var albums: [Album] = []
     
-    private let baseURL = URL(string: "")!
+    private let baseURL = URL(string: "https://ios-albums-28f97.firebaseio.com/")!
     
     func getAlbums(completion: @escaping CompletionHandler = { _ in }) {
         
@@ -84,7 +86,8 @@ class AlbumController {
     func createAlbum(artist: String, coverArt: URL, genres: [String], id: String = UUID().uuidString, name: String, songs: [Song]){
         
         let newAlbum = Album(artist: artist, coverArt: coverArt, genres: genres, id: id, name: name, songs: songs)
-        
+        albums.append(newAlbum)
+        print(albums)
         self.put(album: newAlbum)
     }
     
@@ -93,9 +96,16 @@ class AlbumController {
         return Song(duration: duration, id: id, name: name)
     }
     
-    func update(album: Album, artist: String, coverArt: URL, genres: String, id: String, name: String, songs: [Song]) {
-        var updatedAlbum = album
-        updatedAlbum.artist = artist
+    func update( album: inout Album, artist: String, coverArt: URL, genres: [String], id: String, name: String, songs: [Song]) {
+        
+        album.artist = artist
+        album.coverArt = coverArt
+        album.genres = genres
+        album.id = id
+        album.name = name
+        album.songs = songs
+        
+        put(album: album)
         
     }
     
@@ -118,7 +128,7 @@ class AlbumController {
     static func testEncodingExampleAlbum() {
         let jsonData = try! Data(contentsOf: URL(fileURLWithPath: "/Users/strugglingfish/Developer/ios-albums/exampleAlbum.json"))
         let albumInfo = try! JSONDecoder().decode(Album.self, from: jsonData)
-        //print(albumInfo)
+    
         let encodedAlbum = try! JSONEncoder().encode(albumInfo)
         print("Album encoded: \(encodedAlbum)")
     }
