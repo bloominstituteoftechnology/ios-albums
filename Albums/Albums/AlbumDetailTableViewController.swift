@@ -100,7 +100,7 @@ class AlbumDetailTableViewController: UITableViewController {
         if let album = album {
             // If there is an album, update it
 
-            albumController?.update(album: album, artist: artist, coverArt: coverArtURLs, genres: genres, id: UUID().uuidString, name: name, songs: tempSongs)
+            albumController?.update(album: album, artist: artist, coverArt: coverArtURLs, genres: genres, id: album.id, name: name, songs: tempSongs)
         } else {
             // Otherwise, create a new one
             albumController?.createAlbum(artist: artist, coverArt: coverArtURLs, genres: genres, id: UUID().uuidString, name: name, songs: tempSongs)
