@@ -95,4 +95,13 @@ struct Album: Decodable, Encodable {
         
     }
     
+    init(artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) {
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.id = id
+        self.name = name
+        self.songs = songs
+    }
+    
 }

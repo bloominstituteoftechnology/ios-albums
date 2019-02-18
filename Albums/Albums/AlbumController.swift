@@ -71,6 +71,40 @@ class AlbumController {
         }
     }
     
+    func createAlbum(artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) {
+        
+        // Initialize an Album object
+        let newAlbum = Album(artist: artist, coverArt: coverArt, genres: genres, id: id, name: name, songs: songs)
+        
+        // Add new album to the albums array
+        albums.append(newAlbum)
+        
+        // Save to the server
+        put(album: newAlbum)
+    }
+    
+    func createSong(duration: String, id: String, name: String) -> Song {
+        
+        // Initialize a Song object
+        let newSong = Song(duration: duration, id: id, name: name)
+        return newSong
+    }
+    
+    func update(album: Album, artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) {
+        
+        var updatedAlbum = album
+        
+        updatedAlbum.artist = artist
+        updatedAlbum.coverArt = coverArt
+        updatedAlbum.genres = genres
+        updatedAlbum.id = id
+        updatedAlbum.name = name
+        updatedAlbum.songs = songs
+        
+        put(album: updatedAlbum)
+        
+    }
+    
     
    
     func testDecodingExampleAlbum() {
