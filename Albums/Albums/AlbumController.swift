@@ -15,6 +15,8 @@ class AlbumController {
   
     private let baseURL = URL(string: "https://nelson-ios-journal.firebaseio.com/")!
     
+    typealias CompletionHandler = (Error?) -> Void
+    
     func getAlbums(completion: @escaping(Error?) -> Void){
         
         let requestURL = baseURL.appendingPathExtension("json")
@@ -42,6 +44,31 @@ class AlbumController {
                 }
             }
             }.resume()
+    }
+    
+    func put(album: Album, completion: @escaping CompletionHandler = { _ in }) {
+        
+        do {
+            let requestURL = baseURL.appendingPathComponent(album.id).appendingPathExtension("json")
+            
+            var request = URLRequest(url: requestURL)
+            request.httpMethod = "PUT"
+            
+            let body = try JSONEncoder().encode(album)
+            request.httpBody = body
+            
+            URLSession.shared.dataTask(with: request) { (_, _, error) in
+                if let error = error {
+                    NSLog("Error saving album: \(error)")
+                }
+                completion(error)
+                }.resume()
+            
+        } catch {
+            NSLog("Error encoding entry: \(error)")
+            completion(error)
+            return
+        }
     }
     
     
