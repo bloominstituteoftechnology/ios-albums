@@ -15,6 +15,7 @@
 		BB6AE1D5221B4726003964B1 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE1D4221B4726003964B1 /* AlbumsTableViewController.swift */; };
 		BB6AE1D7221B491B003964B1 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE1D6221B491B003964B1 /* AlbumDetailTableViewController.swift */; };
 		BB6AE1D9221B4ACD003964B1 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE1D8221B4ACD003964B1 /* SongTableViewCell.swift */; };
+		BB6AE1DB221B4BC8003964B1 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE1DA221B4BC8003964B1 /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		BB6AE1D4221B4726003964B1 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		BB6AE1D6221B491B003964B1 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		BB6AE1D8221B4ACD003964B1 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		BB6AE1DA221B4BC8003964B1 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				BB6AE1C2221B4670003964B1 /* AppDelegate.swift */,
 				BB6AE1C4221B4670003964B1 /* ViewController.swift */,
 				BB6AE1C6221B4670003964B1 /* Main.storyboard */,
+				BB6AE1DA221B4BC8003964B1 /* Album.swift */,
 				BB6AE1D8221B4ACD003964B1 /* SongTableViewCell.swift */,
 				BB6AE1D6221B491B003964B1 /* AlbumDetailTableViewController.swift */,
 				BB6AE1D4221B4726003964B1 /* AlbumsTableViewController.swift */,
@@ -149,6 +152,7 @@
 				BB6AE1D9221B4ACD003964B1 /* SongTableViewCell.swift in Sources */,
 				BB6AE1D7221B491B003964B1 /* AlbumDetailTableViewController.swift in Sources */,
 				BB6AE1C3221B4670003964B1 /* AppDelegate.swift in Sources */,
+				BB6AE1DB221B4BC8003964B1 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

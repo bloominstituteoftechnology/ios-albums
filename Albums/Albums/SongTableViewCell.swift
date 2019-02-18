@@ -27,5 +27,6 @@ class SongTableViewCell: UITableViewCell {
     
     @IBOutlet weak var durationTextField: UITextField!
     
+    
 
 }
