@@ -18,7 +18,7 @@ class AlbumsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 0
+        return 1
     }
 
     let reuseIdentifier = "AlbumCell"
