@@ -16,6 +16,9 @@
 		7ACC67C8221B043E008A536C /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC67C7221B043E008A536C /* AlbumsTableViewController.swift */; };
 		7ACC67CA221B0630008A536C /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC67C9221B0630008A536C /* AlbumDetailTableViewController.swift */; };
 		7ACC67CC221B081C008A536C /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC67CB221B081C008A536C /* SongTableViewCell.swift */; };
+		7ACC67CE221B08B4008A536C /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC67CD221B08B4008A536C /* Album.swift */; };
+		7ACC67D0221B0B21008A536C /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC67CF221B0B21008A536C /* Song.swift */; };
+		7ACC67D2221B0EA4008A536C /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC67D1221B0EA4008A536C /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		7ACC67C7221B043E008A536C /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		7ACC67C9221B0630008A536C /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		7ACC67CB221B081C008A536C /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		7ACC67CD221B08B4008A536C /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		7ACC67CF221B0B21008A536C /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		7ACC67D1221B0EA4008A536C /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,9 @@
 				7ACC67C7221B043E008A536C /* AlbumsTableViewController.swift */,
 				7ACC67C9221B0630008A536C /* AlbumDetailTableViewController.swift */,
 				7ACC67CB221B081C008A536C /* SongTableViewCell.swift */,
+				7ACC67CD221B08B4008A536C /* Album.swift */,
+				7ACC67CF221B0B21008A536C /* Song.swift */,
+				7ACC67D1221B0EA4008A536C /* AlbumController.swift */,
 				7ACC67B7221B038C008A536C /* Main.storyboard */,
 				7ACC67BA221B0391008A536C /* Assets.xcassets */,
 				7ACC67BC221B0391008A536C /* LaunchScreen.storyboard */,
@@ -148,11 +157,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ACC67D0221B0B21008A536C /* Song.swift in Sources */,
 				7ACC67B6221B038C008A536C /* AlbumDetailViewController.swift in Sources */,
 				7ACC67C8221B043E008A536C /* AlbumsTableViewController.swift in Sources */,
 				7ACC67CC221B081C008A536C /* SongTableViewCell.swift in Sources */,
 				7ACC67CA221B0630008A536C /* AlbumDetailTableViewController.swift in Sources */,
+				7ACC67D2221B0EA4008A536C /* AlbumController.swift in Sources */,
 				7ACC67B4221B038C008A536C /* AppDelegate.swift in Sources */,
+				7ACC67CE221B08B4008A536C /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
