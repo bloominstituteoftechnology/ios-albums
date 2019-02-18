@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Albums-->
         <scene sceneID="Ng2-OV-24X">
             <objects>
                 <tableViewController id="aBO-Gm-yxI" customClass="AlbumsTableViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
@@ -43,7 +43,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Zej-gf-xwj" kind="show" id="KaD-Ey-8wq"/>
+                                    <segue destination="Zej-gf-xwj" kind="show" identifier="showSong" id="KaD-Ey-8wq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -52,10 +52,10 @@
                             <outlet property="delegate" destination="aBO-Gm-yxI" id="Nfk-0G-OsG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Hye-zO-C40">
+                    <navigationItem key="navigationItem" title="Albums" id="Hye-zO-C40">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z6t-mt-q6f">
                             <connections>
-                                <segue destination="Zej-gf-xwj" kind="show" id="f3x-t2-MrP"/>
+                                <segue destination="Zej-gf-xwj" kind="show" identifier="addSong" id="f3x-t2-MrP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

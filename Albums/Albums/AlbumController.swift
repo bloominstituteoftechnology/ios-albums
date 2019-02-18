@@ -16,32 +16,34 @@ class AlbumController {
     private let baseURL = URL(string: "https://nelson-ios-journal.firebaseio.com/")!
     
     typealias CompletionHandler = (Error?) -> Void
+
     
-    func getAlbums(completion: @escaping(Error?) -> Void){
-        
+    // MARK: - Netorking
+    /// Fetches all the albums from the server and stores it in the albums array
+    func fetchAlbums(completion: @escaping CompletionHandler = { _ in }) {
         let requestURL = baseURL.appendingPathExtension("json")
         
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             if let error = error {
-                NSLog("Error fetching albums: \(error)")
+                NSLog("Error GETting albums: \(error)")
                 completion(error)
                 return
             }
             
             guard let data = data else {
-                NSLog("No data returned from the data task")
+                NSLog("No data was returned.")
                 completion(NSError())
                 return
             }
             
-            DispatchQueue.main.async {
-                
-                do {
-                    self.albums = try JSONDecoder().decode([String: Album].self, from: data).map({$0.value})
-                    
-                } catch {
-                    NSLog("Error decoding album: \(error)")
-                }
+            do {
+                self.albums = try JSONDecoder().decode([String: Album].self, from: data).map() { $0.value }
+                completion(nil)
+                return
+            } catch {
+                NSLog("Error decoding albums \(error)")
+                completion(error)
+                return
             }
             }.resume()
     }
@@ -83,12 +85,12 @@ class AlbumController {
         put(album: newAlbum)
     }
     
-    func createSong(duration: String, id: String, name: String) -> Song {
-        
-        // Initialize a Song object
-        let newSong = Song(duration: duration, id: id, name: name)
-        return newSong
+    /// Creates a song with the given properties and returns it
+    func createSong(title: String, duration: String, id: String = UUID().uuidString) -> Song {
+        let song = Song(duration: duration, id: id, name: title)
+        return song
     }
+    
     
     func update(album: Album, artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) {
         

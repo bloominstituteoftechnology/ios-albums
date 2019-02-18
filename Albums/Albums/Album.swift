@@ -36,38 +36,46 @@ struct Album: Decodable, Encodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let artist = try container.decode(String.self, forKey: .artist)
+        let id = try container.decode(String.self, forKey: .id)
+        let name = try container.decode(String.self, forKey: .name)
         
          // coverArt contains an array -> unkeyed container
         var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
         
-        var coverArtURLs: [URL] = []
+        // Get the array of cover art url strings
+        var coverArtsContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+        var coverArtURLStrings: [String] = []
         
-        while !coverArtContainer.isAtEnd {
-            let allCoverArtContainer = try coverArtContainer.nestedContainer(keyedBy: CodingKeys.AllCoverArt.self)
-            let coverArtURLString = try allCoverArtContainer.decode(String.self, forKey: .url)
-            if let coverArtURL = URL(string: "\(coverArtURLString)") {
-                coverArtURLs.append(coverArtURL)
-            }
+        // Cycle through them and pull them out of their objects, into the array
+        while !coverArtsContainer.isAtEnd {
+            let coverArtContainer = try coverArtsContainer.nestedContainer(keyedBy: CodingKeys.AllCoverArt.self)
+            let coverArtURLString = try coverArtContainer.decode(String.self, forKey: .url)
+            coverArtURLStrings.append(coverArtURLString)
         }
-        let coverArt = coverArtURLs
         
-        // genre contains an array, but not nested
-       let genres = try container.decode([String].self, forKey: .genres)
+        // Map the array of strings to an array of URLs
+        let coverArtURLs = coverArtURLStrings.compactMap() { URL(string: $0) }
         
-        // id not nested inside anything
-       let id = try container.decode(String.self, forKey: .id)
+        // Because nothing special is happening here, try decoding straight to an array of strings.
+        // *Update* it seems like it works, we didn't cover this in the lecture so it may not be the right thing to do for some reason.
+        let genres = try container.decode([String].self, forKey: .genres)
         
-        // name not nested in anything
-       let name = try container.decode(String.self, forKey: .name)
+        // Get the array of song objects
+        var songsContainer = try container.nestedUnkeyedContainer(forKey: .songs)
+        var songs: [Song] = []
         
-        // songs is an array of the Songs struct
-       let songs = try container.decode([Song].self, forKey: .songs)
+        // Cycle through them and decode them into the array
+        while !songsContainer.isAtEnd {
+            let song = try songsContainer.decode(Song.self)
+            songs.append(song)
+        }
         
+        // Set all the properties
         self.artist = artist
-        self.coverArt = coverArt
-        self.genres = genres
-        self.id = id
         self.name = name
+        self.id = id
+        self.coverArt = coverArtURLs
+        self.genres = genres
         self.songs = songs
     }
     
@@ -79,9 +87,13 @@ struct Album: Decodable, Encodable {
         
         try container.encode(artist, forKey: .artist)
         
-        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
-        for art in coverArt {
-            try coverArtContainer.encode(art.absoluteString)
+        // Make an array for the cover art url strings
+        var coverArtsContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        
+        // Cycle through them encode them into an object in the array
+        for coverArtURL in coverArt {
+            var coverArtContainer = coverArtsContainer.nestedContainer(keyedBy: CodingKeys.AllCoverArt.self)
+            try coverArtContainer.encode(coverArtURL.absoluteString, forKey: .url)
         }
         
         try container.encode(genres, forKey: .genres)
