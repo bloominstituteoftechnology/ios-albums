@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct Album: Codable {
+struct Album: Codable, Equatable {
     
     enum CodingKeys: String, CodingKey {
         case artist
         case name
         case genres
         case coverArt
-        
+        case id
     }
     
     
@@ -24,7 +24,16 @@ struct Album: Codable {
     var name: String
     var genres: [String]
     var coverArt: [[String: String]]
+    var id: String?
     
+    init(artist: String, name: String, genres: [String], coverArt: [[String: String]], id: String? = UUID().uuidString) {
+        
+        self.artist = artist
+        self.name = name
+        self.genres = genres
+        self.coverArt = coverArt
+        self.id = id
+    }
     
     init(from decoder: Decoder) throws {
         
@@ -33,6 +42,7 @@ struct Album: Codable {
         let genres = try container.decode([String].self, forKey: .genres)
         let artist = try container.decode(String.self, forKey: .artist)
         let name = try container.decode(String.self, forKey: .name)
+        let id = try container.decodeIfPresent(String.self, forKey: .id)
         
         //var coverArt: [[String: String]] = []
         
@@ -44,6 +54,7 @@ struct Album: Codable {
         self.name = name
         self.genres = genres
         self.coverArt = coverArt
+        self.id = id
     }
     
     func encode(to encoder: Encoder) throws {
@@ -65,26 +76,6 @@ struct Album: Codable {
             try coverArtContainer.encode(art)
         }
     }
-/* // Take all of the Person's properties and put them in the encoder object
- func encode(to encoder: Encoder) throws {
- 
- var container = encoder.container(keyedBy: CodingKeys.self)
- 
- try container.encode(name, forKey: .name)
- try container.encode("\(height)", forKey: .height)
- try container.encodeIfPresent(hairColor, forKey: .hairColor)
- 
- var filmsContainer = container.nestedUnkeyedContainer(forKey: .films)
- 
- for film in films {
- try filmsContainer.encode(film.absoluteString) // puts films back into string format
- }
- 
- // The above and below examples do the same thing
- 
- let starshipStrings = starships.map({ $0.absoluteString })
- try container.encode(starshipStrings, forKey: .starships)
- }*/
     
 }
 
@@ -108,6 +99,11 @@ struct Song: Codable {
     }
     
     var songs: [String: String] //ability - name // duration - duration and name - title
+    
+    init(songs: [String: String]) {
+        
+        self.songs = songs
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
