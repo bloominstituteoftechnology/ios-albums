@@ -14,6 +14,7 @@
 		39B87332221B5CE800F8F1D0 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B87331221B5CE800F8F1D0 /* AlbumsTableViewController.swift */; };
 		39B87334221B5D1100F8F1D0 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B87333221B5D1100F8F1D0 /* AlbumDetailTableViewController.swift */; };
 		39B87337221B69EF00F8F1D0 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B87336221B69EF00F8F1D0 /* SongTableViewCell.swift */; };
+		39B87339221B73C300F8F1D0 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B87338221B73C300F8F1D0 /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		39B87331221B5CE800F8F1D0 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		39B87333221B5D1100F8F1D0 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		39B87336221B69EF00F8F1D0 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		39B87338221B73C300F8F1D0 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				39B8731F221B55D200F8F1D0 /* AppDelegate.swift */,
 				39B87323221B55D200F8F1D0 /* Main.storyboard */,
+				39B8733A221B73C700F8F1D0 /* Model */,
 				39B87335221B5D1600F8F1D0 /* View Controllers */,
 				39B87326221B55D400F8F1D0 /* Assets.xcassets */,
 				39B87328221B55D400F8F1D0 /* LaunchScreen.storyboard */,
@@ -76,6 +79,14 @@
 				39B87336221B69EF00F8F1D0 /* SongTableViewCell.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		39B8733A221B73C700F8F1D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39B87338221B73C300F8F1D0 /* Album.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +164,7 @@
 				39B87320221B55D200F8F1D0 /* AppDelegate.swift in Sources */,
 				39B87334221B5D1100F8F1D0 /* AlbumDetailTableViewController.swift in Sources */,
 				39B87332221B5CE800F8F1D0 /* AlbumsTableViewController.swift in Sources */,
+				39B87339221B73C300F8F1D0 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
