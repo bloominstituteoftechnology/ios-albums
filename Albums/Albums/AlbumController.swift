@@ -12,6 +12,38 @@ class AlbumController {
     
     // Data source for the application
     var albums: [Album] = []
+  
+    private let baseURL = URL(string: "https://nelson-ios-journal.firebaseio.com/")!
+    
+    func getAlbums(completion: @escaping(Error?) -> Void){
+        
+        let requestURL = baseURL.appendingPathExtension("json")
+        
+        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+            if let error = error {
+                NSLog("Error fetching albums: \(error)")
+                completion(error)
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("No data returned from the data task")
+                completion(NSError())
+                return
+            }
+            
+            DispatchQueue.main.async {
+                
+                do {
+                    self.albums = try JSONDecoder().decode([String: Album].self, from: data).map({$0.value})
+                    
+                } catch {
+                    NSLog("Error decoding album: \(error)")
+                }
+            }
+            }.resume()
+    }
+    
     
    
     func testDecodingExampleAlbum() {
