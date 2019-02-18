@@ -9,11 +9,38 @@
 import Foundation
 
 struct Album: Decodable {
-    var artist: String
-    var name: String
     
-    var genres: [Genres]
-    var songs: [Song]
+    enum CodingKeys: String, CodingKey {
+        case artist
+        case coverArt
+        case name
+        case genres
+        case songs
+    }
+    
+    let artist: String
+    let coverArt: [URL]
+    let name: String
+    let id: String
+    let genres: [Genres]
+    let songs: [Song]
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let artist = try container.decode(String.self, forKeys: .artist)
+        
+        let name = try container.decode(String.self, forKeys: .name)
+    
+        var genresContainer = try container.nestedUnkeyedContainer(forKey: .genres)
+        var genres: [Genres] = []
+        
+        
+    
+    self.artist = artist
+    self.name = name
+    self.genres = genres
+    self.songs = songs
 }
 
 struct Genres: Decodable {

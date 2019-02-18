@@ -15,6 +15,8 @@
 		48AFC674221B5410001A70D0 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFC673221B5410001A70D0 /* AlbumDetailTableViewController.swift */; };
 		48AFC676221B5ADC001A70D0 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFC675221B5ADC001A70D0 /* SongTableViewCell.swift */; };
 		48AFC679221B5D61001A70D0 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFC678221B5D61001A70D0 /* Album.swift */; };
+		48AFC67B221B69C6001A70D0 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 48AFC67A221B69C6001A70D0 /* exampleAlbum.json */; };
+		48AFC67D221B69F0001A70D0 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFC67C221B69F0001A70D0 /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		48AFC673221B5410001A70D0 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		48AFC675221B5ADC001A70D0 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		48AFC678221B5D61001A70D0 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		48AFC67A221B69C6001A70D0 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
+		48AFC67C221B69F0001A70D0 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +66,12 @@
 			children = (
 				48AFC65E221B4E5B001A70D0 /* AppDelegate.swift */,
 				48AFC678221B5D61001A70D0 /* Album.swift */,
+				48AFC67C221B69F0001A70D0 /* AlbumController.swift */,
 				48AFC677221B5AE6001A70D0 /* View */,
 				48AFC672221B507B001A70D0 /* View Controllers */,
 				48AFC662221B4E5B001A70D0 /* Main.storyboard */,
 				48AFC665221B4E5C001A70D0 /* Assets.xcassets */,
+				48AFC67A221B69C6001A70D0 /* exampleAlbum.json */,
 				48AFC667221B4E5C001A70D0 /* LaunchScreen.storyboard */,
 				48AFC66A221B4E5C001A70D0 /* Info.plist */,
 			);
@@ -149,6 +155,7 @@
 			files = (
 				48AFC669221B4E5C001A70D0 /* LaunchScreen.storyboard in Resources */,
 				48AFC666221B4E5C001A70D0 /* Assets.xcassets in Resources */,
+				48AFC67B221B69C6001A70D0 /* exampleAlbum.json in Resources */,
 				48AFC664221B4E5B001A70D0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48AFC671221B4FD3001A70D0 /* AlbumsTableViewController.swift in Sources */,
+				48AFC67D221B69F0001A70D0 /* AlbumController.swift in Sources */,
 				48AFC676221B5ADC001A70D0 /* SongTableViewCell.swift in Sources */,
 				48AFC674221B5410001A70D0 /* AlbumDetailTableViewController.swift in Sources */,
 				48AFC65F221B4E5B001A70D0 /* AppDelegate.swift in Sources */,
