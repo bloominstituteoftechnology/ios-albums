@@ -19,7 +19,7 @@ class AlbumController {
         let jsonDecoder = JSONDecoder()
     
         do {
-            let decoded = try jsonDecoder.decode(Album.self, from: data)
+            let decoded = try jsonDecoder.decode(Song.self, from: data)
             print(decoded)
         } catch {
             NSLog("\(error)")
