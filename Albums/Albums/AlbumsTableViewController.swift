@@ -10,37 +10,39 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
 
+    let albumController = AlbumController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        albumController.getAlbums(completion: { (error) in
+            if let error = error {
+                print(error)
+            }
+            self.tableView.reloadData()
+        })
+        
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return albumController.albums.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
+        
+        let album = albumController.albums[indexPath.row]
+        
+        cell.textLabel?.text = album.name
+        cell.detailTextLabel?.text = album.artist
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -77,14 +79,24 @@ class AlbumsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "AlbumDetail" {
+            guard let cellDetailController = segue.destination as? AlbumDetailTableViewController, let cell = sender as? SongTableViewCell else { return }
+            
+            cellDetailController.albumController = albumController
+            cellDetailController.album = cell.album
+            
+        } else if segue.identifier == "NewAlbum" {
+            guard let addAlbumController = segue.destination as? AlbumDetailTableViewController else { return }
+            
+            addAlbumController.albumController = albumController
+            
+        }
     }
-    */
+    
 
 }

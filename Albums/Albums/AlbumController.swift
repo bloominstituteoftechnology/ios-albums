@@ -15,7 +15,7 @@ class AlbumController {
     
     var baseURL = URL(string: "https://albums-4cad2.firebaseio.com/")!
     
-    func getAlbums(completion: @escaping (Error?) -> Void = { _ in }) {
+    func getAlbums(completion: @escaping (Error?) -> Void) {
         let url = baseURL.appendingPathExtension("json")
         
         URLSession.shared.dataTask(with: url) { (data, _, error) in
@@ -81,7 +81,7 @@ class AlbumController {
         put(album: album)
     }
     
-    func createSong(withTitle title: String, andDuration duration: String, completion: @escaping (Error?) -> Void) -> Song {
+    func createSong(withTitle title: String, andDuration duration: String) -> Song {
         let song = Song(songs: [title: duration])
         
         return song
