@@ -29,12 +29,12 @@ class SongTableViewCell: UITableViewCell {
         addButton.isHidden = true
     }
     
-//    override func prepareForReuse() {
-//        
-//        songTitle.text = ""
-//        durationTextField.text = ""
-//        addButton.isHidden = false
-//    }
+    override func prepareForReuse() {
+        
+        songTitle.text = ""
+        durationTextField.text = ""
+        addButton.isHidden = false
+    }
     
     // MARK: - Properties
    

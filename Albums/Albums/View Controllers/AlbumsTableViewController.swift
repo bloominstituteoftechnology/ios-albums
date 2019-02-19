@@ -17,7 +17,9 @@ class AlbumsTableViewController: UITableViewController {
                 NSLog("Error getting albums: \(error)")
                 return
             }
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                 self.tableView.reloadData()
+            }
         })
     }
     
@@ -42,14 +44,14 @@ class AlbumsTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
-            // Delete the row from the data source
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            
+//            // Delete the row from the data source
+//            
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+//    }
     
     // MARK: - Navigation
     

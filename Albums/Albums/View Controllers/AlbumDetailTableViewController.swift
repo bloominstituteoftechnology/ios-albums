@@ -18,15 +18,15 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
     @IBAction func save(_ sender: Any) {
         guard let artist = artistName.text, !artist.isEmpty,
             let name = albumName.text, !name.isEmpty,
-            let genresString = genresTextField.text,
-            let coverArtString = coverArtTextField.text else { return }
+            let genresString = genresTextField.text, !genresString.isEmpty,
+            let coverArtString = coverArtTextField.text, !coverArtString.isEmpty else { return }
         
         let genres = genresString.split(separator: ",").map() { String($0) }
         let coverArtArray = coverArtString.split(separator: ",").map() { String($0) }
         let coverArt = coverArtArray.compactMap() { URL(string: $0) }
         
         if let album = album {
-            albumController?.update(album: album, artist: artist, name: name, genres: genres, coverArt: coverArt, songs: tempSongs)
+            albumController?.update(album: album, artist: artist, name: name, genres: genres, coverArt: coverArt, songs: tempSongs, id: album.id)
         } else {
             albumController?.createAlbum(artist: artist, name: name, genres: genres, coverArt: coverArt, songs: tempSongs)
         }
@@ -50,9 +50,9 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
     
     func addSong(with title: String, duration: String) {
         guard let song = albumController?.createSong(name: title, duration: duration) else { return }
+        
         tempSongs.append(song)
         tableView.reloadData()
-        
         let indexPath = IndexPath(row: tempSongs.count, section: 0)
         tableView.scrollToRow(at: indexPath, at: .none, animated: true)
     }
@@ -87,13 +87,13 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
         }
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            
+//            
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+//    }
     
     // MARK: - Properties
     
