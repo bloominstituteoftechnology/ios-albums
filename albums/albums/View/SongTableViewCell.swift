@@ -10,6 +10,9 @@ import UIKit
 
 class SongTableViewCell: UITableViewCell {
     
+    //MARK: - Properties
+    var song: Song?
+    
     //MARK: - Outlets
     @IBOutlet weak var songTextField: UITextField!
     @IBOutlet weak var durationTextField: UITextField!
@@ -22,10 +25,10 @@ class SongTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func updateViews() {
+        
     }
+    
+    
 
 }
