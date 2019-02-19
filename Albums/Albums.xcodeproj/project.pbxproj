@@ -15,6 +15,7 @@
 		39B87334221B5D1100F8F1D0 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B87333221B5D1100F8F1D0 /* AlbumDetailTableViewController.swift */; };
 		39B87337221B69EF00F8F1D0 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B87336221B69EF00F8F1D0 /* SongTableViewCell.swift */; };
 		39B87339221B73C300F8F1D0 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B87338221B73C300F8F1D0 /* Album.swift */; };
+		39B8733C221B91F600F8F1D0 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 39B8733B221B91F600F8F1D0 /* exampleAlbum.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		39B87333221B5D1100F8F1D0 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		39B87336221B69EF00F8F1D0 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		39B87338221B73C300F8F1D0 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		39B8733B221B91F600F8F1D0 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				39B87326221B55D400F8F1D0 /* Assets.xcassets */,
 				39B87328221B55D400F8F1D0 /* LaunchScreen.storyboard */,
 				39B8732B221B55D400F8F1D0 /* Info.plist */,
+				39B8733B221B91F600F8F1D0 /* exampleAlbum.json */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 			files = (
 				39B8732A221B55D400F8F1D0 /* LaunchScreen.storyboard in Resources */,
 				39B87327221B55D400F8F1D0 /* Assets.xcassets in Resources */,
+				39B8733C221B91F600F8F1D0 /* exampleAlbum.json in Resources */,
 				39B87325221B55D200F8F1D0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
