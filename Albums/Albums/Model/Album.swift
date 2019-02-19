@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Album: Codable {
+struct Album: Decodable {
     var artist: String
     var name: String
     var id: String
@@ -70,7 +70,7 @@ struct Album: Codable {
     }
 }
 
-struct Song: Codable {
+struct Song: Decodable {
     var name: String
     var duration: String
     var id: String
