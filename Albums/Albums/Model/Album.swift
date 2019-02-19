@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Album: Decodable {
+struct Album: Codable {
     var artist: String
     var name: String
     var id: String
@@ -68,9 +68,33 @@ struct Album: Decodable {
         self.coverArt = coverArt
         self.songs = songs
     }
+    
+    func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(artist, forKey: .artist)
+        try container.encode(name, forKey: .name)
+        try container.encode(id, forKey: .id)
+        try container.encode(songs, forKey: .songs)
+        
+        var genresContainer = container.nestedUnkeyedContainer(forKey: .genres)
+        for genre in genres {
+            try genresContainer.encode(genre)
+        }
+        
+        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        for art in coverArt {
+         
+            var coverArtURLContainer = coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArtCodingKeys.self)
+            
+            try coverArtURLContainer.encode(art.absoluteString, forKey: .url)
+        }
+    }
 }
 
-struct Song: Decodable {
+
+struct Song: Codable {
     var name: String
     var duration: String
     var id: String
@@ -105,5 +129,18 @@ struct Song: Decodable {
         self.id = id
         self.name = name
         self.duration = duration
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(id, forKey: .id)
+        
+        var nameContainer = container.nestedContainer(keyedBy: CodingKeys.NameCodingKeys.self, forKey: .name)
+        try nameContainer.encode(name, forKey: .title)
+        
+        var durationContainer = container.nestedContainer(keyedBy: CodingKeys.DurationCodingKey.self, forKey: .duration)
+        try durationContainer.encode(duration, forKey: .duration)
     }
 }
