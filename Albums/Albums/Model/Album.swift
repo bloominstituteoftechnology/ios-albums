@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Album: Codable {
+struct Album: Codable, Equatable {
     var artist: String
     var name: String
     var id: String
@@ -91,10 +91,15 @@ struct Album: Codable {
             try coverArtURLContainer.encode(art.absoluteString, forKey: .url)
         }
     }
+    
+    init(artist: String, name: String, id: String = UUID().uuidString, genres: [String], coverArt: [URL], songs: [Song]) {
+        
+        (self.artist, self.name, self.id, self.genres, self.coverArt, self.songs) = (artist, name, id, genres, coverArt, songs)
+    }
 }
 
 
-struct Song: Codable {
+struct Song: Codable, Equatable {
     var name: String
     var duration: String
     var id: String
@@ -142,5 +147,9 @@ struct Song: Codable {
         
         var durationContainer = container.nestedContainer(keyedBy: CodingKeys.DurationCodingKey.self, forKey: .duration)
         try durationContainer.encode(duration, forKey: .duration)
+    }
+    
+    init(id: String = UUID().uuidString, name: String, duration: String) {
+        (self.id, self.name, self.duration) = (id, name, duration)
     }
 }
