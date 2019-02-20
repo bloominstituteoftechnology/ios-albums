@@ -26,7 +26,7 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
         let coverArt = coverArtArray.compactMap() { URL(string: $0) }
         
         if let album = album {
-            albumController?.update(album: album, artist: artist, name: name, genres: genres, coverArt: coverArt, songs: tempSongs, id: album.id)
+            albumController?.update(album: album, artist: artist, name: name, genres: genres, coverArt: coverArt, songs: tempSongs)
         } else {
             albumController?.createAlbum(artist: artist, name: name, genres: genres, coverArt: coverArt, songs: tempSongs)
         }
@@ -42,8 +42,8 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
             title = "Album:"
             albumName.text = album.name
             artistName.text = album.artist
-            genresTextField.text = album.genres.map({ $0 }).joined(separator: ", ")
-            coverArtTextField.text = album.coverArt.map({ $0.absoluteString }).joined(separator: ", ")
+            genresTextField.text = album.genres.map({ $0 }).joined(separator: ",")
+            coverArtTextField.text = album.coverArt.map({ $0.absoluteString }).joined(separator: ",")
             tempSongs = album.songs
         }
     }

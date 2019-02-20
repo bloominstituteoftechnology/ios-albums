@@ -136,7 +136,8 @@ class AlbumController {
         return song
     }
     
-    func update(album: Album, artist: String, name: String, genres: [String], coverArt: [URL], songs: [Song], id: String) {
+    func update(album: Album, artist: String, name: String, genres: [String], coverArt: [URL], songs: [Song]) {
+        
         guard let index = albums.index(of: album) else { return }
         
         albums[index].artist = artist
@@ -144,9 +145,8 @@ class AlbumController {
         albums[index].genres = genres
         albums[index].coverArt = coverArt
         albums[index].songs = songs
-        albums[index].id = id
         
-        put(album)
+        put(albums[index])
     }
     
     // MARK: - Properties
