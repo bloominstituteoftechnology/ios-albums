@@ -66,19 +66,112 @@
         <!--Title-->
         <scene sceneID="AHB-aC-GLK">
             <objects>
-                <tableViewController id="mbx-hj-Qi2" sceneMemberID="viewController">
+                <tableViewController id="mbx-hj-Qi2" customClass="AlbumDetailTableViewController" customModule="iOSAlbums" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uIt-ZD-t0N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="2sP-vr-aTg">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="204"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="z1l-cz-hCf">
+                                    <rect key="frame" x="16" y="8" width="382" height="188"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Album" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T3o-Pk-eSX">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="35"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7bK-Bq-IEE">
+                                            <rect key="frame" x="0.0" y="51" width="382" height="35"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Genre(s)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iXi-wM-WWp">
+                                            <rect key="frame" x="0.0" y="102" width="382" height="35"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Image URL(s)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-Kj-Clt">
+                                            <rect key="frame" x="0.0" y="153" width="382" height="35"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="z1l-cz-hCf" secondAttribute="bottom" constant="8" id="0rr-lg-uwd"/>
+                                <constraint firstItem="z1l-cz-hCf" firstAttribute="top" secondItem="2sP-vr-aTg" secondAttribute="top" constant="8" id="34p-ce-LP0"/>
+                                <constraint firstItem="z1l-cz-hCf" firstAttribute="leading" secondItem="2sP-vr-aTg" secondAttribute="leading" constant="16" id="Jcy-kr-AxY"/>
+                                <constraint firstAttribute="trailing" secondItem="z1l-cz-hCf" secondAttribute="trailing" constant="16" id="e1Q-fa-KNZ"/>
+                            </constraints>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="MjP-vn-Rhp">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="134" id="MjP-vn-Rhp" customClass="SongTableViewCell" customModule="iOSAlbums" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="232" width="414" height="134"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MjP-vn-Rhp" id="zCP-SZ-ZYA">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="133.66666666666666"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bib-Ba-bX9">
+                                            <rect key="frame" x="16" y="8" width="382" height="121"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AAv-x4-HhB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="ee0-DT-gRH"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hTT-lF-pWk">
+                                                    <rect key="frame" x="0.0" y="43" width="382" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="2ou-V4-P7o"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zny-yD-1zs">
+                                                    <rect key="frame" x="0.0" y="86" width="382" height="35"/>
+                                                    <color key="backgroundColor" red="0.3621942131" green="0.68152742160000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="1ME-dI-noY"/>
+                                                    </constraints>
+                                                    <color key="tintColor" red="0.3621942131" green="0.68152742160000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Add song">
+                                                        <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <state key="selected">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addSongButtonTapped:" destination="MjP-vn-Rhp" eventType="touchUpInside" id="Q7K-dg-8AQ"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Bib-Ba-bX9" firstAttribute="top" secondItem="zCP-SZ-ZYA" secondAttribute="top" constant="8" id="DXA-dU-G4g"/>
+                                        <constraint firstItem="Bib-Ba-bX9" firstAttribute="leading" secondItem="zCP-SZ-ZYA" secondAttribute="leading" constant="16" id="JyT-4l-rUM"/>
+                                        <constraint firstAttribute="trailing" secondItem="Bib-Ba-bX9" secondAttribute="trailing" constant="16" id="hYS-BV-PID"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="durationLabel" destination="hTT-lF-pWk" id="fUA-c0-OgM"/>
+                                    <outlet property="songTitleLabel" destination="AAv-x4-HhB" id="HcK-Qt-zmq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -87,12 +180,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="gEe-1J-rtC">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="XFy-bo-HbP"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="XFy-bo-HbP">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="mbx-hj-Qi2" id="3mx-0R-1gb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="albumTextField" destination="T3o-Pk-eSX" id="VuK-w4-zxO"/>
+                        <outlet property="artistTextField" destination="7bK-Bq-IEE" id="lLA-Lj-WdJ"/>
+                        <outlet property="genreTextField" destination="iXi-wM-WWp" id="dXH-OZ-mJw"/>
+                        <outlet property="imageTextField" destination="Sf3-Kj-Clt" id="N31-er-XeY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esi-Ns-4PX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1627" y="98"/>
+            <point key="canvasLocation" x="1626.0869565217392" y="97.767857142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YxS-BF-nC2">
