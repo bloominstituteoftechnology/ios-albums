@@ -68,8 +68,37 @@ class AlbumController {
         
         let newAlbum = Album(albumCover: albumCover, artist: artist, albumName: albumName, genres: genres, id: id, songs: songs)
         
+        albums.append(newAlbum)
+        
         put(album: newAlbum)
     }
+    
+    func createSong(id: String, duration: String, songName: String) -> Song {
+        
+        let newSong = Song(id: id, duration: duration, songName: songName)
+        
+        return newSong
+    }
+    
+    func update(album: Album, albumCover: [String], artist: String, albumName: String, genres: [String], songs: [Song]) {
+        
+        guard let index = albums.index(of: album) else { return }
+        
+        var albumsIndex = albums[index]
+        albumsIndex.albumCover = albumCover
+        albumsIndex.artist = artist
+        albumsIndex.albumName = albumName
+        albumsIndex.genres = genres
+        albumsIndex.songs = songs
+        
+        albums.remove(at: index)
+        albums.insert(albumsIndex, at: index)
+        
+        put(album: albumsIndex)
+        
+    }
+    
+    // MARK: - Testing
     
     func testDecodingExampleAlbum() {
         guard let url = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else { print("URL is bad.") ;

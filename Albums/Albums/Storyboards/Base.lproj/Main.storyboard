@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Album" textLabel="8rP-f6-BqA" detailTextLabel="jxa-1h-2ko" style="IBUITableViewCellStyleSubtitle" id="mki-k7-tMV">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumCell" textLabel="8rP-f6-BqA" detailTextLabel="jxa-1h-2ko" style="IBUITableViewCellStyleSubtitle" id="mki-k7-tMV">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mki-k7-tMV" id="qe8-j7-LbX">
@@ -42,7 +42,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="oWk-Uh-aYO" kind="show" id="2Il-lH-Kwf"/>
+                                    <segue destination="oWk-Uh-aYO" kind="show" identifier="ToDetailView" id="2Il-lH-Kwf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -107,7 +107,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="168" id="vdt-oc-3qg" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="168" id="vdt-oc-3qg" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="196" width="375" height="168"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vdt-oc-3qg" id="lvq-jj-XfA">
@@ -139,6 +139,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addSongButton" destination="er5-Wr-N3J" id="OcL-km-UrO"/>
                                     <outlet property="songDurationTextField" destination="Tpx-Im-XiL" id="Gwi-IM-H8d"/>
                                     <outlet property="songTitleTextField" destination="LRS-SR-VSg" id="3L0-bA-cch"/>
                                 </connections>
@@ -187,6 +188,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ypy-FS-iRe"/>
+        <segue reference="2Il-lH-Kwf"/>
     </inferredMetricsTieBreakers>
 </document>
