@@ -10,6 +10,16 @@ import Foundation
 
 class AlbumController {
     
-    
-    
+    func testDecodingExampleAlbum() {
+        guard let url = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else { return }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let album = try JSONDecoder().decode(Album.self, from: data)
+            print(album)
+        } catch {
+            print(error)
+        }
+    }
 }
+
