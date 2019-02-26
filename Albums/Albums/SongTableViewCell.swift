@@ -36,6 +36,10 @@ class SongTableViewCell: UITableViewCell {
     @IBOutlet weak var songTitleTextField: UITextField!
     @IBOutlet weak var songDurationTextField: UITextField!
     @IBOutlet weak var addSongButton: UIButton!
-    var song: Song?
+    var song: Song? {
+        didSet {
+            updateViews()
+        }
+    }
     weak var delegate: SongTableViewCellDelegate?
 }

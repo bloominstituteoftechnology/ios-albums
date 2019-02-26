@@ -35,7 +35,9 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
-        guard let songCell = cell as? SongTableViewCell else { return cell }
+        guard let songCell = cell as? SongTableViewCell,
+        let index = tableView.indexPathForSelectedRow else { return cell }
+        songCell.song = album!.songs![index.row]
         songCell.delegate = self
         return songCell
     }
@@ -49,10 +51,15 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
             navigationItem.title = "New Album"
             return }
         navigationItem.title = album.name
-        titleTextField.text = album.name
-        artistTextField.text = album.artist
-        genresTextField.text = album.genres.joined(separator: ", ")
-        urlsTextField.text = album.coverArt?.absoluteString
+        guard let title = titleTextField,
+            let artist = artistTextField,
+            let genres = genresTextField,
+            let urls = urlsTextField else { return }
+        
+        title.text = album.name
+        artist.text = album.artist
+        genres.text = album.genres.joined(separator: ", ")
+        urls.text = album.coverArt?.absoluteString
         if let songs = album.songs {
             tempSongs = songs
         }

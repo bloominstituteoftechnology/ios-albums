@@ -48,7 +48,7 @@ class Album: Codable {
         let coverArtString = try coverArtObjectContainer.decodeIfPresent(String.self, forKey: .url)
         let coverArtURL = URL(string: coverArtString!) ?? nil
         
-        let songs = try container.decode([Song].self, forKey: .songs)
+        let songs = try container.decodeIfPresent([Song].self, forKey: .songs)
         
         self.artist = artist
         self.coverArt = coverArtURL
@@ -66,14 +66,12 @@ class Album: Codable {
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(genres, forKey: .genres)
+        try container.encode(songs, forKey: .songs)
         
         var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
         var coverArtObjectContainer = coverArtContainer.nestedContainer(keyedBy: CoverArtCodingKeys.self)
         
-        try coverArtObjectContainer.encode(coverArt?.absoluteString, forKey: .url)
-        
-        var songsContainer = container.nestedUnkeyedContainer(forKey: .songs)
-        try songsContainer.encode(songs)
+        try coverArtObjectContainer.encode(coverArt?.absoluteString ?? "", forKey: .url)
     }
 }
 
