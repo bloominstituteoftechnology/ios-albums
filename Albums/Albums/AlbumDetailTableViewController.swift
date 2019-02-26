@@ -35,9 +35,8 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
-        guard let songCell = cell as? SongTableViewCell,
-        let index = tableView.indexPathForSelectedRow else { return cell }
-        songCell.song = album!.songs![index.row]
+        guard let songCell = cell as? SongTableViewCell else { return cell }
+        songCell.song = album?.songs?[indexPath.row]
         songCell.delegate = self
         return songCell
     }
