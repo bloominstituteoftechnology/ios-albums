@@ -16,7 +16,7 @@ class AlbumsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         albumController.testDecodingExampleAlbum()
-
+        albumController.testEncodingExampleAlbum()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
