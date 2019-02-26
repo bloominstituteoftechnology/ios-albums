@@ -54,7 +54,7 @@
                     <navigationItem key="navigationItem" id="qTJ-sR-qpu">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gv8-SJ-ldv">
                             <connections>
-                                <segue destination="oWk-Uh-aYO" kind="show" id="ypy-FS-iRe"/>
+                                <segue destination="oWk-Uh-aYO" kind="show" identifier="AddAlbum" id="ypy-FS-iRe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -188,6 +188,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2Il-lH-Kwf"/>
+        <segue reference="ypy-FS-iRe"/>
     </inferredMetricsTieBreakers>
 </document>
