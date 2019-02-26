@@ -22,7 +22,7 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
             let urls = urlsTextField.text else { return }
         
         if let album = album {
-            albumController?.update(album: album, artist: artist, coverArt: URL(string: "\(urls)"), genres: genres, id: album.id, name: title)
+            albumController?.update(album: album, artist: artist, coverArt: URL(string: "\(urls)"), genres: genres, id: album.id, name: title, songs: tempSongs)
         } else {
             albumController?.createAlbum(artist: artist, coverArt: URL(string: "\(urls)"), genres: genres, name: title, songs: tempSongs)
         }
@@ -37,7 +37,7 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
         guard let songCell = cell as? SongTableViewCell else { return cell }
         if indexPath.row < tempSongs.count {
-            songCell.song = album?.songs?[indexPath.row]
+            songCell.song = tempSongs[indexPath.row]
         }
         songCell.delegate = self
         return songCell
@@ -69,10 +69,9 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
     func addSong(with title: String, duration: String) {
         let song = albumController?.createSong(name: title, duration: duration)
         tempSongs.append(song!)
-        tableView.reloadData()
         
-        let index = IndexPath(row: album!.songs!.count, section: 0)
-        tableView.scrollToRow(at: index, at: .middle, animated: true)
+        tableView.reloadData()
+        updateViews()
     }
     
     @IBOutlet weak var titleTextField: UITextField!
