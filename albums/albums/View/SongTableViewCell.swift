@@ -11,7 +11,7 @@ import UIKit
 class SongTableViewCell: UITableViewCell {
     
     //MARK: - Properties
-    var song: Song?
+    //var song: Song?
     
     //MARK: - Outlets
     @IBOutlet weak var songTextField: UITextField!

@@ -9,50 +9,59 @@
 import Foundation
 
 struct Album: Decodable {
+    let artist: String
+    let coverArt: [URL]
+    let genres: [String]
+    let id: String
+    let name: String
+    let songs: [Song]
     
     enum AlbumKeys: String, CodingKey {
         case artist
         case coverArt
-        case name
         case genres
+        case id
+        case name
         case songs
+        
+        enum CoverArtKeys: String, CodingKey {
+            case url
+        }
+        
+        enum GenresKeys: String, CodingKey {
+            case genre
+        }
     }
     
-    let artist: String
-    let coverArt: [URL]
-    let name: String
-    let id: String
-    let genres: [String]
-    let songs: [Song]
+    
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumKeys.self)
-        let artist = try container.decode(String.self, forKeys: .artist)
+        
+        id = try container.decode(String.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        artist = try container.decode(String.self, forKey: .artist)
         
         var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
-        var coverArt: [URL] = []
+        var coverArtURLs: [URL] = []
         
-        while !coverArtContainer.isAtEnd {
-            var coverArt = try coverArtContainer.decode(String.self)
-            
-            guard let url = URL(string: coverArt) else { continue }
-            coverArt.append(url)
+        while coverArtContainer.isAtEnd == false {
+            let coverArtString = try coverArtContainer.decode(String.self)
+            if let coverArtURL = URL(string: coverArtString) {
+                coverArtURLs.append(coverArtURL)
+            }
         }
-        
-        let name = try container.decode(String.self, forKeys: .name)
-        let id = try container.decode(String.self, forKeys: .id)
+        coverArt = coverArtURLs
         
         var genresContainer = try container.nestedUnkeyedContainer(forKey: .genres)
-        var genres: [Genres] = []
+        var genres: [String] = []
+        genres = try genresContainer.decode([String].self)
+        genres.append(genre)
         
+        songs = try container.decode([Song].self, forKey: .songs)
         
-    
-    self.artist = artist
-    self.name = name
-    self.genres = genres
-    self.songs = songs
+    }
 }
-
 struct Song: Decodable {
     
     enum SongKeys: String, CodingKey {
@@ -80,15 +89,14 @@ struct Song: Decodable {
         
         
         let id = try container.decode(String.self, forKey: .id)
-    
+        
         self.duration = duration
         self.name = name
         self.id = id
+        
+    }
     
-        }
-
     let duration: String
     let name: String
     let id: String
-    }
 }
