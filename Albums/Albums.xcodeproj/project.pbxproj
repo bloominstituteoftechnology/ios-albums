@@ -15,6 +15,7 @@
 		4BEFD71E22249CB100C9F36E /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD71D22249CB100C9F36E /* AlbumDetailTableViewController.swift */; };
 		4BEFD72022249E3300C9F36E /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD71F22249E3300C9F36E /* SongTableViewCell.swift */; };
 		4BEFD72422249F7000C9F36E /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD72322249F7000C9F36E /* Album.swift */; };
+		4BEFD7282224E18F00C9F36E /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BEFD7272224E18F00C9F36E /* exampleAlbum.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4BEFD71D22249CB100C9F36E /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		4BEFD71F22249E3300C9F36E /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		4BEFD72322249F7000C9F36E /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		4BEFD7272224E18F00C9F36E /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleAlbum.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +67,7 @@
 				4BEFD72222249F5800C9F36E /* Storyboards */,
 				4BEFD72122249F4900C9F36E /* View Controllers */,
 				4BEFD7262224A19100C9F36E /* Views */,
-				4BEFD71022248F9B00C9F36E /* Assets.xcassets */,
-				4BEFD71522248F9B00C9F36E /* Info.plist */,
+				4BEFD7292224E1D000C9F36E /* Resources */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -103,6 +104,16 @@
 				4BEFD71F22249E3300C9F36E /* SongTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4BEFD7292224E1D000C9F36E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4BEFD71022248F9B00C9F36E /* Assets.xcassets */,
+				4BEFD71522248F9B00C9F36E /* Info.plist */,
+				4BEFD7272224E18F00C9F36E /* exampleAlbum.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +176,7 @@
 			files = (
 				4BEFD71422248F9B00C9F36E /* LaunchScreen.storyboard in Resources */,
 				4BEFD71122248F9B00C9F36E /* Assets.xcassets in Resources */,
+				4BEFD7282224E18F00C9F36E /* exampleAlbum.json in Resources */,
 				4BEFD70F22248F9800C9F36E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
