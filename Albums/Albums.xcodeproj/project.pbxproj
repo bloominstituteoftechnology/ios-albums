@@ -16,6 +16,7 @@
 		4BEFD72022249E3300C9F36E /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD71F22249E3300C9F36E /* SongTableViewCell.swift */; };
 		4BEFD72422249F7000C9F36E /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD72322249F7000C9F36E /* Album.swift */; };
 		4BEFD7282224E18F00C9F36E /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BEFD7272224E18F00C9F36E /* exampleAlbum.json */; };
+		4BEFD72B2224E2C900C9F36E /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD72A2224E2C900C9F36E /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4BEFD71F22249E3300C9F36E /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		4BEFD72322249F7000C9F36E /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		4BEFD7272224E18F00C9F36E /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleAlbum.json; sourceTree = "<group>"; };
+		4BEFD72A2224E2C900C9F36E /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				4BEFD72522249F7A00C9F36E /* Model */,
-				4BEFD70922248F9800C9F36E /* AppDelegate.swift */,
+				4BEFD72C2224E2CF00C9F36E /* Model Controller */,
 				4BEFD72222249F5800C9F36E /* Storyboards */,
 				4BEFD72122249F4900C9F36E /* View Controllers */,
 				4BEFD7262224A19100C9F36E /* Views */,
@@ -109,11 +111,20 @@
 		4BEFD7292224E1D000C9F36E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4BEFD70922248F9800C9F36E /* AppDelegate.swift */,
 				4BEFD71022248F9B00C9F36E /* Assets.xcassets */,
 				4BEFD71522248F9B00C9F36E /* Info.plist */,
 				4BEFD7272224E18F00C9F36E /* exampleAlbum.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		4BEFD72C2224E2CF00C9F36E /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4BEFD72A2224E2C900C9F36E /* AlbumController.swift */,
+			);
+			path = "Model Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BEFD71C2224903A00C9F36E /* AlbumsTableViewController.swift in Sources */,
+				4BEFD72B2224E2C900C9F36E /* AlbumController.swift in Sources */,
 				4BEFD72022249E3300C9F36E /* SongTableViewCell.swift in Sources */,
 				4BEFD71E22249CB100C9F36E /* AlbumDetailTableViewController.swift in Sources */,
 				4BEFD70A22248F9800C9F36E /* AppDelegate.swift in Sources */,
