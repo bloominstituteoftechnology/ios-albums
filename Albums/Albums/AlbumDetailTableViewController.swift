@@ -22,4 +22,7 @@ class AlbumDetailTableViewController: UITableViewController {
     @IBOutlet weak var artistTextField: UITextField!
     @IBOutlet weak var genresTextField: UITextField!
     @IBOutlet weak var urlsTextField: UITextField!
+    
+    var albumController: AlbumController?
+    var album: Album?
 }

@@ -18,7 +18,9 @@ class AlbumController {
         
         let jsonURL = baseURL.appendingPathExtension("json")
         
-        URLSession.shared.dataTask(with: jsonURL) { (data, _, error) in
+        let request = URLRequest(url: jsonURL)
+        
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
             
             if let error = error {
                 NSLog("Error connecting to server: \(error)")
@@ -35,7 +37,8 @@ class AlbumController {
             do {
                 let decoder = JSONDecoder()
                 let decodedData = try decoder.decode([String: Album].self, from: data)
-                self.albums = decodedData.compactMap({ $0.value })
+                let albums = decodedData.compactMap({ $0.value })
+                self.albums = albums
                 completion(nil)
             } catch {
                 NSLog("Error decoding JSON.")
