@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Albums-->
         <scene sceneID="rdy-hI-K1w">
             <objects>
                 <tableViewController id="tFN-u7-5G6" customClass="AlbumsTableViewController" customModule="albums" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,6 +40,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IE4-wy-IOm">
+                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -51,7 +52,7 @@
                             <outlet property="delegate" destination="tFN-u7-5G6" id="F78-qL-ZHK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="7kJ-V3-J3N">
+                    <navigationItem key="navigationItem" title="Albums" id="7kJ-V3-J3N">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DZF-7c-kSo">
                             <connections>
                                 <segue destination="Omc-Ka-Apl" kind="show" identifier="addSegue" id="Ph6-cw-gJv"/>

@@ -40,7 +40,8 @@ struct Album: Decodable {
         var coverArtURLs: [URL] = []
         
         while coverArtContainer.isAtEnd == false {
-            let coverArtString = try coverArtContainer.decode(String.self)
+            let coverArtUURLsContainer = try coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)//was missing this
+            let coverArtString = try coverArtUURLsContainer.decode(String.self, forKey: .url)
             if let coverArtURL = URL(string: coverArtString) {
                 coverArtURLs.append(coverArtURL)
             }
