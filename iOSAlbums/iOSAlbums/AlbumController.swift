@@ -69,6 +69,7 @@ class AlbumController {
                     self.albums.append(album)
                 }
                 print(self.albums.count)
+                completion(nil)
             } catch {
                 NSLog("Error decoding albums from server: \(error)")
                 completion(error)

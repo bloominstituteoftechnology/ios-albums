@@ -10,36 +10,19 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
     
-    var albumController: AlbumController?
+    var albumController = AlbumController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let albumController = albumController else {
-            self.albumController = AlbumController()
-            
-            DispatchQueue.main.async {
-                self.albumController!.getAlbums {_ in 
+        
+        
+            self.albumController.getAlbums { (error) in
+                print("Number of albums: \(self.albumController.albums)")
+                DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-                
-                print("num of albums: \(self.albumController!.albums.count)")
-            }
-            return
         }
         
-        DispatchQueue.main.async {
-            self.albumController!.getAlbums { (error) in
-                print("Number of albums: \(self.albumController!.albums)")
-                self.tableView.reloadData()
-            }
-            self.tableView.reloadData()
-            print("num of albums: \(self.albumController!.albums.count)")
-        }
-        
-        
-        func viewDidAppear() {
-            self.tableView.reloadData()
-        }
         
 //        albumController.testDecodingExampleAlbum()
 //        albumController.testEncodingExampleAlbum()
@@ -74,15 +57,15 @@ class AlbumsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print(self.albumController!.albums.count)
-        print(albumController?.albums.count)
-        return self.albumController!.albums.count
+        print(self.albumController.albums.count)
+        print(albumController.albums.count)
+        return self.albumController.albums.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
-        let album = albumController!.albums[indexPath.row]
+        let album = self.albumController.albums[indexPath.row]
         cell.textLabel!.text = album.name
         cell.detailTextLabel!.text = album.artist
         // Configure the cell...
@@ -126,14 +109,24 @@ class AlbumsTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showCellAlbumDetail" {
+            let destinationVC = segue.destination as! AlbumDetailTableViewController
+            destinationVC.albumController = self.albumController
+            let cell = sender as! UITableViewCell
+            guard let indexPath = tableView.indexPath(for: cell) else { return }
+            destinationVC.album = self.albumController.albums[indexPath.row]
+        }
+        
+        if segue.identifier == "showAddAlbum" {
+            let destinationVC = segue.destination as! AlbumDetailTableViewController
+            destinationVC.albumController = self.albumController
+        }
     }
-    */
 
 }

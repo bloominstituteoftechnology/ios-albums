@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Albums Table View Controller-->
+        <!--Albums-->
         <scene sceneID="rF1-e0-ggz">
             <objects>
                 <tableViewController id="mj4-Xz-1F5" customClass="AlbumsTableViewController" customModule="iOSAlbums" customModuleProvider="target" sceneMemberID="viewController">
@@ -51,7 +51,7 @@
                             <outlet property="delegate" destination="mj4-Xz-1F5" id="j0k-VS-MoO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="crR-Qy-ppj">
+                    <navigationItem key="navigationItem" title="Albums" id="crR-Qy-ppj">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="iDv-Yi-UGS">
                             <connections>
                                 <segue destination="mbx-hj-Qi2" kind="show" identifier="showAddAlbum" id="b81-Fh-85u"/>
@@ -114,11 +114,11 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="134" id="MjP-vn-Rhp" customClass="SongTableViewCell" customModule="iOSAlbums" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="232" width="414" height="134"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="140" id="MjP-vn-Rhp" customClass="SongTableViewCell" customModule="iOSAlbums" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="232" width="414" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MjP-vn-Rhp" id="zCP-SZ-ZYA">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="133.66666666666666"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="139.66666666666666"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bib-Ba-bX9">
@@ -160,6 +160,9 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="121" id="tzt-HG-g5C"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -169,6 +172,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addSongButton" destination="zny-yD-1zs" id="GZO-xR-CKI"/>
                                     <outlet property="durationLabel" destination="hTT-lF-pWk" id="fUA-c0-OgM"/>
                                     <outlet property="songTitleLabel" destination="AAv-x4-HhB" id="HcK-Qt-zmq"/>
                                 </connections>

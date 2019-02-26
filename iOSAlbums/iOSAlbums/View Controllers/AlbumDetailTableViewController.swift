@@ -8,11 +8,19 @@
 
 import UIKit
 
-class AlbumDetailTableViewController: UITableViewController {
+class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDelegate {
+    func addSong(with title: String, duration: String) {
+        return
+    }
+    
+    
+    var albumController: AlbumController?
+    var album: Album?
+    var tempSongs: [Song] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -22,25 +30,24 @@ class AlbumDetailTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Songs"
     }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        guard let album = album else { return 0}
+        return album.songs.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as! SongTableViewCell
+        cell.song = album?.songs[indexPath.row]
+        cell.delegate = self
         // Configure the cell...
-
+        cell.updateViews()
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -86,6 +93,19 @@ class AlbumDetailTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // Mark: - Functions
+    
+    func updateViews() {
+        guard let album = album else { return }
+        
+        navigationItem.title = album.name
+        albumTextField.text = album.name
+        artistTextField.text = album.artist
+        genreTextField.text = album.genres.joined(separator: ", ")
+        let urlStrings = album.coverArt.compactMap({ $0.absoluteString })
+        imageTextField.text = urlStrings.joined(separator: ", ")
+    }
     
     // Mark: - Outlets
     
