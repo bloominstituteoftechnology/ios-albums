@@ -10,13 +10,59 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
     
-    let albumController = AlbumController()
+    var albumController: AlbumController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let albumController = albumController else {
+            self.albumController = AlbumController()
+            
+            DispatchQueue.main.async {
+                self.albumController!.getAlbums {_ in 
+                    self.tableView.reloadData()
+                }
+                
+                print("num of albums: \(self.albumController!.albums.count)")
+            }
+            return
+        }
         
-        albumController.testDecodingExampleAlbum()
-        albumController.testEncodingExampleAlbum()
+        DispatchQueue.main.async {
+            self.albumController!.getAlbums { (error) in
+                print("Number of albums: \(self.albumController!.albums)")
+                self.tableView.reloadData()
+            }
+            self.tableView.reloadData()
+            print("num of albums: \(self.albumController!.albums.count)")
+        }
+        
+        
+        func viewDidAppear() {
+            self.tableView.reloadData()
+        }
+        
+//        albumController.testDecodingExampleAlbum()
+//        albumController.testEncodingExampleAlbum()
+//        let songs = [
+//            albumController.createSong(name: "Slow Burn", duration: "4:06", id: UUID()),
+//            albumController.createSong(name: "Lonely Weekend", duration: "3:47", id: UUID()),
+//            albumController.createSong(name: "Butterflies", duration: "3:39", id: UUID()),
+//            albumController.createSong(name: "Oh, What A World", duration: "4:01", id: UUID()),
+//            albumController.createSong(name: "Mother", duration: "1:18", id: UUID()),
+//            albumController.createSong(name: "Love Is A Wild Thing", duration: "4:16", id: UUID()),
+//            albumController.createSong(name: "Space Cowboy", duration: "3:36", id: UUID()),
+//            albumController.createSong(name: "Happy & Sad", duration: "4:03", id: UUID()),
+//            albumController.createSong(name: "Velvet Elvis", duration: "2:34", id: UUID()),
+//            albumController.createSong(name: "Wonder Woman", duration: "4:00", id: UUID()),
+//            albumController.createSong(name: "High Horse", duration: "3:34", id: UUID()),
+//            albumController.createSong(name: "Golden Hour", duration: "3:18", id: UUID()),
+//            albumController.createSong(name: "Rainbow", duration: "3:34", id: UUID())
+//
+//
+//        ]
+//        let url = Bundle.main.url(forResource: "goldenHourAlbumArt", withExtension: "jpg")!
+//        albumController.createAlbum(artist: "Kacey Musgraves", coverArt: [url], genres: ["Country", "Contemporary"], id: UUID(), name: "Golden Hour", songs: songs)
+//
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,25 +72,24 @@ class AlbumsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        print(self.albumController!.albums.count)
+        print(albumController?.albums.count)
+        return self.albumController!.albums.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
+        let album = albumController!.albums[indexPath.row]
+        cell.textLabel!.text = album.name
+        cell.detailTextLabel!.text = album.artist
         // Configure the cell...
-
+        print("This is the cell: \(cell)")
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

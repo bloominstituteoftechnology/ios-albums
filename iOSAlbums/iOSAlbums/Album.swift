@@ -48,13 +48,6 @@ struct Album: Codable {
             artURLs.append(artURL!)
         }
         
-//        let coverArtStrings = try container.decode([String].self, forKey: .coverArt)
-//        var coverArtURLs: [URL] = []
-//        for art in coverArtStrings {
-//            guard let coverArtURL = URL(string: art) else { continue }
-//            coverArtURLs.append(coverArtURL)
-//        }
-        
         let genres = try container.decode([String].self, forKey: .genres)
         
         let idString = try container.decode(String.self, forKey: .id)
@@ -146,11 +139,3 @@ struct Song: Codable {
         try container.encode(id.uuidString, forKey: .id)
     }
 }
-
-//struct Duration: Equatable {
-//    let duration: String
-//}
-//
-//struct Name: Equatable {
-//    let title: String
-//}

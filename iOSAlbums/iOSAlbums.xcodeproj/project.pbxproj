@@ -17,6 +17,8 @@
 		A2E46E932224A79600778FCD /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E46E922224A79600778FCD /* Album.swift */; };
 		A2E46E952224C1D200778FCD /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = A2E46E942224C1D100778FCD /* exampleAlbum.json */; };
 		A2E46E972224C1EA00778FCD /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E46E962224C1EA00778FCD /* AlbumController.swift */; };
+		A2E46E992225182D00778FCD /* Album+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E46E982225182D00778FCD /* Album+Convenience.swift */; };
+		A2E46E9B2225201C00778FCD /* goldenHourAlbumArt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A2E46E9A2225201C00778FCD /* goldenHourAlbumArt.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		A2E46E922224A79600778FCD /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		A2E46E942224C1D100778FCD /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
 		A2E46E962224C1EA00778FCD /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlbumController.swift; path = iOSAlbums/AlbumController.swift; sourceTree = SOURCE_ROOT; };
+		A2E46E982225182D00778FCD /* Album+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Album+Convenience.swift"; sourceTree = "<group>"; };
+		A2E46E9A2225201C00778FCD /* goldenHourAlbumArt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = goldenHourAlbumArt.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +71,13 @@
 				A2E46E7822247FDB00778FCD /* AppDelegate.swift */,
 				A2E46E7C22247FDB00778FCD /* Main.storyboard */,
 				A2E46E922224A79600778FCD /* Album.swift */,
+				A2E46E982225182D00778FCD /* Album+Convenience.swift */,
 				A2E46E962224C1EA00778FCD /* AlbumController.swift */,
 				A2E46E8C22248D0100778FCD /* View Controllers */,
 				A2E46E912224A6EA00778FCD /* Views */,
 				A2E46E8122247FDD00778FCD /* LaunchScreen.storyboard */,
 				A2E46E7F22247FDD00778FCD /* Assets.xcassets */,
+				A2E46E9A2225201C00778FCD /* goldenHourAlbumArt.jpg */,
 				A2E46E942224C1D100778FCD /* exampleAlbum.json */,
 				A2E46E8422247FDD00778FCD /* Info.plist */,
 			);
@@ -157,6 +163,7 @@
 				A2E46E8022247FDD00778FCD /* Assets.xcassets in Resources */,
 				A2E46E952224C1D200778FCD /* exampleAlbum.json in Resources */,
 				A2E46E7E22247FDB00778FCD /* Main.storyboard in Resources */,
+				A2E46E9B2225201C00778FCD /* goldenHourAlbumArt.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +178,7 @@
 				A2E46E972224C1EA00778FCD /* AlbumController.swift in Sources */,
 				A2E46E7922247FDB00778FCD /* AppDelegate.swift in Sources */,
 				A2E46E8E22248D1700778FCD /* AlbumDetailTableViewController.swift in Sources */,
+				A2E46E992225182D00778FCD /* Album+Convenience.swift in Sources */,
 				A2E46E8B222489C100778FCD /* AlbumsTableViewController.swift in Sources */,
 				A2E46E932224A79600778FCD /* Album.swift in Sources */,
 			);
