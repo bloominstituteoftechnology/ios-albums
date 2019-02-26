@@ -27,4 +27,24 @@ class AlbumController {
         }
         
     }
+    
+    func testEncodingExampleAlbum() {
+        guard let url = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else { print("URL is bad.") ;
+            return
+        }
+        
+        do {
+            let exampleData = try Data(contentsOf: url)
+            
+            let album = try JSONDecoder().decode(Album.self, from: exampleData)
+            
+            _ = try JSONEncoder().encode(album)
+            
+            print("Success!")
+        }
+        catch {
+            print("Error getting data or decoding date: \(error)")
+        }
+        
+    }
 }
