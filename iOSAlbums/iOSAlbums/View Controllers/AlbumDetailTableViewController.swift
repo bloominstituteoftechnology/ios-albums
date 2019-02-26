@@ -20,6 +20,7 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.rowHeight = 140
         updateViews()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -100,6 +101,7 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
         guard let album = album else { return }
         
         navigationItem.title = album.name
+        albumImage.image = #imageLiteral(resourceName: "goldenHourAlbumArt.jpg")
         albumTextField.text = album.name
         artistTextField.text = album.artist
         genreTextField.text = album.genres.joined(separator: ", ")
@@ -113,6 +115,7 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
     @IBOutlet weak var artistTextField: UITextField!
     @IBOutlet weak var genreTextField: UITextField!
     @IBOutlet weak var imageTextField: UITextField!
+    @IBOutlet weak var albumImage: UIImageView!
     
     
     @IBAction func saveButtonTapped(_ sender: Any) {
