@@ -17,6 +17,8 @@
 		4BEFD72422249F7000C9F36E /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD72322249F7000C9F36E /* Album.swift */; };
 		4BEFD7282224E18F00C9F36E /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BEFD7272224E18F00C9F36E /* exampleAlbum.json */; };
 		4BEFD72B2224E2C900C9F36E /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD72A2224E2C900C9F36E /* AlbumController.swift */; };
+		4BEFD72E2225EAB700C9F36E /* AlbumExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD72D2225EAB700C9F36E /* AlbumExtension.swift */; };
+		4BEFD7302225EABF00C9F36E /* SongExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD72F2225EABF00C9F36E /* SongExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		4BEFD72322249F7000C9F36E /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		4BEFD7272224E18F00C9F36E /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleAlbum.json; sourceTree = "<group>"; };
 		4BEFD72A2224E2C900C9F36E /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
+		4BEFD72D2225EAB700C9F36E /* AlbumExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumExtension.swift; sourceTree = "<group>"; };
+		4BEFD72F2225EABF00C9F36E /* SongExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				4BEFD72322249F7000C9F36E /* Album.swift */,
+				4BEFD72D2225EAB700C9F36E /* AlbumExtension.swift */,
+				4BEFD72F2225EABF00C9F36E /* SongExtension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,10 +207,12 @@
 			files = (
 				4BEFD71C2224903A00C9F36E /* AlbumsTableViewController.swift in Sources */,
 				4BEFD72B2224E2C900C9F36E /* AlbumController.swift in Sources */,
+				4BEFD7302225EABF00C9F36E /* SongExtension.swift in Sources */,
 				4BEFD72022249E3300C9F36E /* SongTableViewCell.swift in Sources */,
 				4BEFD71E22249CB100C9F36E /* AlbumDetailTableViewController.swift in Sources */,
 				4BEFD70A22248F9800C9F36E /* AppDelegate.swift in Sources */,
 				4BEFD72422249F7000C9F36E /* Album.swift in Sources */,
+				4BEFD72E2225EAB700C9F36E /* AlbumExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

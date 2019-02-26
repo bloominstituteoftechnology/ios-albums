@@ -20,6 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         albumController.testDecodingExampleAlbum()
+        albumController.testEncodingExampleAlbum()
+        
+        albumController.createAlbum(albumCover: ["someurlhere", "someotherurlhere"], artist: "some artist here", albumName: "some album here", genres: ["some genre here", "some other genre here"], id: UUID().uuidString, songs: [
+            Song(id: UUID().uuidString, duration: "3:16", songName: "This is my fight song")
+            ])
+
+        
         return true
     }
 
