@@ -15,6 +15,10 @@
 		4C43184821AD2A1C0021E999 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C43184721AD2A1C0021E999 /* exampleAlbum.json */; };
 		4CA6F15821FFA44300FE8F1A /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6F15721FFA44300FE8F1A /* AlbumsTableViewController.swift */; };
 		4CA6F15A21FFA6E500FE8F1A /* AlbumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6F15921FFA6E500FE8F1A /* AlbumDetailViewController.swift */; };
+		4CA6F15C21FFB8EB00FE8F1A /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6F15B21FFB8EB00FE8F1A /* SongTableViewCell.swift */; };
+		4CA6F15E2202876E00FE8F1A /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6F15D2202876E00FE8F1A /* Song.swift */; };
+		4CA6F1602202877700FE8F1A /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6F15F2202877700FE8F1A /* Album.swift */; };
+		4CA6F1622202894800FE8F1A /* MusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6F1612202894800FE8F1A /* MusicController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		4C43184721AD2A1C0021E999 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleAlbum.json; sourceTree = "<group>"; };
 		4CA6F15721FFA44300FE8F1A /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		4CA6F15921FFA6E500FE8F1A /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; };
+		4CA6F15B21FFB8EB00FE8F1A /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		4CA6F15D2202876E00FE8F1A /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		4CA6F15F2202877700FE8F1A /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		4CA6F1612202894800FE8F1A /* MusicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +52,6 @@
 		4C43182721AD294B0021E999 = {
 			isa = PBXGroup;
 			children = (
-				4CA6F15721FFA44300FE8F1A /* AlbumsTableViewController.swift */,
 				4C43183221AD294C0021E999 /* Albums */,
 				4C43183121AD294C0021E999 /* Products */,
 			);
@@ -64,7 +71,12 @@
 				4C43183321AD294C0021E999 /* AppDelegate.swift */,
 				4C43183521AD294C0021E999 /* ViewController.swift */,
 				4C43184721AD2A1C0021E999 /* exampleAlbum.json */,
+				4CA6F15D2202876E00FE8F1A /* Song.swift */,
+				4CA6F15F2202877700FE8F1A /* Album.swift */,
+				4CA6F1612202894800FE8F1A /* MusicController.swift */,
 				4C43183721AD294C0021E999 /* Main.storyboard */,
+				4CA6F15721FFA44300FE8F1A /* AlbumsTableViewController.swift */,
+				4CA6F15B21FFB8EB00FE8F1A /* SongTableViewCell.swift */,
 				4CA6F15921FFA6E500FE8F1A /* AlbumDetailViewController.swift */,
 				4C43183A21AD294D0021E999 /* Assets.xcassets */,
 				4C43183C21AD294D0021E999 /* LaunchScreen.storyboard */,
@@ -145,9 +157,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CA6F15E2202876E00FE8F1A /* Song.swift in Sources */,
 				4C43183621AD294C0021E999 /* ViewController.swift in Sources */,
 				4CA6F15A21FFA6E500FE8F1A /* AlbumDetailViewController.swift in Sources */,
+				4CA6F15C21FFB8EB00FE8F1A /* SongTableViewCell.swift in Sources */,
 				4CA6F15821FFA44300FE8F1A /* AlbumsTableViewController.swift in Sources */,
+				4CA6F1622202894800FE8F1A /* MusicController.swift in Sources */,
+				4CA6F1602202877700FE8F1A /* Album.swift in Sources */,
 				4C43183421AD294C0021E999 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

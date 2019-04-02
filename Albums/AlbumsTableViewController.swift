@@ -10,6 +10,8 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
     
-    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MusicController.shared.albums.count
+    }
     
 }
