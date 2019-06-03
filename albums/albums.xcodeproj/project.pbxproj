@@ -14,6 +14,8 @@
 		E8D2CBDD22A5D7320010F959 /* AlbumsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2CBDC22A5D7320010F959 /* AlbumsTableViewCell.swift */; };
 		E8D2CBE122A5D78A0010F959 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2CBE022A5D78A0010F959 /* AlbumsTableViewController.swift */; };
 		E8D2CBE422A5DB560010F959 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2CBE322A5DB560010F959 /* AlbumViewController.swift */; };
+		E8D2CBE722A5E6940010F959 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2CBE622A5E6940010F959 /* SongTableViewCell.swift */; };
+		E8D2CBE922A5E6AF0010F959 /* SongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2CBE822A5E6AF0010F959 /* SongsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,9 +25,11 @@
 		E8D2CBD022A5D6510010F959 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8D2CBD322A5D6510010F959 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8D2CBD522A5D6510010F959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E8D2CBDC22A5D7320010F959 /* AlbumsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewCell.swift; sourceTree = "<group>"; };
+		E8D2CBDC22A5D7320010F959 /* AlbumsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlbumsTableViewCell.swift; path = ../AlbumsTableViewCell.swift; sourceTree = "<group>"; };
 		E8D2CBE022A5D78A0010F959 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		E8D2CBE322A5DB560010F959 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		E8D2CBE622A5E6940010F959 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		E8D2CBE822A5E6AF0010F959 /* SongsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +62,7 @@
 		E8D2CBC822A5D64D0010F959 /* albums */ = {
 			isa = PBXGroup;
 			children = (
-				E8D2CBDC22A5D7320010F959 /* AlbumsTableViewCell.swift */,
+				E8D2CBE522A5E64A0010F959 /* TableViewsCells */,
 				E8D2CBE222A5DB2D0010F959 /* View Controllers */,
 				E8D2CBDB22A5D6A60010F959 /* Resources */,
 			);
@@ -80,10 +84,20 @@
 		E8D2CBE222A5DB2D0010F959 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E8D2CBE022A5D78A0010F959 /* AlbumsTableViewController.swift */,
+				E8D2CBE822A5E6AF0010F959 /* SongsTableViewController.swift */,
 				E8D2CBE322A5DB560010F959 /* AlbumViewController.swift */,
+				E8D2CBE022A5D78A0010F959 /* AlbumsTableViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E8D2CBE522A5E64A0010F959 /* TableViewsCells */ = {
+			isa = PBXGroup;
+			children = (
+				E8D2CBDC22A5D7320010F959 /* AlbumsTableViewCell.swift */,
+				E8D2CBE622A5E6940010F959 /* SongTableViewCell.swift */,
+			);
+			path = TableViewsCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,8 +171,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8D2CBE922A5E6AF0010F959 /* SongsTableViewController.swift in Sources */,
 				E8D2CBE422A5DB560010F959 /* AlbumViewController.swift in Sources */,
 				E8D2CBCA22A5D64D0010F959 /* AppDelegate.swift in Sources */,
+				E8D2CBE722A5E6940010F959 /* SongTableViewCell.swift in Sources */,
 				E8D2CBE122A5D78A0010F959 /* AlbumsTableViewController.swift in Sources */,
 				E8D2CBDD22A5D7320010F959 /* AlbumsTableViewCell.swift in Sources */,
 			);

@@ -12,8 +12,14 @@ class AlbumViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		saveRightBarButtonItem()
+	}
+	
+	func saveRightBarButtonItem() {
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
 	}
+	
 	@objc func save() {
 		
 	}
