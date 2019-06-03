@@ -13,6 +13,7 @@
 		E8D2CBD422A5D6510010F959 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8D2CBD222A5D6510010F959 /* LaunchScreen.storyboard */; };
 		E8D2CBDD22A5D7320010F959 /* AlbumsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2CBDC22A5D7320010F959 /* AlbumsTableViewCell.swift */; };
 		E8D2CBE122A5D78A0010F959 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2CBE022A5D78A0010F959 /* AlbumsTableViewController.swift */; };
+		E8D2CBE422A5DB560010F959 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2CBE322A5DB560010F959 /* AlbumViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E8D2CBD522A5D6510010F959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8D2CBDC22A5D7320010F959 /* AlbumsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewCell.swift; sourceTree = "<group>"; };
 		E8D2CBE022A5D78A0010F959 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		E8D2CBE322A5DB560010F959 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				E8D2CBDC22A5D7320010F959 /* AlbumsTableViewCell.swift */,
-				E8D2CBE022A5D78A0010F959 /* AlbumsTableViewController.swift */,
+				E8D2CBE222A5DB2D0010F959 /* View Controllers */,
 				E8D2CBDB22A5D6A60010F959 /* Resources */,
 			);
 			path = albums;
@@ -73,6 +75,15 @@
 				E8D2CBD522A5D6510010F959 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		E8D2CBE222A5DB2D0010F959 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E8D2CBE022A5D78A0010F959 /* AlbumsTableViewController.swift */,
+				E8D2CBE322A5DB560010F959 /* AlbumViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8D2CBE422A5DB560010F959 /* AlbumViewController.swift in Sources */,
 				E8D2CBCA22A5D64D0010F959 /* AppDelegate.swift in Sources */,
 				E8D2CBE122A5D78A0010F959 /* AlbumsTableViewController.swift in Sources */,
 				E8D2CBDD22A5D7320010F959 /* AlbumsTableViewCell.swift in Sources */,

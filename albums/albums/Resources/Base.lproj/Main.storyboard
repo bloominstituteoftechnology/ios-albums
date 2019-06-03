@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Albums Table View Controller-->
+        <!--Albums-->
         <scene sceneID="sKd-pB-apZ">
             <objects>
                 <tableViewController id="sYR-Pt-8Y2" customClass="AlbumsTableViewController" customModule="albums" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,18 +52,22 @@
                             <outlet property="delegate" destination="sYR-Pt-8Y2" id="J2F-Af-Yi1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Qj0-gS-UWr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vca-se-MWi"/>
+                    <navigationItem key="navigationItem" title="Albums" id="Qj0-gS-UWr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vca-se-MWi">
+                            <connections>
+                                <segue destination="qwP-q5-xXl" kind="show" id="Mo6-vo-OFa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yp-ro-9xp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="942.02898550724649" y="215.625"/>
         </scene>
-        <!--View Controller-->
+        <!--Album View Controller-->
         <scene sceneID="2ee-pw-A3j">
             <objects>
-                <viewController id="qwP-q5-xXl" sceneMemberID="viewController">
+                <viewController id="qwP-q5-xXl" customClass="AlbumViewController" customModule="albums" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qbJ-2B-ruq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,8 +84,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4S6-xG-VQI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tJg-cP-9yG">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="tJg-cP-9yG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -94,4 +98,7 @@
             <point key="canvasLocation" x="31.884057971014496" y="215.625"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ved-R5-jom"/>
+    </inferredMetricsTieBreakers>
 </document>

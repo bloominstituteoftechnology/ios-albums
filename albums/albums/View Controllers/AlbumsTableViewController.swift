@@ -12,8 +12,10 @@ class AlbumsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		
 	}
-	
+
 	
 	
 
