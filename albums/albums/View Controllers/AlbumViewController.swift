@@ -23,4 +23,10 @@ class AlbumViewController: UIViewController {
 	@objc func save() {
 		
 	}
+	
+	@IBOutlet var albumsTextField: UITextField!
+	@IBOutlet var artistTextField: UITextField!
+	
+	@IBOutlet var generesTextField: UITextField!
+	@IBOutlet var urlsTextField: UITextField!
 }
