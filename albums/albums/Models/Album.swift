@@ -13,7 +13,8 @@ import UIKit
 {
 "artist" : "Weezer",
 "coverArt" : [ {
-"url" : "https://lastfm-img2.akamaized.net/i/u/174s/1918fe81bb68441d96b2247682bfda21.png"
+"url" : "https://lastfm-img2.akamaized.net/i/u/174s/1918fe81bb68441d96b2247682bfda21.png"},
+		{"url" : "https://lastfm-img2.akamaized.net/i/u/174s/1918fe81bb68441d96b2247682bfda21.png"
 } ],
 "genres" : [ "Alternative" ],
 "id" : "5E58FA0F-7DBD-4F1D-956F-89756CF1EB22",
@@ -50,17 +51,22 @@ struct Album: Decodable {
 	
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: AlbumCodingKeys.self)
+		
 		artist = try container.decode(String.self, forKey: .artist)
 		name = try container.decode(String.self, forKey: .name)
-		
-	
-//		let coverArtContainer = try container.nestedContainer(keyedBy: AlbumCodingKeys.CoverArtKeys.self, forKey: .coverArt)
-//		let ca = try coverArtContainer.decode(String.self, forKey: .url)
-//
-
-		
-		coverArt = []
 		genres = try container.decode([String].self, forKey: .genres)
+		
+		var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+		
+		
+		var urls: [String] = []
+		while !coverArtContainer.isAtEnd {
+			let CoverArtUrlContainer = try coverArtContainer.nestedContainer(keyedBy: AlbumCodingKeys.CoverArtKeys.self)
+			let url = try CoverArtUrlContainer.decode(String.self, forKey: .url)
+			urls.append(url)
+		}
+
+		coverArt = urls
 		
 	}
 }

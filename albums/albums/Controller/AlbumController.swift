@@ -10,30 +10,22 @@ import Foundation
 
 
 class AlbumController {
-	
-	
 	func getJsonFileData() {
 		if let jsonURL = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") {
 			if let data = try? Data(contentsOf: jsonURL) {
-				print("Parse This:", data)
-				
 				self.parseAlbumJsonData(with: data)
 			}
 		}
 	}
 	
 	func parseAlbumJsonData(with data: Data) {
-		
 		let decoder = JSONDecoder()
-		
 		do {
 			let albums = try decoder.decode(Album.self, from: data)
-			print(albums)
+			print(albums.coverArt)
+			
 		} catch {
 			NSLog("Error decoding json: \(error)")
 		}
-		
 	}
-	
-	
 }

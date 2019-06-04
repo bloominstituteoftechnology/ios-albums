@@ -68,8 +68,8 @@
 		E8D2CBC822A5D64D0010F959 /* albums */ = {
 			isa = PBXGroup;
 			children = (
-				E8D2CBF522A5F70D0010F959 /* Controller */,
 				E8D2CBEE22A5F2890010F959 /* Models */,
+				E8D2CBF522A5F70D0010F959 /* Controller */,
 				E8D2CBE222A5DB2D0010F959 /* View Controllers */,
 				E8D2CBE522A5E64A0010F959 /* TableViewsCells */,
 				E8D2CBDB22A5D6A60010F959 /* Resources */,
