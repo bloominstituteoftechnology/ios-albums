@@ -26,18 +26,20 @@ import UIKit
 struct Song: Codable {
 	let id: String
 	let name: String
-	
-	
-//	let duration: String
+	let duration: String
 	
 	enum SongCodingKeys: String, CodingKey {
 		case id
 		case name
+		case duration
 		
 		enum NameSongCodingKeys: String, CodingKey {
 			case title
 		}
-	
+		
+		enum CaseSongCodingKeys: String, CodingKey {
+			case duration
+		}
 	}
 	
 	init(from decoder: Decoder) throws {
@@ -47,7 +49,8 @@ struct Song: Codable {
 		let nameContainer = try container.nestedContainer(keyedBy: SongCodingKeys.NameSongCodingKeys.self, forKey: .name)
 		name = try nameContainer.decode(String.self, forKey: .title)
 		
-		
+		let durationContainer = try container.nestedContainer(keyedBy: SongCodingKeys.CaseSongCodingKeys.self, forKey: .duration)
+		duration = try durationContainer.decode(String.self, forKey: .duration)
 		
 	}
 	
