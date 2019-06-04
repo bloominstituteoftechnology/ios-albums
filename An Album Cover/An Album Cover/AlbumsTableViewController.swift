@@ -15,8 +15,20 @@ class AlbumsTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		anAlbumController.getAlbums { [weak self] (result: Result<[AnAlbum], NetworkError>) in
-			self?.tableView.reloadData()
+			DispatchQueue.main.async {
+				do {
+					_ = try result.get()
+				} catch {
+					NSLog("There was an error: \(error)")
+				}
+				self?.tableView.reloadData()
+			}
 		}
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		tableView.reloadData()
 	}
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

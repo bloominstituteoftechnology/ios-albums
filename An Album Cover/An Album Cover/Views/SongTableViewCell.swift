@@ -14,7 +14,39 @@ class SongTableViewCell: UITableViewCell {
 	@IBOutlet var songDurationField: UITextField!
 	@IBOutlet var saveButton: UIButton!
 
-	@IBAction func saveButtonPressed(_ sender: UIButton) {
-		
+	weak var delegate: SongTableViewCellDelegate?
+	var song: Song? {
+		didSet {
+			updateViews()
+		}
 	}
+
+	private func updateViews() {
+		guard let song = song else { return }
+		saveButton.isHidden = true
+		songNameField.text = song.name
+		songDurationField.text = song.duration
+	}
+
+	override func prepareForReuse() {
+		saveButton.isHidden = false
+		songNameField.text = ""
+		songDurationField.text = ""
+	}
+
+	@IBAction func durationFieldChanged(_ sender: UITextField) {
+		let legalCharacters = Set("0123456789.:")
+		sender.text = sender.text?.filter { legalCharacters.contains($0) }
+	}
+
+	@IBAction func saveButtonPressed(_ sender: UIButton) {
+		guard let title = songNameField.text, !title.isEmpty,
+			let duration = songDurationField.text, !duration.isEmpty else { return }
+		delegate?.addSong(with: title, duration: duration)
+	}
+}
+
+
+protocol SongTableViewCellDelegate: AnyObject {
+	func addSong(with title: String, duration: String)
 }

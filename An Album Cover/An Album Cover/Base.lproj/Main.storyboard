@@ -135,6 +135,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="durationFieldChanged:" destination="OdA-IB-WG3" eventType="editingChanged" id="pdN-5G-jgz"/>
+                                                    </connections>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7U-88-Unx">
                                                     <rect key="frame" x="0.0" y="56.5" width="398" height="30"/>
@@ -166,13 +169,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="GkK-48-xT9">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="GfF-tH-Hz3"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="GfF-tH-Hz3">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="IdC-Bn-Xq7" id="2cI-6o-AaS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="albumNameTextField" destination="MnH-t0-1ct" id="zY2-ai-tzi"/>
                         <outlet property="artistNameTextField" destination="SGZ-YI-IUx" id="scG-v0-YWV"/>
                         <outlet property="coverArtTextField" destination="87E-dU-rMq" id="Z1Z-Wn-UKs"/>
                         <outlet property="genresTextField" destination="62y-ZV-q5G" id="nc7-yM-VbG"/>
+                        <outlet property="saveButton" destination="GfF-tH-Hz3" id="Asr-Da-7qj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XhS-cY-ra5" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -45,9 +45,9 @@ class AnAlbumController {
 		return song
 	}
 
-	func updateAlbum(album: AnAlbum, artist: String, coverArtString: String, genres: String, id: UUID = UUID(), name: String, songs: [Song]) {
+	func updateAlbum(album: AnAlbum, artist: String, coverArtString: String, genres: String, name: String, songs: [Song]) {
 		guard let albumIndex = albums.firstIndex(of: album) else { return }
-		let updatedAlbum = _createAlbum(artist: artist, coverArtString: coverArtString, genres: genres, id: id, name: name, songs: songs)
+		let updatedAlbum = _createAlbum(artist: artist, coverArtString: coverArtString, genres: genres, id: album.id, name: name, songs: songs)
 		albums[albumIndex] = updatedAlbum
 		put(album: updatedAlbum) { (result: Result<AnAlbum, NetworkError>) in
 			do {
