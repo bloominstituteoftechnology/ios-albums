@@ -15,7 +15,7 @@ class AlbumController {
 	func getJsonFileData() {
 		if let jsonURL = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") {
 			if let data = try? Data(contentsOf: jsonURL) {
-				print("Parse This", data)
+				print("Parse This:", data)
 			}
 		}
 	}

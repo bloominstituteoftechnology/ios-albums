@@ -8,6 +8,21 @@
 
 import UIKit
 
+/*
+
+"songs" : [ {
+"duration" : {
+"duration" : "3:25"
+},
+"id" : "82BDE132-E492-4FED-9A77-B49CADBC2BFD",
+"name" : {
+"title" : "My Name Is Jonas"
+}
+}
+
+*/
+
+
 struct Song: Codable {
 	
 }
