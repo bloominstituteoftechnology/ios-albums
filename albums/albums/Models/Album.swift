@@ -33,4 +33,34 @@ import UIKit
 struct Album: Decodable {
 	let artist: String
 	let name: String
+	let coverArt: [String]
+	let genres: [String]
+	
+	enum AlbumCodingKeys: String, CodingKey {
+		case artist
+		case name
+		case coverArt
+		case genres
+		
+		enum CoverArtKeys: String, CodingKey {
+			case url
+		}
+		
+	}
+	
+	init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: AlbumCodingKeys.self)
+		artist = try container.decode(String.self, forKey: .artist)
+		name = try container.decode(String.self, forKey: .name)
+		
+	
+//		let coverArtContainer = try container.nestedContainer(keyedBy: AlbumCodingKeys.CoverArtKeys.self, forKey: .coverArt)
+//		let ca = try coverArtContainer.decode(String.self, forKey: .url)
+//
+
+		
+		coverArt = []
+		genres = try container.decode([String].self, forKey: .genres)
+		
+	}
 }
