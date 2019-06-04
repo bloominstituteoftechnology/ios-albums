@@ -43,14 +43,18 @@ extension AnAlbum: Codable {
 		self.id = id
 		name = try container.decode(String.self, forKey: .name)
 
-		var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
-		var urls = [URL]()
-		while !coverArtContainer.isAtEnd {
-			let urlContainer = try coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArtKeys.self)
-			let url = try urlContainer.decode(URL.self, forKey: .url)
-			urls.append(url)
+		do {
+			var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+			var urls = [URL]()
+			while !coverArtContainer.isAtEnd {
+				let urlContainer = try coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArtKeys.self)
+				let url = try urlContainer.decode(URL.self, forKey: .url)
+				urls.append(url)
+			}
+			coverArt = urls
+		} catch {
+			coverArt = []
 		}
-		coverArt = urls
 
 		songs = try container.decode([Song].self, forKey: .songs)
 	}
