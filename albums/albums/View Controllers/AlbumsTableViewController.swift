@@ -13,11 +13,12 @@ class AlbumsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		albumController.getJsonFileData()
-		
-		for song in albumController.albums[0].songs {
-			print(song, "\n")
-		}
-//		print(albumController.albums)
+//		if !albumController.albums[0].songs.isEmpty {
+//			for song in albumController.albums[0].songs {
+//				print(song, "\n")
+//			}
+//		}
+		print(albumController.albums)
 	}
 	
 	

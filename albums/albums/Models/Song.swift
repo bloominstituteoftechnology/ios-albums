@@ -25,17 +25,31 @@ import UIKit
 
 struct Song: Codable {
 	let id: String
-//	let duration: String
-//	let name: String
+	let name: String
 	
-	enum SongCodingKeys: String,CodingKey {
+	
+//	let duration: String
+	
+	enum SongCodingKeys: String, CodingKey {
 		case id
+		case name
+		
+		enum NameSongCodingKeys: String, CodingKey {
+			case title
+		}
 	
 	}
 	
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: SongCodingKeys.self)
 		id = try container.decode(String.self, forKey: .id)
+		
+		let nameContainer = try container.nestedContainer(keyedBy: SongCodingKeys.NameSongCodingKeys.self, forKey: .name)
+		
+		let titlename = try nameContainer.decode(String.self, forKey: .title)
+		print(titlename)
+		name  = ""
+		
 	}
 	
 	
