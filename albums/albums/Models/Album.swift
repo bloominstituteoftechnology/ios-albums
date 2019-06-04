@@ -30,12 +30,7 @@ import UIKit
 */
 
 
-struct Album: Codable {
+struct Album: Decodable {
 	let artist: String
 	let name: String
-	
-	//	let coverArt:
-//	let generes: [String]
-//	let songs: [Song]
-	
 }
