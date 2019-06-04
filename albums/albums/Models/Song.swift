@@ -1,5 +1,5 @@
 //
-//  AlbumsTableViewCell.swift
+//  Song.swift
 //  albums
 //
 //  Created by Hector Steven on 6/3/19.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class AlbumsTableViewCell: UITableViewCell {
-
+struct Song: Codable {
+	
 }

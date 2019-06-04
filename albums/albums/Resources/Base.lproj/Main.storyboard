@@ -152,12 +152,15 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vP-MV-MHt">
                                 <rect key="frame" x="173.5" y="416.5" width="67" height="30"/>
                                 <state key="normal" title="Add Song"/>
+                                <connections>
+                                    <action selector="AddSongButtonAction:" destination="qwP-q5-xXl" eventType="touchUpInside" id="swV-j2-p9r"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KB1-1e-wL9">
                                 <rect key="frame" x="8" y="454.5" width="398" height="433.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="FAo-cK-wcU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="songCell" id="FAo-cK-wcU" customClass="SongTableViewCell" customModule="albums" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="398" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FAo-cK-wcU" id="sZv-yb-1Wa">
@@ -192,9 +195,12 @@
                         <viewLayoutGuide key="safeArea" id="M9d-ge-d3Z"/>
                     </view>
                     <connections>
+                        <outlet property="addSongDurationTitleTextField" destination="UhR-Ke-foC" id="2bO-Km-1yV"/>
+                        <outlet property="addSongTitleTextField" destination="mSp-59-XjR" id="GYt-Bi-qcr"/>
                         <outlet property="albumsTextField" destination="Zsj-gL-GA0" id="RxO-3c-I1H"/>
                         <outlet property="artistTextField" destination="Zba-QI-MVt" id="uc3-xb-stN"/>
                         <outlet property="generesTextField" destination="QAc-db-AaA" id="ia9-hF-BjE"/>
+                        <outlet property="songsTableView" destination="KB1-1e-wL9" id="koe-Wm-iky"/>
                         <outlet property="urlsTextField" destination="e3c-Ty-jVf" id="TTN-If-dTQ"/>
                     </connections>
                 </viewController>

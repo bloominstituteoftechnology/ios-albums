@@ -13,10 +13,10 @@ class AlbumsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		
+		albumController.getJsonFileData()
 	}
 
 	
 	
-
+	let albumController = AlbumController()
 }
