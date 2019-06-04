@@ -10,7 +10,7 @@ import Foundation
 
 
 class AlbumController {
-	func getJsonFileData() {
+	func testDecodingExampleAlbum() {
 		if let jsonURL = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") {
 			if let data = try? Data(contentsOf: jsonURL) {
 				self.parseAlbumJsonData(with: data)
@@ -23,10 +23,23 @@ class AlbumController {
 		do {
 			let albumsDecoded = try decoder.decode(Album.self, from: data)
 			albums.append(albumsDecoded)
+//			print(albums[0])
 		} catch {
 			NSLog("Error decoding json: \(error)")
 		}
 	}
 	
+	func testEncodingExampleAlbum(album: Album) {
+		let plistEncoder = PropertyListEncoder()
+		plistEncoder.outputFormat = .xml
+		
+		do {
+			let plistData = try plistEncoder.encode(album)
+			print(plistData)
+		} catch {
+			print("Error encoding :\(error)")
+		}
+	}
+
 	var albums: [Album] = []
 }

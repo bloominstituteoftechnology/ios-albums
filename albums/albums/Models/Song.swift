@@ -54,5 +54,11 @@ struct Song: Codable {
 		
 	}
 	
+	func ecode(from encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: SongCodingKeys.self)
+		try container.encode(id, forKey: .id)
+		try container.encode(name, forKey: .name)
+		try container.encode(duration, forKey: .duration)
+	}
 	
 }

@@ -31,7 +31,7 @@ import UIKit
 */
 
 
-struct Album: Decodable {
+struct Album: Codable {
 	let artist: String
 	let name: String
 	let coverArt: [String]
@@ -61,8 +61,8 @@ struct Album: Decodable {
 		
 		var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
 		
-		
 		var urls: [String] = []
+		
 		while !coverArtContainer.isAtEnd {
 			let CoverArtUrlContainer = try coverArtContainer.nestedContainer(keyedBy: AlbumCodingKeys.CoverArtKeys.self)
 			let url = try CoverArtUrlContainer.decode(String.self, forKey: .url)
@@ -72,4 +72,16 @@ struct Album: Decodable {
 		coverArt = urls
 		songs = try container.decode([Song].self, forKey: .songs)
 	}
+	
+	func ecode(from encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: AlbumCodingKeys.self)
+		
+		try container.encode(artist, forKey: .artist)
+		try container.encode(name, forKey: .name)
+		try container.encode(genres, forKey: .genres)
+		try container.encode(coverArt, forKey: .coverArt)
+		try container.encode(songs, forKey: .songs)
+	}
+	
+	
 }
