@@ -1,5 +1,5 @@
 //
-//  Album.swift
+//  AnAlbum.swift
 //  An Album Cover
 //
 //  Created by Michael Redig on 6/3/19.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Album {
-	let artist: String
-	let coverArt: [URL]
-	let genres: [String]
+struct AnAlbum {
+	var artist: String
+	var coverArt: [URL]
+	var genres: [String]
 	let id: UUID
-	let name: String
-	let songs: [Song]
+	var name: String
+	var songs: [Song]
 }
