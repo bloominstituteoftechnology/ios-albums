@@ -17,6 +17,7 @@
 		33A29B6822A5EC5E0024454D /* AnAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A29B6722A5EC5E0024454D /* AnAlbum.swift */; };
 		33A29B6C22A5ED0D0024454D /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A29B6B22A5ED0D0024454D /* Song.swift */; };
 		33A29B6E22A5EFE20024454D /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 33A29B6D22A5EFE20024454D /* exampleAlbum.json */; };
+		33A29B7322A5F0A40024454D /* AnAlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A29B7222A5F0A40024454D /* AnAlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		33A29B6722A5EC5E0024454D /* AnAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnAlbum.swift; sourceTree = "<group>"; };
 		33A29B6B22A5ED0D0024454D /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		33A29B6D22A5EFE20024454D /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
+		33A29B7222A5F0A40024454D /* AnAlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnAlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		33A29B6F22A5F0210024454D /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				33A29B7222A5F0A40024454D /* AnAlbumController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			files = (
 				33A29B6C22A5ED0D0024454D /* Song.swift in Sources */,
 				332A18BA22A5C83500A25255 /* AlbumsTableViewController.swift in Sources */,
+				33A29B7322A5F0A40024454D /* AnAlbumController.swift in Sources */,
 				332A18BE22A5E88900A25255 /* SongTableViewCell.swift in Sources */,
 				332A18BC22A5E75800A25255 /* AlbumDetailTableViewController.swift in Sources */,
 				3371748022A5C7030002B469 /* AppDelegate.swift in Sources */,

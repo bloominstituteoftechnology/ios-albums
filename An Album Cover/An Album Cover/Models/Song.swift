@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Song: Decodable {
+struct Song: Codable {
 	let id: UUID
 	let duration: String
 	let name: String
@@ -23,7 +23,7 @@ struct Song: Decodable {
 		}
 
 		enum NameKeys: String, CodingKey {
-			case name
+			case title
 		}
 	}
 
@@ -38,6 +38,6 @@ struct Song: Decodable {
 		duration = try durationContainer.decode(String.self, forKey: .duration)
 
 		let nameContainer = try container.nestedContainer(keyedBy: CodingKeys.NameKeys.self, forKey: .name)
-		name = try nameContainer.decode(String.self, forKey: .name)
+		name = try nameContainer.decode(String.self, forKey: .title)
 	}
 }

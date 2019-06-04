@@ -10,5 +10,11 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
 
+	let anAlbumController = AnAlbumController()
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		anAlbumController.testDecodingExampleAlbum()
+	}
 
 }
