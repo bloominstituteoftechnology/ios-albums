@@ -18,14 +18,15 @@ class AlbumController {
 		}
 	}
 	
-	func parseAlbumJsonData(with data: Data) {
+	private func parseAlbumJsonData(with data: Data) {
 		let decoder = JSONDecoder()
 		do {
-			let albums = try decoder.decode(Album.self, from: data)
-			print(albums.coverArt)
-			
+			let albumsDecoded = try decoder.decode(Album.self, from: data)
+			albums.append(albumsDecoded)
 		} catch {
 			NSLog("Error decoding json: \(error)")
 		}
 	}
+	
+	var albums: [Album] = []
 }

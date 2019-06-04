@@ -24,5 +24,7 @@ import UIKit
 
 
 struct Song: Codable {
-	
+	let id: String
+	let duration: String
+	let name: String
 }
