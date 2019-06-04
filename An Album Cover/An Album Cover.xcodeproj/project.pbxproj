@@ -14,11 +14,14 @@
 		3371748522A5C7030002B469 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3371748322A5C7030002B469 /* Main.storyboard */; };
 		3371748722A5C7040002B469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3371748622A5C7040002B469 /* Assets.xcassets */; };
 		3371748A22A5C7040002B469 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3371748822A5C7040002B469 /* LaunchScreen.storyboard */; };
+		33A29B6822A5EC5E0024454D /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A29B6722A5EC5E0024454D /* Album.swift */; };
+		33A29B6A22A5EC740024454D /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 33A29B6922A5EC740024454D /* exampleAlbum.json */; };
+		33A29B6C22A5ED0D0024454D /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A29B6B22A5ED0D0024454D /* Song.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		332A18B922A5C83500A25255 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
-		332A18BB22A5E75800A25255 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		332A18B922A5C83500A25255 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlbumsTableViewController.swift; path = ../AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		332A18BB22A5E75800A25255 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlbumDetailTableViewController.swift; path = ../AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		332A18BD22A5E88900A25255 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		3371747C22A5C7030002B469 /* An Album Cover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "An Album Cover.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3371747F22A5C7030002B469 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +29,9 @@
 		3371748622A5C7040002B469 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3371748922A5C7040002B469 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3371748B22A5C7040002B469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33A29B6722A5EC5E0024454D /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		33A29B6922A5EC740024454D /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../exampleAlbum.json; sourceTree = "<group>"; };
+		33A29B6B22A5ED0D0024454D /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,9 +45,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		332A18BF22A5E93C00A25255 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				332A18B922A5C83500A25255 /* AlbumsTableViewController.swift */,
+				332A18BB22A5E75800A25255 /* AlbumDetailTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		3371747322A5C7030002B469 = {
 			isa = PBXGroup;
 			children = (
+				33A29B6922A5EC740024454D /* exampleAlbum.json */,
 				3371747E22A5C7030002B469 /* An Album Cover */,
 				3371747D22A5C7030002B469 /* Products */,
 			);
@@ -59,15 +75,32 @@
 			isa = PBXGroup;
 			children = (
 				3371747F22A5C7030002B469 /* AppDelegate.swift */,
-				332A18B922A5C83500A25255 /* AlbumsTableViewController.swift */,
-				332A18BB22A5E75800A25255 /* AlbumDetailTableViewController.swift */,
+				33A29B6622A5EC540024454D /* Models */,
+				33A29B6522A5EC4D0024454D /* Views */,
+				332A18BF22A5E93C00A25255 /* View Controllers */,
 				3371748322A5C7030002B469 /* Main.storyboard */,
-				332A18BD22A5E88900A25255 /* SongTableViewCell.swift */,
 				3371748622A5C7040002B469 /* Assets.xcassets */,
 				3371748822A5C7040002B469 /* LaunchScreen.storyboard */,
 				3371748B22A5C7040002B469 /* Info.plist */,
 			);
 			path = "An Album Cover";
+			sourceTree = "<group>";
+		};
+		33A29B6522A5EC4D0024454D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				332A18BD22A5E88900A25255 /* SongTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		33A29B6622A5EC540024454D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				33A29B6722A5EC5E0024454D /* Album.swift */,
+				33A29B6B22A5ED0D0024454D /* Song.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +163,7 @@
 			files = (
 				3371748A22A5C7040002B469 /* LaunchScreen.storyboard in Resources */,
 				3371748722A5C7040002B469 /* Assets.xcassets in Resources */,
+				33A29B6A22A5EC740024454D /* exampleAlbum.json in Resources */,
 				3371748522A5C7030002B469 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,10 +175,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A29B6C22A5ED0D0024454D /* Song.swift in Sources */,
 				332A18BA22A5C83500A25255 /* AlbumsTableViewController.swift in Sources */,
 				332A18BE22A5E88900A25255 /* SongTableViewCell.swift in Sources */,
 				332A18BC22A5E75800A25255 /* AlbumDetailTableViewController.swift in Sources */,
 				3371748022A5C7030002B469 /* AppDelegate.swift in Sources */,
+				33A29B6822A5EC5E0024454D /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
