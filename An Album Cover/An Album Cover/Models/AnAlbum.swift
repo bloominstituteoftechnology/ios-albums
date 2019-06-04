@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AnAlbum: Codable {
+struct AnAlbum: Equatable {
 	var artist: String
 	var coverArt: [URL]
 	var genres: [String]
@@ -28,6 +28,10 @@ struct AnAlbum: Codable {
 			case url
 		}
 	}
+
+}
+
+extension AnAlbum: Codable {
 
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)

@@ -14,8 +14,8 @@ class AlbumsTableViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		anAlbumController.testDecodingExampleAlbum()
-		anAlbumController.testEncodingExampleAlbum()
+//		anAlbumController.testDecodingExampleAlbum()
+//		anAlbumController.testEncodingExampleAlbum()
 	}
 
 }

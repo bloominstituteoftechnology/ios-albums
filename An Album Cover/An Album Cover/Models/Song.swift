@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Song: Codable {
+struct Song: Equatable {
 	let id: UUID
 	let duration: String
 	let name: String
@@ -26,6 +26,10 @@ struct Song: Codable {
 			case title
 		}
 	}
+
+}
+
+extension Song: Codable {
 
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)

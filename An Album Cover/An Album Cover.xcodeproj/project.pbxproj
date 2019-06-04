@@ -18,6 +18,8 @@
 		33A29B6C22A5ED0D0024454D /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A29B6B22A5ED0D0024454D /* Song.swift */; };
 		33A29B6E22A5EFE20024454D /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 33A29B6D22A5EFE20024454D /* exampleAlbum.json */; };
 		33A29B7322A5F0A40024454D /* AnAlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A29B7222A5F0A40024454D /* AnAlbumController.swift */; };
+		33A29B7622A5FFFE0024454D /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A29B7422A5FFFE0024454D /* NetworkHandler.swift */; };
+		33A29B7722A5FFFE0024454D /* UIAlertController+NetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A29B7522A5FFFE0024454D /* UIAlertController+NetError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		33A29B6B22A5ED0D0024454D /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		33A29B6D22A5EFE20024454D /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
 		33A29B7222A5F0A40024454D /* AnAlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnAlbumController.swift; sourceTree = "<group>"; };
+		33A29B7422A5FFFE0024454D /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
+		33A29B7522A5FFFE0024454D /* UIAlertController+NetError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+NetError.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 			children = (
 				33A29B6D22A5EFE20024454D /* exampleAlbum.json */,
 				3371747F22A5C7030002B469 /* AppDelegate.swift */,
+				33A29B7822A600010024454D /* Helpers */,
 				33A29B6F22A5F0210024454D /* Model Controllers */,
 				33A29B6622A5EC540024454D /* Models */,
 				33A29B6522A5EC4D0024454D /* Views */,
@@ -112,6 +117,15 @@
 				33A29B7222A5F0A40024454D /* AnAlbumController.swift */,
 			);
 			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		33A29B7822A600010024454D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				33A29B7422A5FFFE0024454D /* NetworkHandler.swift */,
+				33A29B7522A5FFFE0024454D /* UIAlertController+NetError.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +207,8 @@
 				332A18BC22A5E75800A25255 /* AlbumDetailTableViewController.swift in Sources */,
 				3371748022A5C7030002B469 /* AppDelegate.swift in Sources */,
 				33A29B6822A5EC5E0024454D /* AnAlbum.swift in Sources */,
+				33A29B7622A5FFFE0024454D /* NetworkHandler.swift in Sources */,
+				33A29B7722A5FFFE0024454D /* UIAlertController+NetError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
