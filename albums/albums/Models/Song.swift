@@ -45,10 +45,9 @@ struct Song: Codable {
 		id = try container.decode(String.self, forKey: .id)
 		
 		let nameContainer = try container.nestedContainer(keyedBy: SongCodingKeys.NameSongCodingKeys.self, forKey: .name)
+		name = try nameContainer.decode(String.self, forKey: .title)
 		
-		let titlename = try nameContainer.decode(String.self, forKey: .title)
-		print(titlename)
-		name  = ""
+		
 		
 	}
 	
