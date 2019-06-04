@@ -51,8 +51,25 @@ extension AlbumsTableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 		let album = anAlbumController.albums[indexPath.row]
+		cell.imageView?.image = nil
 		cell.textLabel?.text = album.name
 		cell.detailTextLabel?.text = album.artist
+		if let artURL = album.coverArt.first {
+			anAlbumController.get(albumArtAt: artURL) { (result: Result<Data, NetworkError>) in
+				DispatchQueue.main.async {
+					do {
+						let data = try result.get()
+						guard let image = UIImage(data: data) else {
+							throw NetworkError.imageDecodeError
+						}
+						cell.imageView?.image = image
+						cell.layoutSubviews()
+					} catch {
+						NSLog("error fetching art: \(error)")
+					}
+				}
+			}
+		}
 		return cell
 	}
 }

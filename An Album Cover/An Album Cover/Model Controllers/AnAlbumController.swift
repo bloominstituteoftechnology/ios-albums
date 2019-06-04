@@ -94,6 +94,10 @@ class AnAlbumController {
 
 		networkHandler.transferMahCodableDatas(with: request, completion: completion)
 	}
+
+	func get(albumArtAt albumArtURL: URL, completion: @escaping (Result<Data, NetworkError>) -> Void) {
+		networkHandler.transferMahDatas(with: albumArtURL.request, completion: completion)
+	}
 	
 }
 
