@@ -23,7 +23,7 @@ class AlbumController {
 		do {
 			let albumsDecoded = try decoder.decode(Album.self, from: data)
 			albums.append(albumsDecoded)
-//			print(albums[0])
+			print(albumsDecoded)
 		} catch {
 			NSLog("Error decoding json: \(error)")
 		}
@@ -36,10 +36,18 @@ class AlbumController {
 		do {
 			let plistData = try plistEncoder.encode(album)
 			print(plistData)
+//			let str = String(data: plistData, encoding: .utf8)
+			print("testEncodingExampleAlbum->>>>")
+			parseAlbumJsonData(with: plistData)
 		} catch {
 			print("Error encoding :\(error)")
 		}
 	}
 
+	init() {
+		testDecodingExampleAlbum()
+		testEncodingExampleAlbum(album: albums[0])
+	}
+	
 	var albums: [Album] = []
 }
