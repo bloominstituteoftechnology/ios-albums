@@ -10,12 +10,15 @@ import UIKit
 
 class AlbumViewController: UIViewController, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 10
+		return album?.songs.count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = songsTableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath)
-		cell.textLabel?.text = "1"
+		let song  = album?.songs[indexPath.row]
+		
+		cell.textLabel?.text = song?.name
+		cell.detailTextLabel?.text = song?.duration
 		return cell
 	}
 	
@@ -26,14 +29,16 @@ class AlbumViewController: UIViewController, UITableViewDataSource {
 		saveRightBarButtonItem()
 	}
 	
+	@objc func save() {
+		
+	}
+	
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		setupViews()
 	}
 
-	@objc func save() {
-		
-	}
 	
 	func saveRightBarButtonItem() {
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
@@ -54,12 +59,8 @@ class AlbumViewController: UIViewController, UITableViewDataSource {
 		
 		generesTextField.text = album.genres[0]
 		urlsTextField.text = album.coverArt[0]
-		
-		
 	}
-	
-	
-	
+
 	@IBOutlet var songsTableView: UITableView!
 	
 	@IBOutlet var addSongTitleTextField: UITextField!
