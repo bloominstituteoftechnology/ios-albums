@@ -32,9 +32,6 @@ class AlbumController {
 	func testEncodingExampleAlbum(album: Album) {
 		let plistEncoder = PropertyListEncoder()
 		plistEncoder.outputFormat = .xml
-		
-		
-		
 		do {
 			let plistData = try plistEncoder.encode(album)
 			print(plistData)
@@ -46,10 +43,19 @@ class AlbumController {
 			print("Error encoding :\(error)")
 		}
 	}
+	
+	
+	func addSong(to albumcheck: Album, with song: Song) {
+		for (index, album) in albums.enumerated() {
+			if albumcheck.name == album.name {
+				albums[index].songs.append(song)
+			}
+		}
+	}
 
 	init() {
 		testDecodingExampleAlbum()
-		
+		albums[0].songs.append(Song(id: "", name: "", duration: ""))
 	}
 	
 	var albums: [Album] = []

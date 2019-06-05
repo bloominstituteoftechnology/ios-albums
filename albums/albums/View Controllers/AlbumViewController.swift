@@ -34,6 +34,10 @@ class AlbumViewController: UIViewController, UITableViewDataSource {
 			let duration = addSongDurationTitleTextField.text,
 			let album = album else { return }
 		
+//		let song = Song(id: UUID().uuidString, name: title, duration: duration)
+//
+//		print(song)
+		
 		
 	}
 	
@@ -50,8 +54,12 @@ class AlbumViewController: UIViewController, UITableViewDataSource {
 	
 	@IBAction func AddSongButtonAction(_ sender: Any) {
 		guard let title = addSongTitleTextField.text,
-			let duration = addSongDurationTitleTextField.text else { return }
+			let duration = addSongDurationTitleTextField.text, let album = album else { return }
 	
+		albumController?.addSong(to: album, with: Song(id: UUID().uuidString, name: title, duration: duration))
+		songsTableView.reloadData()
+		view.reloadInputViews()
+//		songsTableView.reloadData()
 		print(title, duration)
 	}
 	
@@ -76,4 +84,5 @@ class AlbumViewController: UIViewController, UITableViewDataSource {
 	@IBOutlet var urlsTextField: UITextField!
 	
 	var album: Album?
+	var albumController: AlbumController?
 }

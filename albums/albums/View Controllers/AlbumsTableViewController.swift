@@ -39,16 +39,20 @@ class AlbumsTableViewController: UITableViewController {
 		if segue.identifier == "cellSegue" {
 			print("here")
 			guard let vc = segue.destination as? AlbumViewController,
-				let cell = sender as? AlbumsTableViewCell,
+				let cell = sender as? UITableViewCell,
 				let indexpath = tableView.indexPath(for: cell) else { return }
 			
 			
 			let album = albumController.albums[indexpath.row]
 			vc.album = album
+			vc.albumController = albumController
 		} else if segue.identifier == "" {
 			
 		}
 	}
+	
+
+	
 	
 	let albumController = AlbumController()
 }

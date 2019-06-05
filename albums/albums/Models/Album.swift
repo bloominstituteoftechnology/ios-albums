@@ -37,7 +37,7 @@ struct Album: Codable {
 	let coverArt: [String]
 	let genres: [String]
 	
-	let songs: [Song]
+	var songs: [Song]
 	
 	enum AlbumCodingKeys: String, CodingKey {
 		case artist
