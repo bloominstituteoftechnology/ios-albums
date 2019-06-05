@@ -28,6 +28,13 @@ struct Song: Codable {
 	let name: String
 	let duration: String
 	
+	init(id: String, name: String, duration: String) {
+		self.id = id
+		self.name = name
+		self.duration = duration
+	}
+	
+	
 	enum SongCodingKeys: String, CodingKey {
 		case id
 		case name
@@ -41,6 +48,8 @@ struct Song: Codable {
 			case duration
 		}
 	}
+	
+	
 	
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: SongCodingKeys.self)

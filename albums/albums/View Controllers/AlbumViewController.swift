@@ -30,6 +30,10 @@ class AlbumViewController: UIViewController, UITableViewDataSource {
 	}
 	
 	@objc func save() {
+		guard let title = addSongTitleTextField.text,
+			let duration = addSongDurationTitleTextField.text,
+			let album = album else { return }
+		
 		
 	}
 	
