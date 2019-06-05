@@ -23,7 +23,7 @@ class AlbumController {
 		do {
 			let albumsDecoded = try decoder.decode(Album.self, from: data)
 			albums.append(albumsDecoded)
-			print(albumsDecoded)
+			//print(albumsDecoded)
 		} catch {
 			NSLog("Error decoding json: \(error)")
 		}
@@ -33,12 +33,15 @@ class AlbumController {
 		let plistEncoder = PropertyListEncoder()
 		plistEncoder.outputFormat = .xml
 		
+		
+		
 		do {
 			let plistData = try plistEncoder.encode(album)
 			print(plistData)
-//			let str = String(data: plistData, encoding: .utf8)
-			print("testEncodingExampleAlbum->>>>")
-			parseAlbumJsonData(with: plistData)
+			if let str = String(data: plistData, encoding: .utf8) {
+				print("testEncodingExampleAlbum->>>>")
+				print(str)
+			}
 		} catch {
 			print("Error encoding :\(error)")
 		}
@@ -46,7 +49,7 @@ class AlbumController {
 
 	init() {
 		testDecodingExampleAlbum()
-		testEncodingExampleAlbum(album: albums[0])
+		
 	}
 	
 	var albums: [Album] = []

@@ -12,12 +12,14 @@ class AlbumsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		albumController.testDecodingExampleAlbum()
-
-		//print(albumController.albums)
+		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(check))
 	}
 	
-	
+	@objc func check() {
+		let a = albumController.albums[0]
+		albumController.testEncodingExampleAlbum(album: a)
+		
+	}
 	
 	let albumController = AlbumController()
 }

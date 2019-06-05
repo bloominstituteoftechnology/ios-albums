@@ -80,7 +80,12 @@ struct Album: Codable {
 		try container.encode(name, forKey: .name)
 		try container.encode(genres, forKey: .genres)
 		try container.encode(coverArt, forKey: .coverArt)
-		try container.encode(songs, forKey: .songs)
+		
+		var songContainer = container.nestedUnkeyedContainer(forKey: .songs)
+		for song in songs {
+			try songContainer.encode(song)
+		}
+		
 	}
 	
 	
