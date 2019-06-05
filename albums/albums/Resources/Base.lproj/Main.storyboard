@@ -43,7 +43,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="qwP-q5-xXl" kind="show" id="ved-R5-jom"/>
+                                    <segue destination="qwP-q5-xXl" kind="show" identifier="cellSegue" id="ved-R5-jom"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -228,6 +228,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Mo6-vo-OFa"/>
+        <segue reference="ved-R5-jom"/>
     </inferredMetricsTieBreakers>
 </document>

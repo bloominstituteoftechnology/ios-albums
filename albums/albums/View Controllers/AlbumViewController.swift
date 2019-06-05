@@ -12,11 +12,12 @@ class AlbumViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		
-		
-		
 		saveRightBarButtonItem()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		setupViews()
 	}
 
 	@objc func save() {
@@ -34,6 +35,19 @@ class AlbumViewController: UIViewController {
 		print(title, duration)
 	}
 	
+	func setupViews() {
+		guard let album = album else { return }
+		
+		albumsTextField.text = album.name
+		artistTextField.text = album.artist
+		
+		generesTextField.text = album.genres[0]
+		urlsTextField.text = album.coverArt[0]
+		
+		
+	}
+	
+	
 	
 	@IBOutlet var songsTableView: UITableView!
 	
@@ -44,4 +58,6 @@ class AlbumViewController: UIViewController {
 	@IBOutlet var artistTextField: UITextField!
 	@IBOutlet var generesTextField: UITextField!
 	@IBOutlet var urlsTextField: UITextField!
+	
+	var album: Album? { didSet{ print("set album") } }
 }
