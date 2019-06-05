@@ -70,5 +70,5 @@ class AlbumViewController: UIViewController, UITableViewDataSource {
 	@IBOutlet var generesTextField: UITextField!
 	@IBOutlet var urlsTextField: UITextField!
 	
-	var album: Album? { didSet{ print("set album") } }
+	var album: Album?
 }
