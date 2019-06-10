@@ -65,12 +65,12 @@
 		E84605FB22AEEA9F00F5E7CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E84605E722AEE48300F5E7CC /* AppDelegate.swift */,
 				E84605EB22AEE48300F5E7CC /* Main.storyboard */,
 				E84605EE22AEE48400F5E7CC /* Assets.xcassets */,
 				E84605F022AEE48400F5E7CC /* LaunchScreen.storyboard */,
 				E84605F922AEE4B000F5E7CC /* exampleAlbum.json */,
 				E84605F322AEE48400F5E7CC /* Info.plist */,
+				E84605E722AEE48300F5E7CC /* AppDelegate.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";

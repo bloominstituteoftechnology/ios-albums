@@ -6,13 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Albums Table View Controller-->
         <scene sceneID="hZu-wZ-jWv">
             <objects>
-                <tableViewController id="ugn-wz-eHK" sceneMemberID="viewController">
+                <tableViewController id="ugn-wz-eHK" customClass="AlbumsTableViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="O2M-E5-SNa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,6 +42,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="jgc-Tp-YVl" kind="show" id="dI5-8F-RIO"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -49,12 +53,31 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="V8a-gb-idp">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="E3I-4h-r6n"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="E3I-4h-r6n">
+                            <connections>
+                                <segue destination="jgc-Tp-YVl" kind="show" id="tvD-6V-Alz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="si8-Em-KCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="814.49275362318849" y="-31.473214285714285"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="aBe-xB-fjA">
+            <objects>
+                <viewController id="jgc-Tp-YVl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tti-mk-bzf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ygA-oR-IB9"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RkI-wf-Qjl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1694" y="-31"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UbZ-RU-FoP">
@@ -75,4 +98,7 @@
             <point key="canvasLocation" x="-95.652173913043484" y="-31.473214285714285"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dI5-8F-RIO"/>
+    </inferredMetricsTieBreakers>
 </document>
