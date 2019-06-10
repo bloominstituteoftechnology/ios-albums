@@ -9,11 +9,23 @@
 import Foundation
 
 struct Album: Decodable {
-	let artist: String
 	let id: String
+	let artist: String
 	let name: String
 	
 //	let coverArt: [URL]
+//	let genres: [String]
 //	let songs: [Song]
+	
+	enum CodingKeys: String, CodingKey {
+		case id 
+		case artist
+		case name
+		
+//		case coverArt
+//		case genres
+//		case songs
+		
+	}
 	
 }
