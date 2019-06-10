@@ -161,6 +161,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addSongButtonOutlet" destination="67Z-TO-Sb4" id="wRL-26-L6C"/>
+                                    <outlet property="songDurationTextField" destination="g7z-Ka-O3g" id="A65-aY-C03"/>
                                     <outlet property="songNameTextField" destination="IFo-I3-FnF" id="bui-Kb-xYq"/>
                                 </connections>
                             </tableViewCell>
