@@ -13,7 +13,7 @@
 		E84605F222AEE48400F5E7CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E84605F022AEE48400F5E7CC /* LaunchScreen.storyboard */; };
 		E84605FA22AEE4B000F5E7CC /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = E84605F922AEE4B000F5E7CC /* exampleAlbum.json */; };
 		E84605FD22AEEACB00F5E7CC /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84605FC22AEEACB00F5E7CC /* AlbumsTableViewController.swift */; };
-		E846060022AEEC3F00F5E7CC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84605FF22AEEC3F00F5E7CC /* DetailViewController.swift */; };
+		E846060622AEF45900F5E7CC /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E846060522AEF45900F5E7CC /* AlbumDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		E84605F322AEE48400F5E7CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E84605F922AEE4B000F5E7CC /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleAlbum.json; sourceTree = "<group>"; };
 		E84605FC22AEEACB00F5E7CC /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
-		E84605FF22AEEC3F00F5E7CC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E846060522AEF45900F5E7CC /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				E84605FC22AEEACB00F5E7CC /* AlbumsTableViewController.swift */,
-				E84605FF22AEEC3F00F5E7CC /* DetailViewController.swift */,
+				E846060522AEF45900F5E7CC /* AlbumDetailTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -158,8 +158,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E846060022AEEC3F00F5E7CC /* DetailViewController.swift in Sources */,
 				E84605E822AEE48300F5E7CC /* AppDelegate.swift in Sources */,
+				E846060622AEF45900F5E7CC /* AlbumDetailTableViewController.swift in Sources */,
 				E84605FD22AEEACB00F5E7CC /* AlbumsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
