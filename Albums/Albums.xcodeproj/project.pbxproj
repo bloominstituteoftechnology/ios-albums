@@ -17,6 +17,7 @@
 		E846060822AEF61700F5E7CC /* AlbumDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E846060722AEF61700F5E7CC /* AlbumDetailTableViewCell.swift */; };
 		E846060B22AEF7D000F5E7CC /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = E846060A22AEF7D000F5E7CC /* Album.swift */; };
 		E846060E22AEF81000F5E7CC /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = E846060D22AEF80F00F5E7CC /* Song.swift */; };
+		E846061222AF038600F5E7CC /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E846061122AF038600F5E7CC /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E846060722AEF61700F5E7CC /* AlbumDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewCell.swift; sourceTree = "<group>"; };
 		E846060A22AEF7D000F5E7CC /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		E846060D22AEF80F00F5E7CC /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		E846061122AF038600F5E7CC /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				E846060C22AEF7FA00F5E7CC /* Models */,
+				E846061322AF038E00F5E7CC /* Model Controller */,
 				E84605FE22AEEAD300F5E7CC /* View Controllers */,
 				E846060922AEF61B00F5E7CC /* TableView Cells */,
 				E84605FB22AEEA9F00F5E7CC /* Resources */,
@@ -109,6 +112,14 @@
 				E846060D22AEF80F00F5E7CC /* Song.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E846061322AF038E00F5E7CC /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E846061122AF038600F5E7CC /* AlbumController.swift */,
+			);
+			path = "Model Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +198,7 @@
 				E846060822AEF61700F5E7CC /* AlbumDetailTableViewCell.swift in Sources */,
 				E84605E822AEE48300F5E7CC /* AppDelegate.swift in Sources */,
 				E846060622AEF45900F5E7CC /* AlbumDetailTableViewController.swift in Sources */,
+				E846061222AF038600F5E7CC /* AlbumController.swift in Sources */,
 				E84605FD22AEEACB00F5E7CC /* AlbumsTableViewController.swift in Sources */,
 				E846060B22AEF7D000F5E7CC /* Album.swift in Sources */,
 			);
