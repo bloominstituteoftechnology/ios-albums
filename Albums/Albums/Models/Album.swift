@@ -18,7 +18,7 @@ struct Album: Decodable {
 //	let songs: [Song]
 	
 	enum CodingKeys: String, CodingKey {
-		case id 
+		case id
 		case artist
 		case name
 		
@@ -27,5 +27,13 @@ struct Album: Decodable {
 //		case songs
 		
 	}
+	
+	init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		id = try container.decode(String.self, forKey: .id)
+		artist = try container.decode(String.self, forKey: .artist)
+		name = try container.decode(String.self, forKey: .name)
+	}
+	
 	
 }
