@@ -120,7 +120,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="120" id="qY2-vc-U6Q">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="albumDetailCell" rowHeight="120" id="qY2-vc-U6Q" customClass="AlbumDetailTableViewCell" customModule="Albums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="238" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qY2-vc-U6Q" id="NFB-SW-eeo">
@@ -130,13 +130,13 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GHj-Bv-jZc">
                                             <rect key="frame" x="8" y="8" width="398" height="103.5"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IFo-I3-FnF">
+                                                <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IFo-I3-FnF">
                                                     <rect key="frame" x="0.0" y="0.0" width="398" height="27.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g7z-Ka-O3g">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song Duration" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g7z-Ka-O3g">
                                                     <rect key="frame" x="0.0" y="35.5" width="398" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -145,6 +145,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67Z-TO-Sb4">
                                                     <rect key="frame" x="0.0" y="73.5" width="398" height="30"/>
                                                     <state key="normal" title="Add Song"/>
+                                                    <connections>
+                                                        <action selector="AddSongButtonPressed:" destination="qY2-vc-U6Q" eventType="touchUpInside" id="4oV-sO-gtg"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -156,6 +159,10 @@
                                         <constraint firstItem="GHj-Bv-jZc" firstAttribute="top" secondItem="NFB-SW-eeo" secondAttribute="top" constant="8" id="uxp-0T-4jF"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addSongButtonOutlet" destination="67Z-TO-Sb4" id="wRL-26-L6C"/>
+                                    <outlet property="songNameTextField" destination="IFo-I3-FnF" id="bui-Kb-xYq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
