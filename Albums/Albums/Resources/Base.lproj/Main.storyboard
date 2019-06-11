@@ -42,7 +42,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="jDz-vt-7uF" kind="show" identifier="albumDetailSegue" id="Y0g-sx-qm5"/>
+                                    <segue destination="jDz-vt-7uF" kind="show" identifier="albumDetailSegue" id="hio-XK-iBp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -52,11 +52,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Albums" id="V8a-gb-idp">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="E3I-4h-r6n">
-                            <connections>
-                                <segue destination="jDz-vt-7uF" kind="show" identifier="addAlbumSegue" id="X2F-UD-4uI"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="E3I-4h-r6n"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="si8-Em-KCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -172,10 +168,10 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="albumTextField" destination="Esg-aL-J8g" id="ae6-xg-akf"/>
-                        <outlet property="artistTextField" destination="xV7-ga-kji" id="lT4-TA-tuz"/>
-                        <outlet property="coverArtTextField" destination="dU8-jo-r9r" id="vbA-j3-tzS"/>
-                        <outlet property="genresTextField" destination="B5e-Nm-NzA" id="DSA-np-KOU"/>
+                        <outlet property="albumTextField" destination="Esg-aL-J8g" id="FD0-hR-Zta"/>
+                        <outlet property="artistTextField" destination="xV7-ga-kji" id="stP-lX-1rW"/>
+                        <outlet property="coverArtTextField" destination="dU8-jo-r9r" id="Rgc-7x-Zj3"/>
+                        <outlet property="genresTextField" destination="B5e-Nm-NzA" id="rpL-nZ-OSa"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3U-4e-EPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -201,7 +197,4 @@
             <point key="canvasLocation" x="-95.652173913043484" y="-31.473214285714285"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Y0g-sx-qm5"/>
-    </inferredMetricsTieBreakers>
 </document>

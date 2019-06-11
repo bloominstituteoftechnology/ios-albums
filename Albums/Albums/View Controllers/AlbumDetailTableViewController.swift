@@ -18,7 +18,7 @@ class AlbumDetailTableViewController: UITableViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		tableView.reloadData()
-		
+		setupViews()
 		
 	}
 	
@@ -42,16 +42,16 @@ class AlbumDetailTableViewController: UITableViewController {
 	}
 	
 	func setupViews() {
-		print("here")
-		if let album = album {
-			albumTextField.text = album.name
-			artistTextField.text = album.artist
-			genresTextField.text = album.genres[0]
-			coverArtTextField.text = "\(album.coverArt[0])"
-		}
+		guard let album = album else { return }
+		print(album.name)
+		albumTextField?.text = album.name
+		artistTextField?.text = album.artist
+		genresTextField?.text = album.genres[0]
+		coverArtTextField?.text = "\(album.coverArt[0])"
+		
 	}
 	
-	var album: Album? { didSet { setupViews() }}
+	var album: Album? 
 	
 	@IBOutlet var albumTextField: UITextField!
 	@IBOutlet var artistTextField: UITextField!

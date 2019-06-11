@@ -32,14 +32,15 @@ class AlbumsTableViewController: UITableViewController {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "albumDetailSegue" {
+
 			guard let vc = segue.destination as? AlbumDetailTableViewController,
-				let cell = sender as? AlbumDetailTableViewCell,
-				let indexpath = tableView.indexPath(for: cell)	else { return }
-			let album = albumController.albums[indexpath.row]
+				let indexpath = tableView.indexPathForSelectedRow else { return }
 			
+			
+			let album = albumController.albums[indexpath.row]
 			vc.album = album
 			
-		}   
+		}
 	}
 	
 	
