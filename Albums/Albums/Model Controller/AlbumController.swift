@@ -13,12 +13,17 @@ class AlbumController {
 	
 	init() {
 		fetchJsonDataFromBundle()
-		putAlbum(album: albums[0])
+		putAlbum(album: albums[0]) { error in
+			if let error = error {
+				print("error puting \(error)")
+			}
+		}
 		print(albums.count)
 	}
 	
 	private (set) var baseUrl = URL(string: "https://albums-dc0ee.firebaseio.com/")!
 	private (set) var albums: [Album] = []
+	private (set) var albumRep: [AlbumsRepresentation] = []
 }
 
 extension AlbumController {
@@ -44,16 +49,18 @@ extension AlbumController {
 /// Networking
 
 extension AlbumController {
-	func putAlbum(album: Album) {
-		var request = URLRequest(url: baseUrl)
+	func putAlbum(album: Album, completion: @escaping (Error?) -> ()) {
+		let url = baseUrl.appendingPathComponent(UUID().uuidString).appendingPathExtension("json")
+		
+		var request = URLRequest(url: url)
 		request.httpMethod = "PUT"
 		
 		do{
-			let encoded = try JSONEncoder().encode(album)
-			request.httpBody = encoded
-			
+			request.httpBody  = try JSONEncoder().encode(album)
+		
 		} catch {
 			NSLog("Error encoding Album: \(error)")
+			completion(error)
 		}
 		
 		URLSession.shared.dataTask(with: request) { _, response, error in
@@ -63,8 +70,9 @@ extension AlbumController {
 			
 			if let error = error {
 				NSLog("Error puting Album: \(error)")
+				completion(error)
+				return
 			}
-			
 			
 		}.resume()
 		
