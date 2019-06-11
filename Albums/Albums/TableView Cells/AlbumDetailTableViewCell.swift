@@ -16,7 +16,11 @@ class AlbumDetailTableViewCell: UITableViewCell {
 	
 	
 	func setupViews() {
-		guard let song = song else { return }
+		guard let song = song else {
+			songNameTextField?.isEnabled = true
+			songDurationTextField?.isEnabled = true
+			return
+		}
 		songNameTextField?.text = song.name
 		songDurationTextField?.text = song.duration
 		
