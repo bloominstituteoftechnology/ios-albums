@@ -15,7 +15,7 @@ struct Album: Decodable {
 	
 	let genres: [String]
 	let coverArt: [URL]
-//	let songs: [Song]
+	let songs: [Song]
 	
 	enum CodingKeys: String, CodingKey {
 		case id
@@ -24,7 +24,7 @@ struct Album: Decodable {
 		
 		case genres
 		case coverArt
-//		case songs
+		case songs
 		
 		
 		enum CoverArtCodingKeys: String, CodingKey {
@@ -49,7 +49,7 @@ struct Album: Decodable {
 		}
 
 		coverArt = coverArtStrings.compactMap( {  URL(string: $0) })
-		
+		songs = try container.decode([Song].self, forKey: .songs)
 	}
 	
 	
