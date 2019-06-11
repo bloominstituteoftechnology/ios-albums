@@ -13,7 +13,7 @@ struct Album: Decodable {
 	let artist: String
 	let name: String
 	
-//	let coverArt: [URL]
+	let coverArt: [URL]
 //	let genres: [String]
 //	let songs: [Song]
 	
@@ -22,9 +22,14 @@ struct Album: Decodable {
 		case artist
 		case name
 		
-//		case coverArt
+		case coverArt
 //		case genres
 //		case songs
+		
+		
+		enum CoverArtCodingKeys: String, CodingKey {
+			case url
+		}
 		
 	}
 	
@@ -33,6 +38,18 @@ struct Album: Decodable {
 		id = try container.decode(String.self, forKey: .id)
 		artist = try container.decode(String.self, forKey: .artist)
 		name = try container.decode(String.self, forKey: .name)
+		
+	
+		var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+		var coverArtStrings: [String] = []
+		while !coverArtContainer.isAtEnd {
+			let urlContainer = try coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArtCodingKeys.self)
+			let str = try urlContainer.decode(String.self, forKey: .url)
+			coverArtStrings.append(str)
+		}
+
+		coverArt = coverArtStrings.compactMap( {  URL(string: $0) })
+		
 	}
 	
 	
