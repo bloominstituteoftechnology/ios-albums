@@ -15,6 +15,13 @@ class AlbumDetailTableViewController: UITableViewController {
 
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		tableView.reloadData()
+		
+		
+	}
+	
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return 2
 	}
@@ -23,7 +30,7 @@ class AlbumDetailTableViewController: UITableViewController {
 		if section == 1 {
 			return 1
 		}
-		return 3
+		return album?.songs.count ?? 0
 	}
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "albumDetailCell", for: indexPath)
@@ -34,4 +41,20 @@ class AlbumDetailTableViewController: UITableViewController {
 		return albumDetailCell
 	}
 	
+	func setupViews() {
+		print("here")
+		if let album = album {
+			albumTextField.text = album.name
+			artistTextField.text = album.artist
+			genresTextField.text = album.genres[0]
+			coverArtTextField.text = "\(album.coverArt[0])"
+		}
+	}
+	
+	var album: Album? { didSet { setupViews() }}
+	
+	@IBOutlet var albumTextField: UITextField!
+	@IBOutlet var artistTextField: UITextField!
+	@IBOutlet var genresTextField: UITextField!
+	@IBOutlet var coverArtTextField: UITextField!
 }

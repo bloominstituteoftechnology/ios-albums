@@ -12,8 +12,8 @@ import Foundation
 class AlbumController {
 	
 	init() {
-//		fetchJsonDataFromBundle()
-//
+		fetchJsonDataFromBundle()
+
 //
 //		putAlbum(album: AlbumsRepresentation(album: albums[0])) { error in
 //			if let error = error {
@@ -23,11 +23,11 @@ class AlbumController {
 		
 		
 		
-		getAlbum { error in
-			if let error = error {
-				print("Error geting album: " , error)
-			}
-		}
+//		getAlbum { error in
+//			if let error = error {
+//				print("Error geting album: " , error)
+//			}
+//		}
 		print(albums.count)
 	}
 	

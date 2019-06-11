@@ -42,7 +42,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="jDz-vt-7uF" kind="show" identifier="albumDetailSegue" id="iM7-5b-Nkg"/>
+                                    <segue destination="jDz-vt-7uF" kind="show" identifier="albumDetailSegue" id="Y0g-sx-qm5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -90,7 +90,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Generes" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B5e-Nm-NzA">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Genres" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B5e-Nm-NzA">
                                             <rect key="frame" x="0.0" y="84.5" width="398" height="30"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -171,6 +171,12 @@
                             <outlet property="delegate" destination="jDz-vt-7uF" id="0xK-nf-4Hf"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="albumTextField" destination="Esg-aL-J8g" id="ae6-xg-akf"/>
+                        <outlet property="artistTextField" destination="xV7-ga-kji" id="lT4-TA-tuz"/>
+                        <outlet property="coverArtTextField" destination="dU8-jo-r9r" id="vbA-j3-tzS"/>
+                        <outlet property="genresTextField" destination="B5e-Nm-NzA" id="DSA-np-KOU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3U-4e-EPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -196,6 +202,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iM7-5b-Nkg"/>
+        <segue reference="Y0g-sx-qm5"/>
     </inferredMetricsTieBreakers>
 </document>

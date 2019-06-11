@@ -13,6 +13,8 @@ class AlbumsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		
+		
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -26,6 +28,18 @@ class AlbumsTableViewController: UITableViewController {
 		cell.detailTextLabel?.text = album.artist
 		
 		return cell
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "albumDetailSegue" {
+			guard let vc = segue.destination as? AlbumDetailTableViewController,
+				let cell = sender as? AlbumDetailTableViewCell,
+				let indexpath = tableView.indexPath(for: cell)	else { return }
+			let album = albumController.albums[indexpath.row]
+			
+			vc.album = album
+			
+		}   
 	}
 	
 	
