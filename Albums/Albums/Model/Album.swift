@@ -19,6 +19,15 @@ struct Album: Codable {
     
     let songs: [Songs]
     
+    init(name: String, artist: String, coverArt: [URL], id: String, genres: [String], songs: [Songs]) {
+        self.name = name
+        self.artist = artist
+        self.coverArt = coverArt
+        self.id = id
+        self.genres = genres
+        self.songs = songs
+    }
+    
     enum AlbumKeys: String, CodingKey {
         
         case artist
@@ -76,6 +85,12 @@ struct Songs: Codable {
     let name: String
     let id: String
     let duration: String
+    
+    init(name: String, id: String, duration: String) {
+        self.name = name
+        self.id = id
+        self.duration = duration
+    }
     
     enum CodingKeys: String, CodingKey {
         case duration

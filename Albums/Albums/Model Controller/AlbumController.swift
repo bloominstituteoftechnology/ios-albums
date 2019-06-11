@@ -11,6 +11,7 @@ import Foundation
 class AlbunController {
     
     var albums: [Album] = []
+    var songs: [Songs] = []
     let baseURL = URL(string: "https://albums-6c899.firebaseio.com/")!
     typealias CompletionHandler = (Error?) -> Void
     
@@ -66,12 +67,16 @@ class AlbunController {
         }.resume()
     }
     
-    func createAlbum(artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) -> Album {
-        let newAlbum = Album(artist: artist)
+    func createAlbum(artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Songs]) -> Album {
+        let newAlbum = Album(name: name, artist: artist, coverArt: coverArt, id: id, genres: genres, songs: songs)
+        albums.append(newAlbum)
+        put(album: newAlbum)
+        return newAlbum
     }
     
     func createSong(name: String, id: String, duration: String) {
-        
+        let newSong = Songs(name: name, id: id, duration: duration)
+        songs.append(newSong)
     }
     
     func testDecodingExampleAlbum() {
