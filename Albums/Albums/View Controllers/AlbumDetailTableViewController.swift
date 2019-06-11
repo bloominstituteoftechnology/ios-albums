@@ -36,9 +36,7 @@ class AlbumDetailTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "albumDetailCell", for: indexPath)
 		guard let albumDetailCell = cell as? AlbumDetailTableViewCell else { return cell }
-		if indexPath.section == 0 {
-			albumDetailCell.addSongButtonOutlet.isHidden = true
-		}
+
 		let song = album?.songs[indexPath.row]
 		albumDetailCell.song = song
 		

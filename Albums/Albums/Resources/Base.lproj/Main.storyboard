@@ -52,7 +52,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Albums" id="V8a-gb-idp">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="E3I-4h-r6n"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="E3I-4h-r6n">
+                            <connections>
+                                <segue destination="jDz-vt-7uF" kind="show" identifier="AddAlbumSegue" id="VkE-0A-529"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="si8-Em-KCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -197,4 +201,7 @@
             <point key="canvasLocation" x="-95.652173913043484" y="-31.473214285714285"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="VkE-0A-529"/>
+    </inferredMetricsTieBreakers>
 </document>

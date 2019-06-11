@@ -22,7 +22,7 @@ class AlbumDetailTableViewCell: UITableViewCell {
 			return
 		}
 		
-		
+		addSongButtonOutlet?.isHidden = true
 		songNameTextField?.text = song.name
 		songDurationTextField?.text = song.duration
 		
