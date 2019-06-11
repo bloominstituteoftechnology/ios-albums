@@ -38,6 +38,9 @@ class AlbumDetailTableViewController: UITableViewController {
 		if indexPath.section == 0 {
 			albumDetailCell.addSongButtonOutlet.isHidden = true
 		}
+		let song = album?.songs[indexPath.row]
+		albumDetailCell.song = song
+		
 		return albumDetailCell
 	}
 	
