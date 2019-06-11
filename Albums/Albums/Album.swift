@@ -74,12 +74,20 @@ struct Album: Codable {
         
         var container = encoder.container(keyedBy: CodingKeys.self)
         
+        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        
+        for coverArtURL in coverArt {
+            var coverArtContainer = coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArtKeys.self)
+            try coverArtContainer.encode(coverArtURL, forKey: .url)
+        }
+        
+        
         try container.encode(name, forKey: .name)
         try container.encode(artist, forKey: .artist)
         try container.encode(id, forKey: .id)
         try container.encode(genres, forKey: .genres)
         try container.encode(songs, forKey: .songs)
-        try container.encode(coverArt, forKey: .coverArt)
+        
    
     }
   
@@ -134,9 +142,13 @@ struct Song: Codable {
         
         var container = encoder.container(keyedBy: CodingKeys.self)
         
-        try container.encode(id, forKey: .id)
-        try container.encode(duration, forKey: .duration)
-        try container.encode(name, forKey: .name)
+        var durationContainer = container.nestedContainer(keyedBy: CodingKeys.DurationKeys.self, forKey: .duration)
+        try durationContainer.encode(duration, forKey: .duration)
+        
+        var nameContainer = container.nestedContainer(keyedBy: CodingKeys.NameKeys.self, forKey: .name)
+        try nameContainer.encode(name, forKey: .title)
+        
+        container.encode(id, forKey: .id)
         
     }
     

@@ -87,7 +87,7 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tempSongs.count
+        return tempSongs.count + 1
     }
 
 
