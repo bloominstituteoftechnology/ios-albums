@@ -14,6 +14,9 @@
 		EF2D13E522AEDCC700502457 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2D13E422AEDCC700502457 /* AlbumsTableViewController.swift */; };
 		EF2D13E722AEDF5900502457 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2D13E622AEDF5900502457 /* AlbumDetailTableViewController.swift */; };
 		EF2D13E922AEE22400502457 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2D13E822AEE22400502457 /* SongTableViewCell.swift */; };
+		EF2D13EC22AEE35B00502457 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2D13EB22AEE35B00502457 /* Album.swift */; };
+		EF2D13EE22AEE46700502457 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = EF2D13ED22AEE46700502457 /* exampleAlbum.json */; };
+		EF2D13F122AF09F300502457 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2D13F022AF09F300502457 /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		EF2D13E422AEDCC700502457 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		EF2D13E622AEDF5900502457 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		EF2D13E822AEE22400502457 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		EF2D13EB22AEE35B00502457 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		EF2D13ED22AEE46700502457 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
+		EF2D13F022AF09F300502457 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +64,14 @@
 		EF2D13CF22AEDB2800502457 /* Albums */ = {
 			isa = PBXGroup;
 			children = (
+				EF2D13EA22AEE34800502457 /* Model */,
+				EF2D13EF22AF09CD00502457 /* Model Controller */,
 				EF2D13E322AEDCA700502457 /* ViewControllers */,
 				EF2D13D022AEDB2800502457 /* AppDelegate.swift */,
 				EF2D13E222AEDB7600502457 /* Storyboards */,
 				EF2D13D722AEDB2900502457 /* Assets.xcassets */,
 				EF2D13DC22AEDB2900502457 /* Info.plist */,
+				EF2D13ED22AEE46700502457 /* exampleAlbum.json */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -84,6 +93,22 @@
 				EF2D13E822AEE22400502457 /* SongTableViewCell.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EF2D13EA22AEE34800502457 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EF2D13EB22AEE35B00502457 /* Album.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EF2D13EF22AF09CD00502457 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EF2D13F022AF09F300502457 /* AlbumController.swift */,
+			);
+			path = "Model Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +171,7 @@
 			files = (
 				EF2D13DB22AEDB2900502457 /* LaunchScreen.storyboard in Resources */,
 				EF2D13D822AEDB2900502457 /* Assets.xcassets in Resources */,
+				EF2D13EE22AEE46700502457 /* exampleAlbum.json in Resources */,
 				EF2D13D622AEDB2800502457 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,9 +184,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF2D13E922AEE22400502457 /* SongTableViewCell.swift in Sources */,
+				EF2D13F122AF09F300502457 /* AlbumController.swift in Sources */,
 				EF2D13D122AEDB2800502457 /* AppDelegate.swift in Sources */,
 				EF2D13E722AEDF5900502457 /* AlbumDetailTableViewController.swift in Sources */,
 				EF2D13E522AEDCC700502457 /* AlbumsTableViewController.swift in Sources */,
+				EF2D13EC22AEE35B00502457 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
