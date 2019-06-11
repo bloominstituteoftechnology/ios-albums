@@ -31,15 +31,18 @@ class AlbumDetailTableViewController: UITableViewController {
 		if section == 1 {
 			return 1
 		}
+		
 		return album?.songs.count ?? 0
 	}
+	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "albumDetailCell", for: indexPath)
 		guard let albumDetailCell = cell as? AlbumDetailTableViewCell else { return cell }
 
-		let song = album?.songs[indexPath.row]
-		albumDetailCell.song = song
-		
+		if let song = album?.songs[indexPath.row], indexPath.section == 0 {
+			albumDetailCell.song = song
+		}
+		print(indexPath.section)
 		return albumDetailCell
 	}
 	
