@@ -110,8 +110,8 @@
 		E846060C22AEF7FA00F5E7CC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E846060A22AEF7D000F5E7CC /* Album.swift */,
 				E846061422AF355B00F5E7CC /* AlbumsRepresentation.swift */,
+				E846060A22AEF7D000F5E7CC /* Album.swift */,
 				E846060D22AEF80F00F5E7CC /* Song.swift */,
 			);
 			path = Models;

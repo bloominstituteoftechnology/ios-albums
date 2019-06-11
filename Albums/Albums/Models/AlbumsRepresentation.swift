@@ -8,8 +8,8 @@
 
 import Foundation
 
-class AlbumsRepresentation {
-	var uuid: String
+struct AlbumsRepresentation: Codable {
+	let uuid: String
 	let album: Album
 	
 	init(album: Album, uuid: String = UUID().uuidString) {

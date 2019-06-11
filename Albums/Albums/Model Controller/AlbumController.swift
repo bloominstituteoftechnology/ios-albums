@@ -13,17 +13,23 @@ class AlbumController {
 	
 	init() {
 		fetchJsonDataFromBundle()
-		putAlbum(album: albums[0]) { error in
+		
+		let albumRep = AlbumsRepresentation(album: albums[0])
+		albumReps.append(albumRep)
+		
+		putAlbum(album: albumReps[0]) { error in
 			if let error = error {
-				print("error puting \(error)")
+				print("Error puting: \(error)")
+				
 			}
 		}
+		
 		print(albums.count)
 	}
 	
 	private (set) var baseUrl = URL(string: "https://albums-dc0ee.firebaseio.com/")!
 	private (set) var albums: [Album] = []
-	private (set) var albumRep: [AlbumsRepresentation] = []
+	private (set) var albumReps: [AlbumsRepresentation] = []
 }
 
 extension AlbumController {
@@ -37,8 +43,6 @@ extension AlbumController {
 			} catch {
 				NSLog("Error Getting data: \(error)")
 			}
-			
-			
 		}
 	}
 }
@@ -49,7 +53,7 @@ extension AlbumController {
 /// Networking
 
 extension AlbumController {
-	func putAlbum(album: Album, completion: @escaping (Error?) -> ()) {
+	func putAlbum(album: AlbumsRepresentation, completion: @escaping (Error?) -> ()) {
 		let url = baseUrl.appendingPathComponent(UUID().uuidString).appendingPathExtension("json")
 		
 		var request = URLRequest(url: url)
