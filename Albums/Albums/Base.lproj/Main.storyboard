@@ -42,7 +42,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Ry9-VL-M9y" kind="show" id="LVy-hx-U9b"/>
+                                    <segue destination="Ry9-VL-M9y" kind="show" identifier="AlbumDetailSegue" id="LVy-hx-U9b"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -54,7 +54,7 @@
                     <navigationItem key="navigationItem" id="FoH-kC-YmJ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="D0G-Mb-3qq">
                             <connections>
-                                <segue destination="Ry9-VL-M9y" kind="show" id="P9f-Yn-IMC"/>
+                                <segue destination="Ry9-VL-M9y" kind="show" identifier="AddAlbumSegue" id="P9f-Yn-IMC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -157,6 +157,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addSongButton" destination="Ece-4M-qUp" id="U7L-sK-tvv"/>
                                     <outlet property="songDurationTextField" destination="785-kA-yUQ" id="dgR-AC-s0Z"/>
                                     <outlet property="songTitleTextField" destination="6PQ-ZU-0SV" id="2IH-Id-ucZ"/>
                                 </connections>
