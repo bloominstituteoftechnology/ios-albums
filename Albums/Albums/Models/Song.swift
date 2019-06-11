@@ -10,4 +10,15 @@ import Foundation
 
 struct Song: Codable {
 	let id: String
+	
+	enum CodingKeys: String, CodingKey {
+		case id
+	}
+	
+	init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		id = try container.decode(String.self, forKey: .id)
+		
+	}
+	
 }
