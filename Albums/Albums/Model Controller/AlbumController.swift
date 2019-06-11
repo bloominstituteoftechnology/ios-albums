@@ -74,9 +74,10 @@ class AlbunController {
         return newAlbum
     }
     
-    func createSong(name: String, id: String, duration: String) {
+    func createSong(name: String, id: String, duration: String) -> Songs {
         let newSong = Songs(name: name, id: id, duration: duration)
         songs.append(newSong)
+        return newSong
     }
     
     func testDecodingExampleAlbum() {
