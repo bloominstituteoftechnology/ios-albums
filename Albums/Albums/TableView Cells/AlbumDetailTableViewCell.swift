@@ -15,10 +15,19 @@ class AlbumDetailTableViewCell: UITableViewCell {
 	}
 	
 	
+	func setupViews() {
+		guard let song = song else { return }
+		songNameTextField?.text = song.name
+		songDurationTextField?.text = song.duration
+		
+	}
 	
 	@IBOutlet var songNameTextField: UITextField!
 	@IBOutlet var songDurationTextField: UITextField!
-	
 	@IBOutlet var addSongButtonOutlet: UIButton!
+	
+	var song: Song? {
+		didSet { setupViews() }
+	}
 	
 }
