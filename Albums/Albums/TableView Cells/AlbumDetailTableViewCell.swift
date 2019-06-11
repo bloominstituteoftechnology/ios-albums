@@ -21,6 +21,8 @@ class AlbumDetailTableViewCell: UITableViewCell {
 			songDurationTextField?.isEnabled = true
 			return
 		}
+		
+		
 		songNameTextField?.text = song.name
 		songDurationTextField?.text = song.duration
 		

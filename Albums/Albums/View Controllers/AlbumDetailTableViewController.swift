@@ -46,7 +46,7 @@ class AlbumDetailTableViewController: UITableViewController {
 	
 	func setupViews() {
 		guard let album = album else { return }
-		print(album.name)
+		title = album.name
 		albumTextField?.text = album.name
 		artistTextField?.text = album.artist
 		genresTextField?.text = album.genres[0]
