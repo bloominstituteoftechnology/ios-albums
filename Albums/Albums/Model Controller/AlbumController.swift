@@ -12,20 +12,22 @@ import Foundation
 class AlbumController {
 	
 	init() {
-		fetchJsonDataFromBundle()
-		
-		
-		putAlbum(album: AlbumsRepresentation(album: albums[0])) { error in
-			if let error = error {
-				print(error)
-			}
-		}
-		
-//		getAlbum { error in
+//		fetchJsonDataFromBundle()
+//
+//
+//		putAlbum(album: AlbumsRepresentation(album: albums[0])) { error in
 //			if let error = error {
-//				print("Error geting album: " , error)
+//				print(error)
 //			}
 //		}
+		
+		
+		
+		getAlbum { error in
+			if let error = error {
+				print("Error geting album: " , error)
+			}
+		}
 		print(albums.count)
 	}
 	
@@ -82,7 +84,7 @@ extension AlbumController {
 			}
 
 			do {
-				let decoded = try JSONDecoder().decode([String: AlbumsRepresentation].self, from: data)
+				let decoded = try JSONDecoder().decode([String: Album].self, from: data)
 //				let value = Array(decoded.values)
 //				print(value)
 			} catch {
