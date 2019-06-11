@@ -14,20 +14,18 @@ class AlbumController {
 	init() {
 		fetchJsonDataFromBundle()
 
-//
+
 //		putAlbum(album: AlbumsRepresentation(album: albums[0])) { error in
 //			if let error = error {
 //				print(error)
 //			}
 //		}
 		
-		
-		
-//		getAlbum { error in
-//			if let error = error {
-//				print("Error geting album: " , error)
-//			}
-//		}
+		getAlbums{ error in
+			if let error = error {
+				print("Error geting album: " , error)
+			}
+		}
 		print(albums.count)
 	}
 	
@@ -58,7 +56,7 @@ extension AlbumController {
 
 extension AlbumController {
 	
-	func getAlbum(completion: @escaping (Error?) -> Void) {
+	func getAlbums(completion: @escaping (Error?) -> Void) {
 		guard let baseUrl = baseUrl else { return }
 		let url = baseUrl.appendingPathExtension("json")
 		
@@ -85,8 +83,8 @@ extension AlbumController {
 
 			do {
 				let decoded = try JSONDecoder().decode([String: Album].self, from: data)
-//				let value = Array(decoded.values)
-//				print(value)
+				let value = Array(decoded.values)
+				print(value)
 			} catch {
 				NSLog("Error decoding albums: \(error)")
 				completion(error)
