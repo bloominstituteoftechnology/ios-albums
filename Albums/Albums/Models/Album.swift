@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Album: Decodable {
+struct Album: Codable {
 	let id: String
 	let artist: String
 	let name: String

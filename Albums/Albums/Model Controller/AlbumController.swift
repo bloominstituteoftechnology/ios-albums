@@ -12,26 +12,14 @@ import Foundation
 class AlbumController {
 	
 	init() {
-		
+		fetchJsonDataFromBundle()
+		putAlbum(album: albums[0])
+		print(albums.count)
 	}
 	
 	private (set) var baseUrl = URL(string: "https://albums-dc0ee.firebaseio.com/")!
 	private (set) var albums: [Album] = []
 }
-
-/// Networking
-
-extension AlbumController {
-	func putAlbum(album: Album) {
-		var request = URLRequest(url: baseUrl)
-		request.httpMethod = "PUT"
-		
-		
-		
-		
-	}
-}
-
 
 extension AlbumController {
 	
@@ -49,3 +37,38 @@ extension AlbumController {
 		}
 	}
 }
+
+
+
+
+/// Networking
+
+extension AlbumController {
+	func putAlbum(album: Album) {
+		var request = URLRequest(url: baseUrl)
+		request.httpMethod = "PUT"
+		
+		do{
+			let encoded = try JSONEncoder().encode(album)
+			request.httpBody = encoded
+			
+		} catch {
+			NSLog("Error encoding Album: \(error)")
+		}
+		
+		URLSession.shared.dataTask(with: request) { _, response, error in
+			if let response = response as? HTTPURLResponse {
+				NSLog("putAlbum Response: \(response.statusCode)")
+			}
+			
+			if let error = error {
+				NSLog("Error puting Album: \(error)")
+			}
+			
+			
+		}.resume()
+		
+	}
+}
+
+
