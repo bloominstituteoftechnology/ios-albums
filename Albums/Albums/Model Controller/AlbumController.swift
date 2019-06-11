@@ -12,22 +12,15 @@ import Foundation
 class AlbumController {
 	
 	init() {
-		fetchJsonDataFromBundle()
-		
-		let albumRep = AlbumsRepresentation(album: albums[0])
-		albumReps.append(albumRep)
-		
-		putAlbum(album: albumReps[0]) { error in
+		getAlbum { error in
 			if let error = error {
-				print("Error puting: \(error)")
-				
+				print("Error geting album: " , error)
 			}
 		}
-		
 		print(albums.count)
 	}
 	
-	private (set) var baseUrl = URL(string: "https://albums-dc0ee.firebaseio.com/")!
+	private (set) var baseUrl = URL(string: "https://albums-dc0ee.firebaseio.com/")
 	private (set) var albums: [Album] = []
 	private (set) var albumReps: [AlbumsRepresentation] = []
 }
@@ -53,7 +46,42 @@ extension AlbumController {
 /// Networking
 
 extension AlbumController {
+	
+	func getAlbum(completion: @escaping (Error?) -> Void) {
+		guard let baseUrl = baseUrl else { return }
+		let url = baseUrl.appendingPathExtension("json")
+		
+		var request = URLRequest(url: url)
+		request.httpMethod = "GET"
+		
+		URLSession.shared.dataTask(with: request) { data, response, error in
+			if let response = response as? HTTPURLResponse {
+				NSLog("Response code for getting albums: \(response.statusCode)")
+			}
+			
+			if let error = error {
+				NSLog("Error getting albums: \(error)")
+				completion(error)
+				return
+			}
+			
+			
+			guard let data = data else {
+				NSLog("Error getting data)")
+				completion(NSError())
+				return
+			}
+			
+			print(data)
+			
+		}.resume()
+		
+		
+	}
+	
+	
 	func putAlbum(album: AlbumsRepresentation, completion: @escaping (Error?) -> ()) {
+		guard let baseUrl = baseUrl else { return }
 		let url = baseUrl.appendingPathComponent(UUID().uuidString).appendingPathExtension("json")
 		
 		var request = URLRequest(url: url)
@@ -77,7 +105,7 @@ extension AlbumController {
 				completion(error)
 				return
 			}
-			
+			completion(nil)
 		}.resume()
 		
 	}
