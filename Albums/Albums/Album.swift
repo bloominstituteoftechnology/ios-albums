@@ -9,11 +9,20 @@
 import Foundation
 
 struct Album: Codable {
-    let artist: String
+    var artist: String
     var coverArt: [URL]
     var genres: [String]
-    let id, name: String
-    var songs: [Song]
+    var id, name: String
+    var songs: [Song]?
+
+    init(artist: String, coverArt: [URL], genres: [String], id: String = UUID().uuidString, name: String, songs: [Song]) {
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.id = id
+        self.name = name
+        self.songs = songs
+    }
 
     enum AlbumKeys: String, CodingKey {
         case artist
@@ -55,12 +64,17 @@ struct Album: Codable {
 
         try container.encode(artist, forKey: .artist)
 
-        var coverArtContainer = container.nestedContainer(keyedBy: , forKey: .coverArt)
+        var coverArtsContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
 
-        try container.encode(genres, forKey: .genres)
+        // Cycle through them encode them into an object in the array
+        for coverArtURL in coverArt {
+            var coverArtContainer = coverArtsContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
+            try coverArtContainer.encode(coverArtURL.absoluteString, forKey: .url)
+        }
+
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
-        try container.encode(<#T##value: Bool##Bool#>, forKey: <#T##Album.AlbumKeys#>)
+        try container.encode(songs, forKey: .songs)
 
     }
 
@@ -69,6 +83,8 @@ struct Song: Codable {
     let duration: String
     let id: String
     let name: String
+
+
 
     enum SongKeys: String, CodingKey {
         case duration
@@ -82,6 +98,20 @@ struct Song: Codable {
         enum NameKeys: String, CodingKey {
             case title
         }
+    }
+
+    init(duration: String, id: String = UUID().uuidString, name: String) {
+        self.duration = duration
+        self.id = id
+        self.name = name
+    }
+    func encode(with encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: SongKeys.self)
+        try container.encode(id, forKey: .id)
+        var durationContainer = container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
+        try durationContainer.encode(duration, forKey: .duration)
+        var nameContainer = container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
+        try nameContainer.encode(name, forKey: .title)
     }
 
     init(from decoder: Decoder) throws {
