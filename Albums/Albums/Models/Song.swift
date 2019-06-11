@@ -11,14 +11,19 @@ import Foundation
 struct Song: Codable {
 	let id: String
 	let name: String
+	let duration: String
 	
 	enum CodingKeys: String, CodingKey {
 		case id
 		case name
-		
+		case duration
 		
 		enum NameCodingKeys: String, CodingKey {
 			case title
+		}
+		
+		enum DurationCodingKeys: String, CodingKey {
+			case duration
 		}
 		
 	}
@@ -30,7 +35,8 @@ struct Song: Codable {
 		let nameContainer = try container.nestedContainer(keyedBy: CodingKeys.NameCodingKeys.self, forKey: .name)
 		name = try nameContainer.decode(String.self, forKey: .title)
 		
-		
+		let duarationContainer = try container.nestedContainer(keyedBy: CodingKeys.DurationCodingKeys.self, forKey: .duration)
+		duration = try duarationContainer.decode(String.self, forKey: .duration)
 	}
 	
 }
