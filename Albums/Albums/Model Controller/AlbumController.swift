@@ -11,12 +11,36 @@ import Foundation
 
 class AlbumController {
 	
+	init() {
+		
+	}
+	
+	private (set) var baseUrl = URL(string: "https://albums-dc0ee.firebaseio.com/")!
+	private (set) var albums: [Album] = []
+}
+
+/// Networking
+
+extension AlbumController {
+	func putAlbum(album: Album) {
+		var request = URLRequest(url: baseUrl)
+		request.httpMethod = "PUT"
+		
+		
+		
+		
+	}
+}
+
+
+extension AlbumController {
+	
 	func fetchJsonDataFromBundle() {
 		if let fileUrl = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") {
 			do {
 				let data = try Data(contentsOf: fileUrl)
 				let decode = try JSONDecoder().decode(Album.self, from: data)
-				print(decode)
+				albums.append(decode)
 			} catch {
 				NSLog("Error Getting data: \(error)")
 			}
@@ -24,6 +48,4 @@ class AlbumController {
 			
 		}
 	}
-	
-	private (set) var albums: [Album] = []
 }
