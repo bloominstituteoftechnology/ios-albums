@@ -19,6 +19,7 @@ class AlbumDetailTableViewController: UITableViewController {
 		super.viewWillAppear(animated)
 		tableView.reloadData()
 		setupViews()
+		setupNavRightBUtton()
 		
 	}
 	
@@ -52,6 +53,14 @@ class AlbumDetailTableViewController: UITableViewController {
 		genresTextField?.text = album.genres[0]
 		coverArtTextField?.text = "\(album.coverArt[0])"
 		
+	}
+	
+	func setupNavRightBUtton() {
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+	}
+	
+	@objc func save() {
+		//save to firebase
 	}
 	
 	var album: Album? 
