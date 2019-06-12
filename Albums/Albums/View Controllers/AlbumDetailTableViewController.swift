@@ -44,8 +44,10 @@ class AlbumDetailTableViewController: UITableViewController {
 
 		if let song = album?.songs[indexPath.row], indexPath.section == 0 {
 			albumDetailCell.song = song
+			
 		} else {
 			albumDetailCell.song = nil
+			albumDetailCell.delegate = self
 		}
 		
 		return albumDetailCell
@@ -75,4 +77,12 @@ class AlbumDetailTableViewController: UITableViewController {
 	@IBOutlet var artistTextField: UITextField!
 	@IBOutlet var genresTextField: UITextField!
 	@IBOutlet var coverArtTextField: UITextField!
+}
+
+extension AlbumDetailTableViewController: AlbumDetailTableViewCellDelegate {
+	func updateSongs(song: Song) {
+		print(song)
+	}
+	
+	
 }
