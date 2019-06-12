@@ -10,11 +10,22 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
 
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+//		albumController.getAlbums { error in
+//			if let error = error {
+//				print("Error getting albums: \(error)")
+//			}
+//
+//			self.tableView.reloadData()
+//		}
+		print(albumController.albums.count)
+		
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		
-		
+		tableView.reloadData()
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,4 +52,5 @@ class AlbumsTableViewController: UITableViewController {
 	}
 	
 	let albumController = AlbumController()
+	var albums: [Album] = []
 }
