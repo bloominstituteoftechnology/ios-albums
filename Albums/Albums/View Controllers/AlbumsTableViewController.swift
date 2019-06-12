@@ -12,10 +12,10 @@ class AlbumsTableViewController: UITableViewController {
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		
 		albumController.getAlbums { result in
 			if let result = try? result.get() {
 				self.albums = result
-				print(result)
 				DispatchQueue.main.async {
 					self.tableView.reloadData()
 				}

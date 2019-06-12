@@ -28,6 +28,12 @@ struct Song: Codable {
 		
 	}
 	
+	init (name: String, duration: String, id: String = UUID().uuidString) {
+		self.name = name
+		self.duration = duration
+		self.id = id
+	}
+	
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		id = try container.decode(String.self, forKey: .id)

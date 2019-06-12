@@ -8,10 +8,19 @@
 
 import UIKit
 
+protocol AlbumDetailTableViewCellDelegate: AnyObject {
+	func updateSongs(song: Song)
+}
+
+
 class AlbumDetailTableViewCell: UITableViewCell {
 
 	@IBAction func AddSongButtonPressed(_ sender: Any) {
-	
+		guard let name = songNameTextField.text,
+			let duration = songDurationTextField.text else { return }
+		let song = Song(name: name, duration: duration)
+		
+		delegate?.updateSongs(song: song)
 	}
 	
 	
@@ -31,6 +40,7 @@ class AlbumDetailTableViewCell: UITableViewCell {
 		
 	}
 	
+	weak var delegate: AlbumDetailTableViewCellDelegate?
 	@IBOutlet var songNameTextField: UITextField!
 	@IBOutlet var songDurationTextField: UITextField!
 	@IBOutlet var addSongButtonOutlet: UIButton!
