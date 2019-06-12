@@ -39,7 +39,7 @@ struct Song: Codable {
 		duration = try duarationContainer.decode(String.self, forKey: .duration)
 	}
 	
-	func encode(from encoder: Encoder) throws {
+	func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		try container.encode(id, forKey: .id)
 		

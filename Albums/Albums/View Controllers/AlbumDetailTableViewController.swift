@@ -48,7 +48,6 @@ class AlbumDetailTableViewController: UITableViewController {
 			albumDetailCell.song = nil
 		}
 		
-		print(indexPath.section)
 		return albumDetailCell
 	}
 	

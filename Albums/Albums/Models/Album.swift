@@ -43,7 +43,7 @@ struct Album: Codable {
 	
 		var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
 		var coverArtStrings: [String] = []
-		while !coverArtContainer.isAtEnd {
+		while  !coverArtContainer.isAtEnd {
 			let urlContainer = try coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArtCodingKeys.self)
 			let str = try urlContainer.decode(String.self, forKey: .url)
 			coverArtStrings.append(str)
@@ -53,20 +53,28 @@ struct Album: Codable {
 		songs = try container.decode([Song].self, forKey: .songs)
 	}
 	
-	func encode(from encoder: Encoder) throws {
+	func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		try container.encode(id, forKey: .id)
 		try container.encode(artist, forKey: .artist)
 		try container.encode(name, forKey: .name)
+		try container.encode(genres, forKey: .genres)
 		
-		try container.encode(genres, forKey: .genres) // <
-		
-		var coverArtContainers = container.nestedUnkeyedContainer(forKey: .coverArt)
-		for url in coverArt {
-			
-			try coverArtContainers.encode(url.absoluteString)
+
+		var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+		for c in coverArt {
+			var cContainer = coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArtCodingKeys.self)
+			try cContainer.encode(c, forKey: .url)
 		}
 		
+		
+//		for url in coverArt {
+//			var urlContainer = coverArtContainers.nestedContainer(keyedBy: CodingKeys.CoverArtCodingKeys.self)
+//			try urlContainer.encode(url, forKey: .url)
+//		}
+//
+
+
 		try container.encode(songs, forKey: .songs)
 		
 	}
