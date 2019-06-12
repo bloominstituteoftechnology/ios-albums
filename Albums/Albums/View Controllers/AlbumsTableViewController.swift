@@ -21,9 +21,6 @@ class AlbumsTableViewController: UITableViewController {
 				}
 			}
 		}
-		print(albumController.albums.count)
-		
-		
 	}
 	
     override func viewDidLoad() {

@@ -9,13 +9,7 @@
 import Foundation
 
 struct Album: Codable {
-	let id: String
-	let artist: String
-	let name: String
-	
-	let genres: [String]
-	let coverArt: [URL]
-	let songs: [Song]
+
 	
 	enum CodingKeys: String, CodingKey {
 		case id
@@ -69,4 +63,12 @@ struct Album: Codable {
 		try container.encode(songs, forKey: .songs)
 	}
 	
+	let id: String
+	let artist: String
+	let name: String
+	
+	let genres: [String]
+	let coverArt: [URL]
+	let songs: [Song]
+	var uuid: String?
 }

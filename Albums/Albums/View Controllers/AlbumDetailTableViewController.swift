@@ -20,7 +20,6 @@ class AlbumDetailTableViewController: UITableViewController {
 		tableView.reloadData()
 		setupViews()
 		setupNavRightBUtton()
-		
 	}
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
@@ -34,7 +33,6 @@ class AlbumDetailTableViewController: UITableViewController {
 		if section == 1 {
 			return 1
 		}
-		
 		return album?.songs.count ?? 0
 	}
 	
@@ -47,9 +45,9 @@ class AlbumDetailTableViewController: UITableViewController {
 			
 		} else {
 			albumDetailCell.song = nil
-			albumDetailCell.delegate = self
 		}
 		
+		albumDetailCell.delegate = self
 		return albumDetailCell
 	}
 	
@@ -69,6 +67,14 @@ class AlbumDetailTableViewController: UITableViewController {
 	
 	@objc func save() {
 		//save to firebase
+		guard let album = albumTextField.text,
+			let artist = artistTextField.text,
+			let genres = genresTextField.text,
+			let coverArt = coverArtTextField.text else { return }
+		
+		print(album)
+		
+		
 	}
 	
 	var album: Album? 
@@ -82,6 +88,9 @@ class AlbumDetailTableViewController: UITableViewController {
 extension AlbumDetailTableViewController: AlbumDetailTableViewCellDelegate {
 	func updateSongs(song: Song) {
 		print(song)
+		
+		
+		tableView.reloadData()
 	}
 	
 	

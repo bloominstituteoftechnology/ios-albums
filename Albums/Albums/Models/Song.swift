@@ -9,10 +9,7 @@
 import Foundation
 
 struct Song: Codable {
-	let id: String
-	let name: String
-	let duration: String
-	
+
 	enum CodingKeys: String, CodingKey {
 		case id
 		case name
@@ -55,4 +52,9 @@ struct Song: Codable {
 		var duarationContainer = container.nestedContainer(keyedBy: CodingKeys.DurationCodingKeys.self, forKey: .duration)
 		try duarationContainer.encode(duration, forKey: .duration)
 	}
+	
+	let id: String
+	let name: String
+	let duration: String
+	
 }

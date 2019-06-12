@@ -25,7 +25,7 @@ class AlbumController {
 	
 	private (set) var baseUrl = URL(string: "https://albums-dc0ee.firebaseio.com/")
 	private (set) var albums: [Album] = []
-	private (set) var albumReps: [AlbumsRepresentation] = []
+	
 }
 
 extension AlbumController {
@@ -77,9 +77,19 @@ extension AlbumController {
 
 			do {
 				let decoded = try JSONDecoder().decode([String: Album].self, from: data)
-				let values = Array(decoded.values)
-				completion(.success(values))
-				print(self.albums)
+				
+				//let values = Array(decoded.values)
+				var albums: [Album] = []
+				for key in decoded.keys {
+					print(key)
+					if var a = decoded[key] {
+						a.uuid = String(key)
+						albums.append(a)
+					}
+				}
+				
+				
+				completion(.success(albums))
 			} catch {
 				NSLog("Error decoding albums: \(error)")
 				completion(.failure(error))
@@ -90,15 +100,16 @@ extension AlbumController {
 	}
 	
 	
-	func putAlbum(album: AlbumsRepresentation, completion: @escaping (Error?) -> ()) {
-		guard let baseUrl = baseUrl else { return }
-		let url = baseUrl.appendingPathComponent(album.uuid).appendingPathExtension("json")
+	func putAlbum(album: Album, completion: @escaping (Error?) -> ()) {
+		guard let baseUrl = baseUrl, let uuid = album.uuid else { return }
+		
+		let url = baseUrl.appendingPathComponent(uuid).appendingPathExtension("json")
 		
 		var request = URLRequest(url: url)
 		request.httpMethod = "PUT"
 		
 		do{
-			request.httpBody  = try JSONEncoder().encode(album.album)
+			request.httpBody  = try JSONEncoder().encode(album)
 		} catch {
 			NSLog("Error encoding Album: \(error)")
 			completion(error)
