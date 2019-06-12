@@ -58,9 +58,12 @@ struct Album: Codable {
 		try container.encode(id, forKey: .id)
 		try container.encode(artist, forKey: .artist)
 		try container.encode(name, forKey: .name)
-		try container.encode(genres, forKey: .genres)
+		
+		try container.encode(genres, forKey: .genres) // <
+		
 		var coverArtContainers = container.nestedUnkeyedContainer(forKey: .coverArt)
 		for url in coverArt {
+			
 			try coverArtContainers.encode(url.absoluteString)
 		}
 		

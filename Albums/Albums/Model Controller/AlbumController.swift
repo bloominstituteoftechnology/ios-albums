@@ -15,11 +15,11 @@ class AlbumController {
 		fetchJsonDataFromBundle()
 
 
-//		putAlbum(album: AlbumsRepresentation(album: albums[0])) { error in
-//			if let error = error {
-//				print(error)
-//			}
-//		}
+		putAlbum(album: AlbumsRepresentation(album: albums[0])) { error in
+			if let error = error {
+				print(error)
+			}
+		}
 		
 		getAlbums{ error in
 			if let error = error {

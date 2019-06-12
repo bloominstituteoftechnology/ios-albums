@@ -19,6 +19,9 @@ class AlbumDetailTableViewCell: UITableViewCell {
 		guard let song = song else {
 			songNameTextField?.isEnabled = true
 			songDurationTextField?.isEnabled = true
+			addSongButtonOutlet?.isHidden = false
+			songNameTextField?.text = ""
+			songDurationTextField?.text = ""
 			return
 		}
 		

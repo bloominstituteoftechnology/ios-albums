@@ -26,6 +26,9 @@ class AlbumDetailTableViewController: UITableViewController {
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return 2
 	}
+//	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//		return "check \(section)"
+//	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if section == 1 {
@@ -41,7 +44,10 @@ class AlbumDetailTableViewController: UITableViewController {
 
 		if let song = album?.songs[indexPath.row], indexPath.section == 0 {
 			albumDetailCell.song = song
+		} else {
+			albumDetailCell.song = nil
 		}
+		
 		print(indexPath.section)
 		return albumDetailCell
 	}
