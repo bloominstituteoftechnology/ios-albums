@@ -63,6 +63,19 @@ struct Album: Codable {
 		try container.encode(songs, forKey: .songs)
 	}
 	
+	init(id: String = UUID().uuidString, artist: String, name: String, genres: [String], coverArt: [URL], songs: [Song]) {
+		
+		self.id = id
+		self.name = name
+		self.artist = artist
+		self.genres = genres
+		self.coverArt = coverArt
+		
+		self.songs = songs
+		
+		
+	}
+	
 	let id: String
 	let artist: String
 	let name: String
@@ -70,5 +83,4 @@ struct Album: Codable {
 	let genres: [String]
 	let coverArt: [URL]
 	let songs: [Song]
-	var uuid: String?
 }
