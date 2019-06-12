@@ -12,14 +12,17 @@ class AlbumsTableViewController: UITableViewController {
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-//		albumController.getAlbums { error in
-//			if let error = error {
-//				print("Error getting albums: \(error)")
-//			}
-//
-//			self.tableView.reloadData()
-//		}
+		albumController.getAlbums { result in
+			if let result = try? result.get() {
+				self.albums = result
+				print(result)
+				DispatchQueue.main.async {
+					self.tableView.reloadData()
+				}
+			}
+		}
 		print(albumController.albums.count)
+		
 		
 	}
 	
@@ -29,12 +32,12 @@ class AlbumsTableViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return albumController.albums.count
+		return albums.count
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath)
-		let album = albumController.albums[indexPath.row]
+		let album = albums[indexPath.row]
 		cell.textLabel?.text = album.name
 		cell.detailTextLabel?.text = album.artist
 		
@@ -46,7 +49,7 @@ class AlbumsTableViewController: UITableViewController {
 			guard let vc = segue.destination as? AlbumDetailTableViewController,
 				let indexpath = tableView.indexPathForSelectedRow else { return }
 			
-			let album = albumController.albums[indexpath.row]
+			let album = albums[indexpath.row]
 			vc.album = album
 		}
 	}
