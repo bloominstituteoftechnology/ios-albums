@@ -48,6 +48,10 @@ class AlbumsTableViewController: UITableViewController {
 			
 			let album = albums[indexpath.row]
 			vc.album = album
+			vc.albumController = albumController
+		} else if segue.identifier == "AddAlbumSegue" {
+			guard let vc = segue.destination as? AlbumDetailTableViewController else { return }
+			vc.albumController = albumController
 		}
 	}
 	

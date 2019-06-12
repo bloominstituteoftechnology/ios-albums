@@ -63,7 +63,7 @@ struct Album: Codable {
 		try container.encode(songs, forKey: .songs)
 	}
 	
-	init(id: String = UUID().uuidString, artist: String, name: String, genres: [String], coverArt: [URL], songs: [Song]) {
+	init(id: String = UUID().uuidString, artist: String, name: String, genres: [String], coverArt: [URL], songs: [Song] = []) {
 		
 		self.id = id
 		self.name = name

@@ -72,12 +72,25 @@ class AlbumDetailTableViewController: UITableViewController {
 			let genres = genresTextField.text,
 			let coverArt = coverArtTextField.text else { return }
 		
-		print(album)
+//		let url = URL(string: coverArt)
+		let a = Album(artist: artist, name: album, genres: [genres], coverArt: [])
+		
+		albumController?.putAlbum(album: a, completion: { error in
+			if let error = error {
+				print("Error Puting to firebse : \(error)")
+			}
+			
+				
+				print(a)
+				self.dismiss(animated: true)
+			
+		})
 		
 		
 	}
 	
-	var album: Album? 
+	var album: Album?
+	var albumController: AlbumController?
 	
 	@IBOutlet var albumTextField: UITextField!
 	@IBOutlet var artistTextField: UITextField!
