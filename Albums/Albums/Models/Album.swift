@@ -59,7 +59,6 @@ struct Album: Codable {
 		try container.encode(artist, forKey: .artist)
 		try container.encode(name, forKey: .name)
 		try container.encode(genres, forKey: .genres)
-		
 
 		var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
 		for c in coverArt {
@@ -67,16 +66,7 @@ struct Album: Codable {
 			try cContainer.encode(c, forKey: .url)
 		}
 		
-		
-//		for url in coverArt {
-//			var urlContainer = coverArtContainers.nestedContainer(keyedBy: CodingKeys.CoverArtCodingKeys.self)
-//			try urlContainer.encode(url, forKey: .url)
-//		}
-//
-
-
 		try container.encode(songs, forKey: .songs)
-		
 	}
 	
 }
