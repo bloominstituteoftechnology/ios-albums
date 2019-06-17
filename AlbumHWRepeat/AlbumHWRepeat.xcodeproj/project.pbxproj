@@ -58,16 +58,48 @@
 		1B6AC4B022B8308C0006D41B /* AlbumHWRepeat */ = {
 			isa = PBXGroup;
 			children = (
-				1B6AC4B122B8308C0006D41B /* AppDelegate.swift */,
+				1B6AC4C922B836ED0006D41B /* Views */,
+				1B6AC4CA22B836FD0006D41B /* Table View Controllers */,
+				1B6AC4CB22B8370B0006D41B /* Table View Cells */,
+				1B6AC4CC22B8371E0006D41B /* Resources */,
+			);
+			path = AlbumHWRepeat;
+			sourceTree = "<group>";
+		};
+		1B6AC4C922B836ED0006D41B /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				1B6AC4B522B8308C0006D41B /* Main.storyboard */,
-				1B6AC4C322B833D40006D41B /* DetailTableViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1B6AC4CA22B836FD0006D41B /* Table View Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				1B6AC4C522B833E60006D41B /* AlbumsTableViewController.swift */,
+				1B6AC4C322B833D40006D41B /* DetailTableViewController.swift */,
+			);
+			path = "Table View Controllers";
+			sourceTree = "<group>";
+		};
+		1B6AC4CB22B8370B0006D41B /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
 				1B6AC4C722B833FE0006D41B /* SongTableViewCell.swift */,
+			);
+			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		1B6AC4CC22B8371E0006D41B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				1B6AC4B822B8308D0006D41B /* Assets.xcassets */,
+				1B6AC4B122B8308C0006D41B /* AppDelegate.swift */,
 				1B6AC4BA22B8308D0006D41B /* LaunchScreen.storyboard */,
 				1B6AC4BD22B8308D0006D41B /* Info.plist */,
 			);
-			path = AlbumHWRepeat;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,7 +324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4W7EQ4E4R;
-				INFOPLIST_FILE = AlbumHWRepeat/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AlbumHWRepeat/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,7 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4W7EQ4E4R;
-				INFOPLIST_FILE = AlbumHWRepeat/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AlbumHWRepeat/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
