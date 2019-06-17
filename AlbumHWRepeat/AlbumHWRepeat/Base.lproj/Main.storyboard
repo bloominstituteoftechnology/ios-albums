@@ -120,6 +120,40 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GCv-0k-sLj" id="au5-hb-K9t">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="126.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="xST-tx-YWB">
+                                            <rect key="frame" x="8" y="8" width="398" height="63"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song's Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FhO-sE-YD6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song's duration" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gSQ-a2-AFp">
+                                                    <rect key="frame" x="0.0" y="33" width="398" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="63" id="MCY-Sj-ZYN"/>
+                                            </constraints>
+                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QfA-rf-o5u">
+                                            <rect key="frame" x="160" y="86" width="67" height="30"/>
+                                            <state key="normal" title="Add Song"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="QfA-rf-o5u" firstAttribute="leading" secondItem="au5-hb-K9t" secondAttribute="leading" constant="160" id="CDv-Bl-ght"/>
+                                        <constraint firstItem="xST-tx-YWB" firstAttribute="top" secondItem="au5-hb-K9t" secondAttribute="top" constant="8" id="Q2P-Ho-1xD"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QfA-rf-o5u" secondAttribute="trailing" constant="20" symbolic="YES" id="Uci-jq-sYG"/>
+                                        <constraint firstItem="xST-tx-YWB" firstAttribute="leading" secondItem="au5-hb-K9t" secondAttribute="leading" constant="8" id="mFP-gx-NHe"/>
+                                        <constraint firstItem="QfA-rf-o5u" firstAttribute="top" secondItem="gSQ-a2-AFp" secondAttribute="bottom" constant="15" id="rLZ-QM-WUx"/>
+                                        <constraint firstAttribute="trailing" secondItem="xST-tx-YWB" secondAttribute="trailing" constant="8" id="xMG-wu-VF4"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
