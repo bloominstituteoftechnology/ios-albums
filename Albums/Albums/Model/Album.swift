@@ -17,12 +17,22 @@ class Album: Decodable {
         case songs
         case coverArt
         case id
+        
+        enum CoverArtKey: String, CodingKey {
+            case url
+        }
+        
+        enum SongsKey: String, CodingKey {
+            case song
+        }
+        
+        
     }
     
     let artist: String
     let genres: [String]
     let albumName: String
-    let songs: [Song]
+    var songs: [Song]
     let coverArt: [URL]
     let id: String
     
@@ -32,9 +42,12 @@ class Album: Decodable {
         albumName = try container.decode(String.self, forKey: .albumName)
         id = try container.decode(String.self, forKey: .id)
         artist = try container.decode(String.self, forKey: .artist)
-        coverArt = try container.decode([URL].self, forKey: .coverArt)
-        genres = try container.decode([String].self, forKey: .genres)
-        songs = try container.decode([Song].self, forKey: .songs)
+        let coverArtContainer = try container.nestedContainer(keyedBy: AlbumKeys.CoverArtKey.self, forKey: .coverArt)
+        coverArt = try coverArtContainer.decode([URL].self, forKey: .url)
+        var genreContainer = try container.nestedUnkeyedContainer(forKey: .genres)
+        genres = try genreContainer.decode([String].self)
+        var songsContainer = try container.nestedUnkeyedContainer(forKey: .songs)
+        songs = try songsContainer.decode([Song].self)
         
     }
     
@@ -48,6 +61,15 @@ class Song: Decodable {
         case duration
         case id
         case name
+        
+        enum DurationKeys: String, CodingKey {
+            case duration
+            case seconds
+        }
+        
+        enum NameKeys: String, CodingKey {
+            case title
+        }
     }
     
     let duration: String
@@ -57,9 +79,11 @@ class Song: Decodable {
     required init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: SongKeys.self)
-        name = try container.decode(String.self, forKey: .name)
+        let nameContainer = try container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
+        name = try nameContainer.decode(String.self, forKey: .title)
         id = try container.decode(String.self, forKey: .id)
-        duration = try container.decode(String.self, forKey: .duration)
+        let durationContainer = try container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
+        duration = try durationContainer.decode(String.self, forKey: .duration)
         
     }
     
