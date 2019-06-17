@@ -9,17 +9,22 @@
 import UIKit
 
 class DetailTableViewController: UITableViewController {
+    
+    //MARK: IBOutlets
+    @IBOutlet weak var albumNameTF: UITextField!
+    @IBOutlet weak var artistNameTF: UITextField!
+    @IBOutlet weak var genresTF: UITextField!
+    @IBOutlet weak var urlTF: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    //MARK: IBActions
+    @IBAction func save(_ sender: UIBarButtonItem) {
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

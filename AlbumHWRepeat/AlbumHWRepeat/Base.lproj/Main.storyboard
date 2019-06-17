@@ -129,8 +129,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="rTo-Zi-Jzx">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="lX9-fS-Zgx"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="lX9-fS-Zgx">
+                            <connections>
+                                <action selector="save:" destination="yat-3B-aNA" id="lft-UO-2wx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="albumNameTF" destination="Tbl-kM-1Fx" id="V4d-y5-MS8"/>
+                        <outlet property="artistNameTF" destination="tsy-aH-ge0" id="B1u-aG-psa"/>
+                        <outlet property="genresTF" destination="Jpd-Ir-aRm" id="K6a-W8-zcK"/>
+                        <outlet property="urlTF" destination="RG8-OV-qW7" id="Idk-Hm-zSy"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDi-Tf-oby" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
