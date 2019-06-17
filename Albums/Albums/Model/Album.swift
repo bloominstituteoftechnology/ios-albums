@@ -22,11 +22,6 @@ class Album: Decodable {
             case url
         }
         
-        enum SongsKey: String, CodingKey {
-            case song
-        }
-        
-        
     }
     
     let artist: String
@@ -44,10 +39,8 @@ class Album: Decodable {
         artist = try container.decode(String.self, forKey: .artist)
         let coverArtContainer = try container.nestedContainer(keyedBy: AlbumKeys.CoverArtKey.self, forKey: .coverArt)
         coverArt = try coverArtContainer.decode([URL].self, forKey: .url)
-        var genreContainer = try container.nestedUnkeyedContainer(forKey: .genres)
-        genres = try genreContainer.decode([String].self)
-        var songsContainer = try container.nestedUnkeyedContainer(forKey: .songs)
-        songs = try songsContainer.decode([Song].self)
+        genres = try container.decode([String].self, forKey: .genres)
+        songs = try container.decode([Song].self, forKey: .songs)
         
     }
     
@@ -74,13 +67,13 @@ class Song: Decodable {
     
     let duration: String
     let id: String
-    let name: String
+    let title: String
     
     required init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: SongKeys.self)
         let nameContainer = try container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
-        name = try nameContainer.decode(String.self, forKey: .title)
+        title = try nameContainer.decode(String.self, forKey: .title)
         id = try container.decode(String.self, forKey: .id)
         let durationContainer = try container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
         duration = try durationContainer.decode(String.self, forKey: .duration)
