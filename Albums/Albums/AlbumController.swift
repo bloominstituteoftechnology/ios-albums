@@ -10,6 +10,29 @@ import Foundation
 
 class AlbumController {
     
+    var albums: [Album] = []
+    let baseURL = URL(string: "https://albums-20c27.firebaseio.com/")!
+    
+    func getAlbums(completion: @escaping (Error?) -> Void) {
+        
+    }
+    
+    func put(album: Album) {
+        
+    }
+    
+    func createAlbum(name: String, artist: String, genres: [String], coverArtURL: [URL]) {
+        
+    }
+    
+    func createSong(title: String, duration: String) {
+        
+    }
+    
+    func update(album: Album, name: String, artist: String, genres: [String], coverArtURL: [URL]) {
+        
+        
+    }
     func testDecodingExampleAlbum() {
         let url = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")
         let data = try! Data(contentsOf: url!)
