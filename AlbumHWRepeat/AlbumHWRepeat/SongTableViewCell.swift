@@ -10,6 +10,12 @@ import UIKit
 
 class SongTableViewCell: UITableViewCell {
 
-   
-
+    //MARK: IBOutlets
+    @IBOutlet weak var songTitleTF: UITextField!
+    @IBOutlet weak var durationTF: UITextField!
+    
+    //MARK: IBAction
+    @IBAction func addSong(_ sender: UIButton) {
+    }
+    
 }
