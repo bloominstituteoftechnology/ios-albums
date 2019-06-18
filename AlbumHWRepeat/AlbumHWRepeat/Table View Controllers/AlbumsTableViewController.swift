@@ -10,45 +10,30 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
 
+    var albumController: AlbumController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        albumController?.getAlbums(completion: { (_) in
+            self.tableView.reloadData()
+        })
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return albumController?.albums.count ?? 0
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) 
 
         // Configure the cell...
-
+        cell.textLabel?.text = albumController?.albums[indexPath.row].name
+        cell.detailTextLabel?.text = albumController?.albums[indexPath.row].artist
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
     /*
     // Override to support editing the table view.
@@ -61,30 +46,24 @@ class AlbumsTableViewController: UITableViewController {
         }    
     }
     */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "CellSegue" {
+            guard let destinationVC = segue.destination as? DetailTableViewController, let indexPath = tableView.indexPathForSelectedRow, let albumController = albumController else { print("error in the cell segue") ; return }
+            
+            let albumToPass = albumController.albums[indexPath.row]
+            destinationVC.album = albumToPass
+            destinationVC.albumController = albumController
+        }
+        
+        if segue.identifier == "AddSegue" {
+            guard let destinationVC = segue.destination as? DetailTableViewController, let albumController = albumController else { print("error in the Add segue") ; return }
+    
+            destinationVC.albumController = albumController
+        }
     }
-    */
-
 }

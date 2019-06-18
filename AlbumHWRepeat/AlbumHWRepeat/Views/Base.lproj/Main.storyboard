@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Albums-->
         <scene sceneID="ujt-b9-mXo">
             <objects>
                 <tableViewController id="BZC-T8-7sJ" customClass="AlbumsTableViewController" customModule="AlbumHWRepeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -51,7 +51,7 @@
                             <outlet property="delegate" destination="BZC-T8-7sJ" id="HKv-El-EyJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="964-0t-yTd">
+                    <navigationItem key="navigationItem" title="Albums" id="964-0t-yTd">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="obR-6f-f9b">
                             <connections>
                                 <segue destination="yat-3B-aNA" kind="show" identifier="AddSegue" id="TT1-E5-STT"/>
@@ -63,7 +63,7 @@
             </objects>
             <point key="canvasLocation" x="1339" y="35"/>
         </scene>
-        <!--Title-->
+        <!--detial-->
         <scene sceneID="R2m-js-htC">
             <objects>
                 <tableViewController id="yat-3B-aNA" customClass="DetailTableViewController" customModule="AlbumHWRepeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -169,7 +169,7 @@
                             <outlet property="delegate" destination="yat-3B-aNA" id="U69-wf-Ep5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="rTo-Zi-Jzx">
+                    <navigationItem key="navigationItem" title="detial" id="rTo-Zi-Jzx">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="lX9-fS-Zgx">
                             <connections>
                                 <action selector="save:" destination="yat-3B-aNA" id="lft-UO-2wx"/>
