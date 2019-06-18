@@ -28,7 +28,7 @@ class Album: Codable {
     let genres: [String]
     let albumName: String
     var songs: [Song]
-    let coverArt: [URL]
+    let coverArt: [String]
     let id: String
     
     required init(from decoder: Decoder) throws {
@@ -37,11 +37,19 @@ class Album: Codable {
         albumName = try container.decode(String.self, forKey: .albumName)
         id = try container.decode(String.self, forKey: .id)
         artist = try container.decode(String.self, forKey: .artist)
-        let coverArtContainer = try container.nestedContainer(keyedBy: AlbumKeys.CoverArtKey.self, forKey: .coverArt)
-        coverArt = try coverArtContainer.decode([URL].self, forKey: .url)
+        var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+        var coverArtArray: [String] = []
+        
+        while coverArtContainer.isAtEnd == false {
+            let coverArtString = try coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKey.self)
+        let x = try coverArtString.decode(String.self, forKey: .url)
+            coverArtArray.append(x)
+
+        }
+        
         genres = try container.decode([String].self, forKey: .genres)
         songs = try container.decode([Song].self, forKey: .songs)
-        
+        self.coverArt = coverArtArray
     }
     
     func encode(to encoder: Encoder) throws {

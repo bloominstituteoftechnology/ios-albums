@@ -40,7 +40,7 @@ class AlbumController {
         
         do {
            let album = try decoder.decode(Album.self, from: data)
-            print(album)
+            print(album.albumName)
         } catch {
             NSLog("Error decoding album")
         }
