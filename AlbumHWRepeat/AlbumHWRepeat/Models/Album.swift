@@ -32,24 +32,24 @@ struct Album: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumKeys.self)
         artist = try container.decode(String.self, forKey: .artist)
-        
+
         // we want to decode this into an uuid
         id = try container.decode(UUID.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         songs = try container.decode([Song].self, forKey: .songs)
         genres = try container.decode([String].self, forKey: .genres)
-        
+
         //getting inside of the array
         var coverArtArrayContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
-        
-        
+
+
         //create a place holder array
         var coverArtStringArray: [String] = []
         while coverArtArrayContainer.isAtEnd == false {
-            
+
             //now that we are inside of the array we are confronted by a blanked named dixtionary
             let coverArtDictionaryContainer = try coverArtArrayContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
-            
+
             //now that we are inside of the blanked named dictionary we can decode
             let coverArtString = try coverArtDictionaryContainer.decode(String.self, forKey: .url)
             coverArtStringArray.append(coverArtString)
