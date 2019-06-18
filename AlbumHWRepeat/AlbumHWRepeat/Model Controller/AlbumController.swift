@@ -14,6 +14,12 @@ class AlbumController {
     let baseURL = URL(string: "https://albums-9e167.firebaseio.com/")!
     typealias CompletionHandler = (Error?) -> Void
     
+    func createAlbum(){
+    
+    }
+    
+    
+    
     func testDecodingExampleAlbum(){
         guard let bundleData = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else { print("Error with bundle") ; return }
         do {
@@ -89,7 +95,18 @@ class AlbumController {
         }
         
         //now that we have constructed our urlRequest we can make the network call
-        URLSession.shared.dataTask(with: <#T##URL#>, completionHandler: <#T##(Data?, URLResponse?, Error?) -> Void#>)
+        URLSession.shared.dataTask(with: requestURL) { (_, response, error) in
+            if let response = response as? HTTPURLResponse {
+                print("This is the status code: \(response.statusCode)")
+            }
+            
+            if let error = error {
+                print("This is the error putting Album to server: \(error.localizedDescription), this is the error with more description: \(error)")
+                completion(error)
+                return
+            }
+            completion(nil)
+        }.resume()
     }
     
 }

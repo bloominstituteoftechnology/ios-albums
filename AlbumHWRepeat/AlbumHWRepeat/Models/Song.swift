@@ -61,4 +61,10 @@ struct Song: Codable {
         var nameContainer = container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
         try nameContainer.encode(name, forKey: .title)
     }
+    
+    init(name: String, duration: String, id: UUID = UUID()){
+        self.name = name
+        self.duration = duration
+        self.id = id
+    }
 }

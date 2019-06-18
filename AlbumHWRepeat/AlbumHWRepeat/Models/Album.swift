@@ -77,4 +77,13 @@ struct Album: Codable {
             try coverArtDictionaryContainer.encode(art, forKey: .url)
         }
     }
+    
+    init(artist: String, name: String, genres: [String], coverArt: [URL], songs: [Song], id: UUID = UUID()){
+        self.artist = artist
+        self.name = name
+        self.genres = genres
+        self.coverArt = coverArt
+        self.songs = songs
+        self.id = id
+    }
 }
