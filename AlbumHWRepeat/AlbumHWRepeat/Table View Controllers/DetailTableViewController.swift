@@ -10,8 +10,17 @@ import UIKit
 
 class DetailTableViewController: UITableViewController {
     
-    var albumController: AlbumController?
-    var album: Album?
+    var albumController: AlbumController? {
+        didSet {
+            print("DetailTableViewController: albumController was set")
+        }
+    }
+    var album: Album? {
+        didSet {
+            print("DetailTableViewController: album was set")
+
+        }
+    }
     
     //MARK: IBOutlets
     @IBOutlet weak var albumNameTF: UITextField!
