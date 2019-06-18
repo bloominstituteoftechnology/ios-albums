@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let album = AlbumController()
         album.testDecodingExampleAlbum()
         album.testEncodingExampleAlbum()
+        album.createAlbum(artist: "test", name: "testname", genres: ["testGenres", "testingagain"], coverArt: [URL(string:"url")!, URL(string:"url2")!], songs: [Song(name: "song1", duration: "3?45"), Song(name: "song2", duration: "5:55")])
         return true
     }
 

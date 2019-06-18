@@ -29,8 +29,11 @@ class AlbumController {
     func update(album: Album, newArtist: String, newName: String, NewGenres: [String], newCoverArt: [URL], newSongs: [Song] ){
         guard let index = albums.firstIndex(of: album) else { print("Error with updating function"); return }
         albums[index].artist = newArtist
-        album.name = newName
-        album.
+        albums[index].name = newName
+        albums[index].genres = NewGenres
+        albums[index].coverArt = newCoverArt
+        albums[index].songs = newSongs
+        put(album: albums[index])
     }
     
     func testDecodingExampleAlbum(){
@@ -110,7 +113,7 @@ class AlbumController {
         //now that we have constructed our urlRequest we can make the network call
         URLSession.shared.dataTask(with: requestURL) { (_, response, error) in
             if let response = response as? HTTPURLResponse {
-                print("This is the status code: \(response.statusCode)")
+                print("This is the status code for putting to server: \(response.statusCode)")
             }
             
             if let error = error {
