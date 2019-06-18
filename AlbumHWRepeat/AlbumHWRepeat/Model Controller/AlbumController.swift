@@ -14,8 +14,11 @@ class AlbumController {
     let baseURL = URL(string: "https://albums-9e167.firebaseio.com/")!
     typealias CompletionHandler = (Error?) -> Void
     
-    func createAlbum(){
-    
+    func createAlbum(artist: String, name: String, genres: [String], coverArt: [URL], songs: [Song], id: UUID = UUID()){
+    let newAlbum = Album(artist: artist, name: name, genres: genres, coverArt: coverArt, songs: songs)
+        albums.append(newAlbum)
+        //call the put function so the new Album gets saved to the api
+        put(album: newAlbum)
     }
     
     
