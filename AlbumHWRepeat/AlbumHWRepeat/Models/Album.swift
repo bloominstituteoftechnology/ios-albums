@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct Album: Codable {
-    let artist: String
-    let coverArt: [URL] //convert from string to url
-    let genres: [String]
-    let id: UUID //convert from string to uuid
-    let name: String
-    let songs: [Song]
+struct Album: Codable, Equatable {
+    var artist: String
+    var coverArt: [URL] //convert from string to url
+    var genres: [String]
+    var id: UUID //convert from string to uuid
+    var name: String
+    var songs: [Song]
     
     enum AlbumKeys: String, CodingKey {
         case artist

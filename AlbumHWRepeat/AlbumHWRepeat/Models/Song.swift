@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Song: Codable {
+struct Song: Codable, Equatable {
     //what do we want to grab from the json
     var duration: String
     let id: UUID //convert from string
-    let name: String
+    var name: String
     
     enum SongKeys: String, CodingKey {
         case duration

@@ -14,14 +14,24 @@ class AlbumController {
     let baseURL = URL(string: "https://albums-9e167.firebaseio.com/")!
     typealias CompletionHandler = (Error?) -> Void
     
-    func createAlbum(artist: String, name: String, genres: [String], coverArt: [URL], songs: [Song], id: UUID = UUID()){
+    func createAlbum(artist: String, name: String, genres: [String], coverArt: [URL], songs: [Song]){
     let newAlbum = Album(artist: artist, name: name, genres: genres, coverArt: coverArt, songs: songs)
         albums.append(newAlbum)
         //call the put function so the new Album gets saved to the api
         put(album: newAlbum)
     }
     
+    func createSong(name: String, duration: String) -> Song {
+        let newSong = Song(name: name, duration: duration)
+        return newSong
+    }
     
+    func update(album: Album, newArtist: String, newName: String, NewGenres: [String], newCoverArt: [URL], newSongs: [Song] ){
+        guard let index = albums.firstIndex(of: album) else { print("Error with updating function"); return }
+        albums[index].artist = newArtist
+        album.name = newName
+        album.
+    }
     
     func testDecodingExampleAlbum(){
         guard let bundleData = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else { print("Error with bundle") ; return }
