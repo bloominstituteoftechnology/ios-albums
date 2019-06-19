@@ -61,7 +61,6 @@ class Album: Codable {
         var coverArtContainer = container.nestedContainer(keyedBy: AlbumKeys.CoverArtKey.self, forKey: .coverArt)
         try coverArtContainer.encode(coverArt, forKey: .url)
         
-        
     }
     
     

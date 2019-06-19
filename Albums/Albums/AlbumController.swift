@@ -14,12 +14,45 @@ class AlbumController {
     let baseURL = URL(string: "https://albums-20c27.firebaseio.com/")!
     
     func getAlbums(completion: @escaping (Error?) -> Void) {
+        let url = baseURL.appendingPathExtension("json")
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            if let error = error {
+                NSLog("Error fetching Album: \(error)")
+                completion(error)
+                return
+            }
+            guard let data = data else {
+                NSLog("Error returning data")
+                completion(NSError())
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                let fetchedAlbums = try decoder.decode([String: Album].self, from: data).map({ $0.value})
+                self.albums = fetchedAlbums
+                completion(nil)
+            } catch {
+                NSLog("Error decoding albums")
+                completion(error)
+                return
+            }
+        }.resume()
         
     }
     
     func put(album: Album) {
+        let uuid = album.id
+        let requestURL = baseURL.appendingPathComponent(uuid).appendingPathExtension("json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "PUT"
         
-    }
+        }
+        
+    
     
     func createAlbum(name: String, artist: String, genres: [String], coverArtURL: [URL]) {
         
