@@ -24,12 +24,12 @@ class Album: Codable {
         
     }
     
-    let artist: String
-    let genres: [String]
-    let albumName: String
+    var artist: String
+    var genres: [String]
+    var albumName: String
     var songs: [Song]
-    let coverArt: [String]
-    let id: String
+    var coverArt: [String]
+    var id: String
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumKeys.self)

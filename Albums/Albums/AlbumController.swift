@@ -45,25 +45,35 @@ class AlbumController {
     }
     
     func put(album: Album) {
-        let uuid = album.id
+        let uuid = album.id 
         let requestURL = baseURL.appendingPathComponent(uuid).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
         
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            <#code#>
         }
+    }
         
     
     
-    func createAlbum(name: String, artist: String, genres: [String], coverArtURL: [URL]) {
-        
+    func createAlbum(name: String, artist: String, genres: [String], coverArtURL: [String]) {
+//        let newAlbum = Album(name: name, artist: artist, genres: genres, coverArtURL: coverArtURL)
+//        albums.append(newAlbum)
+//        put(album: newAlbum)
     }
     
     func createSong(title: String, duration: String) {
-        
+//        let newSong = Song(title: title, duration: duration)
+//        return newSong
     }
     
-    func update(album: Album, name: String, artist: String, genres: [String], coverArtURL: [URL]) {
-        
+    func update(album: Album, name: String, artist: String, genres: [String], coverArtURL: [String]) {
+        album.albumName = name
+        album.artist = artist
+        album.genres = genres
+        album.coverArt = coverArtURL
+        put(album: album)
         
     }
     func testDecodingExampleAlbum() {
