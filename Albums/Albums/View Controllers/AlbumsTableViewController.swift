@@ -48,14 +48,14 @@ class AlbumsTableViewController: UITableViewController {
             let destinationVC = segue.destination as! AlbumDetailTableViewController
             destinationVC.albumController = albumController
         } else if segue.identifier == "CellSegue" {
-            let detailVC = segue.destination as! AlbumDetailTableViewController
-            //index path
-            //set destination album and controller
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let detailVC = segue.destination as! AlbumDetailTableViewController
+                detailVC.albumController = albumController
+                detailVC.album = albumController?.albums[indexPath.row]
+            }
         }
     }
  
     var albumController: AlbumController?
-    
-    
 
 }
