@@ -114,7 +114,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="125" id="OTO-LE-ZDM" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="125" id="OTO-LE-ZDM" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="188" width="414" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OTO-LE-ZDM" id="NpA-p6-Kck">
@@ -181,7 +181,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PX3-4d-XAA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1511.5942028985507" y="156.69642857142856"/>
+            <point key="canvasLocation" x="1335" y="157"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zBb-hy-d0A">
@@ -197,7 +197,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BmW-3g-s2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-343" y="157"/>
+            <point key="canvasLocation" x="-175" y="157"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
