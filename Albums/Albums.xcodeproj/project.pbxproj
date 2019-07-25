@@ -14,6 +14,9 @@
 		D6C32DEA22E69CC100FCE4D7 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C32DE922E69CC100FCE4D7 /* AlbumsTableViewController.swift */; };
 		D6C32DEC22E69EE300FCE4D7 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C32DEB22E69EE300FCE4D7 /* AlbumDetailTableViewController.swift */; };
 		D6C32DEF22E6A19500FCE4D7 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C32DEE22E6A19500FCE4D7 /* SongTableViewCell.swift */; };
+		D6C32DF122E6A35A00FCE4D7 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C32DF022E6A35A00FCE4D7 /* Album.swift */; };
+		D6DF50F722E8066900F34682 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = D6DF50F622E8066900F34682 /* exampleAlbum.json */; };
+		D6DF50F922E810E400F34682 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DF50F822E810E400F34682 /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		D6C32DE922E69CC100FCE4D7 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		D6C32DEB22E69EE300FCE4D7 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		D6C32DEE22E6A19500FCE4D7 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		D6C32DF022E6A35A00FCE4D7 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		D6DF50F622E8066900F34682 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../../exampleAlbum.json; sourceTree = "<group>"; };
+		D6DF50F822E810E400F34682 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,7 @@
 		D6C32DE422E69C2500FCE4D7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D6DF50F622E8066900F34682 /* exampleAlbum.json */,
 				D6C32DD222E69BB500FCE4D7 /* AppDelegate.swift */,
 				D6C32DD922E69BB600FCE4D7 /* Assets.xcassets */,
 				D6C32DDE22E69BB600FCE4D7 /* Info.plist */,
@@ -99,6 +106,7 @@
 		D6C32DE722E69C5300FCE4D7 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D6DF50F822E810E400F34682 /* AlbumController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -106,6 +114,7 @@
 		D6C32DE822E69C5F00FCE4D7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D6C32DF022E6A35A00FCE4D7 /* Album.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,6 +187,7 @@
 			files = (
 				D6C32DDD22E69BB600FCE4D7 /* LaunchScreen.storyboard in Resources */,
 				D6C32DDA22E69BB600FCE4D7 /* Assets.xcassets in Resources */,
+				D6DF50F722E8066900F34682 /* exampleAlbum.json in Resources */,
 				D6C32DD822E69BB500FCE4D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,9 +200,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6C32DEF22E6A19500FCE4D7 /* SongTableViewCell.swift in Sources */,
+				D6DF50F922E810E400F34682 /* AlbumController.swift in Sources */,
 				D6C32DD322E69BB500FCE4D7 /* AppDelegate.swift in Sources */,
 				D6C32DEC22E69EE300FCE4D7 /* AlbumDetailTableViewController.swift in Sources */,
 				D6C32DEA22E69CC100FCE4D7 /* AlbumsTableViewController.swift in Sources */,
+				D6C32DF122E6A35A00FCE4D7 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
