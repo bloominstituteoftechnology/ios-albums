@@ -16,14 +16,11 @@ class AlbumDetailTableViewController: UITableViewController {
     @IBOutlet var albumGenres: UITextField!
     @IBOutlet var albumCoverArt: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    var albumController: AlbumController?
+    var album: Album? {
+        didSet {
+            //self.updateViews()
+        }
     }
     
     // MARK: - IBActions and Methods

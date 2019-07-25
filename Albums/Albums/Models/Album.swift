@@ -25,11 +25,11 @@ struct Album: Equatable, Codable {
     var id: String
     var name: String
     var artist: String
-    var coverArt: [URL]
+    var coverArt: [String]
     var genres: [String]
     var songs: [Song]
     
-    init(id: String = UUID().uuidString, name: String, artist: String, coverArt: [URL], genres: [String], songs: [Song]) {
+    init(id: String = UUID().uuidString, name: String, artist: String, coverArt: [String], genres: [String], songs: [Song]) {
         self.id = id
         self.name = name
         self.artist = artist
@@ -46,18 +46,27 @@ struct Album: Equatable, Codable {
         self.artist = try container.decode(String.self, forKey: .artist)
         
         var coverArtURLsContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
-        var coverArtURLs: [URL] = []
+        var coverArtURLs: [String] = []
         
         while coverArtURLsContainer.isAtEnd == false {
             let coverArtContainer = try coverArtURLsContainer.nestedContainer(keyedBy: Keys.CoverArtKeys.self)
-            let coverArtURL = try coverArtContainer.decode(URL.self, forKey: .url)
+            let coverArtURL = try coverArtContainer.decode(String.self, forKey: .url)
             
             coverArtURLs.append(coverArtURL)
         }
         self.coverArt = coverArtURLs
         
         self.genres = try container.decode([String].self, forKey: .genres)
-        self.songs = try container.decode([Song].self, forKey: .songs)
+        
+        var songs: [Song] = []
+        if container.contains(.songs) {
+            var songContainer = try container.nestedUnkeyedContainer(forKey: .songs)
+            while songContainer.isAtEnd == false {
+                let song = try songContainer.decode(Song.self)
+                songs.append(song)
+            }
+        }
+        self.songs = songs
     }
     
     func encode(with encoder: Encoder) throws {
@@ -70,7 +79,7 @@ struct Album: Equatable, Codable {
         var coverArtURLsContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
         for coverArtURL in self.coverArt {
             var coverArtContainer = coverArtURLsContainer.nestedContainer(keyedBy: Keys.CoverArtKeys.self)
-            try coverArtContainer.encode(coverArtURL.absoluteString, forKey: .url)
+            try coverArtContainer.encode(coverArtURL, forKey: .url)
         }
         
         try container.encode(self.genres, forKey: .genres)

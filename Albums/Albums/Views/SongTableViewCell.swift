@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SongTableViewCellDelegate: class {
+    func addSong(with title: String, duration: String)
+}
+
 class SongTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets and Properties
@@ -15,19 +19,34 @@ class SongTableViewCell: UITableViewCell {
     @IBOutlet var songDuration: UITextField!
     @IBOutlet var addButton: UIButton!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var song: Song? {
+        didSet {
+            self.updateViews()
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    weak var delegate: SongTableViewCellDelegate?
+    
+    private func updateViews() {
+        if let song = self.song {
+            self.songTitle.text = song.name
+            self.songDuration.text = song.duration
+            self.addButton.isHidden = true
+        }
+    }
+    
+    override func prepareForReuse() {
+        self.songTitle.text = nil
+        self.songDuration.text = nil
+        self.addButton.isHidden = false
     }
     
     // MARK: - IBActions and Methods
     @IBAction func addSong(_ sender: Any) {
+        guard let title = self.songTitle.text,
+            let duration = self.songDuration.text else { return }
+        
+        delegate?.addSong(with: title, duration: duration)
     }
     
 }

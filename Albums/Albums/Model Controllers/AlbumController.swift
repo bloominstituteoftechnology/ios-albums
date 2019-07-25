@@ -15,7 +15,7 @@ class AlbumController {
     
     var albums: [Album] = []
     
-    func createAlbum(withName name: String, withArtist artist: String, withCoverArt coverArt: [URL], withGenres genres: [String], withSongs songs: [Song]) {
+    func createAlbum(withName name: String, withArtist artist: String, withCoverArt coverArt: [String], withGenres genres: [String], withSongs songs: [Song]) {
         let album = Album(name: name, artist: artist, coverArt: coverArt, genres: genres, songs: songs)
         self.put(album: album)
     }
@@ -25,7 +25,7 @@ class AlbumController {
         return song
     }
     
-    func update(withAlbum album: Album, withName name: String, withArtist artist: String, withCoverArt coverArt: [URL], withGenres genres: [String], withSongs songs: [Song]) {
+    func update(withAlbum album: Album, withName name: String, withArtist artist: String, withCoverArt coverArt: [String], withGenres genres: [String], withSongs songs: [Song]) {
         guard let i = self.albums.firstIndex(of: album) else { return }
         self.albums[i].name = name
         self.albums[i].artist = artist
