@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Album: Codable {
+struct Album: Equatable, Codable {
     enum Keys: String, CodingKey {
         case id
         case name
@@ -22,12 +22,21 @@ struct Album: Codable {
         }
     }
     
-    let id: String
-    let name: String
-    let artist: String
-    let coverArt: [URL]
-    let genres: [String]
-    let songs: [Song]
+    var id: String
+    var name: String
+    var artist: String
+    var coverArt: [URL]
+    var genres: [String]
+    var songs: [Song]
+    
+    init(id: String = UUID().uuidString, name: String, artist: String, coverArt: [URL], genres: [String], songs: [Song]) {
+        self.id = id
+        self.name = name
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.songs = songs
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
@@ -69,7 +78,7 @@ struct Album: Codable {
     }
 }
 
-struct Song: Codable {
+struct Song: Equatable, Codable {
     enum Keys: String, CodingKey {
         case id
         case name
@@ -87,6 +96,12 @@ struct Song: Codable {
     let id: String
     let name: String
     let duration: String
+    
+    init(id: String = UUID().uuidString, name: String, duration: String) {
+        self.id = id
+        self.name = name
+        self.duration = duration
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
