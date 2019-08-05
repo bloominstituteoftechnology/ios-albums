@@ -43,7 +43,11 @@ class AlbumDetailTableViewController: UITableViewController {
         
         if let album = album {
             albumController?.createUpdateAlbum(album: album, title: name, artist: artist, genres: genreArray, coverArt: coverArtURLsArray, songs: tempSongs)
+        } else {
+            albumController?.createUpdateAlbum(album: nil, title: name, artist: artist, genres: genreArray, coverArt: coverArtURLsArray, songs: tempSongs)
         }
+        
+        navigationController?.popViewController(animated: true)
     }
     // MARK: - Table view data source
 
