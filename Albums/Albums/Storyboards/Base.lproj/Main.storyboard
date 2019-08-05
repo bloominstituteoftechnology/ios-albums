@@ -153,6 +153,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addSongButton" destination="pPf-UH-lWd" id="8KN-hN-h5m"/>
                                     <outlet property="durationTextField" destination="ZEt-tc-M5N" id="RHF-fe-LGS"/>
                                     <outlet property="titleTextField" destination="Jyn-HN-8eW" id="IR0-KV-tES"/>
                                 </connections>
