@@ -46,8 +46,6 @@ class SongTableViewCell: UITableViewCell {
         guard let title = songTitleTextField.text, !title.isEmpty,
             let duration = songDurationTextField.text, !duration.isEmpty else {return}
         delegate?.addSong(with: title, duration: duration)
-        print("\(title)")
-        
     }
 
 }

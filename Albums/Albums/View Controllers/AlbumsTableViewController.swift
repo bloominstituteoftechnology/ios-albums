@@ -12,8 +12,6 @@ class AlbumsTableViewController: UITableViewController {
     
     var albumController = AlbumController()
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,14 +24,21 @@ class AlbumsTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
         })
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        tableView.reloadData()
+        albumController.getAlbums(completion: { (error) in
+            
+            if let error = error {
+                print("\(error)")
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
     }
 
     // MARK: - Table view data source
