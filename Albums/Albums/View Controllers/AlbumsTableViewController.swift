@@ -21,6 +21,14 @@ class AlbumsTableViewController: UITableViewController {
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        albumController.getAlbums { (error) in
+            if let error = error {
+                NSLog("Error getting albums: \(error)")
+            }
+        }
+    }
 
     // MARK: - Table view data source
 
