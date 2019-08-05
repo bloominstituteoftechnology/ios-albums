@@ -36,7 +36,8 @@ struct Album: Decodable {
         artist = try container.decode(String.self, forKey: .artist)
         id = try container.decode(String.self, forKey: .id)
         albumTitle = try container.decode(String.self, forKey: .albumTitle)
-        
+        genres = try container.decode([String].self, forKey: .genres)
+        songs = try container.decode([Song].self, forKey: .songs)
         
         // coverArt
         var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
@@ -51,23 +52,6 @@ struct Album: Decodable {
         }
         
         coverArt = coverArtURLs
-        
-        let genresDict = try container.decode([Int : String].self, forKey: .genres)
-        genres = genresDict.compactMap { $0.value }
-        
-        songs = try container.decode([Song].self, forKey: .songs)
-        
-//        while songsContainer.isAtEnd == false {
-//            let songDurationContainer = try songsContainer.nestedContainer(keyedBy: )
-//        }
-        
-//        let coverArtDict = try container.decode([String : String].self, forKey: .coverArtURLs)
-//        coverArtURLs = coverArtDict.compactMap { URL(string: $0.value) }
-        
-
-//
-//        let songsArray = try container.decode([Song].self, forKey: .songs)
-        
     }
 }
 
