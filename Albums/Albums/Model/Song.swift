@@ -13,7 +13,7 @@ struct Song: Equatable, Codable {
     let duration: String
     let name: String
     
-    enum CodingKeys: String, CodingKey {
+    enum SongKeys: String, CodingKey {
         case id
         case duration
         case name
@@ -28,24 +28,24 @@ struct Song: Equatable, Codable {
     }
     
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try decoder.container(keyedBy: SongKeys.self)
         
         let idString = try container.decode(String.self, forKey: .id)
         guard let tID = UUID(uuidString: idString) else { throw NSError() }
         id = tID
-        let durationContainer = try container.nestedContainer(keyedBy: CodingKeys.DurationKeys.self, forKey: .duration)
+        let durationContainer = try container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
         duration = try durationContainer.decode(String.self, forKey: .duration)
-        let nameContainer = try container.nestedContainer(keyedBy: CodingKeys.NameKeys.self, forKey: .name)
+        let nameContainer = try container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
         name = try nameContainer.decode(String.self, forKey: .title)
     }
     
     func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
+        var container = encoder.container(keyedBy: SongKeys.self)
         
         try container.encode(id.uuidString, forKey: .id)
-        var durationContainer = container.nestedContainer(keyedBy: CodingKeys.DurationKeys.self, forKey: .duration)
+        var durationContainer = container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
         try durationContainer.encode(duration, forKey: .duration)
-        var nameContainer = container.nestedContainer(keyedBy: CodingKeys.NameKeys.self, forKey: .name)
+        var nameContainer = container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
         try nameContainer.encode(name, forKey: .title)
     }
 }
