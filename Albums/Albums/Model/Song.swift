@@ -27,6 +27,12 @@ struct Song: Equatable, Codable {
         }
     }
     
+    init(id: UUID, duration: String, name: String) {
+        self.id = id
+        self.duration = duration
+        self.name = name
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: SongKeys.self)
         

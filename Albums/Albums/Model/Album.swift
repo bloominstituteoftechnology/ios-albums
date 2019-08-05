@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct Album: Codable {
-    let artist: String
+struct Album: Equatable, Codable {
+    var artist: String
     var coverArt: [URL]
-    let genres: [String]
-    let id: UUID
-    let name: String
-    let songs: [Song]
+    var genres: [String]
+    var id: UUID
+    var name: String
+    var songs: [Song]
     
     enum AlbumKeys: String, CodingKey {
         case artist
@@ -28,6 +28,16 @@ struct Album: Codable {
             case url
         }
     }
+    
+    init(artist: String, coverArt: [URL], genres: [String], id: UUID, name: String, songs: [Song]) {
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.id = id
+        self.name = name
+        self.songs = songs
+    }
+    
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumKeys.self)

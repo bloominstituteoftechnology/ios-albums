@@ -14,38 +14,57 @@ class AlbumDetailTableViewController: UITableViewController {
     @IBOutlet var artistNameTextField: UITextField!
     @IBOutlet var genreTextField: UITextField!
     @IBOutlet var coverArtURLTextField: UITextField!
+    
+    var albumController: AlbumController?
+    var album: Album? {
+        didSet {
+            updateViews()
+        }
+    }
+    var songsToAddToAlbum: [Song] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        updateViews()
     }
 
+    
+    func updateViews() {
+        if isViewLoaded {
+            guard let album = album else {
+                title = "New Album"
+                return
+            }
+            title = album.name
+            albumNameTextField.text = album.name
+            artistNameTextField.text = album.artist
+            genreTextField.text = album.genres.joined(separator: ", ")
+            let coverArtURLs = album.coverArt.compactMap({ $0.absoluteString})
+            coverArtURLTextField.text = coverArtURLs.joined(separator: ", ")
+            songsToAddToAlbum = album.songs
+        }
+    }
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return songsToAddToAlbum.count + 1
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let songCell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as! SongTableViewCell
 
-        // Configure the cell...
-
-        return cell
+        songCell.delegate = self
+        if indexPath.row < songsToAddToAlbum.count {
+            songCell.song = songsToAddToAlbum[indexPath.row]
+        }
+        
+        return songCell
     }
-    */
+
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -97,4 +116,12 @@ class AlbumDetailTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension AlbumDetailTableViewController: SongTableViewCellDelegate {
+    func addSong(with title: String, duration: String) {
+        guard let newSong = albumController?.createSong(title: title, duration: duration) else { return }
+        songsToAddToAlbum.append(newSong)
+        tableView.reloadData()
+    }
 }
