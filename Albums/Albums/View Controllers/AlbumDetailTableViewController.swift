@@ -88,7 +88,7 @@ class AlbumDetailTableViewController: UITableViewController {
 
         cell.delegate = self
         if indexPath.row > 0 {
-            cell.song = tempSongs[indexPath.row]
+            cell.song = tempSongs[indexPath.row - 1]
         }
         
 

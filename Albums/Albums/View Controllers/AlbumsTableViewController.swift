@@ -22,7 +22,9 @@ class AlbumsTableViewController: UITableViewController {
                 NSLog("Error getting albums: \(error)")
             }
             print(self.albumController.albums)
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 
