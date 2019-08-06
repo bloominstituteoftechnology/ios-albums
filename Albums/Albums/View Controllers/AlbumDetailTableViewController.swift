@@ -30,7 +30,7 @@ class AlbumDetailTableViewController: UITableViewController {
     }
 
     @IBAction func saveButtonTapped(_ sender: Any) {
-        guard let name = albumNameTextField.text, !name.isEmpty, let artist = artistNameTextField.text, !artist.isEmpty, let genres = genresTextField.text, !genres.isEmpty, let coverArtURLs = coverArtURLsTextField.text, !coverArtURLs.isEmpty else { return }
+        guard let name = albumNameTextField.text, !name.isEmpty, let artist = artistNameTextField.text, !artist.isEmpty, let genres = genresTextField.text, !genres.isEmpty, let coverArtURLs = coverArtURLsTextField.text else { return }
         let genreArray = genres.components(separatedBy: ", ")
         let coverArtStringArray = coverArtURLs.components(separatedBy: ", ")
         print(coverArtStringArray)
