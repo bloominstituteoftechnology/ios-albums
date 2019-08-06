@@ -18,7 +18,11 @@ class SongTableViewCell: UITableViewCell {
     @IBOutlet weak var durationTextField: UITextField!
     @IBOutlet weak var addSongButton: UIButton!
     
-    var song: Song?
+    var song: Song? {
+        didSet {
+            updateViews()
+        }
+    }
     weak var delegate: SongTableViewCellDelegate?
     
     override func prepareForReuse() {

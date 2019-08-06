@@ -44,22 +44,56 @@ struct Album: Codable {
         artist = try container.decode(String.self, forKey: .artist)
         id = try container.decode(String.self, forKey: .id)
         albumTitle = try container.decode(String.self, forKey: .albumTitle)
-        genres = try container.decode([String].self, forKey: .genres)
-        songs = try container.decode([Song].self, forKey: .songs)
         
         // coverArt
-        var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
-        var coverArtURLs: [URL] = []
+        var coverArt: [URL] = []
         
-        while coverArtContainer.isAtEnd == false {
-            let coverArtURLContainer = try coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
-            let coverArtString = try coverArtURLContainer.decode(String.self, forKey: .url)
-            if let coverArtURL = URL(string: coverArtString) {
-                coverArtURLs.append(coverArtURL)
+        if container.contains(.coverArt) {
+            
+            var coverArtArray = try container.nestedUnkeyedContainer(forKey: .coverArt)
+            while !coverArtArray.isAtEnd {
+                let coverArtDictionary = try coverArtArray.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
+                
+                let url = try coverArtDictionary.decode(URL.self, forKey: .url)
+                
+                coverArt.append(url)
             }
         }
         
-        coverArt = coverArtURLs
+        self.coverArt = coverArt
+        
+        // genres
+        var genres: [String] = []
+        if container.contains(.genres) {
+            
+            var genresContainer = try container.nestedUnkeyedContainer(forKey: .genres)
+            
+            
+            while !genresContainer.isAtEnd {
+                let genre = try genresContainer.decode(String.self)
+                genres.append(genre)
+            }
+            
+        }
+        
+        self.genres = genres
+        
+        //songs
+        var songs: [Song] = []
+        if container.contains(.songs) {
+            
+            var songsContainer = try container.nestedUnkeyedContainer(forKey: .songs)
+            
+            
+            while !songsContainer.isAtEnd {
+                let song = try songsContainer.decode(Song.self)
+                
+                songs.append(song)
+            }
+        }
+        
+        self.songs = songs
+        
     }
     
     func encode(to encoder: Encoder) throws {
@@ -69,13 +103,19 @@ struct Album: Codable {
         try container.encode(artist, forKey: .artist)
         try container.encode(albumTitle, forKey: .albumTitle)
         try container.encode(genres, forKey: .genres)
-        try container.encode(songs, forKey: .songs)
-        try container.encode(coverArt, forKey: .coverArt)
         
-//        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
-//        for url in coverArt {
-//            try coverArtContainer.encode(url.absoluteString)
-//        }
+        
+        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        var urlContainer = coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
+        for url in coverArt {
+            try urlContainer.encode(url, forKey: .url)
+        }
+        
+        var songsContainer = container.nestedUnkeyedContainer(forKey: .songs)
+        for song in songs {
+            try songsContainer.encode(song)
+        }
+        
     }
 }
 

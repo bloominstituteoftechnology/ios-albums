@@ -36,9 +36,8 @@ class AlbumController {
     let baseURL: URL = URL(string: "https://journal-9006c.firebaseio.com/")!
     
     func getAlbums(completion: @escaping (NetworkError?) -> Void) {
-        let request = URLRequest(url: baseURL)
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        URLSession.shared.dataTask(with: baseURL.appendingPathExtension("json")) { (data, response, error) in
             if let _ = error {
                 completion(.otherError)
                 return
@@ -51,6 +50,7 @@ class AlbumController {
             
             let jsonDecoder = JSONDecoder()
             do {
+                
                 let albumsDict = try jsonDecoder.decode([String: Album].self, from: data)
                 self.albums = Array(albumsDict.values)
                 completion(nil)

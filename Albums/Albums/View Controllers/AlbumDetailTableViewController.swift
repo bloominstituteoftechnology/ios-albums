@@ -33,6 +33,7 @@ class AlbumDetailTableViewController: UITableViewController {
         guard let name = albumNameTextField.text, !name.isEmpty, let artist = artistNameTextField.text, !artist.isEmpty, let genres = genresTextField.text, !genres.isEmpty, let coverArtURLs = coverArtURLsTextField.text, !coverArtURLs.isEmpty else { return }
         let genreArray = genres.components(separatedBy: ", ")
         let coverArtStringArray = coverArtURLs.components(separatedBy: ", ")
+        print(coverArtStringArray)
         var coverArtURLsArray: [URL] = []
         for coverArtString in coverArtStringArray {
             if let url = URL(string: coverArtString) {
@@ -53,7 +54,7 @@ class AlbumDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tempSongs.count
+        return tempSongs.count + 1
     }
     
     private func updateViews() {
@@ -69,15 +70,27 @@ class AlbumDetailTableViewController: UITableViewController {
             }
             
             coverArtURLsTextField.text = urlStrings.joined(separator: ", ")
+            
+            title = album.albumTitle
+            tempSongs = album.songs
         }
+        
+        title = "New Album"
     }
 
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 140
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongTableViewCell else { return UITableViewCell() }
 
         cell.delegate = self
-        cell.song = tempSongs[indexPath.row]
+        if indexPath.row > 0 {
+            cell.song = tempSongs[indexPath.row]
+        }
+        
 
         return cell
     }

@@ -14,12 +14,6 @@ class AlbumsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        albumController.getAlbums { (error) in
-            if let error = error {
-                NSLog("Error getting albums: \(error)")
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,6 +21,8 @@ class AlbumsTableViewController: UITableViewController {
             if let error = error {
                 NSLog("Error getting albums: \(error)")
             }
+            print(self.albumController.albums)
+            self.tableView.reloadData()
         }
     }
 
@@ -53,7 +49,7 @@ class AlbumsTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowAlbum" {
+        if segue.identifier == "ViewAlbum" {
             guard let showAlbumVC = segue.destination as? AlbumDetailTableViewController, let indexPath = tableView.indexPathForSelectedRow else { return }
             showAlbumVC.albumController = albumController
             showAlbumVC.album = albumController.albums[indexPath.row]
