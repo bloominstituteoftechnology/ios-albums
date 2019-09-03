@@ -18,7 +18,7 @@ class AlbumDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		tableView.tableFooterView = UIView()
     }
 
 	@IBAction func saveTapped(_ sender: UIBarButtonItem) {

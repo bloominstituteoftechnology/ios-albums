@@ -12,7 +12,7 @@ class AlbumsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		tableView.tableFooterView = UIView()
     }
 
     // MARK: - Table view data source
