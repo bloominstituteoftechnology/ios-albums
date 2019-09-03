@@ -9,12 +9,12 @@
 import Foundation
 
 struct Album: Decodable, Encodable {
-    let artist: String
-    let coverArt: URL
-    let genres: [String]
+    var artist: String
+    var coverArt: URL
+    var genres: [String]
     let id: String
-    let name: String
-    let songs: [Song]
+    var name: String
+    var songs: [Song]
     
     enum CodingKeys: String, CodingKey {
         case artist
@@ -27,6 +27,14 @@ struct Album: Decodable, Encodable {
         enum CoverArtCodingKeys: String, CodingKey {
             case url
         }
+    }
+    init(artist: String, genres: [String], name: String) {
+        self.artist = artist
+        self.coverArt = URL(string: "http://google.com")!
+        self.genres = genres
+        self.id = UUID().uuidString
+        self.name = name
+        self.songs = []
     }
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
