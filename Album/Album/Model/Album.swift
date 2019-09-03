@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Album: Codable {
+struct Album: Decodable {
     let artist: String
     let coverArt: URL
     let genres: [String]
@@ -41,10 +41,12 @@ struct Album: Codable {
         coverArt = try urlContainer.decode(URL.self, forKey: .url)
         
         var genreContainer = try container.nestedUnkeyedContainer(forKey: .genres)
+        var genreStrings: [String] = []
         while !genreContainer.isAtEnd {
             let genre = try genreContainer.decode(String.self)
-            genres.append(genre)
+            genreStrings.append(genre)
         }
+        genres = genreStrings
         
         id = try container.decode(String.self, forKey: .id)
         
