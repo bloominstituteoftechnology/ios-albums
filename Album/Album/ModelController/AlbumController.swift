@@ -10,4 +10,10 @@ import Foundation
 
 class AlbumController {
     
+    func testDecodingExampleAlbum() {
+        let path = Bundle.main.path(forResource: "exampleAlbum", ofType: "json")!
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+        let album = try! JSONDecoder().decode(Album.self, from: data)
+        print(album)
+    }
 }

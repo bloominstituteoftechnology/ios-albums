@@ -13,7 +13,7 @@ struct Album: Decodable {
     let coverArt: URL
     let genres: [String]
     let id: String
-    let title: String
+    let name: String
     let songs: [Song]
     
     enum CodingKeys: String, CodingKey {
@@ -27,10 +27,6 @@ struct Album: Decodable {
         enum CoverArtCodingKeys: String, CodingKey {
             case url
         }
-        
-        enum NameCodingKeys: String, CodingKey {
-            case title
-        }
     }
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -40,18 +36,12 @@ struct Album: Decodable {
         let urlContainer = try coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArtCodingKeys.self)
         coverArt = try urlContainer.decode(URL.self, forKey: .url)
         
-        var genreContainer = try container.nestedUnkeyedContainer(forKey: .genres)
-        var genreStrings: [String] = []
-        while !genreContainer.isAtEnd {
-            let genre = try genreContainer.decode(String.self)
-            genreStrings.append(genre)
-        }
-        genres = genreStrings
+        //var genreContainer = try container.nestedUnkeyedContainer(forKey: .genres)
+        
+        genres = try container.decode([String].self, forKey: .genres)
         
         id = try container.decode(String.self, forKey: .id)
-        
-        let nameContainer = try container.nestedContainer(keyedBy: CodingKeys.NameCodingKeys.self, forKey: .name)
-        title = try nameContainer.decode(String.self, forKey: .title)
+        name = try container.decode(String.self, forKey: .name)
         
         songs = try container.decode([Song].self, forKey: .songs)
     }
