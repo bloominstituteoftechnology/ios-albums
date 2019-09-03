@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Album: Decodable {
+struct Album: Decodable, Encodable {
     let artist: String
     let coverArt: URL
     let genres: [String]
@@ -44,5 +44,17 @@ struct Album: Decodable {
         name = try container.decode(String.self, forKey: .name)
         
         songs = try container.decode([Song].self, forKey: .songs)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(artist, forKey: .artist)
+        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        var urlContainer = coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArtCodingKeys.self)
+        try urlContainer.encode(coverArt.absoluteString, forKey: .url)
+        try container.encode(genres, forKey: .genres)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(songs, forKey: .songs)
     }
 }
