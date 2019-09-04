@@ -28,9 +28,9 @@ struct Album: Decodable, Encodable {
             case url
         }
     }
-    init(artist: String, genres: [String], name: String) {
+    init(artist: String, genres: [String], name: String, coverArt: URL) {
         self.artist = artist
-        self.coverArt = URL(string: "http://google.com")!
+        self.coverArt = coverArt
         self.genres = genres
         self.id = UUID().uuidString
         self.name = name

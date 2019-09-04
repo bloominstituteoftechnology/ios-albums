@@ -59,8 +59,8 @@ class AlbumController {
         }.resume()
     }
     
-    func createAlbum(artist: String, genres: [String], name: String) {
-        let newAlbum = Album(artist: artist, genres: genres, name: name)
+    func createAlbum(artist: String, genres: [String], name: String, coverArt: URL) {
+        let newAlbum = Album(artist: artist, genres: genres, name: name, coverArt: coverArt)
         albums.append(newAlbum)
         print(albums)
         put(album: newAlbum)
@@ -71,10 +71,11 @@ class AlbumController {
         return newSong
     }
     
-    func update(album: inout Album, artist: String, genres: [String], name: String) {
+    func update(album: inout Album, artist: String, genres: [String], name: String, coverArt: URL) {
         album.artist = artist
         album.genres = genres
         album.name = name
+        album.coverArt = coverArt
         put(album: album)
     }
     
