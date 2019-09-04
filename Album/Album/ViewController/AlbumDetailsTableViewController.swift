@@ -20,7 +20,7 @@ class AlbumDetailsTableViewController: UITableViewController {
     
     var tempSongs: [Song] = [] {
         didSet {
-            updateViews()
+            //updateViews()
         }
     }
     
@@ -35,12 +35,13 @@ class AlbumDetailsTableViewController: UITableViewController {
     }
     
     func updateViews() {
-        guard let album = album else { return }
+        guard let album = album, isViewLoaded else { return }
         nameTextfield.text = album.name
         artistTextField.text = album.artist
         genreTextField.text = album.genres.joined(separator: ",")
         urlTextField.text = album.coverArt
         tempSongs = album.songs ?? []
+        print(tempSongs)
         
     }
     
@@ -56,9 +57,12 @@ class AlbumDetailsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongTableViewCell else { fatalError(" fail to make song cell")}
-        cell.delegate = self
-        cell.song = tempSongs[indexPath.row]
-        
+        if indexPath.row == tempSongs.count {
+            cell.delegate = self
+        } else {
+            cell.delegate = self
+            cell.song = tempSongs[indexPath.row]
+        }
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
