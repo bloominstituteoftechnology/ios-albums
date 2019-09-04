@@ -39,7 +39,7 @@ class AlbumDetailsTableViewController: UITableViewController {
         nameTextfield.text = album.name
         artistTextField.text = album.artist
         genreTextField.text = album.genres.joined(separator: ",")
-        urlTextField.text = album.coverArt.absoluteString
+        urlTextField.text = album.coverArt
         tempSongs = album.songs ?? []
         
     }
@@ -53,9 +53,7 @@ class AlbumDetailsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tempSongs.count + 1
     }
-    
-    @IBAction func saveTapped(_ sender: Any) {
-    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongTableViewCell else { fatalError(" fail to make song cell")}
         cell.delegate = self
@@ -70,6 +68,19 @@ class AlbumDetailsTableViewController: UITableViewController {
             return 100
         }
     }
+    
+    @IBAction func saveTapped(_ sender: Any) {
+        guard let name = nameTextfield.text, !name.isEmpty, let artist = artistTextField.text, let genres = genreTextField.text, let url = urlTextField.text else { return }
+        let genresArray = genres.split(separator: ",")
+        let genreStringArray = genresArray.map({String($0)})
+        if album != nil {
+            albumController?.update(album: &album!, artist: artist, genres: genreStringArray, name: name, coverArt: url, songs: tempSongs)
+        } else {
+            albumController?.createAlbum(artist: artist, genres: genreStringArray, name: name, coverArt: url, songs: tempSongs)
+        }
+        
+    }
+    
     
     
 }

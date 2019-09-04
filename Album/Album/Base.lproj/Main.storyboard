@@ -163,7 +163,7 @@
                     <navigationItem key="navigationItem" title="Title" id="V8r-x7-xMs">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Tgu-NG-sA1">
                             <connections>
-                                <action selector="saveTapped:" destination="2Le-Nq-Tvy" id="0hH-al-P0L"/>
+                                <action selector="saveTapped:" destination="2Le-Nq-Tvy" id="hue-Go-3rY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

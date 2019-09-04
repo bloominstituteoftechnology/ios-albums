@@ -10,7 +10,7 @@ import Foundation
 
 struct Album: Decodable, Encodable {
     var artist: String
-    var coverArt: URL
+    var coverArt: String
     var genres: [String]
     let id: String
     var name: String
@@ -28,13 +28,13 @@ struct Album: Decodable, Encodable {
             case url
         }
     }
-    init(artist: String, genres: [String], name: String, coverArt: URL) {
+    init(artist: String, genres: [String], name: String, coverArt: String, songs: [Song]) {
         self.artist = artist
         self.coverArt = coverArt
         self.genres = genres
         self.id = UUID().uuidString
         self.name = name
-        self.songs = []
+        self.songs = songs
     }
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -42,7 +42,7 @@ struct Album: Decodable, Encodable {
         
         var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
         let urlContainer = try coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArtCodingKeys.self)
-        coverArt = try urlContainer.decode(URL.self, forKey: .url)
+        coverArt = try urlContainer.decode(String.self, forKey: .url)
         
         //var genreContainer = try container.nestedUnkeyedContainer(forKey: .genres)
         
@@ -59,7 +59,7 @@ struct Album: Decodable, Encodable {
         try container.encode(artist, forKey: .artist)
         var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
         var urlContainer = coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArtCodingKeys.self)
-        try urlContainer.encode(coverArt.absoluteString, forKey: .url)
+        try urlContainer.encode(coverArt, forKey: .url)
         try container.encode(genres, forKey: .genres)
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
