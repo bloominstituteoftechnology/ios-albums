@@ -11,10 +11,11 @@ import Foundation
 class AlbumController {
     
     var albums: [Album] = []
-    let baseURL = URL(string: "https://album-300b5.firebaseio.com/.json")!
+    let baseURL = URL(string: "https://album-300b5.firebaseio.com/")!
     
     func getAlbums(completion: @escaping (Error?) -> Void) {
-        var request = URLRequest(url: baseURL)
+        let requestURL = baseURL.appendingPathExtension("json")
+        var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.get.rawValue
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
@@ -28,21 +29,23 @@ class AlbumController {
             do {
                 let albumDict = try JSONDecoder().decode([String : Album].self, from: data)
                 self.albums = albumDict.map({ $0.value })
+                print(self.albums)
                 completion(nil)
             } catch {
                 completion(error)
                 return
             }
-        }
+        }.resume()
     }
     
     func put(album: Album) {
         let id = album.id
-        let requestURL = baseURL.appendingPathComponent(id)
+        let requestURL = baseURL.appendingPathComponent(id).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
         do {
             let data = try JSONEncoder().encode(album)
+            print(String(data: data, encoding: .utf8))
             request.httpBody = data
         } catch {
             print ("Error encoding album to PUT in server: \(error)")
@@ -53,7 +56,7 @@ class AlbumController {
             if let error = error {
                 print ("Error PUTing album in server: \(error)")
             }
-        }
+        }.resume()
     }
     
     func createAlbum(artist: String, genres: [String], name: String) {

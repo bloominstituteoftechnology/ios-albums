@@ -14,7 +14,7 @@ struct Album: Decodable, Encodable {
     var genres: [String]
     let id: String
     var name: String
-    var songs: [Song]
+    var songs: [Song]?
     
     enum CodingKeys: String, CodingKey {
         case artist
@@ -51,7 +51,7 @@ struct Album: Decodable, Encodable {
         id = try container.decode(String.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         
-        songs = try container.decode([Song].self, forKey: .songs)
+        songs = try? container.decode([Song].self, forKey: .songs)
     }
     
     func encode(to encoder: Encoder) throws {
