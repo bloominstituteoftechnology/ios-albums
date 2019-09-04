@@ -42,4 +42,16 @@ class AlbumsTableViewController: UITableViewController {
         cell.detailTextLabel?.text = album.artist
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let albumDetailTableVC = segue.destination as? AlbumDetailsTableViewController else { return }
+        if segue.identifier == "ShowAlbumSegue" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            albumDetailTableVC.album = albumController.albums[indexPath.row]
+            albumDetailTableVC.albumController = albumController
+        }
+        if segue.identifier == "AddAlbumSegue" {
+            albumDetailTableVC.albumController = albumController
+        }
+    }
 }
