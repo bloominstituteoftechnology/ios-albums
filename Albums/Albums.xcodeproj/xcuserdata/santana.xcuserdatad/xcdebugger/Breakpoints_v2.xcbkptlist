@@ -6,75 +6,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Albums/View Controllers/AlbumsVC.swift"
-            timestampString = "589305576.284649"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "fetchAlbums()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Albums/Helpers/AlbumController.swift"
-            timestampString = "589305576.284749"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "getAlbums(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Albums.AlbumController.getAlbums(completion: (Swift.Result&lt;Swift.Bool, Albums.NetworkError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Albums"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/santana/Desktop/Lambda/Unit3/Intermidiate%20Codable/ios-albums/Albums/Albums/Helpers/AlbumController.swift"
-                  timestampString = "589305576.5079221"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56"
-                  offsetFromSymbolStart = "1808">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 ((key: Swift.String, value: Albums.Album)) -&gt; Swift.Optional&lt;Albums.Album&gt; in closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Albums.AlbumController.getAlbums(completion: (Swift.Result&lt;Swift.Bool, Albums.NetworkError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Albums"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/santana/Desktop/Lambda/Unit3/Intermidiate%20Codable/ios-albums/Albums/Albums/Helpers/AlbumController.swift"
-                  timestampString = "589305576.510812"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56"
-                  offsetFromSymbolStart = "133">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Albums/Helpers/AlbumController.swift"
-            timestampString = "589305576.285251"
+            timestampString = "589324854.4842"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"

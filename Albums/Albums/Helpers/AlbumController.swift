@@ -34,7 +34,7 @@ class AlbumController {
 	let baseURL = URL(string: "https://santana-discography.firebaseio.com/")!
 	
 	func getAlbums(completion: @escaping (Result<Bool, NetworkError>) -> Void) {
-		let requestUrl = baseURL//.appendingPathComponent("json")
+		let requestUrl = baseURL.appendingPathExtension("json")
 		
 		URLSession.shared.dataTask(with: requestUrl) { (data, response, error) in
 			if let error = error {
