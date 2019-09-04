@@ -2,4 +2,118 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Albums/View Controllers/AlbumsVC.swift"
+            timestampString = "589305576.284649"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "fetchAlbums()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Albums/Helpers/AlbumController.swift"
+            timestampString = "589305576.284749"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "getAlbums(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Albums.AlbumController.getAlbums(completion: (Swift.Result&lt;Swift.Bool, Albums.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Albums"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/santana/Desktop/Lambda/Unit3/Intermidiate%20Codable/ios-albums/Albums/Albums/Helpers/AlbumController.swift"
+                  timestampString = "589305576.5079221"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "1808">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 ((key: Swift.String, value: Albums.Album)) -&gt; Swift.Optional&lt;Albums.Album&gt; in closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Albums.AlbumController.getAlbums(completion: (Swift.Result&lt;Swift.Bool, Albums.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Albums"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/santana/Desktop/Lambda/Unit3/Intermidiate%20Codable/ios-albums/Albums/Albums/Helpers/AlbumController.swift"
+                  timestampString = "589305576.510812"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "133">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Albums/Helpers/AlbumController.swift"
+            timestampString = "589305576.285251"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "getAlbums(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Albums.AlbumController.getAlbums(completion: (Swift.Result&lt;Swift.Bool, Albums.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Albums"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/santana/Desktop/Lambda/Unit3/Intermidiate%20Codable/ios-albums/Albums/Albums/Helpers/AlbumController.swift"
+                  timestampString = "589305291.359988"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "259">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Albums.AlbumController.getAlbums(completion: (Swift.Result&lt;Swift.Bool, Albums.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Albums"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/santana/Desktop/Lambda/Unit3/Intermidiate%20Codable/ios-albums/Albums/Albums/Helpers/AlbumController.swift"
+                  timestampString = "589305291.3645"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "381">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

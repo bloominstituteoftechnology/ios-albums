@@ -10,37 +10,60 @@ import UIKit
 
 class AlbumsVC: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
+	//MARK: - IBOutlets
+	
+	
+	//MARK: - Properties
+	
+	let albumController = AlbumController()
+	
+	//MARK: - Life Cycle
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		fetchAlbums()
+	}
+	
+	//MARK: - IBActions
+	
+	
+	//MARK: - Helpers
+	
+	private func fetchAlbums() {
+		albumController.getAlbums { (result) in
+			if let _ = try? result.get() {
+				self.tableView.reloadData()
+			}
+		}
+	}
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return albumController.albumsByArtist.keys.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+		let sectionKey = Array(albumController.albumsByArtist.keys)[section]
+        return albumController.albumsByArtist[sectionKey]?.count ?? 0
     }
+	
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return Array(albumController.albumsByArtist.keys)[section]
+	}
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
+		let sectionKey = Array(albumController.albumsByArtist.keys)[indexPath.section]
+		let album = albumController.albumsByArtist[sectionKey]?[indexPath.row]
+		
+		cell.textLabel?.text = album?.title
+		cell.detailTextLabel?.text = album?.artist
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
