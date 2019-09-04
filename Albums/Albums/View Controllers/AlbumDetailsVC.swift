@@ -10,15 +10,30 @@ import UIKit
 
 class AlbumDetailsVC: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
+	//MARK: - IBOutlets
+	
+	@IBOutlet weak var albumTitleTextField: UITextField!
+	@IBOutlet weak var artistTextField: UITextField!
+	@IBOutlet weak var genresTextField: UITextField!
+	@IBOutlet weak var coverArtURLTextField: UITextField!
+	
+	//MARK: - Properties
+	
+	
+	//MARK: - Life Cycle
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		
+	}
+	
+	//MARK: - IBActions
+	
+	
+	//MARK: - Helpers
+	
+	
 
     // MARK: - Table view data source
 

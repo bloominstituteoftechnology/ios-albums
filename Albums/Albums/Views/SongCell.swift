@@ -8,17 +8,27 @@
 
 import UIKit
 
+protocol SongCellDelegate {
+	func newSongAdded()
+}
+
 class SongCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+	//MARK: - IBOutlets
+	
+	@IBOutlet weak var titleTextField: UITextField!
+	@IBOutlet weak var durationTextField: UITextField!
+	
+	//MARK: - Properties
+	
+	
+	//MARK: - IBActions
+	
+	@IBAction func addSongBtnTapped(_ sender: Any) {
+		
+	}
+	
+	//MARK: - Helpers
+	
+	
 }
