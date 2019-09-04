@@ -142,11 +142,14 @@
                                             <rect key="frame" x="321" y="29" width="66" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Add song"/>
+                                            <connections>
+                                                <action selector="addSongTapped:" destination="AJi-fb-jbc" eventType="touchUpInside" id="BBY-GP-rHW"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="addSongTapped" destination="9Qm-7y-k0F" id="eeS-u6-JaS"/>
+                                    <outlet property="addSongButton" destination="9Qm-7y-k0F" id="eeS-u6-JaS"/>
                                     <outlet property="durationLabel" destination="ZhB-w3-hm2" id="SEj-om-2CP"/>
                                     <outlet property="titleLabel" destination="Bal-O7-dF4" id="y61-v6-fLH"/>
                                 </connections>
