@@ -52,7 +52,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Albums" id="ZqR-Wm-0cm">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="idC-cy-u78"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="idC-cy-u78">
+                            <connections>
+                                <segue destination="NgI-wm-ThC" kind="show" id="uEB-aQ-nzL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ul7-z6-mJV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -110,7 +114,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="123" id="bzw-de-A6A" customClass="SongCell" customModule="Albums" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="123" id="bzw-de-A6A" customClass="SongCell" customModule="Albums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="217" width="414" height="123"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bzw-de-A6A" id="I2r-Rf-uiZ">
@@ -150,6 +154,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addSongBtn" destination="JCQ-II-4DF" id="H0A-Yc-gik"/>
                                     <outlet property="durationTextField" destination="zea-PE-uSN" id="1iM-q7-I1l"/>
                                     <outlet property="titleTextField" destination="HZR-YE-p6Y" id="GJp-hI-h87"/>
                                 </connections>
@@ -161,7 +166,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Album" id="8lf-C6-dE8">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hBo-Ep-MJm"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hBo-Ep-MJm">
+                            <connections>
+                                <action selector="saveBtnTapped:" destination="NgI-wm-ThC" id="naH-rE-pKj"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="albumTitleTextField" destination="e4T-X5-d9N" id="iBv-ZW-MWX"/>
@@ -193,4 +202,7 @@
             <point key="canvasLocation" x="160.86956521739131" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="FPp-gX-SeP"/>
+    </inferredMetricsTieBreakers>
 </document>
