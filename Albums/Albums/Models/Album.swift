@@ -10,11 +10,11 @@ import Foundation
 
 struct Album: Codable {
 	let id: UUID
-	let artist: String
-	let coverArt: [URL]
-	let genres: [String]
-	let title: String
-	let songs: [Song]
+	var artist: String
+	var coverArt: [URL]?
+	var genres: [String]
+	var title: String
+	var songs: [Song]
 	
 	enum CodingKeys: String, CodingKey {
 		case id
@@ -27,6 +27,15 @@ struct Album: Codable {
 	
 	enum CoverArtKeys: String, CodingKey {
 		case url
+	}
+	
+	init(id: UUID?, artist: String, coverArt: [URL]?, genres: [String], title: String, songs: [Song]) {
+		self.id = id ?? UUID()
+		self.artist = artist
+		self.coverArt = coverArt
+		self.genres = genres
+		self.title = title
+		self.songs = songs
 	}
 	
 	init(from decoder: Decoder) throws {
@@ -56,13 +65,14 @@ struct Album: Codable {
 		try container.encode(artist, forKey: .artist)
 		try container.encode(genres, forKey: .genres)
 		try container.encode(title, forKey: .title)
+		try container.encode(songs, forKey: .songs)
 		
 		var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
-		for url in coverArt {
-			var urlContainer = coverArtContainer.nestedContainer(keyedBy: CoverArtKeys.self)
-			try urlContainer.encode(url, forKey: .url)
+		if let coverArt = coverArt {
+			for url in coverArt {
+				var urlContainer = coverArtContainer.nestedContainer(keyedBy: CoverArtKeys.self)
+				try urlContainer.encode(url, forKey: .url)
+			}
 		}
-		
 	}
-	
 }

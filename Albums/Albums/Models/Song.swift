@@ -10,8 +10,8 @@ import Foundation
 
 struct Song: Codable {
 	let id: UUID
-	let title: String
-	let duration: String
+	var title: String
+	var duration: String
 	
 	enum CodingKeys: String, CodingKey {
 		case id
@@ -25,6 +25,12 @@ struct Song: Codable {
 	
 	enum NameKeys: String, CodingKey {
 		case title
+	}
+	
+	init(id: UUID?, title: String, duration: String) {
+		self.id = id ?? UUID()
+		self.title = title
+		self.duration = duration
 	}
 	
 	init(from decoder: Decoder) throws {
