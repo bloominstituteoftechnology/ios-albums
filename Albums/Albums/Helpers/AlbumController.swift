@@ -24,6 +24,8 @@ enum HTTPMethod: String {
 	case delete = "DELETE"
 }
 
+typealias resultHandler = (Result<Bool, NetworkError>) -> Void
+
 class AlbumController {
 	
 	private var albums = [Album]()
@@ -33,7 +35,17 @@ class AlbumController {
 	
 	let baseURL = URL(string: "https://santana-discography.firebaseio.com/")!
 	
-	func getAlbums(completion: @escaping (Result<Bool, NetworkError>) -> Void) {
+	//MARK: - Helpers
+	
+	func findAlbum(by indexPath: IndexPath) -> Album? {
+		let sectionKey = Array(albumsByArtist.keys)[indexPath.section]
+		let album = albumsByArtist[sectionKey]?[indexPath.row]
+		return album
+	}
+	
+	//MARK: - CRUD
+	
+	func getAlbums(completion: @escaping resultHandler) {
 		let requestUrl = baseURL.appendingPathExtension("json")
 		
 		URLSession.shared.dataTask(with: requestUrl) { (data, response, error) in
@@ -61,9 +73,26 @@ class AlbumController {
 			}.resume()
 	}
 	
-//	func putAlbum(<#parameters#>) -> <#return type#> {
-//		<#function body#>
-//	}
+	func putAlbum(_ newAlbum: Album, completion: @escaping resultHandler) {
+		let requestURL = baseURL.appendingPathComponent(newAlbum.id.uuidString)
+			.appendingPathExtension("json")
+		var request = URLRequest(url: requestURL)
+		request.httpMethod = HTTPMethod.put.rawValue
+		
+		do {
+			let albumData = try JSONEncoder().encode(newAlbum)
+			request.httpBody = albumData
+		} catch {
+			completion(.failure(.notEncoding))
+		}
+		
+		URLSession.shared.dataTask(with: request) { (_, _, error) in
+			if let error = error {
+				completion(.failure(.other(error)))
+			}
+			completion(.success(true))
+			}.resume()
+	}
 	
 //	func testDecodingExampleAlbum() {
 //		guard let filePath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else { return }
