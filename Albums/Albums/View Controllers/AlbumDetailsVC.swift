@@ -19,87 +19,98 @@ class AlbumDetailsVC: UITableViewController {
 	
 	//MARK: - Properties
 	
+	var album : Album? {
+		didSet {
+			newSongs = album?.songs ?? [Song]()
+			songCount = album?.songs.count ?? 0
+		}
+	}
+	var albumController: AlbumController?
+	private var newSongs = [Song]()
+	private var songCount = 0
 	
 	//MARK: - Life Cycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		
+		updateViews()
 	}
 	
 	//MARK: - IBActions
 	
+	@IBAction func saveBtnTapped(_ sender: Any) {
+		guard let albumTitle = albumTitleTextField.optionalText,
+			let artist = artistTextField.optionalText,
+			let genres = genresTextField.optionalText?.split(separator: ",").map({String($0)}) else { return }
+		
+		let coverArtUrlString = coverArtURLTextField.optionalText?.split(separator: ",")
+		let coverArtUrl = coverArtUrlString?.compactMap({URL(string: String($0))})
+		
+		let newAlbum = Album(id: album?.id, artist: artist, coverArt: coverArtUrl, genres: genres, title: albumTitle, songs: newSongs)
+		
+		albumController?.putAlbum(newAlbum, completion: { (result) in
+			if let _ = try? result.get() {
+				DispatchQueue.main.async {
+					self.navigationController?.popViewController(animated: true)
+				}
+			}
+		})
+	}
 	
 	//MARK: - Helpers
 	
-	
+	private func updateViews() {
+		guard let album = album else { return }
+		albumTitleTextField.text = album.title
+		artistTextField.text = album.artist
+		genresTextField.text = album.genres.joined(separator: ", ")
+		if let coverArtUrls = album.coverArt {
+			coverArtURLTextField.text = coverArtUrls.map({$0.absoluteString}).joined(separator: ", ")
+		}
+	}
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+		return songCount
     }
+	
+//	override func numberOfSections(in tableView: UITableView) -> Int {
+//		return 1
+//	}
+//
+//	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//		return "Songs"
+//	}
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongCell else { return UITableViewCell() }
+		
+		if indexPath.row < songCount - 1 {
+			cell.song = album?.songs[indexPath.row]
+		} else {
+			cell.delegate = self
+		}
 
         return cell
     }
-    */
+	
+	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
+			self.album?.songs.remove(at: indexPath.row)
+			tableView.deleteRows(at: [indexPath], with: .automatic)
+			handler(true)
+		}
+		
+		return UISwipeActionsConfiguration(actions: [delete])
+	}
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
+}
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+extension AlbumDetailsVC: SongCellDelegate {
+	func newSongAdded(_ newSong: Song) {
+		album?.songs.append(newSong)
+		tableView.reloadData()
+	}
 }
