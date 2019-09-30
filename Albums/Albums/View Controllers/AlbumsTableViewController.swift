@@ -10,14 +10,38 @@ import UIKit
 
 class AlbumsTableViewController: UIViewController {
 
+    // MARK: - IBOutlets & Properties
+
     @IBOutlet weak var tableView: UITableView!
+    
+    let albumController = AlbumController()
+    
+    
+    
+    // MARK: - View LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.delegate = self
         tableView.dataSource = self
+        loadAlbums()
+        
     }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        loadAlbums()
+//    }
+    
+    // MARK: - IBActions & Methods
+    
+    func loadAlbums() {
+        albumController.loadAlbums { _ in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     
 
     /*
@@ -34,11 +58,13 @@ class AlbumsTableViewController: UIViewController {
 
 extension AlbumsTableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return albumController.albums.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
+        let album = albumController.albums[indexPath.row]
+        cell.textLabel?.text = album.artist
         return cell
     }
     
