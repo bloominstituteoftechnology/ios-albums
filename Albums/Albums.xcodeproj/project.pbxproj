@@ -13,6 +13,7 @@
 		32822621231D99C1008A6EF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3282261F231D99C1008A6EF7 /* LaunchScreen.storyboard */; };
 		3297791C23428F7B005B244F /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297791B23428F7B005B244F /* AlbumsTableViewController.swift */; };
 		3297792123429167005B244F /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297792023429167005B244F /* AlbumDetailTableViewController.swift */; };
+		3297792323429314005B244F /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297792223429314005B244F /* SongTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		32822622231D99C1008A6EF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3297791B23428F7B005B244F /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		3297792023429167005B244F /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		3297792223429314005B244F /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				3297791B23428F7B005B244F /* AlbumsTableViewController.swift */,
 				3297792023429167005B244F /* AlbumDetailTableViewController.swift */,
+				3297792223429314005B244F /* SongTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3297792323429314005B244F /* SongTableViewCell.swift in Sources */,
 				32822617231D99BF008A6EF7 /* AppDelegate.swift in Sources */,
 				3297792123429167005B244F /* AlbumDetailTableViewController.swift in Sources */,
 				3297791C23428F7B005B244F /* AlbumsTableViewController.swift in Sources */,

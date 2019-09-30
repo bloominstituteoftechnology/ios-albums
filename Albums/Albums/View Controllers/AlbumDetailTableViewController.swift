@@ -10,13 +10,22 @@ import UIKit
 
 class AlbumDetailTableViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var albumNameTextField: UITextField!
+    @IBOutlet weak var artistTextField: UITextField!
+    @IBOutlet weak var genreTextField: UITextField!
+    @IBOutlet weak var albumArtUrlTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
-
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -27,4 +36,17 @@ class AlbumDetailTableViewController: UIViewController {
     }
     */
 
+}
+
+extension AlbumDetailTableViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongTableViewCell else { return UITableViewCell() }
+        return cell
+    }
+    
+    
 }
