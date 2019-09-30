@@ -23,5 +23,20 @@ class Album : Decodable {
         case genres
         case name
         case songs
+        
+        enum AlbumCoverArtCodingKeys: String, CodingKey {
+            case url
+        }
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: AlbumCodingKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        artist = try container.decode(String.self, forKey: .artist)
+        var coverArtStrings: [String] = []
+        let coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+        while !coverArtContainer.isAtEnd {
+            let coverArtString = try coverArtContainer.decode(String.self)
+        }
     }
 }
