@@ -9,12 +9,19 @@
 import UIKit
 
 class AlbumDetailTableViewController: UIViewController {
+    
+    // MARK: - IBOutlets & Properties
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var albumNameTextField: UITextField!
     @IBOutlet weak var artistTextField: UITextField!
     @IBOutlet weak var genreTextField: UITextField!
     @IBOutlet weak var albumArtUrlTextField: UITextField!
+    
+    var albumController: AlbumController?
+    var album: Album?
+    
+    // MARK: - View LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +30,22 @@ class AlbumDetailTableViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    // MARK: - IBActions & Methods
+    
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+    }
+    
+    func updateViews() {
+        let genreString = ""
+        guard let album = album else { return }
+        
+        albumNameTextField.text = album.name
+        artistTextField.text = album.artist
+        
+        for genre in album.genres {
+            
+        }
+        
     }
     
     /*
@@ -37,6 +59,8 @@ class AlbumDetailTableViewController: UIViewController {
     */
 
 }
+
+// MARK: - Extensions
 
 extension AlbumDetailTableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

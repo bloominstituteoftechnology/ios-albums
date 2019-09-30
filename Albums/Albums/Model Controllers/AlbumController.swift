@@ -39,4 +39,22 @@ class AlbumController {
         }.resume()
     }
     
+    func postAlbum(album: Album) {
+        guard let path = Bundle.main.path(forResource: "exampleAlbum", ofType: "json") else { return }
+        let fileURL = URL(fileURLWithPath: path)
+        
+        var request = URLRequest(url: fileURL)
+        
+        do{
+            let albumData = try JSONEncoder().encode(album)
+            request.httpBody = albumData
+        } catch {
+            NSLog("Error creating Album:\(error)")
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            
+        }.resume()
+    }
+    
 }

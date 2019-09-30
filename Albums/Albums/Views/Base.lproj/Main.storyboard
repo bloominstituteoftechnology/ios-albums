@@ -46,7 +46,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="ky9-Jk-AIj" kind="show" id="QcW-QG-k5v"/>
+                                            <segue destination="ky9-Jk-AIj" kind="show" identifier="ShowAlbumSegue" id="QcW-QG-k5v"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
