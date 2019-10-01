@@ -48,14 +48,14 @@ The whole purpose of this project is to help you understand how `Codable` works 
     - Assume that all properties in the model objects are **not optional** and are variables.
 4. Add the "exampleAlbum.json" file to your project. Make sure you check "Copy file(s) if needed", and add it to your target.
 5. Create a new Swift file called "AlbumController.swift". Create an `AlbumController` class.
-6. Create a function in the `AlbumController` called `testDecodingExampleAlbum()`. This should:
+_6. Create a function in the `AlbumController` called `testDecodingExampleAlbum()`. This should:
     - Get the JSON data from the "exampleAlbum.json" file. (`Data(contentsOf: URL)`)
     - Try to decode the JSON using JSONDecoder just like you would if you got this data from an API.
     - Check for errors. This is important because it will help you make sure you've correctly implemented the `init(from decoder: Decoder) throws` initializer in your model objects by giving you an error about what you have potentially done wrong.
-7. Run this function in the `AppDelegate`. Make sure you don't get any errors when decoding the example JSON before you move on.
+_7. Run this function in the `AppDelegate`. Make sure you don't get any errors when decoding the example JSON before you move on.
 8. Back in the "Album.swift" file, now adopt `Codable` in both model objects. 
-9. Implement the `encode(to encoder:  Encoder) throws` function. This function should encode the JSON back into its original nested state (i.e. the encoded JSON should match the structure of the example JSON exactly). 
-10. Create a function in the `AlbumController` called `testEncodingExampleAlbum()`. Copy and paste the code from the `testDecodingExampleAlbum()` method. Then simply try encoding the newly decoded `Album`. Again, check for errors to make sure you're encoding correctly.
+_9. Implement the `encode(to encoder:  Encoder) throws` function. This function should encode the JSON back into its original nested state (i.e. the encoded JSON should match the structure of the example JSON exactly). 
+_10. Create a function in the `AlbumController` called `testEncodingExampleAlbum()`. Copy and paste the code from the `testDecodingExampleAlbum()` method. Then simply try encoding the newly decoded `Album`. Again, check for errors to make sure you're encoding correctly.
 
 ### Part 3 - AlbumController
 
