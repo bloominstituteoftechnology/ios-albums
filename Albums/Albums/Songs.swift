@@ -9,13 +9,15 @@
 import Foundation
 
 
-struct Songs: Decodable {
-	let songs: [String]
+struct Song: Decodable {
+	let duration: String
+	let id: String
+	let name: String
 
 	enum SongKeys: String, CodingKey {
 		case duration
 		case name
-		case id
+		case id // I don't think the id is needed
 
 		enum DurationKeys: String, CodingKey {
 			case duration
@@ -23,9 +25,17 @@ struct Songs: Decodable {
 		enum NameKeys: String, CodingKey {
 			case title
 		}
+	}
 
+	init(from decoder: Decoder) throws {
 
+		let container = try decoder.container(keyedBy: SongKeys.self)
+		let nameContainer = try container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
+		let durationContainer = try container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
 
+		duration = try durationContainer.decode(String.self, forKey: .duration)
+		name = try nameContainer.decode(String.self, forKey: .title)
+		id = try container.decode(String.self, forKey: .id)
 
 	}
 }

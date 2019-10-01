@@ -14,12 +14,14 @@ struct Album: Decodable {
 	let artist: String
 	let genres: [String]
 	let coverArt: [URL]
+	let songs: [Song]
 
 	enum AlbumKeys: String, CodingKey {
 		case name
 		case artist
 		case genres
 		case coverArt
+		case songs
 	}
 
 	init(from decoder: Decoder) throws {
@@ -46,6 +48,8 @@ struct Album: Decodable {
 			}
 		}
 		coverArt = coverArtUrl
+
+		songs = try container.decode([Song], forKey: .songs)
 	}
 }
 
