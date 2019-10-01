@@ -9,7 +9,6 @@
         <!--Albums Table View Controller-->
         <scene sceneID="rnE-te-8ab">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hgt-pc-UbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController id="IZl-fC-saY" customClass="AlbumsTableViewController" customModule="ios_albums" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Oal-j8-KKU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -57,13 +56,13 @@
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hgt-pc-UbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1131.8840579710145" y="125.22321428571428"/>
         </scene>
         <!--Title-->
         <scene sceneID="u7p-p3-R0R">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h4d-uT-bq7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController id="h8q-XH-YRZ" customClass="AlbumDetailTableViewController" customModule="ios_albums" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="yZ2-qy-Mga">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -107,7 +106,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="146" id="8bI-Eu-mjP" customClass="SongTableViewCell" customModule="ios_albums" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="146" id="8bI-Eu-mjP" customClass="SongTableViewCell" customModule="ios_albums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="208" width="414" height="146"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8bI-Eu-mjP" id="HuH-be-Iyc">
@@ -134,6 +133,7 @@
                                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="35" id="QdX-4p-ZKK"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="294" id="X3a-3A-WMX"/>
                                             </constraints>
                                             <state key="normal" title="Add Song">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -148,7 +148,7 @@
                                         <constraint firstItem="7k0-ED-5OR" firstAttribute="leading" secondItem="HuH-be-Iyc" secondAttribute="leading" constant="60" id="35x-ul-uYg"/>
                                         <constraint firstItem="7ln-tG-k3X" firstAttribute="leading" secondItem="HuH-be-Iyc" secondAttribute="leading" constant="20" id="3PU-41-YQv"/>
                                         <constraint firstAttribute="bottom" secondItem="7k0-ED-5OR" secondAttribute="bottom" constant="8" id="8ph-n8-bjc"/>
-                                        <constraint firstAttribute="trailing" secondItem="7k0-ED-5OR" secondAttribute="trailing" constant="60" id="DS4-cL-q4T"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7k0-ED-5OR" secondAttribute="trailing" constant="20" symbolic="YES" id="DS4-cL-q4T"/>
                                         <constraint firstAttribute="trailing" secondItem="7ln-tG-k3X" secondAttribute="trailing" constant="20" id="pWB-Uh-MHH"/>
                                         <constraint firstItem="7k0-ED-5OR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7ln-tG-k3X" secondAttribute="bottom" constant="8" id="wDn-0X-zjS"/>
                                     </constraints>
@@ -179,13 +179,13 @@
                         <outlet property="genresTextField" destination="sAz-wk-g5H" id="0ct-XH-dfy"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h4d-uT-bq7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2079.7101449275365" y="124.55357142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mfT-es-niY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zqr-GZ-Wwl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6oR-Eh-er4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="nhR-7A-s8I">
@@ -197,6 +197,7 @@
                         <segue destination="IZl-fC-saY" kind="relationship" relationship="rootViewController" id="SYS-u8-1bx"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zqr-GZ-Wwl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="221.73913043478262" y="124.55357142857142"/>
         </scene>
