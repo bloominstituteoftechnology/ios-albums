@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Albums
 //
-//  Created by Ciara Beitel on 9/30/19.
+//  Created by Ciara Beitel on 10/1/19.
 //  Copyright © 2019 Ciara Beitel. All rights reserved.
 //
 
@@ -10,9 +10,11 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-        
+
+    let albumController = AlbumController()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        albumController.testDecodingExampleAlbum()
         return true
     }
 

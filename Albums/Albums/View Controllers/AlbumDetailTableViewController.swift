@@ -2,7 +2,7 @@
 //  AlbumDetailTableViewController.swift
 //  Albums
 //
-//  Created by Ciara Beitel on 9/30/19.
+//  Created by Ciara Beitel on 10/1/19.
 //  Copyright © 2019 Ciara Beitel. All rights reserved.
 //
 
@@ -17,7 +17,7 @@ class AlbumDetailTableViewController: UITableViewController {
     
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

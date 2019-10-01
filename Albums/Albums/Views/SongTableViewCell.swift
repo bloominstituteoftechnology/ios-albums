@@ -2,7 +2,7 @@
 //  SongTableViewCell.swift
 //  Albums
 //
-//  Created by Ciara Beitel on 9/30/19.
+//  Created by Ciara Beitel on 10/1/19.
 //  Copyright © 2019 Ciara Beitel. All rights reserved.
 //
 
@@ -12,11 +12,10 @@ class SongTableViewCell: UITableViewCell {
     
     @IBOutlet weak var songTitle: UITextField!
     @IBOutlet weak var songDuration: UITextField!
-    
-    
+       
     @IBAction func addSongButton(_ sender: UIButton) {
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
