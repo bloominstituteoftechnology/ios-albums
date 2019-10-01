@@ -15,7 +15,9 @@ struct Album: Codable {
     var id: String
     var name: String
     var songs: [Song]
+}
     
+extension Album {
     enum AlbumKeys: String, CodingKey {
         case artist
         case coverArt
@@ -26,7 +28,6 @@ struct Album: Codable {
         
         enum GenreContentKeys: String, CodingKey {
             case genre
-            
         }
     }
     
@@ -64,14 +65,15 @@ struct Album: Codable {
         try container.encode(name, forKey: .name)
         try container.encode(songs, forKey: .songs)
     }
-        
 }
 
 struct Song: Codable {
     var duration: String
     var id: String
     var name: String
-    
+}
+ 
+extension Song {
     enum SongKeys: String, CodingKey {
         case duration
         case id
