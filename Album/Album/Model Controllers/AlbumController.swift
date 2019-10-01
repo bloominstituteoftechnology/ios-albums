@@ -10,9 +10,9 @@ import Foundation
 
 class AlbumController {
     static let shared = AlbumController()
-    
     var albums: [Album] = []
     let baseURL: URL = URL(string: "https://albums-aff02.firebaseio.com/")!
+    let albumControllerDebug: Bool = true
     
     @discardableResult func create(artist: String, coverArt: [URL], genres: [String], name: String, songs: [Song] = []) -> Album {
         let myAlbum = Album(artist: artist, coverArt: coverArt, genres: genres, name: name, songs: songs)
@@ -23,6 +23,20 @@ class AlbumController {
             }
         }
         return myAlbum
+    }
+    
+    func update(album: Album, artist: String, coverArt: [URL], genres: [String], name: String, songs: [Song] = []) {
+        album.artist = artist
+        album.coverArt = coverArt
+        album.genres = genres
+        album.name = name
+        album.songs = songs
+        self.put(album: album) { (error) in
+            if let error = error {
+                NSLog("Error putting Album in update: \(error)")
+            }
+        }
+        return
     }
     
     func createSong(name: String, duration: TimeInterval) -> Song {
@@ -88,13 +102,13 @@ class AlbumController {
             decoder.dateDecodingStrategy = .iso8601
             do {
                 self.albums = try decoder.decode([String: Album].self, from: data).map({ $0.value })
+                if self.albumControllerDebug {print ("Albums: \(String(describing: self.albums))")}
+                completion(nil)
             } catch {
                 NSLog("Error decoding: \(error)")
                 completion(NetworkError.noDecode)
             }
             }.resume()
-        completion(nil)
-        
     }
     
     func put(album: Album, completion: @escaping (Error?) -> Void) {

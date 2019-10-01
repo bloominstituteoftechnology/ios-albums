@@ -12,9 +12,17 @@ class Album : Codable {
     var id: UUID
     var artist: String
     var coverArt: [URL]
+    var coverArtString: String {
+        let strings = coverArt.map( { $0.absoluteString } )
+        return strings.joined(separator: ", ")
+    }
     var genres: [String]
+    var gengresString: String {
+        return genres.joined(separator: ", ")
+    }
     var name: String
     var songs: [Song]
+    let debuggingAlbum: Bool = false
     
     enum AlbumCodingKeys: String, CodingKey {
         case id
@@ -42,11 +50,11 @@ class Album : Codable {
         do {
             let container = try decoder.container(keyedBy: AlbumCodingKeys.self)
             id = try container.decode(UUID.self, forKey: .id)
-            print ("Album ID: \(id)")
+            if debuggingAlbum { print ("Album ID: \(id)")}
             name = try container.decode(String.self, forKey: .name)
-            print ("Album Name: \(name)")
+            if debuggingAlbum { print ("Album Name: \(name)")}
             artist = try container.decode(String.self, forKey: .artist)
-            print ("Album Artist: \(artist)")
+            if debuggingAlbum { print ("Album Artist: \(artist)")}
             var coverArtStrings: [String] = []
             var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
             while !coverArtContainer.isAtEnd {
@@ -55,7 +63,7 @@ class Album : Codable {
                 coverArtStrings.append(coverArtString)
             }
             coverArt = coverArtStrings.compactMap {URL(string: $0)}
-            print ("Album Cover Art: \(coverArt)")
+            if debuggingAlbum { print ("Album Cover Art: \(coverArt)")}
             var genreStrings: [String] = []
             var genreContainer = try container.nestedUnkeyedContainer(forKey: .genres)
             while !genreContainer.isAtEnd {
@@ -63,7 +71,7 @@ class Album : Codable {
                 genreStrings.append(genre)
             }
             genres = genreStrings.compactMap { $0 }
-            print ("Album Genres: \(genres)")
+            if debuggingAlbum { print ("Album Genres: \(genres)")}
             var songsContainer = try container.nestedUnkeyedContainer(forKey: .songs)
             var songArray:[Song] = []
             while !songsContainer.isAtEnd {
@@ -80,7 +88,8 @@ class Album : Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: AlbumCodingKeys.self)
         try container.encode(artist, forKey: .artist)
-        var coverArtContainer = container.nestedContainer(keyedBy: AlbumCodingKeys.AlbumCoverArtCodingKeys.self, forKey: .coverArt)
+        var coverArtList = container.nestedUnkeyedContainer(forKey: .coverArt)
+        var coverArtContainer = coverArtList.nestedContainer(keyedBy: AlbumCodingKeys.AlbumCoverArtCodingKeys.self)
         for url in coverArt {
             try coverArtContainer.encode(url.description, forKey: .url)
         }
@@ -90,5 +99,31 @@ class Album : Codable {
         try container.encode(name, forKey: .name)
         var songContainer = container.nestedUnkeyedContainer(forKey: .songs)
         try songContainer.encode(contentsOf: songs)
+    }
+}
+
+extension Album: CustomDebugStringConvertible {
+    var debugDescription: String {
+        var result: String = ""
+//        var id: UUID
+//        var artist: String
+//        var coverArt: [URL]
+//        var genres: [String]
+//        var name: String
+//        var songs: [Song]
+        result += "***Album***\n\n"
+        result += "\tID: \(id)\n"
+        result += "\tName: \(name)\n"
+        result += "\tArtist: \(artist)\n"
+        for item in coverArt {
+            result += "\tCover Art: \(item)\n"
+        }
+        for genre in genres {
+            result += "\tGenre: \(genre)\n"
+        }
+        for song in songs {
+            result += "\tSong: \(song.debugDescription)\n"
+        }
+        return result
     }
 }

@@ -10,12 +10,22 @@ import UIKit
 
 class AlbumDetailTableViewController: UITableViewController {
 
+    //MARK: - Outlets
     @IBOutlet weak var albumNameTF: UITextField!
     @IBOutlet weak var artistNameTF: UITextField!
     @IBOutlet weak var genresTF: UITextField!
     @IBOutlet weak var coverArtURLsTF: UITextField!
     
+    //MARK: - Properties
+    var albumController: AlbumController?
+    var album: Album?{
+        didSet{
+            updateViews()
+        }
+    }
+    var tempSongs: [Song] = []
     
+    //MARK: - Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,28 +40,48 @@ class AlbumDetailTableViewController: UITableViewController {
     @IBAction func saveTapped(_ sender: Any) {
     }
     
-
+    private func updateViews() {
+        if let album = album {
+            albumNameTF.text = album.name
+            artistNameTF.text = album.artist
+            genresTF.text = album.gengresString
+            coverArtURLsTF.text = album.coverArtString
+            tableView.reloadData()
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if let album = album {
+            return album.songs.count + 1
+        } else {
+            return tempSongs.count + 1
+        }
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as? SongTableViewCell else { return UITableViewCell()}
+        if let album = album {
+            cell.delegate = self
+            if indexPath.row < album.songs.count - 1 {
+                cell.song = album.songs[indexPath.row]
+            }
+        } else {
+            cell.delegate = self
+            if indexPath.row < tempSongs.count - 1 {
+                cell.song = tempSongs[indexPath.row]
+            }
+        }
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -88,7 +118,6 @@ class AlbumDetailTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -96,6 +125,11 @@ class AlbumDetailTableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
-
+}
+extension AlbumDetailTableViewController: SongTableViewCellDelegate {
+    func addSong(with title: String, duration: String) {
+        guard let albumController = albumController else { return }
+        tempSongs.append(albumController.createSong(name: title, duration: Song.durationToSeconds(duration)))
+        tableView.reloadData()
+    }
 }

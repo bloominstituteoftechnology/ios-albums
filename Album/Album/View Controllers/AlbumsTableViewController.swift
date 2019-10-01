@@ -10,9 +10,24 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
 
+    var albumController = AlbumController()
+    let tvcDebug: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        albumController.getAlbums { (error) in
+            DispatchQueue.main.async {
+                if let error = error {
+                    NSLog("Error GETing Albums: \(error)")
+                    let alert = UIAlertController(title: "Error", message: "Error GETing Albums: \(error)", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                }
+                self.tableView.reloadData()
+            }
+            
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -23,24 +38,24 @@ class AlbumsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if tvcDebug { print ("Album count: \(albumController.albums.count)")}
+        return albumController.albums.count
     }
 
-    /*
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AlbulmCell", for: indexPath)
+        if tvcDebug { print ("Album name: \(albumController.albums[indexPath.row].name)")}
+        cell.textLabel?.text = albumController.albums[indexPath.row].name
+        if tvcDebug { print ("Album artist: \(albumController.albums[indexPath.row].artist)")}
+        cell.detailTextLabel?.text = albumController.albums[indexPath.row].artist
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
