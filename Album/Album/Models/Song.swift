@@ -13,6 +13,12 @@ class Song: Codable {
     var id: UUID
     var name: String
     
+    init(id: UUID = UUID(),duration: TimeInterval, name: String) {
+        self.id = id
+        self.duration = duration
+        self.name = name
+    }
+    
     enum SongCodingKeys: String, CodingKey {
         case duration
         case id

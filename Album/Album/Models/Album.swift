@@ -29,6 +29,15 @@ class Album : Codable {
         }
     }
     
+    init (id: UUID = UUID(), artist:String, coverArt: [URL], genres: [String], name: String, songs: [Song] = []) {
+        self.id = id
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.name = name
+        self.songs = songs
+    }
+    
     required init(from decoder: Decoder) throws {
         do {
             let container = try decoder.container(keyedBy: AlbumCodingKeys.self)
@@ -79,5 +88,7 @@ class Album : Codable {
         try genresContainer.encode(contentsOf: genres)
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
+        var songContainer = container.nestedUnkeyedContainer(forKey: .songs)
+        try songContainer.encode(contentsOf: songs)
     }
 }
