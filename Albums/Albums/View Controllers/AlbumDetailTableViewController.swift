@@ -29,11 +29,22 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
             let genres = genres.text,
             let coverArtURLs = coverArtURLs.text else { return }
         
-        if let album = album {
-            albumController?.update(album: album, artist: artist, coverArt: coverArtURLs, genres: genres, id: name, name: name, songs: tempSongs)
-        } else {
-            albumController?.createAlbum(artist: artist, coverArt: coverArtURLs, genres: genres, id: name, name: name, songs: tempSongs)
+        let genreArray = genres.split(separator: Character(","))
+        let convertedGenre = genreArray.map{ String($0) }
+        
+        let coverArtArray = coverArtURLs.split(separator: Character(","))
+        var coverArtConvertedUrls: [URL] = []
+        for x in coverArtArray {
+            let urlString = URL(string: String(x))!
+            coverArtConvertedUrls.append(urlString)
         }
+        
+        if let album = album {
+            albumController?.update(album: album, artist: artist, coverArt: coverArtConvertedUrls, genres: convertedGenre, id: name, name: name, songs: tempSongs)
+        } else {
+            let _ = albumController?.createAlbum(artist: artist, coverArt: coverArtConvertedUrls, genres: convertedGenre, id: name, name: name, songs: tempSongs)
+        }
+        navigationController?.popViewController(animated: true)
     }
     
     func updateViews() {
