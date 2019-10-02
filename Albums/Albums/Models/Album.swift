@@ -12,7 +12,7 @@ struct Album: Codable {
     let artist: String
     let name: String
     let id: String
-    let coverArt: [String]
+    let coverArt: [URL]
     let genres: [String]
     let songs: [Song]
     
@@ -29,7 +29,7 @@ struct Album: Codable {
         }
     }
     
-    init(decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: AlbumKeys.self)
         
@@ -42,13 +42,14 @@ struct Album: Codable {
         self.id = id
         
         // COVER ART
-        var coverArtURLs: [String] = []
-        
-        var firstCoverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
-        while !firstCoverArtContainer.isAtEnd {
-            let secondCoverArtContainer = try firstCoverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
-            let urlString = try secondCoverArtContainer.decode(String.self, forKey: .url)
-            coverArtURLs.append(urlString)
+        var coverArtURLs: [URL] = []
+        if container.contains(.coverArt) {
+            var firstCoverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+            while !firstCoverArtContainer.isAtEnd {
+                let secondContainer = try firstCoverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
+                let url = try secondContainer.decode(URL.self, forKey: .url)
+                coverArtURLs.append(url)
+            }
         }
         self.coverArt = coverArtURLs
         

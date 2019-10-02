@@ -25,27 +25,34 @@ class AlbumDetailTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.delegate = self
         tableView.dataSource = self
+        updateViews()
     }
     
     // MARK: - IBActions & Methods
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     func updateViews() {
-        let genreString = ""
+        var genreString = ""
+        var albumArtString = ""
         guard let album = album else { return }
+        for genre in album.genres {
+            genreString.append(genre + ",")
+        }
+        
+        for art in album.coverArt {
+            let artString = "\(art)"
+            albumArtString.append(artString + ",")
+        }
         
         albumNameTextField.text = album.name
         artistTextField.text = album.artist
-        
-        for genre in album.genres {
-            
-        }
-        
+        genreTextField.text = genreString
+        albumArtUrlTextField.text = albumArtString
     }
     
     /*
@@ -64,11 +71,16 @@ class AlbumDetailTableViewController: UIViewController {
 
 extension AlbumDetailTableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        guard let album = album else { return 0 }
+        return album.songs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongTableViewCell else { return UITableViewCell() }
+        if let album = album {
+            cell.songTitleTextField.text    = album.songs[indexPath.row].name
+            cell.songDurationTextField.text = album.songs[indexPath.row].duration
+        }
         return cell
     }
     
