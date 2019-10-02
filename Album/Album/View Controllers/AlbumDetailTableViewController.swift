@@ -24,12 +24,13 @@ class AlbumDetailTableViewController: UITableViewController {
         }
     }
     var tempSongs: [Song] = []
+    let debug: Bool = false
     
     //MARK: - Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -38,9 +39,26 @@ class AlbumDetailTableViewController: UITableViewController {
     }
     
     @IBAction func saveTapped(_ sender: Any) {
+        guard   let albumName = albumNameTF.text, !albumName.isEmpty,
+                let artistName = artistNameTF.text, !artistName.isEmpty,
+                let albumController = albumController
+        else { return }
+        let genres = genresTF.text ?? ""
+        let genresArray = genres.split(separator: ",")
+        let genresStringArray = genresArray.map { String($0)}
+        let coverArtURLs = coverArtURLsTF.text ?? ""
+        let caArray = coverArtURLs.split(separator: ",")
+        let caURLArray = caArray.map { URL(string: String($0))!}
+        if let album = album {
+            albumController.update(album: album, artist: artistName, coverArt: caURLArray, genres: genresStringArray, name: albumName)
+        } else {
+            albumController.create(artist: artistName, coverArt: caURLArray, genres: genresStringArray, name: albumName, songs: tempSongs)
+        }
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func updateViews() {
+        guard isViewLoaded else { return }
         if let album = album {
             albumNameTF.text = album.name
             artistNameTF.text = album.artist
@@ -68,19 +86,37 @@ class AlbumDetailTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as? SongTableViewCell else { return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongTableViewCell else { return UITableViewCell()}
         if let album = album {
             cell.delegate = self
-            if indexPath.row < album.songs.count - 1 {
+            if indexPath.row <= album.songs.count - 1 {
                 cell.song = album.songs[indexPath.row]
             }
         } else {
             cell.delegate = self
-            if indexPath.row < tempSongs.count - 1 {
+            if indexPath.row <= tempSongs.count - 1 {
                 cell.song = tempSongs[indexPath.row]
             }
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let album = album {
+            if debug {print ("album.songs.count = \(album.songs.count)   indexPath.row = \(indexPath.row)")}
+            if indexPath.row == album.songs.count {
+                return 120
+            } else {
+                return 44
+            }
+        } else {
+            if debug {print ("tempSongs.count = \(tempSongs.count)   indexPath.row = \(indexPath.row)")}
+            if indexPath.row == tempSongs.count {
+                return 120
+            } else {
+                return 44
+            }
+        }
     }
 
     /*
@@ -131,5 +167,6 @@ extension AlbumDetailTableViewController: SongTableViewCellDelegate {
         guard let albumController = albumController else { return }
         tempSongs.append(albumController.createSong(name: title, duration: Song.durationToSeconds(duration)))
         tableView.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: tempSongs.count, section: 0), at: .bottom, animated: true)
     }
 }

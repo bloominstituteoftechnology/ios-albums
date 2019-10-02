@@ -11,7 +11,12 @@ import UIKit
 class AlbumsTableViewController: UITableViewController {
 
     var albumController = AlbumController()
-    let tvcDebug: Bool = true
+    let tvcDebug: Bool = false
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,14 +97,21 @@ class AlbumsTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let vc = segue.destination as? AlbumDetailTableViewController else { return }
+        vc.albumController = albumController
+        switch segue.identifier {
+        case "AlbumDetailSegue":
+            if let indexPath = tableView.indexPathForSelectedRow?.row {
+                vc.album = albumController.albums[indexPath]
+            }
+        default:
+            vc.albumController = albumController
+            return
+        }
     }
-    */
 
 }

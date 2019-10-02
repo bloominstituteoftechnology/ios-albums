@@ -12,7 +12,7 @@ class AlbumController {
     static let shared = AlbumController()
     var albums: [Album] = []
     let baseURL: URL = URL(string: "https://albums-aff02.firebaseio.com/")!
-    let albumControllerDebug: Bool = true
+    let albumControllerDebug: Bool = false
     
     @discardableResult func create(artist: String, coverArt: [URL], genres: [String], name: String, songs: [Song] = []) -> Album {
         let myAlbum = Album(artist: artist, coverArt: coverArt, genres: genres, name: name, songs: songs)

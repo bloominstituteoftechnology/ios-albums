@@ -12,6 +12,7 @@ class Song: Codable {
     var duration: TimeInterval
     var durationString: String {
         let formatter = DateComponentsFormatter()
+        formatter.zeroFormattingBehavior = .dropLeading
         formatter.unitsStyle = .positional
         formatter.allowedUnits = [.hour, .minute, .second]
         let durationString = formatter.string(from: duration)
@@ -19,7 +20,7 @@ class Song: Codable {
     }
     var id: UUID
     var name: String
-    let debuggingSong: Bool = true
+    let debuggingSong: Bool = false
     
     init(id: UUID = UUID(),duration: TimeInterval, name: String) {
         self.id = id
