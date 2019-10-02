@@ -84,7 +84,7 @@ class AlbumController {
         }.resume()
     }
     
-    func createAlbum(artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) -> Album {
+    func createAlbum(artist: String, coverArt: [CoverArtURL], genres: [String], id: String, name: String, songs: [Song]) -> Album {
         
         let album = Album(artist: artist, coverArt: coverArt, genres: genres, id: id, name: name, songs: songs)
         
@@ -92,12 +92,12 @@ class AlbumController {
         return album
     }
     
-    func createSong(duration: String, id: String, name: String) -> Song {
+    func createSong(duration: SongDuration, id: String, name: SongName) -> Song {
         let song = Song(duration: duration, id: id, name: name)
         return song
     }
     
-    func update(album: Album, artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) {
+    func update(album: Album, artist: String, coverArt: [CoverArtURL], genres: [String], id: String, name: String, songs: [Song]) {
         var newAlbum = album
         newAlbum.artist = artist
         newAlbum.coverArt = coverArt

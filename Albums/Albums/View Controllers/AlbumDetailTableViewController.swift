@@ -33,10 +33,10 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
         let convertedGenre = genreArray.map{ String($0) }
         
         let coverArtArray = coverArtURLs.split(separator: Character(","))
-        var coverArtConvertedUrls: [URL] = []
+        var coverArtConvertedUrls: [CoverArtURL] = []
         for x in coverArtArray {
-            let urlString = URL(string: String(x))!
-            coverArtConvertedUrls.append(urlString)
+            let url = CoverArtURL(url: String(x))
+            coverArtConvertedUrls.append(url)
         }
         
         if let album = album {
@@ -68,7 +68,9 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
     }
     
     func addSong(with title: String, duration: String) {
-        guard let song = albumController?.createSong(duration: duration, id: title, name: title) else { return }
+        let songDuration = SongDuration(duration: duration)
+        let songName = SongName(title: title)
+        guard let song = albumController?.createSong(duration: songDuration, id: title, name: songName) else { return }
         tempSongs.append(song)
         tableView.reloadData()
         guard let indexPath = tableView.indexPathForSelectedRow else { return }

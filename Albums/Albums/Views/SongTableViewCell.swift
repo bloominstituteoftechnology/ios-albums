@@ -25,9 +25,11 @@ class SongTableViewCell: UITableViewCell {
     }
     
     func updateViews() {
-        if let song = song {
-            songTitle.text = song.name
-            songDuration.text = song.duration
+        if var song = song {
+            let songName = SongName(title: songTitle.text!)
+            song.name = songName
+            let tempDuration = SongDuration(duration: songDuration.text!)
+            song.duration = tempDuration
             addSong.isHidden = true
         } else {
             addSong.isHidden = false
