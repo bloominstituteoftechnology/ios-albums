@@ -109,8 +109,8 @@
 		77AC04472343999A005BA848 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				77AC045A23439C61005BA848 /* SongTableViewCell.swift */,
 				77AC046723440BA5005BA848 /* AlbumTableViewCell.swift */,
+				77AC045A23439C61005BA848 /* SongTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
