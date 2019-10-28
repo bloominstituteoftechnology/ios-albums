@@ -22,4 +22,22 @@ class AlbumController {
         }
     }
     
+    func testEncodingExampleAlbum() {
+        let data = try! Data(contentsOf: Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!)
+        
+        do {
+            let decoder = JSONDecoder()
+            let album = try decoder.decode(Album.self, from: data)
+            
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            let albumData = try encoder.encode(album)
+            
+            let dataAsString = String(data: albumData, encoding: .utf8)!
+            print(dataAsString)
+        } catch {
+            NSLog("\(error)")
+        }
+    }
+    
 }
