@@ -22,12 +22,12 @@ struct Album: Codable {
         }
     }
     
-    let artist: String
-    let coverArt: [URL]
-    let genres: [String]
-    let id: UUID
-    let name: String
-    let songs: [Song]
+    var artist: String
+    var coverArt: [URL]
+    var genres: [String]
+    var id: UUID
+    var name: String
+    var songs: [Song]
     
     func encode (to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: AlbumKeys.self)
