@@ -17,6 +17,17 @@ class AlbumDetailTableViewController: UITableViewController {
     @IBOutlet weak var genresTextField: UITextField!
     @IBOutlet weak var artURLsTextFiled: UITextField!
     
+    //MARK: Properties
+    
+    var albumController: AlbumController?
+    var album: Album? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    var tempSongs: [Song] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +36,24 @@ class AlbumDetailTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        updateViews()
+    }
+    
+    func updateViews() {
+        if let album = album {
+            nameTextField.text = album.name
+            artistTextField.text = album.artist
+            genresTextField.text = album.genres.joined(separator: ",")
+            artURLsTextFiled.text = album.coverArt.map({ $0.absoluteString }).joined(separator: ",")
+            
+            title = album.name
+            
+            tempSongs = album.songs
+        } else {
+            title = "New Album"
+            tempSongs = []
+        }
     }
 
     // MARK: - Table view data source
@@ -36,18 +65,16 @@ class AlbumDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return tempSongs.count + 1
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongTableViewCell else { return UITableViewCell() }
 
-        // Configure the cell...
+        cell.delegate = self
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -83,10 +110,52 @@ class AlbumDetailTableViewController: UITableViewController {
         return true
     }
     */
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row >= tempSongs.count - 1 {
+            return 140
+        } else {
+            return 100
+        }
+    }
 
     //MARK: Actions
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
+        guard let name = nameTextField.text,
+            let artist = artistTextField.text,
+            let genresString = genresTextField.text,
+            let artURLsString = artURLsTextFiled.text,
+            !name.isEmpty,
+            !artist.isEmpty,
+            !genresString.isEmpty,
+            !artURLsString.isEmpty else { return }
+        
+        let genres = genresString.components(separatedBy: ",")
+        
+        let artURLStrings = artURLsString.components(separatedBy: ",")
+        let artOptionalURLs = artURLStrings.map({ URL(string: $0) })
+        let artURLs = artOptionalURLs.compactMap({ $0 })
+        
+        if album != nil {
+            albumController?.update(from: &(album)!, artist: artist, coverArt: artURLs, genres: genres, name: name, songs: tempSongs)
+        } else {
+            albumController?.createAlbum(artist: artist, coverArt: artURLs, genres: genres, name: name, songs: tempSongs)
+        }
+        
+        navigationController?.popViewController(animated: true)
     }
     
+}
+
+//MARK: Song Table View Cell Delegate
+
+extension AlbumDetailTableViewController: SongTableViewCellDelegate {
+    func addSong(with title: String, duration: String) {
+        guard let song = albumController?.createSong(duration: duration, name: title) else { return }
+        tempSongs.append(song)
+        
+        tableView.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: tempSongs.count, section: 0), at: .none, animated: true)
+    }
 }
