@@ -53,7 +53,7 @@ class AlbumController {
     //MARK: Networking
     
     func getAlbums(completion: @escaping (Error?) -> Void) {
-        URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
+        URLSession.shared.dataTask(with: baseURL.appendingPathExtension("json")) { (data, _, error) in
             if let error = error {
                 NSLog("Error fetching albums: \(error)")
                 completion(error)
@@ -69,6 +69,7 @@ class AlbumController {
             do {
                 let albums = try JSONDecoder().decode([String: Album].self, from: data)
                 self.albums = albums.map({ $0.value })
+                completion(nil)
             } catch {
                 NSLog("Error decoding albums: \(error)")
                 completion(error)
@@ -77,7 +78,7 @@ class AlbumController {
     }
     
     func put(album: Album) {
-        let requestURL = baseURL.appendingPathComponent(album.id.uuidString)
+        let requestURL = baseURL.appendingPathComponent(album.id.uuidString).appendingPathExtension("json")
         
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue

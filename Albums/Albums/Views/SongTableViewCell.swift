@@ -66,7 +66,6 @@ class SongTableViewCell: UITableViewCell {
             !title.isEmpty,
             !duration.isEmpty else { return }
         
-        print("Adding song.")
         delegate?.addSong(with: title, duration: duration)
     }
     

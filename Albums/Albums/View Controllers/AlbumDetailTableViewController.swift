@@ -41,18 +41,20 @@ class AlbumDetailTableViewController: UITableViewController {
     }
     
     func updateViews() {
-        if let album = album {
-            nameTextField.text = album.name
-            artistTextField.text = album.artist
-            genresTextField.text = album.genres.joined(separator: ",")
-            artURLsTextFiled.text = album.coverArt.map({ $0.absoluteString }).joined(separator: ",")
-            
-            title = album.name
-            
-            tempSongs = album.songs
-        } else {
-            title = "New Album"
-            tempSongs = []
+        if isViewLoaded {
+            if let album = album {
+                nameTextField.text = album.name
+                artistTextField.text = album.artist
+                genresTextField.text = album.genres.joined(separator: ",")
+                artURLsTextFiled.text = album.coverArt.map({ $0.absoluteString }).joined(separator: ",")
+                
+                title = album.name
+                
+                tempSongs = album.songs
+            } else {
+                title = "New Album"
+                tempSongs = []
+            }
         }
     }
 
@@ -67,7 +69,6 @@ class AlbumDetailTableViewController: UITableViewController {
 
         cell.delegate = self
         if indexPath.row < tempSongs.count {
-            print("Setting song.")
             cell.song = tempSongs[indexPath.row]
         }
 
