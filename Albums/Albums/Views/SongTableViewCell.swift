@@ -22,7 +22,11 @@ class SongTableViewCell: UITableViewCell {
     
     //MARK: Properties
     
-    var song: Song?
+    var song: Song? {
+        didSet {
+            updateViews()
+        }
+    }
     var delegate: SongTableViewCellDelegate?
     
     override func awakeFromNib() {
@@ -62,6 +66,7 @@ class SongTableViewCell: UITableViewCell {
             !title.isEmpty,
             !duration.isEmpty else { return }
         
+        print("Adding song.")
         delegate?.addSong(with: title, duration: duration)
     }
     

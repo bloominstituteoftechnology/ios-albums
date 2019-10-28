@@ -58,13 +58,7 @@ class AlbumDetailTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return tempSongs.count + 1
     }
 
@@ -72,6 +66,10 @@ class AlbumDetailTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongTableViewCell else { return UITableViewCell() }
 
         cell.delegate = self
+        if indexPath.row < tempSongs.count {
+            print("Setting song.")
+            cell.song = tempSongs[indexPath.row]
+        }
 
         return cell
     }
@@ -112,7 +110,7 @@ class AlbumDetailTableViewController: UITableViewController {
     */
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row >= tempSongs.count - 1 {
+        if indexPath.row >= tempSongs.count {
             return 140
         } else {
             return 100

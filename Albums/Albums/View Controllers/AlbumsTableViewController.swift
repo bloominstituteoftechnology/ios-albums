@@ -12,7 +12,7 @@ class AlbumsTableViewController: UITableViewController {
     
     //MARK: Properties
     
-    var albumController: AlbumController?
+    var albumController = AlbumController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class AlbumsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        albumController?.getAlbums(completion: { (error) in
+        albumController.getAlbums(completion: { (error) in
             if error == nil {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -40,15 +40,15 @@ class AlbumsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return albumController?.albums.count ?? 0
+        return albumController.albums.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
 
-        let album = albumController?.albums[indexPath.row]
-        cell.textLabel?.text = album?.name
-        cell.detailTextLabel?.text = album?.artist
+        let album = albumController.albums[indexPath.row]
+        cell.textLabel?.text = album.name
+        cell.detailTextLabel?.text = album.artist
 
         return cell
     }
@@ -96,7 +96,7 @@ class AlbumsTableViewController: UITableViewController {
             albumDetailVC.albumController = albumController
             
             if segue.identifier == "ShowAlbumDetail", let indexPath = tableView.indexPathForSelectedRow {
-                albumDetailVC.album = albumController?.albums[indexPath.row]
+                albumDetailVC.album = albumController.albums[indexPath.row]
             }
         }
     }
