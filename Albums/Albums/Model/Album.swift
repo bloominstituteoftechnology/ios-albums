@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: Album Model
 
-struct Album: Decodable {
+struct Album: Codable {
     
     let artist: String
     let name: String
@@ -66,10 +66,21 @@ struct Album: Decodable {
             }
             coverArt = coverArtURLs
     }
+    // MARK: Encode Album
+    func encode(encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(name, forKey: .name)
+        try container.encode(artist, forKey: .artist)
+        try container.encode(coverArt, forKey: .coverArt)
+        try container.encode(id, forKey: .id)
+        try container.encode(genres, forKey: .genres)
+        try container.encode(songs, forKey: .songs)
+    }
 }
 
 // MARK: Song Model
-struct Songs: Decodable {
+struct Songs: Codable {
         
     let name: String
     let id: String
@@ -108,4 +119,14 @@ struct Songs: Decodable {
         let nameContainer = try container.nestedContainer(keyedBy: CodingKeys.NameKeys.self, forKey: .name)
         name = try nameContainer.decode(String.self, forKey: .title)
     }
+    // MARK: Encode Song
+    func encode(from encoder: Encoder) throws {
+         
+         var container = encoder.container(keyedBy: CodingKeys.self)
+         
+         try container.encode(name, forKey: .name)
+         try container.encode(id, forKey: .id)
+         try container.encode(duration, forKey: .duration)
+         
+     }
 }
