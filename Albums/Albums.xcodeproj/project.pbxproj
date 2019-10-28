@@ -12,6 +12,7 @@
 		591B95BD236775B0004BCB9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 591B95BB236775B0004BCB9C /* Main.storyboard */; };
 		591B95BF236775B3004BCB9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 591B95BE236775B3004BCB9C /* Assets.xcassets */; };
 		591B95C2236775B3004BCB9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 591B95C0236775B3004BCB9C /* LaunchScreen.storyboard */; };
+		591B95CB2367763B004BCB9C /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591B95CA2367763B004BCB9C /* AlbumsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		591B95BE236775B3004BCB9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		591B95C1236775B3004BCB9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		591B95C3236775B3004BCB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		591B95CA2367763B004BCB9C /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +58,21 @@
 			children = (
 				591B95B5236775B0004BCB9C /* AppDelegate.swift */,
 				591B95B7236775B0004BCB9C /* SceneDelegate.swift */,
+				591B95C92367762E004BCB9C /* View Controllers */,
 				591B95BB236775B0004BCB9C /* Main.storyboard */,
 				591B95BE236775B3004BCB9C /* Assets.xcassets */,
 				591B95C0236775B3004BCB9C /* LaunchScreen.storyboard */,
 				591B95C3236775B3004BCB9C /* Info.plist */,
 			);
 			path = Albums;
+			sourceTree = "<group>";
+		};
+		591B95C92367762E004BCB9C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				591B95CA2367763B004BCB9C /* AlbumsTableViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				591B95B6236775B0004BCB9C /* AppDelegate.swift in Sources */,
+				591B95CB2367763B004BCB9C /* AlbumsTableViewController.swift in Sources */,
 				591B95B8236775B0004BCB9C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
