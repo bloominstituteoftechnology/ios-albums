@@ -15,6 +15,10 @@
 		591B95CB2367763B004BCB9C /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591B95CA2367763B004BCB9C /* AlbumsTableViewController.swift */; };
 		591B95CD23677828004BCB9C /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591B95CC23677828004BCB9C /* AlbumDetailTableViewController.swift */; };
 		591B95D0236779B8004BCB9C /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591B95CF236779B8004BCB9C /* SongTableViewCell.swift */; };
+		591B95D323677A64004BCB9C /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591B95D223677A64004BCB9C /* Album.swift */; };
+		591B95D523677AF5004BCB9C /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591B95D423677AF5004BCB9C /* Song.swift */; };
+		591B95D723678582004BCB9C /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 591B95D623678582004BCB9C /* exampleAlbum.json */; };
+		591B95DB236785CB004BCB9C /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591B95DA236785CB004BCB9C /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		591B95CA2367763B004BCB9C /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		591B95CC23677828004BCB9C /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		591B95CF236779B8004BCB9C /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		591B95D223677A64004BCB9C /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		591B95D423677AF5004BCB9C /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		591B95D623678582004BCB9C /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
+		591B95DA236785CB004BCB9C /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +68,13 @@
 		591B95B4236775B0004BCB9C /* Albums */ = {
 			isa = PBXGroup;
 			children = (
+				591B95D623678582004BCB9C /* exampleAlbum.json */,
 				591B95B5236775B0004BCB9C /* AppDelegate.swift */,
 				591B95B7236775B0004BCB9C /* SceneDelegate.swift */,
-				591B95CE236779AB004BCB9C /* Views */,
+				591B95D123677A3D004BCB9C /* Models */,
+				591B95D9236785A2004BCB9C /* Model Controllers */,
 				591B95C92367762E004BCB9C /* View Controllers */,
+				591B95CE236779AB004BCB9C /* Views */,
 				591B95BB236775B0004BCB9C /* Main.storyboard */,
 				591B95BE236775B3004BCB9C /* Assets.xcassets */,
 				591B95C0236775B3004BCB9C /* LaunchScreen.storyboard */,
@@ -87,6 +98,23 @@
 				591B95CF236779B8004BCB9C /* SongTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		591B95D123677A3D004BCB9C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				591B95D223677A64004BCB9C /* Album.swift */,
+				591B95D423677AF5004BCB9C /* Song.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		591B95D9236785A2004BCB9C /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				591B95DA236785CB004BCB9C /* AlbumController.swift */,
+			);
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +177,7 @@
 			files = (
 				591B95C2236775B3004BCB9C /* LaunchScreen.storyboard in Resources */,
 				591B95BF236775B3004BCB9C /* Assets.xcassets in Resources */,
+				591B95D723678582004BCB9C /* exampleAlbum.json in Resources */,
 				591B95BD236775B0004BCB9C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,11 +189,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				591B95D523677AF5004BCB9C /* Song.swift in Sources */,
 				591B95B6236775B0004BCB9C /* AppDelegate.swift in Sources */,
 				591B95CB2367763B004BCB9C /* AlbumsTableViewController.swift in Sources */,
 				591B95D0236779B8004BCB9C /* SongTableViewCell.swift in Sources */,
+				591B95DB236785CB004BCB9C /* AlbumController.swift in Sources */,
 				591B95CD23677828004BCB9C /* AlbumDetailTableViewController.swift in Sources */,
 				591B95B8236775B0004BCB9C /* SceneDelegate.swift in Sources */,
+				591B95D323677A64004BCB9C /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
