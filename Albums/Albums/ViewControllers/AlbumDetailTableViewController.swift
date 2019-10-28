@@ -10,6 +10,13 @@ import UIKit
 
 class AlbumDetailTableViewController: UITableViewController {
 
+    // MARK: Outlets
+    @IBOutlet weak var albumNameTextField: UITextField!
+    @IBOutlet weak var artistNameTextField: UITextField!
+    @IBOutlet weak var genresTextField: UITextField!
+    @IBOutlet weak var URLToCoverTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -86,5 +93,9 @@ class AlbumDetailTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // MARK: Actions
+    @IBAction func saveButtonClicked(_ sender: Any) {
+    }
+    
 }

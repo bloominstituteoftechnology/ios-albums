@@ -137,6 +137,7 @@
                                             </state>
                                             <connections>
                                                 <action selector="AddSongButtonPressed:" destination="ud9-XM-V2a" eventType="touchUpInside" id="Jde-NP-GeU"/>
+                                                <action selector="addSongButtonClicked:" destination="ud9-XM-V2a" eventType="touchUpInside" id="vhO-Lk-Dxs"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -154,9 +155,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="AddSongButton" destination="TOB-37-WQ8" id="nLe-bf-Yhe"/>
-                                    <outlet property="DurationTextField" destination="cIW-BX-JtJ" id="dCd-OJ-AHY"/>
-                                    <outlet property="songTitleTextField" destination="ma2-5v-Poz" id="LuF-6c-VeD"/>
+                                    <outlet property="addSongButton" destination="TOB-37-WQ8" id="03L-gI-JBD"/>
+                                    <outlet property="durationTextField" destination="cIW-BX-JtJ" id="AhX-Vt-usc"/>
+                                    <outlet property="songTitleTextField" destination="ma2-5v-Poz" id="r22-Wn-pwa"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -168,15 +169,15 @@
                     <navigationItem key="navigationItem" title="New Album" id="oYG-aY-tpu">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Fsz-S7-UmG">
                             <connections>
-                                <action selector="saveButtonPressed:" destination="4tM-wC-woJ" id="Ccl-UO-XFm"/>
+                                <action selector="saveButtonClicked:" destination="4tM-wC-woJ" id="WQe-zF-L3P"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="URLToCoverTextField" destination="HkB-9Z-o09" id="L3O-YB-4Ed"/>
-                        <outlet property="albumNameTextField" destination="KnJ-9Q-3cI" id="efd-pJ-DQ8"/>
-                        <outlet property="artistNameTextField" destination="Lgj-3y-uzH" id="CLf-jY-pN5"/>
-                        <outlet property="genresTextField" destination="aSU-4u-JIq" id="ZTn-Hf-Yvn"/>
+                        <outlet property="URLToCoverTextField" destination="HkB-9Z-o09" id="3XW-68-JKh"/>
+                        <outlet property="albumNameTextField" destination="KnJ-9Q-3cI" id="pCu-91-cfZ"/>
+                        <outlet property="artistNameTextField" destination="Lgj-3y-uzH" id="1Je-ZI-ipf"/>
+                        <outlet property="genresTextField" destination="aSU-4u-JIq" id="DZa-y6-C1U"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yEO-75-3ND" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -203,6 +204,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kdS-3a-fOv"/>
+        <segue reference="COX-Nq-BJK"/>
     </inferredMetricsTieBreakers>
 </document>
