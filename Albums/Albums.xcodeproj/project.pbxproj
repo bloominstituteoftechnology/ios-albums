@@ -12,6 +12,7 @@
 		FAFF78BC236775740059C356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFF78BA236775740059C356 /* Main.storyboard */; };
 		FAFF78BE236775760059C356 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAFF78BD236775760059C356 /* Assets.xcassets */; };
 		FAFF78C1236775760059C356 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFF78BF236775760059C356 /* LaunchScreen.storyboard */; };
+		FAFF78CA236776180059C356 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF78C9236776180059C356 /* AlbumsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		FAFF78BD236775760059C356 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAFF78C0236775760059C356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAFF78C2236775760059C356 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAFF78C9236776180059C356 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 		FAFF78A8236775730059C356 = {
 			isa = PBXGroup;
 			children = (
+				FAFF78C8236775E50059C356 /* View Controllers */,
 				FAFF78B3236775730059C356 /* Albums */,
 				FAFF78B2236775730059C356 /* Products */,
 			);
@@ -62,6 +65,14 @@
 				FAFF78C2236775760059C356 /* Info.plist */,
 			);
 			path = Albums;
+			sourceTree = "<group>";
+		};
+		FAFF78C8236775E50059C356 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FAFF78C9236776180059C356 /* AlbumsTableViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAFF78B5236775740059C356 /* AppDelegate.swift in Sources */,
+				FAFF78CA236776180059C356 /* AlbumsTableViewController.swift in Sources */,
 				FAFF78B7236775740059C356 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
