@@ -35,7 +35,13 @@ class AlbumsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableView.reloadData()
+        albumController.getAlbums(completion: { (error) in
+            if error == nil {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        })
     }
 
     // MARK: - Table view data source
