@@ -27,18 +27,6 @@ struct Song: Codable {
     let id: UUID
     let name: String
     
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: SongKeys.self)
-        
-        id = try container.decode(UUID.self, forKey: .id)
-        
-        let nameContainer = try container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
-        name = try nameContainer.decode(String.self, forKey: .title)
-        
-        let durationContainer = try container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
-        duration = try durationContainer.decode(String.self, forKey: .duration)
-    }
-    
     func encode (to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: SongKeys.self)
         
@@ -49,5 +37,19 @@ struct Song: Codable {
         
         var durationContainer = container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
         try durationContainer.encode(duration, forKey: .duration)
+    }
+}
+
+extension Song {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: SongKeys.self)
+        
+        id = try container.decode(UUID.self, forKey: .id)
+        
+        let nameContainer = try container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
+        name = try nameContainer.decode(String.self, forKey: .title)
+        
+        let durationContainer = try container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
+        duration = try durationContainer.decode(String.self, forKey: .duration)
     }
 }

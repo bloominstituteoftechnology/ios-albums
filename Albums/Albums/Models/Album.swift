@@ -29,6 +29,26 @@ struct Album: Codable {
     let name: String
     let songs: [Song]
     
+    func encode (to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: AlbumKeys.self)
+        
+        try container.encode(artist, forKey: .artist)
+        try container.encode(genres, forKey: .genres)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(songs, forKey: .songs)
+        
+        var coverArtURLsContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        
+        for artURL in coverArt {
+            var coverArtContainer = coverArtURLsContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtDescriptionKeys.self)
+            
+            try coverArtContainer.encode(artURL, forKey: .url)
+        }
+    }
+}
+
+extension Album {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumKeys.self)
         
@@ -48,23 +68,5 @@ struct Album: Codable {
             coverArtURLs.append(coverArtURL)
         }
         coverArt = coverArtURLs
-    }
-    
-    func encode (to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: AlbumKeys.self)
-        
-        try container.encode(artist, forKey: .artist)
-        try container.encode(genres, forKey: .genres)
-        try container.encode(id, forKey: .id)
-        try container.encode(name, forKey: .name)
-        try container.encode(songs, forKey: .songs)
-        
-        var coverArtURLsContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
-        
-        for artURL in coverArt {
-            var coverArtContainer = coverArtURLsContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtDescriptionKeys.self)
-            
-            try coverArtContainer.encode(artURL, forKey: .url)
-        }
     }
 }
