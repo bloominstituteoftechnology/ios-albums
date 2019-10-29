@@ -35,7 +35,7 @@ struct Album: Codable {
     let artist: String
     let coverURLs: [URL]
     let genres: [String]
-    let songs: [String]
+    let songs: [URL]
     let name: String
     let id: Int
     
@@ -61,7 +61,7 @@ struct Album: Codable {
         }
         
         let songString = try container.decode([String].self, forKey: .songs)
-        songs = songString.compactMap { string: $0 }
+        songs = songString.compactMap { URL(string: $0) }
         
         coverURLs = try container.decode([URL].self, forKey: .coverURLs)
         genres = try container.decode([String].self, forKey: .genres)
@@ -96,11 +96,45 @@ struct Album: Codable {
 }
 
 struct Song: Codable {
-    let title: String
+    let name: String
     let duration: String
     let id: Int
     
+    enum SongKeys: String, CodingKey {
+        case duration
+        case id
+        case name
+        
+    }
+    
+    enum SongNameKeys: String, CodingKey {
+        case title
+    }
+    
     init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: SongKeys.self)
+        
+        duration = try container.decode(String.self, forKey: .duration)
+        
+        let idString = try container.decode(String.self, forKey: .id)
+        id = Int(idString) ?? 0
+        
+        
+        var songNamesContainer = try container.nestedUnkeyedContainer(forKey: .name)
+//        name = songNamesContainer.compactMap { URL(string: $0) }
+        
+//        var theSongName: String
+        
+        while !songNamesContainer.isAtEnd {
+            let songContainer = try songNamesContainer.nestedContainer(keyedBy: SongNameKeys.self)
+            
+            let namesContainer = try songContainer.nestedContainer(keyedBy: SongNameKeys.self, forKey: .title)
+            
+            let songName = try namesContainer.decode(String.self, forKey: .title)
+            name = songName
+        }
+        
+//        name = theSongName
         
     }
     
