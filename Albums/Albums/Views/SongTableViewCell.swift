@@ -11,7 +11,9 @@ import UIKit
 class SongTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-    
+    var song: Songs?
+    var delegate: SongTableViewCellDelegate?
+
     
     // MARK: - Outlets
     @IBOutlet weak var songTitle: UITextField!
@@ -25,12 +27,20 @@ class SongTableViewCell: UITableViewCell {
     
     // MARK: - Actions
     @IBAction func addSong(_ sender: UIButton) {
-        
+        guard let title = songTitle.text,
+            let duration = songDuration.text else { return }
+        delegate?.addSong(with: title, duration: duration)
     }
     
     // MARK: - Methods
     
     func updateViews() {
+        
+        if let song = song {
+            songTitle.text = song.name
+            songDuration.text = song.duration
+            addSongButton.isHidden = true
+        }
         
         addSongButton.layer.cornerRadius = 7.0
     }
@@ -40,5 +50,14 @@ class SongTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    override func prepareForReuse() {
+        songTitle.text = ""
+        songDuration.text = ""
+        addSongButton.isHidden = false
+    }
+}
 
+protocol SongTableViewCellDelegate {
+    func addSong(with title: String, duration: String)
 }
