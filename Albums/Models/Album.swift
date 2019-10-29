@@ -11,26 +11,37 @@ import Foundation
 
 struct Album: Codable {
     
-    let name: String
-    let artist: String
-    let genres: [String]
-    let coverURLs: [String]
-    let songs: [Song]
-    let songTitle: String
-    let songDuration: String
-    
     enum AlbumKeys: String, CodingKey {
         case name
-        case artis
+        case artist
         case genres
         case coverURLs = "coverArt"
         case songTitle
         case songDuration
+        case id
+        case songs
+    }
+    enum SongKeys: String, CodingKey {
+        case title
+        case duration
+        case id
+        
+        enum SongNameKeys: String, CodingKey {
+            case title
+        }
+        
     }
     
-    enum Song: String, CodingKey {
-        case songTilte
-    }
+    let artist: String
+    let coverURLs: [URL]
+    let genres: [String]
+    let songs: [String]
+    let name: String
+    let id: Int
+    
+//    let songTitle: String
+//    let songDuration: String
+    
     
     // Making a custom decoder:
     init(from decoder: Decoder) throws {
@@ -40,10 +51,57 @@ struct Album: Codable {
         let container = try decoder.container(keyedBy: AlbumKeys.self)
         
         name = try container.decode(String.self, forKey: .name)
+        artist = try container.decode(String.self, forKey: .artist)
+        
+        do {
+            id = try container.decode(Int.self, forKey: .id)
+        } catch {
+            let idString = try container.decode(String.self, forKey: .id)
+            id = Int(idString) ?? 0
+        }
+        
+        let songString = try container.decode([String].self, forKey: .songs)
+        songs = songString.compactMap { string: $0 }
+        
+        coverURLs = try container.decode([URL].self, forKey: .coverURLs)
+        genres = try container.decode([String].self, forKey: .genres)
+//        songs = try container.decode([String], forKey: <#T##Album.AlbumKeys#>)
+        
+        
+        
+        
+//
+//        var songsContainer = try container.nestedUnkeyedContainer(forKey: .songs)
+//
+//        var songNames: [String] = []
+//
+//        while !songsContainer.isAtEnd {
+////            let songDescriptionContainer = try songsContainer.nestedContainer(keyedBy: PokemonKeys.AbilityDescriptionKeys.self)
+//
+//            let songContainer = try songsContainer.nestedContainer(keyedBy: SongKeys.SongNameKeys.self)
+//
+//            let songTitle = try songContainer.decode(String.self, forKey: .title)
+//            songNames.append(songTitle)
+//        }
+//
+//        songs = songNames
+        
+        
         
     }
     
     
     
+    
+}
+
+struct Song: Codable {
+    let title: String
+    let duration: String
+    let id: Int
+    
+    init(from decoder: Decoder) throws {
+        
+    }
     
 }

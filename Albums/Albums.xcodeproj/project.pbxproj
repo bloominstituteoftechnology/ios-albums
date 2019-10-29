@@ -16,7 +16,6 @@
 		FAFF78CC236779030059C356 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF78CB236779030059C356 /* AlbumDetailTableViewController.swift */; };
 		FAFF78CF23677AE10059C356 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF78CE23677AE10059C356 /* SongTableViewCell.swift */; };
 		FAFF78D223677F9C0059C356 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF78D123677F9C0059C356 /* Album.swift */; };
-		FAFF78D423678D700059C356 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF78D323678D700059C356 /* Song.swift */; };
 		FAFF78D623678F910059C356 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = FAFF78D523678F910059C356 /* exampleAlbum.json */; };
 		FAFF78D923678FC30059C356 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF78D823678FC30059C356 /* AlbumController.swift */; };
 /* End PBXBuildFile section */
@@ -33,7 +32,6 @@
 		FAFF78CB236779030059C356 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		FAFF78CE23677AE10059C356 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		FAFF78D123677F9C0059C356 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
-		FAFF78D323678D700059C356 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		FAFF78D523678F910059C356 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
 		FAFF78D823678FC30059C356 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				FAFF78D123677F9C0059C356 /* Album.swift */,
-				FAFF78D323678D700059C356 /* Song.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,7 +186,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAFF78D423678D700059C356 /* Song.swift in Sources */,
 				FAFF78B5236775740059C356 /* AppDelegate.swift in Sources */,
 				FAFF78CA236776180059C356 /* AlbumsTableViewController.swift in Sources */,
 				FAFF78CF23677AE10059C356 /* SongTableViewCell.swift in Sources */,

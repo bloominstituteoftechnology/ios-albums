@@ -10,6 +10,7 @@ import Foundation
 
 class AlbumController {
     
+    //TODO: Have it return an error, if there is one
     func testDecodingExampleAlbum() {
         
         let url = URL(fileReferenceLiteralResourceName: "exampleAlbum.json")
