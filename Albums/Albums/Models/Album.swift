@@ -9,12 +9,12 @@
 import Foundation
 
 struct Album: Codable {
-    let artist: String
-    let coverArt: [URL]
-    let genres: [String]
-    let id: UUID
-    let name: String
-    let songs: [Song]
+    var artist: String
+    var coverArt: [URL]
+    var genres: [String]
+    var id: UUID
+    var name: String
+    var songs: [Song]
     
     enum AlbumKeys: String, CodingKey {
         case artist
@@ -25,6 +25,16 @@ struct Album: Codable {
         case songs
         
     }
+    init(artist: String, coverArt: [URL], genres: [String], id: UUID, name: String, songs: [Song]) {
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.id = id
+        self.name = name
+        self.songs = songs
+        
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumKeys.self)
         
@@ -75,9 +85,9 @@ struct Album: Codable {
 }
 
 struct Song: Codable {
-    let duration: String
-    let id: UUID
-    let name: String
+    var duration: String
+    var id: UUID
+    var name: String
     
     enum SongKeys: String, CodingKey {
         case duration
@@ -92,7 +102,11 @@ struct Song: Codable {
             case title
         }
     }
-    
+    init(duration: String, id: UUID, name: String) {
+        self.duration = duration
+        self.id = id
+        self.name = name
+    }
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: SongKeys.self)
         
@@ -114,7 +128,12 @@ struct Song: Codable {
         var container = encoder.container(keyedBy: SongKeys.self)
         
         var durationContainer = container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
-        for time in d
+        try durationContainer.encode(duration, forKey: .duration)
+        
+        try container.encode(id, forKey: .id)
+        
+        var nameContainer = container.nestedContainer(keyedBy: SongKeys.nameKeys.self, forKey: .name)
+        try nameContainer.encode(name, forKey: .title)
     }
 }
 
