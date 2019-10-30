@@ -8,7 +8,7 @@ Please look at the screen recording below to know what the finished project shou
 
 ## Instructions
 
-Please fork and clone this repository. This repository does not have a starter project but, so create one inside of the cloned repository folder. This repository does contain a file with example JSON that you will need in order to set up your model objects.
+Please fork and clone this repository. This repository does not have a starter project, so create one inside of the cloned repository folder. This repository does contain a file with example JSON that you will need in order to set up your model objects.
 
 ### Part 1 - Storyboard Setup
 
