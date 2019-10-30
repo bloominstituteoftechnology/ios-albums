@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="p8U-OD-dhd">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Albums-->
         <scene sceneID="Wvo-Es-J4C">
             <objects>
                 <tableViewController id="cgm-24-iYF" customClass="AlbumsTableViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,21 +16,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumCell" textLabel="HGP-gn-uhV" detailTextLabel="Xan-Cu-gAu" style="IBUITableViewCellStyleSubtitle" id="MLF-zZ-CvA">
-                                <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="55.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MLF-zZ-CvA" id="bW6-kL-fNz">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="55.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HGP-gn-uhV">
-                                            <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="20.000000000000004" y="8.9999999999999982" width="33.333333333333336" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xan-Cu-gAu">
-                                            <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
+                                            <rect key="frame" x="19.999999999999996" y="31.333333333333332" width="43.666666666666664" height="14.333333333333334"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -38,6 +38,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="4k2-RQ-etS" kind="show" identifier="AlbumDetailShowSegue" id="Q5E-D7-n73"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -45,13 +48,132 @@
                             <outlet property="delegate" destination="cgm-24-iYF" id="Jvf-ka-6Ic"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="H2F-bx-hPO">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ozy-HW-EUc"/>
+                    <navigationItem key="navigationItem" title="Albums" id="H2F-bx-hPO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ozy-HW-EUc">
+                            <connections>
+                                <segue destination="4k2-RQ-etS" kind="show" identifier="AddAlbumSegue" id="Bkq-WK-hXy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jio-4H-DAi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="590" y="87"/>
+        </scene>
+        <!--Album Detail Table View Controller-->
+        <scene sceneID="3V1-8d-IwR">
+            <objects>
+                <tableViewController id="4k2-RQ-etS" customClass="AlbumDetailTableViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HIu-cl-0Ha">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="djz-23-xwi">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uDE-g8-QQW">
+                                    <rect key="frame" x="8" y="20" width="398" height="160"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Album:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oND-Ik-Y6h">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="34"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eD2-T5-Y0O">
+                                            <rect key="frame" x="0.0" y="42" width="398" height="34"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Genre:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZsP-Yy-Bc7">
+                                            <rect key="frame" x="0.0" y="84" width="398" height="34"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cover Art:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QR2-Cc-39X">
+                                            <rect key="frame" x="0.0" y="126" width="398" height="34"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="uDE-g8-QQW" firstAttribute="centerY" secondItem="djz-23-xwi" secondAttribute="centerY" id="T35-VD-Xo6"/>
+                                <constraint firstAttribute="trailing" secondItem="uDE-g8-QQW" secondAttribute="trailing" constant="8" id="Y9f-kU-TaD"/>
+                                <constraint firstItem="uDE-g8-QQW" firstAttribute="leading" secondItem="djz-23-xwi" secondAttribute="leading" constant="8" id="mEZ-ST-DIW"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="160" id="Q76-vA-SQK" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="228" width="414" height="160"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q76-vA-SQK" id="k6k-mH-Blw">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sbA-ib-Uel">
+                                            <rect key="frame" x="8" y="20" width="398" height="76"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song Title:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qab-Xu-RhC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QaY-D0-ETj">
+                                                    <rect key="frame" x="0.0" y="42" width="398" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5T-me-iBg">
+                                            <rect key="frame" x="8" y="116" width="398" height="30"/>
+                                            <state key="normal" title="Add Song"/>
+                                            <connections>
+                                                <action selector="addSongTapped:" destination="Q76-vA-SQK" eventType="touchUpInside" id="iPS-tR-vHD"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="E5T-me-iBg" firstAttribute="top" secondItem="sbA-ib-Uel" secondAttribute="bottom" constant="20" id="7zb-hm-cbJ"/>
+                                        <constraint firstItem="sbA-ib-Uel" firstAttribute="leading" secondItem="k6k-mH-Blw" secondAttribute="leading" constant="8" id="82R-Ui-rhw"/>
+                                        <constraint firstAttribute="trailing" secondItem="E5T-me-iBg" secondAttribute="trailing" constant="8" id="Lcr-gG-pLE"/>
+                                        <constraint firstItem="E5T-me-iBg" firstAttribute="leading" secondItem="k6k-mH-Blw" secondAttribute="leading" constant="8" id="OEc-HQ-Pyq"/>
+                                        <constraint firstAttribute="trailing" secondItem="sbA-ib-Uel" secondAttribute="trailing" constant="8" id="tN5-yB-mPW"/>
+                                        <constraint firstItem="sbA-ib-Uel" firstAttribute="top" secondItem="k6k-mH-Blw" secondAttribute="top" constant="20" id="xQ1-Mx-dz5"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addSongButton" destination="E5T-me-iBg" id="HNd-7v-obn"/>
+                                    <outlet property="durationTextField" destination="QaY-D0-ETj" id="xh3-4p-G6V"/>
+                                    <outlet property="songTitleTextField" destination="Qab-Xu-RhC" id="F28-2O-lSf"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4k2-RQ-etS" id="e6a-Bn-BVD"/>
+                            <outlet property="delegate" destination="4k2-RQ-etS" id="1Yq-jp-wv5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="9T2-hl-7bf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="0tr-7R-l4u">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="4k2-RQ-etS" id="sJh-zi-WgQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="CoverArtURLTextField" destination="QR2-Cc-39X" id="343-fr-0Xj"/>
+                        <outlet property="albumNameTextField" destination="oND-Ik-Y6h" id="F7e-KJ-rUE"/>
+                        <outlet property="artistNameTextField" destination="eD2-T5-Y0O" id="3sG-Ub-Vfx"/>
+                        <outlet property="genresTextField" destination="ZsP-Yy-Bc7" id="UM4-gv-dOw"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BNf-Dg-V1C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1600.0000000000002" y="85.714285714285708"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cUI-Vg-o4s">
@@ -70,4 +192,7 @@
             <point key="canvasLocation" x="-330" y="86"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Bkq-WK-hXy"/>
+    </inferredMetricsTieBreakers>
 </document>
