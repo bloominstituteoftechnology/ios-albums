@@ -16,6 +16,7 @@
 		371F1D32236A13DB001A5DBE /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F1D31236A13DB001A5DBE /* AlbumDetailTableViewController.swift */; };
 		371F1D34236A18B1001A5DBE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 371F1D33236A18B1001A5DBE /* Default-568h@2x.png */; };
 		371F1D39236A1BE8001A5DBE /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F1D38236A1BE8001A5DBE /* SongTableViewCell.swift */; };
+		371F1D3C236A22D9001A5DBE /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F1D3B236A22D9001A5DBE /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		371F1D31236A13DB001A5DBE /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		371F1D33236A18B1001A5DBE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		371F1D38236A1BE8001A5DBE /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		371F1D3B236A22D9001A5DBE /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		371F1D15236A0CB8001A5DBE /* Albums */ = {
 			isa = PBXGroup;
 			children = (
+				371F1D3A236A22C4001A5DBE /* Models */,
 				371F1D37236A1BD6001A5DBE /* Views */,
 				371F1D2A236A0F1C001A5DBE /* View Controllers */,
 				371F1D2B236A0F2A001A5DBE /* Storyboards */,
@@ -98,6 +101,14 @@
 				371F1D38236A1BE8001A5DBE /* SongTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		371F1D3A236A22C4001A5DBE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				371F1D3B236A22D9001A5DBE /* Album.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +188,7 @@
 				371F1D39236A1BE8001A5DBE /* SongTableViewCell.swift in Sources */,
 				371F1D32236A13DB001A5DBE /* AlbumDetailTableViewController.swift in Sources */,
 				371F1D19236A0CB8001A5DBE /* SceneDelegate.swift in Sources */,
+				371F1D3C236A22D9001A5DBE /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
