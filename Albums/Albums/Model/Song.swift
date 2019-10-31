@@ -27,6 +27,12 @@ struct Song: Codable {
         case title
     }
     
+    init(duration: String, id: UUID, title: String) {
+        self.duration = duration
+        self.id = id
+        self.title = title
+    }
+    
     init(from decoder: Decoder) throws {
         /* JSON
          {
