@@ -80,4 +80,16 @@ struct Song: Codable {
         let durationContainer = try container.nestedContainer(keyedBy: DurationDescriptionCodingKey.self, forKey: .duration)
         duration = try durationContainer.decode(String.self, forKey: .duration)
     }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: SongCodingKeys.self)
+        
+        try container.encode(id, forKey: .id)
+        
+        var nameContainer = container.nestedContainer(keyedBy: NameDescriptionCodingKey.self, forKey: .name)
+        try nameContainer.encode(name, forKey: .title)
+        
+        var durationContainer = container.nestedContainer(keyedBy: DurationDescriptionCodingKey.self, forKey: .duration)
+        try durationContainer.encode(duration, forKey: .duration)
+    }
 }
