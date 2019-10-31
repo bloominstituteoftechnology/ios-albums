@@ -8,6 +8,13 @@
 
 import Foundation
 
+enum HTTPMethod: String {
+    case get = "GET"
+    case put = "PUT"
+    case post = "POST"
+    case delete = "DELETE"
+}
+
 class AlbumController {
     
     static let shared = AlbumController()
@@ -17,7 +24,7 @@ class AlbumController {
     let baseURL = URL(string: "https://albums-f45ed.firebaseio.com/")!
     
     func getAlbums(completion: @escaping (Error?) -> Void) {
-        URLSession.shared.dataTask(with: baseURL.appendingPathComponent("json")) { (data, _, error) in
+        URLSession.shared.dataTask(with: baseURL.appendingPathExtension("json")) { (data, _, error) in
             if let error = error {
                 print("Error fetching album data: \(error.localizedDescription)")
                 completion(error)
@@ -37,6 +44,28 @@ class AlbumController {
             } catch {
                 print("Error decoding albums: \(error)")
                 completion(error)
+            }
+        }.resume()
+    }
+    
+    func put(album: Album) {
+        let requestURL = baseURL.appendingPathComponent(album.id).appendingPathExtension("json")
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.put.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let albumJSON = try JSONEncoder().encode(album)
+            request.httpBody = albumJSON
+        } catch {
+            print("Error encoding album data: \(error)")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            if let error = error {
+                print("Error PUTing albums: \(error)")
             }
         }.resume()
     }
