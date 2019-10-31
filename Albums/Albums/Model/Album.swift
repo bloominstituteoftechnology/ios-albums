@@ -19,7 +19,7 @@ struct Album: Decodable {
     enum AlbumKeys: String, CodingKey {
         case artist
         case coverArt
-        case genre
+        case genres
         case id
         case name
         case songs
@@ -36,7 +36,7 @@ struct Album: Decodable {
             "coverArt" : [{
                 "url" : "https://lastfm-img2.akamaized.net/i/u/174s/1918fe81bb68441d96b2247682bfda21.png"
             }],
-            "genre" : [ "Alternative" ],
+            "genres" : [ "Alternative" ],
             "id" : "5E58FA0F-7DBD-4F1D-956F-89756CF1EB22",
             "name" : "Weezer (The Blue Album)",
             "songs" : [{   -SONG-   }]
@@ -47,11 +47,16 @@ struct Album: Decodable {
         
         artist = try container.decode(String.self, forKey: .artist)
         
-        let artContainer = try container.nestedContainer(keyedBy: CoverArtKeys.self, forKey: .coverArt)
-        let coverArtURLStrings = try artContainer.decode([String].self, forKey: .url)
-        coverArt = coverArtURLStrings.compactMap({ URL(string: $0) })
+        var artContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+        var coverArtURLs: [String] = []
+        while !artContainer.isAtEnd {
+            let artURLContainer = try artContainer.nestedContainer(keyedBy: CoverArtKeys.self)
+            let aURL = try artURLContainer.decode(String.self, forKey: .url)
+            coverArtURLs.append(aURL)
+        }
+        coverArt = coverArtURLs.compactMap({ URL(string: $0) })
         
-        genres = try container.decode([String].self, forKey: .genre)
+        genres = try container.decode([String].self, forKey: .genres)
         
         id = try container.decode(UUID.self, forKey: .id)
         

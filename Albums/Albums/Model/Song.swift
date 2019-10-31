@@ -16,7 +16,7 @@ struct Song: Decodable {
     enum SongKeys: String, CodingKey {
         case duration
         case id
-        case title
+        case name
     }
     
     enum DurationKeys: String, CodingKey {
@@ -47,7 +47,7 @@ struct Song: Decodable {
                 
         id = try container.decode(UUID.self, forKey: .id)
         
-        let nameContainer = try container.nestedContainer(keyedBy: NameKeys.self, forKey: .title)
+        let nameContainer = try container.nestedContainer(keyedBy: NameKeys.self, forKey: .name)
         title = try nameContainer.decode(String.self, forKey: .title)
     }
 }
