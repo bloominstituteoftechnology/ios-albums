@@ -34,8 +34,9 @@ class SongTableViewCell: UITableViewCell {
     }
     
     @IBAction func addSongTapped(_ sender: Any) {
-        guard let duration = durationTextField.text, let name = songTitleTextField.text else { return }
+        guard let duration = durationTextField.text, !duration.isEmpty, let name = songTitleTextField.text, !name.isEmpty else { return }
         delegate?.addSong(with: name, duration: duration)
+        updateViews()
     }
     
     

@@ -11,8 +11,8 @@ import Foundation
 class AlbumController {
     
     var albums: [Album] = []
+    
     private let baseURL = URL(string: "https://albums-f4f46.firebaseio.com/")!
-//    let baseURL = URL(string: "https://journal-cd569.firebaseio.com/albums")!
     
     func getAlbums(completion: @escaping (Error?) -> Void) {
         

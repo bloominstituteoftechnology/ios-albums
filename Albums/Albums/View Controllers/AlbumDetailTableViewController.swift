@@ -55,9 +55,9 @@ class AlbumDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 {
-            return 140
+            return 160
         } else {
-            return 100
+            return 120
         }
     }
     
