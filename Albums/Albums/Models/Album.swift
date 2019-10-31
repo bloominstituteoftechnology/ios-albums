@@ -30,6 +30,14 @@ struct Album: Codable {
         case url
     }
     
+    init(artist: String, genres: [String], id: String, name: String, songs: [Song]) {
+        self.artist = artist
+        self.genres = genres
+        self.id = id
+        self.name = name
+        self.songs = songs
+    }
+    
     
     init(from decoder: Decoder) throws {
         

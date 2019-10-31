@@ -40,7 +40,6 @@ class AlbumController {
         }
     }
 
-    
     func put(album: Album) {
         let id = album.id
         
@@ -65,6 +64,13 @@ class AlbumController {
         }.resume()
     }
     
+    func createAlbum(with artist: String, genres: [String], id: String, name: String, songs: [Song]) {
+        
+        let album = Album(artist: artist, genres: genres, id: id, name: name, songs: songs)
+        albums.append(album)
+        put(album: album)
+        
+    }
     
     
     func testDecodingExampleAlbum() {
