@@ -29,6 +29,17 @@ struct Album: Codable {
         }
     }
     
+    init(artist: String, coverArt: [String], genres: [String], id: String, name: String, songs: [Song]) {
+        let coverArtURLs = coverArt.compactMap { URL(string: $0) }
+        
+        self.artist = artist
+        self.coverArt = coverArtURLs
+        self.genres = genres
+        self.id = id
+        self.name = name
+        self.songs = songs  
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumKeys.self)
         
