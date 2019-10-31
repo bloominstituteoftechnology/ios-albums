@@ -116,8 +116,12 @@ In the `AlbumDetailTableViewController`:
     - Append the song to the `tempSongs` array
     - Reload the table view
     - Call `tableView.scrollToRow(at: IndexPath, ...)` method. You will need to manually create an `IndexPath`. Use 0 for the section and the `count` of the `tempSongs` for the row.
+    // CANT FIGURE THIS OUT
+    
 4. Implement the `numberOfRowsInSection` method using the `tempSongs` array. Return the amount of items in the array plus one. This will allow there to be an empty cell for the user to add a new song to.
 5. Implement the `cellForRowAt` method. Set this table view controller as the cell's `delegate`.
+// DELEGATES ARE GIVING ME ISSUES
+
 6. Implement the `heightForRowAt` method. Set the cell's height to something that looks good. Account for the cells whose buttons will be hidden, and the last cell whose button should be unhidden. In the screen recording, the hidden button cells' height is 100, and the last cell's height is 140.
 7. Finally, in the action of the "Save" bar button item:
     - Using optional binding, unwrap the text from the text fields.

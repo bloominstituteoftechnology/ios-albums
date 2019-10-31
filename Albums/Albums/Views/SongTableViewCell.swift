@@ -9,7 +9,7 @@
 import UIKit
 
 class SongTableViewCellDelegate {
-    func addSong(with title: String, duration: String) { }
+    func addSong(with title: String, duration: String) {}
 }
 
 
