@@ -26,6 +26,10 @@ struct Album: Codable {
         case songs
     }
     
+    enum CoverArtCodingKeys: String, CodingKey {
+        case url
+    }
+    
     
     init(from decoder: Decoder) throws {
         
@@ -33,8 +37,13 @@ struct Album: Codable {
         
         self.artist = try container.decode(String.self, forKey: .artist)
         
-//        let coverArt = try container.decode([String : URL].self, forKey: .coverArt)
-//        self.coverArt = coverArt.compactMap({  $0.value })
+//        var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+//        let coverArt = try coverArtContainer.decode([String].self)
+//        self.coverArt = coverArt.compactMap({ URL(string: $0) })
+        
+//        let coverArtContainer = try container.nestedContainer(keyedBy: CoverArtCodingKeys.self, forKey: .coverArt)
+//        let coverArt = try coverArtContainer.decode([String].self, forKey: .url)
+//        self.coverArt = coverArt.compactMap({ URL(string: $0) })
         
         self.genres = try container.decode([String].self, forKey: .genres)
         
