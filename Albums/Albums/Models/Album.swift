@@ -47,7 +47,6 @@ struct Album: Codable {
         let container = try decoder.container(keyedBy: AlbumCodingKeys.self)
         
         
-        
         var coverArt: [URL] = []
         if container.contains(.coverArt) {
             var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
@@ -60,7 +59,6 @@ struct Album: Codable {
         
         
         
-        
         var genres: [String] = []
         if container.contains(.genres) {
             var genresContainer = try container.nestedUnkeyedContainer(forKey: .genres)
@@ -69,7 +67,6 @@ struct Album: Codable {
                 genres.append(genreString)
             }
         }
-        
         
         
        

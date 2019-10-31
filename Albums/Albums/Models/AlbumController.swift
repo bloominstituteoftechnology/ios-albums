@@ -72,10 +72,9 @@ class AlbumController {
         
     }
     
-    func createSong(with duration: String, id: UUID = UUID(), name: String) -> Song{
+    func createSong(with duration: String, id: UUID = UUID(), name: String) -> Song {
         
         let song = Song(duration: duration, id: id, name: name)
-        
         return song
     }
     
@@ -93,44 +92,44 @@ class AlbumController {
     }
     
 
-    func testDecodingExampleAlbum() {
-        
-        let decoder = JSONDecoder()
-        
-        if let pathString = Bundle.main.path(forResource: "exampleAlbum", ofType: "json") {
-
-            do {
-                let fileURL = URL(fileURLWithPath: pathString)
-                let data = try Data(contentsOf: fileURL, options: .mappedIfSafe)
-                let album = try decoder.decode(Album.self, from: data)
-                self.albums.append(album)
-                
-            } catch {
-                print("Error Decoding Album: \(error)")
-            }
-            
-        }
-    }
-    
-    func testEncodingExampleAlbum() {
-        
-        let encoder = JSONEncoder()
-        let decoder = JSONDecoder()
-        
-        if let pathString = Bundle.main.path(forResource: "exampleAlbum", ofType: "json") {
-
-            do {
-                let fileURL = URL(fileURLWithPath: pathString)
-                let data = try Data(contentsOf: fileURL, options: .mappedIfSafe)
-                let album = try decoder.decode(Album.self, from: data)
-                let album1 = try encoder.encode(album)
-                print("\(album1)")
-               
-            } catch {
-                print("Error Encoding Album: \(error)")
-            }
-            
-        }
-    }
+//    func testDecodingExampleAlbum() {
+//        
+//        let decoder = JSONDecoder()
+//        
+//        if let pathString = Bundle.main.path(forResource: "exampleAlbum", ofType: "json") {
+//
+//            do {
+//                let fileURL = URL(fileURLWithPath: pathString)
+//                let data = try Data(contentsOf: fileURL, options: .mappedIfSafe)
+//                let album = try decoder.decode(Album.self, from: data)
+//                self.albums.append(album)
+//                
+//            } catch {
+//                print("Error Decoding Album: \(error)")
+//            }
+//            
+//        }
+//    }
+//    
+//    func testEncodingExampleAlbum() {
+//        
+//        let encoder = JSONEncoder()
+//        let decoder = JSONDecoder()
+//        
+//        if let pathString = Bundle.main.path(forResource: "exampleAlbum", ofType: "json") {
+//
+//            do {
+//                let fileURL = URL(fileURLWithPath: pathString)
+//                let data = try Data(contentsOf: fileURL, options: .mappedIfSafe)
+//                let album = try decoder.decode(Album.self, from: data)
+//                let album1 = try encoder.encode(album)
+//                print("\(album1)")
+//               
+//            } catch {
+//                print("Error Encoding Album: \(error)")
+//            }
+//            
+//        }
+//    }
 
 }
