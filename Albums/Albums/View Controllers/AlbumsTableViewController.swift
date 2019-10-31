@@ -29,15 +29,14 @@ class AlbumsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return albumController.albums.count
+        return 0
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
 
-        cell.textLabel?.text = album?.name
-        cell.detailTextLabel?.text = album?.artist
+        
         
 
         return cell

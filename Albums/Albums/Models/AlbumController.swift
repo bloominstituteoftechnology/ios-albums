@@ -21,8 +21,8 @@ class AlbumController {
             do {
                 let fileURL = URL(fileURLWithPath: pathString)
                 let data = try Data(contentsOf: fileURL, options: .mappedIfSafe)
-                let albums = try decoder.decode(Album.self, from: data)
-                self.albums.append(albums)
+                let album = try decoder.decode(Album.self, from: data)
+                self.albums.append(album)
                 
             } catch {
                 print("Error Decoding Album: \(error)")
