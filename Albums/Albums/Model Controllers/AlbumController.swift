@@ -29,6 +29,20 @@ class AlbumController {
         put(album: album)
     }
     
+    func createSong(duration: String, id: UUID = UUID(), name: String) -> Song {
+        let song = Song(duration: duration, id: id, name: name)
+        return song
+    }
+    
+    func update(from album: inout Album, artist: String, coverArt: [String], genres: [String], name: String, songs: [Song]) {
+        album.artist = artist
+        album.coverArt = coverArt
+        album.genres = genres
+        album.name = name
+        album.songs = songs
+        put(album: album)
+    }
+    
     func getAlbums(completion: @escaping (Error?) -> Void) {
         URLSession.shared.dataTask(with: baseURL.appendingPathExtension("json")) { (data, _, error) in
             if let error = error {
