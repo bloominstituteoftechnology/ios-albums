@@ -10,17 +10,16 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
     
-    let albumController = AlbumController()
+    var albumController: AlbumController?
     var album: Album?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        albumController?.getAlbums(completion: { (_) in
+            self.tableView.reloadData()
+        })
+        
     }
 
     // MARK: - Table view data source
@@ -29,17 +28,16 @@ class AlbumsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return albumController.albums.count
+        return albumController?.albums.count ?? 0
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
 
-        cell.textLabel?.text = "\(albumController.albums.count)"
-        cell.detailTextLabel?.text = "\(albumController.albums.count)"
+        cell.textLabel?.text = album?.name
+        cell.detailTextLabel?.text = album?.artist
         
-
         return cell
     }
    
@@ -79,14 +77,22 @@ class AlbumsTableViewController: UITableViewController {
     }
     */
 
-    /*
+   
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "AlbumDetailShowSegue" {
+            if let detailVC = segue.destination as? AlbumDetailTableViewController, let indexPath = tableView.indexPathForSelectedRow {
+                detailVC.albumController = albumController
+                detailVC.album = albumController?.albums[indexPath.row]
+            }
+        } else if segue.identifier == "AddAlbumSegue" {
+            if let detailVC = segue.destination as? AlbumDetailTableViewController {
+                detailVC.albumController = albumController
+            }
+        }
     }
-    */
+    
 
 }

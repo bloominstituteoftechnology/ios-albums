@@ -10,6 +10,9 @@ import UIKit
 
 class AlbumDetailTableViewController: UITableViewController {
     
+    var albumController: AlbumController?
+    var album: Album?
+    
     @IBOutlet weak var albumNameTextField: UITextField!
     @IBOutlet weak var artistNameTextField: UITextField!
     @IBOutlet weak var genresTextField: UITextField!

@@ -52,10 +52,13 @@ The whole purpose of this project is to help you understand how `Codable` works 
     - Get the JSON data from the "exampleAlbum.json" file. (`Data(contentsOf: URL)`)
     - Try to decode the JSON using JSONDecoder just like you would if you got this data from an API.
     - Check for errors. This is important because it will help you make sure you've correctly implemented the `init(from decoder: Decoder) throws` initializer in your model objects by giving you an error about what you have potentially done wrong.
+    //NOT SURE ABOUT METHOD HERE
+    
 7. Run this function in the `AppDelegate`. Make sure you don't get any errors when decoding the example JSON before you move on.
 8. Back in the "Album.swift" file, now adopt `Codable` in both model objects. 
 9. Implement the `encode(to encoder:  Encoder) throws` function. This function should encode the JSON back into its original nested state (i.e. the encoded JSON should match the structure of the example JSON exactly). 
 10. Create a function in the `AlbumController` called `testEncodingExampleAlbum()`. Copy and paste the code from the `testDecodingExampleAlbum()` method. Then simply try encoding the newly decoded `Album`. Again, check for errors to make sure you're encoding correctly.
+//NOT SURE ABOUT METHOD HERE
 
 ### Part 3 - AlbumController
 
@@ -78,6 +81,8 @@ In the `AlbumsTableViewController`:
 1. Create an `albumController: AlbumController?` variable.
 2. In the `viewDidLoad`, call the `getAlbums` method of the `albumController`. Reload the table view in its completion closure.
 3. Implement the required `UITableViewDataSource` methods. The table view should display the albums in the `albumController`'s `albums` array. The cells should show the album's name and artist.
+//NOT SURE ABOUT CELL
+
 4. Go to the `AlbumDetailTableViewController`. Add the following:
     - An `albumController: AlbumController?` variable.
     - An `album: Album?` variable.
