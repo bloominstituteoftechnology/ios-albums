@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        AlbumController.self.shared.testDecodingExampleAlbum()
+        AlbumController.self.shared.testEncodingExampleAlbum()
         return true
     }
 

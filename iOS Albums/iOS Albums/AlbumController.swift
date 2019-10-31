@@ -26,4 +26,21 @@ class AlbumController {
         }
     }
     
+    func testEncodingExampleAlbum() {
+        
+        if let path = Bundle.main.path(forResource: "exampleAlbum", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let decoder = JSONDecoder()
+                let album = try decoder.decode(Album.self, from: data)
+                
+                let encoder = JSONEncoder()
+                let encodedAlbum = try encoder.encode(album)
+                print(encodedAlbum)
+            } catch {
+                print("Error Encoding data: \(error)")
+            }
+        }
+    }
+    
 }
