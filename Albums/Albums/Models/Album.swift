@@ -100,6 +100,14 @@ struct Song: Codable {
         case title
     }
     
+    init(duration: String, id: String, name: String) {
+        
+        self.duration = duration
+        self.id = id
+        self.name = name
+        
+    }
+    
     init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: SongCodingKeys.self)

@@ -72,6 +72,26 @@ class AlbumController {
         
     }
     
+    func createSong(with duration: String, id: String, name: String) -> Song{
+        
+        let song = Song(duration: duration, id: id, name: name)
+        
+        return song
+    }
+    
+    func update(album: Album, artist: String, genres: [String], id: String, name: String, songs: [Song]) {
+        
+        var album = album
+        
+        album.artist = artist
+        album.genres = genres
+        album.id = id
+        album.name = name
+        album.songs = songs
+        
+        put(album: album)
+    }
+    
     
     func testDecodingExampleAlbum() {
         
