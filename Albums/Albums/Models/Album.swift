@@ -13,7 +13,7 @@ struct Album: Codable {
     var artist: String
 //    var coverArt: [URL]
     var genres: [String]
-//    var id: String
+    var id: String
     var name: String
     var songs: [Song]
     
@@ -21,7 +21,7 @@ struct Album: Codable {
         case artist
 //        case coverArt
         case genres
-//        case id
+        case id
         case name
         case songs
     }
@@ -47,7 +47,7 @@ struct Album: Codable {
         
         self.genres = try container.decode([String].self, forKey: .genres)
         
-//        self.id = try container.decode(String.self, forKey: .id)
+        self.id = try container.decode(String.self, forKey: .id)
         
         self.name = try container.decode(String.self, forKey: .name)
         
@@ -75,12 +75,12 @@ struct Album: Codable {
 struct Song: Codable {
     
     var duration: String
-//    var id: String
+    var id: String
     var name: String
     
     enum SongCodingKeys: String, CodingKey {
         case duration
-//        case id
+        case id
         case name
     }
     
@@ -99,7 +99,7 @@ struct Song: Codable {
         let durationContainer = try container.nestedContainer(keyedBy: DurationCodingKeys.self, forKey: .duration)
         self.duration = try durationContainer.decode(String.self, forKey: .duration)
         
-//        self.id = try container.decode(String.self, forKey: .id)
+        self.id = try container.decode(String.self, forKey: .id)
         
         let nameContainer = try container.nestedContainer(keyedBy: NameCodingKeys.self, forKey: .name)
         self.name = try nameContainer.decode(String.self, forKey: .title)

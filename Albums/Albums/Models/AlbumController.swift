@@ -30,21 +30,42 @@ class AlbumController {
             let decoder = JSONDecoder()
             
             do {
-                
-                let album = try decoder.decode(Album.self, from: data)
-                self.albums.append(album)
-                
+                let dictionaryOfAlbums = try decoder.decode([String: Album].self, from: data)
+                self.albums = Array(dictionaryOfAlbums.values)
             } catch {
-                
                 print("Error decoding album: \(error)")
                 completion(error)
                 return
-                
             }
-            
         }
     }
 
+    
+    func put(album: Album) {
+        let id = album.id
+        
+        let requestURL = baseURL.appendingPathComponent(id)
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "PUT"
+        
+        do {
+            request.httpBody = try JSONEncoder().encode(album)
+        } catch {
+            print("Error encoding album: \(error)")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { (_, _, error) in
+            
+            if let error = error {
+                print("Error PUTting album to server: \(error)")
+                return
+            }
+   
+        }.resume()
+    }
+    
+    
     
     func testDecodingExampleAlbum() {
         
