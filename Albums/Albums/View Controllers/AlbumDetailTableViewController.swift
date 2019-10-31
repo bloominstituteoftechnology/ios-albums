@@ -11,22 +11,27 @@ import UIKit
 class AlbumDetailTableViewController: UITableViewController {
     
     var albumController: AlbumController?
-    var album: Album?
+    var album: Album? {
+        didSet {
+            updateViews()
+        }
+    }
+    var tempSongs: [Song] = []
     
     @IBOutlet weak var albumNameTextField: UITextField!
     @IBOutlet weak var artistNameTextField: UITextField!
     @IBOutlet weak var genresTextField: UITextField!
-    @IBOutlet weak var CoverArtURLTextField: UITextField!
+    @IBOutlet weak var coverArtURLTextField: UITextField!
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if isViewLoaded {
+            updateViews()
+        } else {
+            return
+        }
     }
 
     // MARK: - Table view data source
@@ -87,6 +92,20 @@ class AlbumDetailTableViewController: UITableViewController {
     */
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+    }
+    
+    func updateViews() {
+        
+        if album == nil {
+            self.title = "New Album"
+        } else  {
+            albumNameTextField.text = album?.name
+            artistNameTextField.text = album?.artist
+            genresTextField.text = album?.genres.joined()
+            self.title = album?.name
+            album?.songs = self.tempSongs
+        }
+        
     }
     
 

@@ -98,12 +98,15 @@ In the `SongTableViewCell`:
 4. Create a class protocol above or below the `SongTableViewCell` class called `SongTableViewCellDelegate`. It should have a single function: `func addSong(with title: String, duration: String)`.
 5. Create a `weak var delegate: SongTableViewCellDelegate?`.
 6. In the action of the bar button item, call `delegate?.addSong(with title: ...)`. Pass in the unwrapped text from the text fields for the parameters to the method.
+//DOESNT SAY WHERE TO CALL THESE FUNCTIONS
 
 In the `AlbumDetailTableViewController`:
 
 1. Create a `tempSongs: [Song] = []` array. This will be used to temporarily hold the songs the user adds until they tap the Save bar button item to save the album (or changes to it).
 2. Create an `updateViews` method. It should
     - Take the appropriate values from the `album` (if it isn't nil) and place them in the corresponding text fields. You can use the `.joined(separator: ...)` method to combine the urls and genres into strings.
+    //NOT SURE ABOUT JOINEDSEPARATOR
+    
     - Set the title of the view controller to the album's name or "New Album" if the album is nil.
     - Set the `tempSongs` array to the album's array of `Songs`.
 3. Call `updateViews()` in the `didSet` property observer of the `album` variable, and in the `viewDidLoad()`. Remember to make sure the view is loaded before trying to set the values of the outlets or the app will crash.
