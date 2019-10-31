@@ -11,7 +11,7 @@ import Foundation
 struct Album: Codable {
     
     var artist: String
-//    var coverArt: [URL]
+    var coverArt: [URL]
     var genres: [String]
     var id: String
     var name: String
@@ -19,7 +19,7 @@ struct Album: Codable {
     
     enum AlbumCodingKeys: String, CodingKey {
         case artist
-//        case coverArt
+        case coverArt
         case genres
         case id
         case name
@@ -30,13 +30,16 @@ struct Album: Codable {
         case url
     }
     
-    init(artist: String, genres: [String], id: String, name: String, songs: [Song]) {
-        self.artist = artist
-        self.genres = genres
-        self.id = id
-        self.name = name
-        self.songs = songs
-    }
+//    init(artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) {
+//        self.artist = artist
+//        self.coverArt = coverArt
+//        self.genres = genres
+//        self.id = id
+//        self.name = name
+//        self.songs = songs
+//    }
+    
+    
     
     
     init(from decoder: Decoder) throws {
@@ -45,33 +48,52 @@ struct Album: Codable {
         
         self.artist = try container.decode(String.self, forKey: .artist)
         
-//        var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
-//        let coverArt = try coverArtContainer.decode([String].self)
-//        self.coverArt = coverArt.compactMap({ URL(string: $0) })
+        var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+        while !coverArtContainer.isAtEnd {
+            let coverArtDictionary = try coverArtContainer.nestedContainer(keyedBy: CoverArtCodingKeys.self)
+            let coverArtURL = try coverArtDictionary.decode(URL.self, forKey: .url)
+            coverArt.append(coverArtURL)
+        }
         
-//        let coverArtContainer = try container.nestedContainer(keyedBy: CoverArtCodingKeys.self, forKey: .coverArt)
-//        let coverArt = try coverArtContainer.decode([String].self, forKey: .url)
-//        self.coverArt = coverArt.compactMap({ URL(string: $0) })
-        
-        self.genres = try container.decode([String].self, forKey: .genres)
+       
+        var genresContainer = try container.nestedUnkeyedContainer(forKey: .genres)
+        while !genresContainer.isAtEnd {
+            let genreString = try genresContainer.decode(String.self)
+            genres.append(genreString)
+        }
         
         self.id = try container.decode(String.self, forKey: .id)
         
         self.name = try container.decode(String.self, forKey: .name)
         
-        self.songs = try container.decode([Song].self, forKey: .songs)
+        
+        var songsContainer = try container.nestedUnkeyedContainer(forKey: .songs)
+        while !songsContainer.isAtEnd {
+            let songString = try songsContainer.decode(Song.self)
+            songs.append(songString)
+        }
          
+        
+             
     }
+    
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: AlbumCodingKeys.self)
         
         try container.encode(artist, forKey: .artist)
-//        var coverArtContainer = container.nestedContainer(keyedBy: CoverArtCodingKeys.self, forKey: .coverArt)
-//        try coverArtContainer.encode(coverArt, forKey: .url)
-        try container.encode(genres, forKey: .genres)
+        
+        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        var coverArtDictionary = coverArtContainer.nestedContainer(keyedBy: CoverArtCodingKeys.self)
+        try coverArtDictionary.encode(coverArt, forKey: .url)
+        
+        var genresContainer = container.nestedUnkeyedContainer(forKey: .genres)
+        try genresContainer.encode(genres)
+        
         try container.encode(name, forKey: .name)
-        try container.encode(songs, forKey: .songs)
+        
+        var songsContainer = container.nestedUnkeyedContainer(forKey: .songs)
+        try songsContainer.encode(songs)
         
     }
     

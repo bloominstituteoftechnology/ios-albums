@@ -64,9 +64,9 @@ class AlbumController {
         }.resume()
     }
     
-    func createAlbum(with artist: String, genres: [String], id: String, name: String, songs: [Song]) {
+    func createAlbum(with artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) {
         
-        let album = Album(artist: artist, genres: genres, id: id, name: name, songs: songs)
+        let album = Album(
         albums.append(album)
         put(album: album)
         

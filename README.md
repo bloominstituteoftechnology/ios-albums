@@ -69,6 +69,9 @@ Now you will add the functionality to fetch Albums from and send them to an API.
 3. A function called `getAlbums`. It should have a completion handler that takes in an optional `Error`. This function should perform a `URLSessionDataTask` that fetches the albums from the `baseURL`, decodes them, and sets the `albums` array to the decoded albums. **Note:** You should decode the JSON data as `[String: Album].self` here.
 4. A function called `put(album: Album)`. This should use a `URLSessionDataTask` to PUT the album passed into the function to the API. Add the album's identifier to the base URL so it gets put in a unique location in the API.
 5. A function called `createAlbum`. It should take in the necessary properties as parameters in order to initialize a new `Album`. Create an `Album` from the method parameters, then append it to the `albums` array. Then call the `put(album: Album)` method so the new `Album` gets saved to the API.
+
+couldnt create an album without an instance of the album so i can pass in the parameters.
+
 6. A function called `createSong`. It should take in the necessary properties as parameters to be able to initialize a `Song`. The function should return a `Song`. In the method, simply initialize a new song from the method parameters and return it.
 7. A function called `update`. This should take in an `Album` and a parameter for each of the `Album` object's properties that can be changed (This should be every property). Update the values of the `Album` parameter, then send those changes to the API by calling the `put(album: Album)` method.
 
