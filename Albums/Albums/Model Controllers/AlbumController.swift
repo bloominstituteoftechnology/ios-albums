@@ -23,6 +23,12 @@ class AlbumController {
     
     let baseURL = URL(string: "https://albums-f45ed.firebaseio.com/")!
     
+    func createAlbum(artist: String, coverArt: [String], genres: [String], id: UUID = UUID(), name: String, songs: [Song]) {
+        let album = Album(id: id, name: name, artist: artist, coverArt: coverArt, genres: genres, songs: songs)
+        albums.append(album)
+        put(album: album)
+    }
+    
     func getAlbums(completion: @escaping (Error?) -> Void) {
         URLSession.shared.dataTask(with: baseURL.appendingPathExtension("json")) { (data, _, error) in
             if let error = error {
@@ -49,7 +55,7 @@ class AlbumController {
     }
     
     func put(album: Album) {
-        let requestURL = baseURL.appendingPathComponent(album.id).appendingPathExtension("json")
+        let requestURL = baseURL.appendingPathComponent(album.id.uuidString).appendingPathExtension("json")
         
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
