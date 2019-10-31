@@ -12,6 +12,35 @@ class AlbumController {
     
     static let shared = AlbumController()
     
+    var albums: [Album] = []
+    
+    let baseURL = URL(string: "https://albums-f45ed.firebaseio.com/")!
+    
+    func getAlbums(completion: @escaping (Error?) -> Void) {
+        URLSession.shared.dataTask(with: baseURL.appendingPathComponent("json")) { (data, _, error) in
+            if let error = error {
+                print("Error fetching album data: \(error.localizedDescription)")
+                completion(error)
+                return
+            }
+            
+            guard let data = data else {
+                print("Error getting data: \(error)")
+                completion(error)
+                return
+            }
+            
+            do {
+                let albums = try JSONDecoder().decode([String: Album].self, from: data)
+                self.albums = albums.map({ $0.value })
+                completion(nil)
+            } catch {
+                print("Error decoding albums: \(error)")
+                completion(error)
+            }
+        }.resume()
+    }
+    
     func testDecodingExampleAlbum() {
         let path = Bundle.main.path(forResource: "exampleAlbum", ofType: "json")!
         let data = try! Data(contentsOf: URL(fileURLWithPath: path))
