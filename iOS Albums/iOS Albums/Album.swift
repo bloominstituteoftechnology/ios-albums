@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Song: Decodable {
+struct Song: Codable {
     let name: String
     let duration: String
     let id: UUID
@@ -41,10 +41,24 @@ struct Song: Decodable {
         self.duration = try durationContainer.decode(String.self, forKey: .duration)
     }
     
+    func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.container(keyedBy: SongKeys.self)
+        
+        try container.encode(id.uuidString, forKey: .id)
+        
+        var namesContainer = container.nestedContainer(keyedBy: SongNameKeys.self, forKey: .name)
+        try namesContainer.encode(name, forKey: .title)
+        
+        var durationContainer = container.nestedContainer(keyedBy: SongDurationKeys.self, forKey: .duration)
+        try durationContainer.encode(duration, forKey: .duration)
+        
+    }
+    
     
 }
 
-struct Album: Decodable {
+struct Album: Codable {
     let artist: String
     let coverArt: [URL]
     let genres: [String]
@@ -115,6 +129,35 @@ struct Album: Decodable {
         }
         
         self.songs = songs
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        
+        // Create container - var in the encoder function with no 'try'
+        var container = encoder.container(keyedBy: AlbumCodingKeys.self)
+        
+        // encode artist
+        try container.encode(artist, forKey: .artist)
+        
+        // encode cover art
+        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        var coverArtURlsContainer = coverArtContainer.nestedContainer(keyedBy: CoverArtCodingKeys.self)
+        try coverArtURlsContainer.encode(coverArt, forKey: .url)
+        
+        // encode genres
+        var genresContainer = container.nestedUnkeyedContainer(forKey: .genres)
+        try genresContainer.encode(genres)
+        
+        // encode id
+        try container.encode(id, forKey: .id)
+        
+        // encode name
+        try container.encode(name, forKey: .name)
+        
+        // encode songs
+        var songsContainer = container.nestedUnkeyedContainer(forKey: .songs)
+        try songsContainer.encode(songs)
+        
     }
     
 }
