@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct Album: Decodable {
+struct Album: Codable {
     
     var artist: String
-    var coverArt: [URL]
+//    var coverArt: [URL]
     var genres: [String]
     var id: String
     var name: String
@@ -19,7 +19,7 @@ struct Album: Decodable {
     
     enum AlbumCodingKeys: String, CodingKey {
         case artist
-        case coverArt
+//        case coverArt
         case genres
         case id
         case name
@@ -33,8 +33,8 @@ struct Album: Decodable {
         
         self.artist = try container.decode(String.self, forKey: .artist)
         
-        let coverArt = try container.decode([String].self, forKey: .coverArt)
-        self.coverArt = coverArt.compactMap({ URL(string: $0) })
+//        let coverArt = try container.decode([String : URL].self, forKey: .coverArt)
+//        self.coverArt = coverArt.compactMap({  $0.value })
         
         self.genres = try container.decode([String].self, forKey: .genres)
         
@@ -51,7 +51,7 @@ struct Album: Decodable {
 
 
 
-struct Song: Decodable {
+struct Song: Codable {
     
     var duration: String
     var id: String
