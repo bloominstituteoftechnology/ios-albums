@@ -53,24 +53,28 @@ class AlbumDetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-//        if indexPath.section == 0 {
-//            return 140
-//        } else {
-//            return 100
-//        }
+        
+        if indexPath.section == 0 {
+            return 140
+        } else {
+            return 100
+        }
     }
     
 
    
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        guard let albumName = albumNameTextField.text, let artistName = artistNameTextField.text, let genres = genresTextField.text else { return }
+        guard let albumName = albumNameTextField.text, let artistName = artistNameTextField.text, let genresString = genresTextField.text, let coverURLsString = coverArtURLTextField.text else { return }
+        
+        let genres = genresString.components(separatedBy: ", ")
+        let coverURLs = coverURLsString.components(separatedBy: ", ").compactMap({ URL(string: $0) })
         
         if album != nil {
-            
+        
         } else {
-            
+            albumController?.createAlbum(with: artistName, coverArt: coverURLs, genres: genres, name: albumName, songs: [])
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
     

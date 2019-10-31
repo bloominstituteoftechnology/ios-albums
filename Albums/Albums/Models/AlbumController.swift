@@ -12,11 +12,13 @@ class AlbumController {
     
     var albums: [Album] = []
     private let baseURL = URL(string: "https://albums-f4f46.firebaseio.com/")!
-    
+//    let baseURL = URL(string: "https://journal-cd569.firebaseio.com/albums")!
     
     func getAlbums(completion: @escaping (Error?) -> Void) {
         
-        URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
+        let baseUrl = baseURL.appendingPathExtension("json")
+        
+        URLSession.shared.dataTask(with: baseUrl) { (data, _, error) in
             if let _ = error {
                 completion(error)
                 return
@@ -27,23 +29,21 @@ class AlbumController {
                 return
             }
             
-            let decoder = JSONDecoder()
-            
             do {
-                let dictionaryOfAlbums = try decoder.decode([String: Album].self, from: data)
-                self.albums = Array(dictionaryOfAlbums.values)
+                let albums = Array(try JSONDecoder().decode([String: Album].self, from: data).values)
+                self.albums = albums
             } catch {
                 print("Error decoding album: \(error)")
                 completion(error)
                 return
             }
-        }
+        }.resume()
     }
 
     func put(album: Album) {
         let id = album.id
         
-        let requestURL = baseURL.appendingPathComponent(id)
+        let requestURL = baseURL.appendingPathComponent(id.uuidString).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
         
@@ -64,22 +64,22 @@ class AlbumController {
         }.resume()
     }
     
-    func createAlbum(with artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) {
+    func createAlbum(with artist: String, coverArt: [URL], genres: [String], name: String, songs: [Song]) {
         
-        let album = Album(
+        let album = Album(artist: artist, coverArt: coverArt, genres: genres, name: name, songs: songs)
         albums.append(album)
         put(album: album)
         
     }
     
-    func createSong(with duration: String, id: String, name: String) -> Song{
+    func createSong(with duration: String, id: UUID = UUID(), name: String) -> Song{
         
         let song = Song(duration: duration, id: id, name: name)
         
         return song
     }
     
-    func update(album: Album, artist: String, genres: [String], id: String, name: String, songs: [Song]) {
+    func update(album: Album, artist: String, genres: [String], id: UUID = UUID(), name: String, songs: [Song]) {
         
         var album = album
         
@@ -92,7 +92,7 @@ class AlbumController {
         put(album: album)
     }
     
-    
+
     func testDecodingExampleAlbum() {
         
         let decoder = JSONDecoder()
@@ -115,13 +115,16 @@ class AlbumController {
     func testEncodingExampleAlbum() {
         
         let encoder = JSONEncoder()
+        let decoder = JSONDecoder()
         
         if let pathString = Bundle.main.path(forResource: "exampleAlbum", ofType: "json") {
 
             do {
                 let fileURL = URL(fileURLWithPath: pathString)
                 let data = try Data(contentsOf: fileURL, options: .mappedIfSafe)
-//                let album = try encoder.encode(Album.self)
+                let album = try decoder.decode(Album.self, from: data)
+                let album1 = try encoder.encode(album)
+                print("\(album1)")
                
             } catch {
                 print("Error Encoding Album: \(error)")

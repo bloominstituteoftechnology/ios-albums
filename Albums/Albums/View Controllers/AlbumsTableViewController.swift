@@ -10,14 +10,15 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
     
-    var albumController: AlbumController?
-    var album: Album?
+    var albumController = AlbumController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        albumController?.getAlbums(completion: { (_) in
-            self.tableView.reloadData()
+        albumController.getAlbums(completion: { (_) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            } 
         })
         
     }
@@ -28,15 +29,18 @@ class AlbumsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return albumController?.albums.count ?? 0
+        return albumController.albums.count
+        
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
-
-        cell.textLabel?.text = album?.name
-        cell.detailTextLabel?.text = album?.artist
+        
+        let album = albumController.albums[indexPath.row]
+        
+        cell.textLabel?.text = album.name
+        cell.detailTextLabel?.text = album.artist
         
         return cell
     }
@@ -85,7 +89,7 @@ class AlbumsTableViewController: UITableViewController {
         if segue.identifier == "AlbumDetailShowSegue" {
             if let detailVC = segue.destination as? AlbumDetailTableViewController, let indexPath = tableView.indexPathForSelectedRow {
                 detailVC.albumController = albumController
-                detailVC.album = albumController?.albums[indexPath.row]
+                detailVC.album = albumController.albums[indexPath.row]
             }
         } else if segue.identifier == "AddAlbumSegue" {
             if let detailVC = segue.destination as? AlbumDetailTableViewController {
