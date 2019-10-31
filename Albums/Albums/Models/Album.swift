@@ -23,41 +23,30 @@ struct Album: Codable {
         case coverArt
         case genres
         case songs
+        
+        enum CoverArtCodingKeys: String, CodingKey {
+            case url
+        }
     }
     
-    enum CoverArtCodingKeys: String, CodingKey {
-        case url
-    }
+    
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumCodingKeys.self)
         artist = try container.decode(String.self, forKey: .artist)
         name = try container.decode(String.self, forKey: .name)
         id = try container.decode(String.self, forKey: .id)
-        
-        var genres = [String]()
-        var genresContainer = try container.nestedUnkeyedContainer(forKey: .genres)
-        while !genresContainer.isAtEnd {
-            let genre = try genresContainer.decode(String.self)
-            genres.append(genre)
-        }
-        self.genres = genres
+        genres = try container.decode([String].self, forKey: .genres)
+        songs = try container.decode([Song].self, forKey: .songs)
         
         var covers = [String]()
         var coversContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
         while !coversContainer.isAtEnd {
-            let cover = try coversContainer.decode(String.self)
-            covers.append(cover)
+            let coverArtContainer = try coversContainer.nestedContainer(keyedBy: AlbumCodingKeys.CoverArtCodingKeys.self)
+            let coverArt = try coverArtContainer.decode(String.self, forKey: .url)
+            covers.append(coverArt)
         }
         self.coverArt = covers
-        
-        var songs = [Song]()
-        var songsContainer = try container.nestedUnkeyedContainer(forKey: .songs)
-        while !songsContainer.isAtEnd {
-            let song = try songsContainer.decode(Song.self)
-            songs.append(song)
-        }
-        self.songs = songs
         
     }
 }

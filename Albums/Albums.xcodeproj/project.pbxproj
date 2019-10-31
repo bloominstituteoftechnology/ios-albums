@@ -17,6 +17,7 @@
 		296B1FF1236A714300AA33EB /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296B1FF0236A714300AA33EB /* SongTableViewCell.swift */; };
 		296B1FF3236A720D00AA33EB /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296B1FF2236A720D00AA33EB /* Album.swift */; };
 		296B1FF5236A723D00AA33EB /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 296B1FF4236A723D00AA33EB /* exampleAlbum.json */; };
+		296B1FF7236A7E8000AA33EB /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296B1FF6236A7E8000AA33EB /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		296B1FF0236A714300AA33EB /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		296B1FF2236A720D00AA33EB /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		296B1FF4236A723D00AA33EB /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
+		296B1FF6236A7E8000AA33EB /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		296B1FEA236A6E9500AA33EB /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				296B1FF6236A7E8000AA33EB /* AlbumController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				296B1FED236A6EB000AA33EB /* AlbumsTableViewController.swift in Sources */,
 				296B1FF1236A714300AA33EB /* SongTableViewCell.swift in Sources */,
 				296B1FEF236A703500AA33EB /* AlbumDetailTableViewController.swift in Sources */,
+				296B1FF7236A7E8000AA33EB /* AlbumController.swift in Sources */,
 				296B1FD7236A6D8600AA33EB /* SceneDelegate.swift in Sources */,
 				296B1FF3236A720D00AA33EB /* Album.swift in Sources */,
 			);
