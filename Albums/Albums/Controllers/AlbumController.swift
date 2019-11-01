@@ -36,8 +36,10 @@ class AlbumController {
             
             do {
                 let decoder = JSONDecoder()
-                let album = try decoder.decode([String: Album].self, from: data)
-                
+                let albumsDictionary = try decoder.decode([String: Album].self, from: data)
+                if let album = albumsDictionary.first?.value {
+                    self.albums.append(album)
+                }
             } catch {
                 print("Error: \(error.localizedDescription)")
             }
