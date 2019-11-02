@@ -10,6 +10,8 @@ import UIKit
 
 class AlbumDetailTableViewController: UITableViewController {
 
+    var albumController: AlbumController?
+    var album: Album?
     
     @IBOutlet weak var txtAlbumName: UITextField!
     @IBOutlet weak var txtArtist: UITextField!
@@ -24,13 +26,13 @@ class AlbumDetailTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        guard let album = album else { return 0 }
+        return album.songs.count
     }
 
     /*
