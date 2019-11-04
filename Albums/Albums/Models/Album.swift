@@ -73,7 +73,6 @@ struct Album: Codable {
             var urlContainer = coverArtsContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
             try urlContainer.encode(coverArt, forKey: .url)
         }
-        try container.encode(coverArt.map{ $0.absoluteString }, forKey: .coverArt)
         
         try container.encode(genres, forKey: .genres)
         

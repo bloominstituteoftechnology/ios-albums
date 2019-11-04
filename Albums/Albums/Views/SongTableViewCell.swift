@@ -8,9 +8,36 @@
 
 import UIKit
 
+protocol SongTableViewCellDelegate: AnyObject {
+    func addSong(with title: String, duration: String)
+}
+
 class SongTableViewCell: UITableViewCell {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var durationTextField: UITextField!
+    @IBOutlet weak var addButton: UIButton!
+    
+    var song: Song? {
+        didSet {
+            updateViews()
+        }
+    }
+    weak var delegate: SongTableViewCellDelegate?
+    
+    func updateViews() {
+        if let song = self.song {
+            self.titleTextField.text = song.name
+            self.durationTextField.text = song.duration
+            self.addButton.isHidden = true
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.titleTextField.text = nil
+        self.durationTextField.text = nil
+        self.addButton.isHidden = false
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,5 +51,8 @@ class SongTableViewCell: UITableViewCell {
     }
 
     @IBAction func addPressed(_ sender: Any) {
+        guard let title = self.titleTextField.text,
+            let duration = self.durationTextField.text else { return }
+        delegate?.addSong(with: title, duration: duration)
     }
 }

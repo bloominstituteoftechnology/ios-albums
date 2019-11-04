@@ -69,11 +69,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="plg-9j-CYP" userLabel="Header View">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f72-hi-QcI">
-                                    <rect key="frame" x="16" y="8" width="382" height="200"/>
+                                    <rect key="frame" x="16" y="16" width="382" height="184"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Album's Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oxm-ib-Ymi">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
@@ -100,7 +100,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cover Art URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jrD-Pf-f60">
-                                            <rect key="frame" x="0.0" y="144" width="382" height="56"/>
+                                            <rect key="frame" x="0.0" y="144" width="382" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="1FK-6l-QDA"/>
                                             </constraints>
@@ -113,21 +113,21 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="f72-hi-QcI" secondAttribute="trailing" constant="16" id="AtE-Bo-3ww"/>
-                                <constraint firstAttribute="height" secondItem="f72-hi-QcI" secondAttribute="height" id="T1y-mo-1ex"/>
-                                <constraint firstItem="f72-hi-QcI" firstAttribute="top" secondItem="plg-9j-CYP" secondAttribute="topMargin" id="Uo9-bn-rjg"/>
+                                <constraint firstAttribute="bottom" secondItem="f72-hi-QcI" secondAttribute="bottom" constant="16" id="FPw-av-ecC"/>
+                                <constraint firstItem="f72-hi-QcI" firstAttribute="top" secondItem="plg-9j-CYP" secondAttribute="top" constant="16" id="lOc-TU-eEs"/>
                                 <constraint firstItem="f72-hi-QcI" firstAttribute="leading" secondItem="plg-9j-CYP" secondAttribute="leading" constant="16" id="vTm-Me-xnR"/>
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="KX2-pK-M5D" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="228" width="414" height="142.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongTableViewCell" id="KX2-pK-M5D" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="244" width="414" height="152.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KX2-pK-M5D" id="NfG-pA-xsF">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="142.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="152.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="A3x-hx-WHx">
-                                            <rect key="frame" x="16" y="8" width="382" height="126.5"/>
+                                            <rect key="frame" x="16" y="8" width="382" height="136.5"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song's Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qzG-ap-mSh">
                                                     <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
@@ -146,7 +146,10 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Krn-I3-yV5">
-                                                    <rect key="frame" x="0.0" y="96" width="382" height="30.5"/>
+                                                    <rect key="frame" x="0.0" y="96" width="382" height="40.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="1gw-vK-VKu"/>
+                                                    </constraints>
                                                     <state key="normal" title="Add Song"/>
                                                     <connections>
                                                         <action selector="addPressed:" destination="KX2-pK-M5D" eventType="touchUpInside" id="Idl-ON-fZn"/>
@@ -163,6 +166,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addButton" destination="Krn-I3-yV5" id="sRa-Xk-qOr"/>
                                     <outlet property="durationTextField" destination="8oa-hP-xAB" id="Y3A-Cc-LNe"/>
                                     <outlet property="titleTextField" destination="qzG-ap-mSh" id="Fxa-sh-1tc"/>
                                 </connections>
@@ -181,10 +185,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="albumNameTextField" destination="oxm-ib-Ymi" id="QJm-XX-BP3"/>
-                        <outlet property="artistNameTextField" destination="rIK-q8-flb" id="DLL-3L-uaQ"/>
-                        <outlet property="coverArtURLTextField" destination="jrD-Pf-f60" id="Zq4-sL-Fcm"/>
-                        <outlet property="genresTextField" destination="EhE-bG-ouW" id="4Iq-s6-Ous"/>
+                        <outlet property="albumNameTextField" destination="oxm-ib-Ymi" id="DFY-i7-BEp"/>
+                        <outlet property="artistNameTextField" destination="rIK-q8-flb" id="HoC-Mh-ZBD"/>
+                        <outlet property="coverArtURLTextField" destination="jrD-Pf-f60" id="JSx-Lj-tEo"/>
+                        <outlet property="genresTextField" destination="EhE-bG-ouW" id="2Ca-BS-0ey"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oh5-LG-Ijr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

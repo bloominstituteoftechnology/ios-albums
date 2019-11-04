@@ -37,14 +37,12 @@ class AlbumController {
             do {
                 let decoder = JSONDecoder()
                 let albumsDictionary = try decoder.decode([String: Album].self, from: data)
-                if let album = albumsDictionary.first?.value {
-                    self.albums.append(album)
-                }
+                self.albums = Array(albumsDictionary.values)
+                completion()
             } catch {
                 print("Error: \(error.localizedDescription)")
             }
-            
-        }
+        }.resume()
     }
     
     func put(album: Album, completion: @escaping () -> Void = {}) {
@@ -77,6 +75,11 @@ class AlbumController {
         self.put(album: newAlbum)
     }
     
+    func createAlbum(album: Album) {
+        self.albums.append(album)
+        self.put(album: album)
+    }
+    
     func createSong(duration: String, id: String, name: String) -> Song {
         let newSong = Song(duration: duration, id: id, name: name)
         return newSong
@@ -84,20 +87,26 @@ class AlbumController {
     
     func update(with album: Album, artist: String, coverArt: [String], genres: [String], id: String, name: String, songs: [Song]) {
         let updateAlbum = Album(artist: artist, coverArt: coverArt, genres: genres, id: album.id, name: name, songs: songs)
+        if let index = albums.firstIndex(where: { $0.id == album.id }) {
+            albums[index] = updateAlbum
+        }
+        
         self.put(album: updateAlbum)
     }
     
-    func testDecodingExampleAlbum() {
+    func testDecodingExampleAlbum() -> Album? {
         if let url = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(Album.self, from: data)
-                testEncodingExampleAlbum(data: jsonData)
+                let album = try decoder.decode(Album.self, from: data)
+                testEncodingExampleAlbum(data: album)
+                return album
             } catch {
                 print("Error decoding data: \(error.localizedDescription)")
             }
         }
+        return nil
     }
     
     func testEncodingExampleAlbum(data: Album) {

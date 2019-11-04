@@ -9,18 +9,23 @@
 import UIKit
 
 class AlbumsTableViewController: UITableViewController {
-    var albumController: AlbumController?
+    var albumController = AlbumController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        albumController?.getAlbums(completion: {
+        let album = albumController.testDecodingExampleAlbum()
+        albumController.createAlbum(album: album!)
+        albumController.getAlbums(completion: {
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         })
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -32,14 +37,14 @@ class AlbumsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return albumController?.albums.count ?? 0
+        return albumController.albums.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
         
-        cell.textLabel?.text = self.albumController?.albums[indexPath.row].name
-        cell.detailTextLabel?.text = self.albumController?.albums[indexPath.row].artist
+        cell.textLabel?.text = self.albumController.albums[indexPath.row].name
+        cell.detailTextLabel?.text = self.albumController.albums[indexPath.row].artist
         
         return cell
     }
@@ -79,14 +84,27 @@ class AlbumsTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "DetailSegue" {
+            if let detailVC = segue.destination as? AlbumDetailTableViewController {
+                guard let indexPath = tableView.indexPathForSelectedRow else { return }
+                
+                detailVC.albumController = self.albumController
+                detailVC.album = self.albumController.albums[indexPath.row]
+                
+            }
+        }
+        
+        if segue.identifier == "AddSegue" {
+            if let addVC = segue.destination as? AlbumDetailTableViewController {
+                addVC.albumController = self.albumController
+            }
+        }
     }
-    */
-
 }
+
+
