@@ -95,7 +95,6 @@ class AlbumsTableViewController: UITableViewController {
                 
                 detailVC.albumController = self.albumController
                 detailVC.album = self.albumController.albums[indexPath.row]
-                
             }
         }
         
