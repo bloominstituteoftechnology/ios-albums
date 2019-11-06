@@ -37,7 +37,7 @@ class AlbumDetailTableViewController: UITableViewController {
     func updateViews() {
         guard self.isViewLoaded, let album = album else { return }
         txtAlbumName.text = album.name
-        txtAlbumName.text = album.artist
+        txtArtist.text = album.artist
         txtGenres.text = album.genres.joined(separator: ", ")
         var urlString = ""
         for u in album.coverArt {

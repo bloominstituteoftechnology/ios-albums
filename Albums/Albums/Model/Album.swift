@@ -66,7 +66,12 @@ struct Album: Codable {
         coverArt = coverArtURLs.compactMap({ URL(string: $0) })
         
         var genreContainer = try container.nestedUnkeyedContainer(forKey: .genres)
-        genres = try genreContainer.decode([String].self)
+//        genres = try genreContainer.decode([String].self)
+        genres = []
+        while !genreContainer.isAtEnd {
+            let aGenre = try genreContainer.decode(String.self)
+            genres.append(aGenre)
+        }
         
         id = try container.decode(UUID.self, forKey: .id)
         
@@ -91,10 +96,15 @@ struct Album: Codable {
             try urlContainer.encode(url, forKey: .url)
         }
         var genreContainer = container.nestedUnkeyedContainer(forKey: .genres)
-        try genreContainer.encode(genres)
+        for genre in genres {
+            try genreContainer.encode(genre)
+        }
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         var songsContainer = container.nestedUnkeyedContainer(forKey: .songs)
-        try songsContainer.encode(songs)
+//        try songsContainer.encode(songs)
+        for song in songs {
+            try songsContainer.encode(song)
+        }
     }
 }
