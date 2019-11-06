@@ -62,21 +62,13 @@ class AlbumDetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row > tempSongs.count {
-            return 140
+        if indexPath.row >= tempSongs.count {
+            return 80
         } else {
-            return 100
+            return 50
         }
     }
 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
     /*
     // Override to support editing the table view.
@@ -90,12 +82,6 @@ class AlbumDetailTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
 
     @IBAction func saveTapped(_ sender: Any) {
         guard let albumName = txtAlbumName.text,
