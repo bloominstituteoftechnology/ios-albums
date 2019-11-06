@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T7Y-wQ-Df8">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -100,7 +100,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="81" id="Cl0-PE-DWg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="81" id="Cl0-PE-DWg" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="199" width="414" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cl0-PE-DWg" id="d4h-Np-oy0" customClass="SongTableViewCell" customModule="Albums">
@@ -124,15 +124,16 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Add Song"/>
                                             <connections>
-                                                <action selector="addSongTapped:" destination="d4h-Np-oy0" eventType="touchUpInside" id="6AB-u7-bbO"/>
+                                                <action selector="addSongTapped:" destination="Cl0-PE-DWg" eventType="touchUpInside" id="jxf-sd-MQJ"/>
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <connections>
-                                        <outlet property="txtDuration" destination="V2e-pr-zuD" id="gkD-9p-0gm"/>
-                                        <outlet property="txtSongTitle" destination="mqd-Gn-c5E" id="krP-vW-e8g"/>
-                                    </connections>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="btnAddSong" destination="QIB-3z-qAX" id="vUK-fa-rcB"/>
+                                    <outlet property="txtDuration" destination="V2e-pr-zuD" id="OXu-4T-P4P"/>
+                                    <outlet property="txtSongTitle" destination="mqd-Gn-c5E" id="QjQ-YR-oS1"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -141,7 +142,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="SGx-8S-wbm">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="20d-Is-MpB"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="20d-Is-MpB">
+                            <connections>
+                                <action selector="saveTapped:" destination="5Ae-fT-vuk" id="4cM-ic-LDU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="txtAlbumName" destination="mcC-UB-CVT" id="wqQ-6q-DQq"/>

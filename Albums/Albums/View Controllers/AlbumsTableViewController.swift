@@ -18,7 +18,9 @@ class AlbumsTableViewController: UITableViewController {
             if let error = error {
                 fatalError("Couldn't load albums: \(error)")
             }
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 

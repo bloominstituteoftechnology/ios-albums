@@ -65,7 +65,8 @@ struct Album: Codable {
         }
         coverArt = coverArtURLs.compactMap({ URL(string: $0) })
         
-        genres = try container.decode([String].self, forKey: .genres)
+        var genreContainer = try container.nestedUnkeyedContainer(forKey: .genres)
+        genres = try genreContainer.decode([String].self)
         
         id = try container.decode(UUID.self, forKey: .id)
         

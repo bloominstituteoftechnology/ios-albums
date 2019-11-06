@@ -28,11 +28,12 @@ class AlbumController {
             }
             do {
                 let albumsDic = try JSONDecoder().decode([String : Album].self, from: data)
+//                let albumsArray = try JSONDecoder().decode([Album].self, from: data)
                 for (_, value) in albumsDic {
                     self.albums.append(value)
                 }
             } catch {
-                print("Error encoding fetched albums: \(error)")
+                print("Error decoding fetched albums: \(error)")
                 completion(error)
                 return
             }
