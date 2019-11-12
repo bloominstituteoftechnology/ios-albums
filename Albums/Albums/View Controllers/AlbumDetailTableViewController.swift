@@ -17,7 +17,6 @@ class AlbumDetailTableViewController: UITableViewController {
         }
     }
     var tempSongs: [Song] = []
-    var delegate: SongTableViewCellDelegate?
     var albumsTableViewController: AlbumsTableViewController?
     
     @IBOutlet weak var albumNameTextField: UITextField!
