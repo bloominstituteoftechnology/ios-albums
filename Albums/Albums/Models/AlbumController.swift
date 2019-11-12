@@ -64,6 +64,30 @@ class AlbumController {
         }.resume()
     }
     
+    func put(song: Song) {
+         let id = song.id
+         
+         let requestURL = baseURL.appendingPathComponent(id.uuidString).appendingPathExtension("json")
+         var request = URLRequest(url: requestURL)
+         request.httpMethod = "PUT"
+         
+         do {
+             request.httpBody = try JSONEncoder().encode(song)
+         } catch {
+             print("Error encoding album: \(error)")
+             return
+         }
+         
+         URLSession.shared.dataTask(with: request) { (_, _, error) in
+             
+             if let error = error {
+                 print("Error PUTting album to server: \(error)")
+                 return
+             }
+    
+         }.resume()
+     }
+    
     func createAlbum(with artist: String, coverArt: [URL], genres: [String], name: String, songs: [Song]) {
         
         let album = Album(artist: artist, coverArt: coverArt, genres: genres, name: name, songs: songs)

@@ -16,6 +16,7 @@ protocol SongTableViewCellDelegate: AnyObject {
 class SongTableViewCell: UITableViewCell {
     
     var song: Song?
+    var albumController: AlbumController?
     var delegate: SongTableViewCellDelegate?
     
     @IBOutlet weak var songTitleTextField: UITextField!
@@ -30,13 +31,13 @@ class SongTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        updateViews()
     }
     
     @IBAction func addSongTapped(_ sender: Any) {
         guard let duration = durationTextField.text, !duration.isEmpty, let name = songTitleTextField.text, !name.isEmpty else { return }
         delegate?.addSong(with: name, duration: duration)
-        updateViews()
+        self.song = Song(duration: duration, name: name)
     }
     
     

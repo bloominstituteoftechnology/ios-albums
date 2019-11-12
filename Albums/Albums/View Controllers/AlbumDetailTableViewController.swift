@@ -73,7 +73,8 @@ class AlbumDetailTableViewController: UITableViewController {
         let coverURLs = coverURLsString.components(separatedBy: ", ").compactMap({ URL(string: $0) })
         
         if album != nil {
-        
+            
+            self.navigationController?.popViewController(animated: true)
         } else {
             albumController?.createAlbum(with: artistName, coverArt: coverURLs, genres: genres, name: albumName, songs: [])
             self.navigationController?.popToRootViewController(animated: true)
@@ -112,7 +113,7 @@ extension AlbumDetailTableViewController: SongTableViewCellDelegate {
     func addSong(with title: String, duration: String) {
         guard let song = albumController?.createSong(duration: duration, name: title) else { return }
         tempSongs.append(song)
-        print(tempSongs.count)
+        albumController?.put(song: song)
         tableView.reloadData()
     }
     
