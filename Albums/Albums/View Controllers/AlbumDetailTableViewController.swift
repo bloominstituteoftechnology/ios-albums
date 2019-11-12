@@ -17,7 +17,7 @@ class AlbumDetailTableViewController: UITableViewController {
         }
     }
     var tempSongs: [Song] = []
-    weak var delegate: SongTableViewCellDelegate?
+    var delegate: SongTableViewCellDelegate?
     
     @IBOutlet weak var albumNameTextField: UITextField!
     @IBOutlet weak var artistNameTextField: UITextField!
@@ -34,6 +34,8 @@ class AlbumDetailTableViewController: UITableViewController {
             return
         }
     }
+    
+    
 
     // MARK: - Table view data source
 
@@ -47,7 +49,7 @@ class AlbumDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongTableViewCell else { return UITableViewCell() }
         
-        cell.delegate = delegate
+        cell.delegate = self
 
         return cell
     }
@@ -79,16 +81,15 @@ class AlbumDetailTableViewController: UITableViewController {
     }
     
     func updateViews() {
+        guard let album = album, isViewLoaded else { self.title = "New Album"
+            return }
+       
+            albumNameTextField.text = album.name
+            artistNameTextField.text = album.artist
+            genresTextField.text = album.genres.joined()
+            self.title = album.name
+            self.tempSongs = album.songs
         
-        if album == nil {
-            self.title = "New Album"
-        } else  {
-            albumNameTextField.text = album?.name
-            artistNameTextField.text = album?.artist
-            genresTextField.text = album?.genres.joined()
-            self.title = album?.name
-            album?.songs = self.tempSongs
-        }
         
     }
     
@@ -104,6 +105,18 @@ class AlbumDetailTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension AlbumDetailTableViewController: SongTableViewCellDelegate {
+    
+    func addSong(with title: String, duration: String) {
+        guard let song = albumController?.createSong(duration: duration, name: title) else { return }
+        tempSongs.append(song)
+        print(tempSongs.count)
+        tableView.reloadData()
+    }
+    
+    
 }
 
 

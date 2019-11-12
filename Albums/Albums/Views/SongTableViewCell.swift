@@ -8,15 +8,15 @@
 
 import UIKit
 
-class SongTableViewCellDelegate {
-    func addSong(with title: String, duration: String) {}
+protocol SongTableViewCellDelegate: AnyObject {
+    func addSong(with title: String, duration: String)
 }
 
 
 class SongTableViewCell: UITableViewCell {
     
     var song: Song?
-    weak var delegate: SongTableViewCellDelegate?
+    var delegate: SongTableViewCellDelegate?
     
     @IBOutlet weak var songTitleTextField: UITextField!
     @IBOutlet weak var durationTextField: UITextField!

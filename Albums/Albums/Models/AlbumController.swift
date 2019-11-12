@@ -14,27 +14,27 @@ class AlbumController {
     
     private let baseURL = URL(string: "https://albums-f4f46.firebaseio.com/")!
     
-    func getAlbums(completion: @escaping (Error?) -> Void) {
+    func getAlbums(completion: @escaping ([Album]?, Error?) -> Void) {
         
         let baseUrl = baseURL.appendingPathExtension("json")
         
         URLSession.shared.dataTask(with: baseUrl) { (data, _, error) in
             if let _ = error {
-                completion(error)
+                completion(nil, error)
                 return
             }
             
             guard let data = data else {
-                completion(error)
+                completion(nil, error)
                 return
             }
             
             do {
                 let albums = Array(try JSONDecoder().decode([String: Album].self, from: data).values)
-                self.albums = albums
+                completion(albums, nil)
             } catch {
                 print("Error decoding album: \(error)")
-                completion(error)
+                completion(nil, error)
                 return
             }
         }.resume()
@@ -72,7 +72,7 @@ class AlbumController {
         
     }
     
-    func createSong(with duration: String, id: UUID = UUID(), name: String) -> Song {
+    func createSong(duration: String, id: UUID = UUID(), name: String) -> Song {
         
         let song = Song(duration: duration, id: id, name: name)
         return song

@@ -11,14 +11,24 @@ import UIKit
 class AlbumsTableViewController: UITableViewController {
     
     var albumController = AlbumController()
+    var albums: [Album] = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        albumController.getAlbums(completion: { (_) in
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            } 
+        albumController.getAlbums(completion: { (albumsResult, error) in
+            if let error = error {
+                print("Error getting Albums: \(error)")
+                return
+            }
+            
+            if let albums = albumsResult {
+                DispatchQueue.main.async {
+                    self.albums = albums
+                    self.tableView.reloadData()
+                }
+            }
         })
         
     }
@@ -28,20 +38,17 @@ class AlbumsTableViewController: UITableViewController {
    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return albumController.albums.count
-        
+        return albums.count
     }
-
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
         
-        let album = albumController.albums[indexPath.row]
+        let album = albums[indexPath.row]
         
         cell.textLabel?.text = album.name
         cell.detailTextLabel?.text = album.artist
-        
+
         return cell
     }
    
@@ -89,7 +96,7 @@ class AlbumsTableViewController: UITableViewController {
         if segue.identifier == "AlbumDetailShowSegue" {
             if let detailVC = segue.destination as? AlbumDetailTableViewController, let indexPath = tableView.indexPathForSelectedRow {
                 detailVC.albumController = albumController
-                detailVC.album = albumController.albums[indexPath.row]
+                detailVC.album = albums[indexPath.row]
             }
         } else if segue.identifier == "AddAlbumSegue" {
             if let detailVC = segue.destination as? AlbumDetailTableViewController {
