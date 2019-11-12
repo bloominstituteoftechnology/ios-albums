@@ -18,6 +18,7 @@ class AlbumDetailTableViewController: UITableViewController {
     }
     var tempSongs: [Song] = []
     var delegate: SongTableViewCellDelegate?
+    var albumsTableViewController: AlbumsTableViewController?
     
     @IBOutlet weak var albumNameTextField: UITextField!
     @IBOutlet weak var artistNameTextField: UITextField!
@@ -41,7 +42,6 @@ class AlbumDetailTableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return tempSongs.count + 1
     }
 
@@ -73,13 +73,15 @@ class AlbumDetailTableViewController: UITableViewController {
         let coverURLs = coverURLsString.components(separatedBy: ", ").compactMap({ URL(string: $0) })
         
         if album != nil {
-            
+            albumController?.update(album: album!, artist: artistName, genres: genres, name: albumName, songs: tempSongs)
             self.navigationController?.popViewController(animated: true)
+            albumsTableViewController?.tableView.reloadData()
         } else {
             albumController?.createAlbum(with: artistName, coverArt: coverURLs, genres: genres, name: albumName, songs: [])
             self.navigationController?.popToRootViewController(animated: true)
         }
     }
+    
     
     func updateViews() {
         guard let album = album, isViewLoaded else { self.title = "New Album"
@@ -90,8 +92,6 @@ class AlbumDetailTableViewController: UITableViewController {
             genresTextField.text = album.genres.joined()
             self.title = album.name
             self.tempSongs = album.songs
-        
-        
     }
     
     
@@ -113,7 +113,6 @@ extension AlbumDetailTableViewController: SongTableViewCellDelegate {
     func addSong(with title: String, duration: String) {
         guard let song = albumController?.createSong(duration: duration, name: title) else { return }
         tempSongs.append(song)
-        albumController?.put(song: song)
         tableView.reloadData()
     }
     
