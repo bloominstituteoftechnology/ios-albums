@@ -75,7 +75,6 @@ class AlbumDetailTableViewController: UITableViewController {
         if album != nil {
             albumController?.update(album: album!, artist: artistName, genres: genres, name: albumName, songs: tempSongs)
             self.navigationController?.popViewController(animated: true)
-            albumsTableViewController?.tableView.reloadData()
         } else {
             albumController?.createAlbum(with: artistName, coverArt: coverURLs, genres: genres, name: albumName, songs: [])
             self.navigationController?.popToRootViewController(animated: true)
