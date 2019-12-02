@@ -8,12 +8,43 @@
 
 import Foundation
 
+private var persistentFileURL: URL? {
+    guard let filePath = Bundle.main.path(forResource: "exampleAlbum", ofType: "json") else { return nil }
+    return URL(fileURLWithPath: filePath)
+}
+
 class AlbumController {
     
     func testDecodingExampleAlbum() {
-        let url = URL(string: "exampleAlbum.json")!
         
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
+        guard let fileURL = persistentFileURL else { return }
+        
+        URLSession.shared.dataTask(with: fileURL) { (data, _, error) in
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            guard let data = data else { return }
+            
+            let jsonDecoder = JSONDecoder()
+            do {
+                let album = try jsonDecoder.decode(Album.self, from: data)
+                print(album)
+            } catch {
+                print("Error Decoding")
+                return
+            }
+            
+        }.resume()
+    }
+    
+    func testEncodingExampleAlbum() {
+        
+        guard let fileURL = persistentFileURL else { return }
+        
+        URLSession.shared.dataTask(with: fileURL) { (data, _, error) in
             
             if let error = error {
                 print(error)
@@ -23,12 +54,13 @@ class AlbumController {
             guard let data = data else { return }
             
             do {
-                let jsonDecoder = JSONDecoder()
-                let _ = try jsonDecoder.decode(Album.self, from: data)
+                let jsonEncoder = JSONEncoder()
+                let _ = try jsonEncoder.encode(data)
             } catch {
-                print("Error Decoding")
+                print("Error Encoding")
                 return
             }
         }.resume()
     }
 }
+
