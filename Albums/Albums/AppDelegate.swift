@@ -10,11 +10,14 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        do {
+            let album = try AlbumController().testDecodingExampleAlbum()
+            print(album.artist, " - ", album.name, album.songs.map { "\($0.name) - \($0.duration)" })
+        } catch {
+            print("error decoding example album: \(error)")
+        }
         return true
     }
 
