@@ -58,6 +58,10 @@ class AlbumController {
         albums.append(album)
         put(album: album)
     }
+    
+    func createSong(withName name: String, duration: String) -> Song {
+        return Song(name: name, duration: duration)
+    }
     // MARK: - Test Data Methods
     func testDecodingExampleAlbum() throws -> Album {
         guard let exampleAlbumPath = Bundle.main.path(
