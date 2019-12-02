@@ -40,7 +40,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Wji-DL-B1Z" kind="show" id="o7l-D6-fZ6"/>
+                                    <segue destination="Wji-DL-B1Z" kind="show" identifier="EditAlbumSegue" id="o7l-D6-fZ6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -52,7 +52,7 @@
                     <navigationItem key="navigationItem" id="HVc-fm-tka">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="M9K-st-uBs">
                             <connections>
-                                <segue destination="Wji-DL-B1Z" kind="show" id="caU-2G-aGE"/>
+                                <segue destination="Wji-DL-B1Z" kind="show" identifier="AddAlbumSegue" id="caU-2G-aGE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -203,6 +203,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="caU-2G-aGE"/>
+        <segue reference="o7l-D6-fZ6"/>
     </inferredMetricsTieBreakers>
 </document>
