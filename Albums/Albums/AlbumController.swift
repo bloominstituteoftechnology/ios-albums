@@ -53,6 +53,11 @@ class AlbumController {
         }.resume()
     }
     
+    func createAlbum(withName name: String, artist: String, genres: [String], songs: [Song], coverArtURLs: [URL]) {
+        let album = Album(name: name, artist: artist, genres: genres, songs: songs, coverArtURLs: coverArtURLs)
+        albums.append(album)
+        put(album: album)
+    }
     // MARK: - Test Data Methods
     func testDecodingExampleAlbum() throws -> Album {
         guard let exampleAlbumPath = Bundle.main.path(
