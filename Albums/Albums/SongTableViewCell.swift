@@ -18,6 +18,13 @@ class SongTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func updateViews() {
+        guard let song = song else { return }
+        titleField.text = song.name
+        durationField.text = song.duration
+        addSongButton.isHidden = true
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
