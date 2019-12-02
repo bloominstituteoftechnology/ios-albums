@@ -53,9 +53,14 @@ class AlbumController {
             
             guard let data = data else { return }
             
+            let jsonDecoder = JSONDecoder()
+            let jsonEncoder = JSONEncoder()
+            jsonEncoder.outputFormatting = [.prettyPrinted]
             do {
-                let jsonEncoder = JSONEncoder()
-                let _ = try jsonEncoder.encode(data)
+                let album = try jsonDecoder.decode(Album.self, from: data)
+                let encodedAlbum = try jsonEncoder.encode(album)
+                let albumString = String(data: encodedAlbum, encoding: .utf8)!
+                print(albumString)
             } catch {
                 print("Error Encoding")
                 return
