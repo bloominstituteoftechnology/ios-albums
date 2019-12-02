@@ -35,6 +35,24 @@ class AlbumController {
         }.resume()
     }
     
+    func put(album: Album) {
+        let url = baseURL
+            .appendingPathComponent(album.id)
+            .appendingPathExtension("json")
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Album upload failed with error: \(error)")
+                print("Response:\n\(response?.description ?? "???")")
+                if let data = data {
+                    print(String(data: data, encoding: .utf8) ?? "")
+                }
+            }
+        }.resume()
+    }
+    
     // MARK: - Test Data Methods
     func testDecodingExampleAlbum() throws -> Album {
         guard let exampleAlbumPath = Bundle.main.path(
