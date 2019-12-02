@@ -9,10 +9,23 @@
 import UIKit
 
 class AlbumsTableViewController: UITableViewController {
+    
+    var albumController: AlbumController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        albumController?.getAlbums(completion: { result in
+            do {
+                let _ = try result.get()
+            } catch {
+                print("Error fetching albums: \(error)")
+                return
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
