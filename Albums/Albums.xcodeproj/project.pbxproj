@@ -13,6 +13,8 @@
 		99CDE0262395A5AB00747B67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99CDE0252395A5AB00747B67 /* Assets.xcassets */; };
 		99CDE0292395A5AB00747B67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99CDE0272395A5AB00747B67 /* LaunchScreen.storyboard */; };
 		99CDE0312395A68E00747B67 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CDE0302395A68E00747B67 /* AlbumsTableViewController.swift */; };
+		99CDE0332395A88100747B67 /* AlbumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CDE0322395A88100747B67 /* AlbumDetailViewController.swift */; };
+		99CDE0352395AA4A00747B67 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CDE0342395AA4A00747B67 /* SongTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		99CDE0282395A5AB00747B67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99CDE02A2395A5AB00747B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99CDE0302395A68E00747B67 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		99CDE0322395A88100747B67 /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; };
+		99CDE0342395AA4A00747B67 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				99CDE01E2395A5A600747B67 /* SceneDelegate.swift */,
 				99CDE0222395A5A600747B67 /* Main.storyboard */,
 				99CDE0302395A68E00747B67 /* AlbumsTableViewController.swift */,
+				99CDE0322395A88100747B67 /* AlbumDetailViewController.swift */,
+				99CDE0342395AA4A00747B67 /* SongTableViewCell.swift */,
 				99CDE0252395A5AB00747B67 /* Assets.xcassets */,
 				99CDE0272395A5AB00747B67 /* LaunchScreen.storyboard */,
 				99CDE02A2395A5AB00747B67 /* Info.plist */,
@@ -139,6 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				99CDE01D2395A5A600747B67 /* AppDelegate.swift in Sources */,
+				99CDE0332395A88100747B67 /* AlbumDetailViewController.swift in Sources */,
+				99CDE0352395AA4A00747B67 /* SongTableViewCell.swift in Sources */,
 				99CDE0312395A68E00747B67 /* AlbumsTableViewController.swift in Sources */,
 				99CDE01F2395A5A600747B67 /* SceneDelegate.swift in Sources */,
 			);
