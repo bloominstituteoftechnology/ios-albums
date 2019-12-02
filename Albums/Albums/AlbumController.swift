@@ -62,6 +62,17 @@ class AlbumController {
     func createSong(withName name: String, duration: String) -> Song {
         return Song(name: name, duration: duration)
     }
+    
+    func update(album: Album, withName name: String, artist: String, genres: [String], songs: [Song], coverArtURLs: [URL]) {
+        album.name = name
+        album.artist = artist
+        album.genres = genres
+        album.songs = songs
+        album.coverArtURLs = coverArtURLs
+        
+        put(album: album)
+    }
+    
     // MARK: - Test Data Methods
     func testDecodingExampleAlbum() throws -> Album {
         guard let exampleAlbumPath = Bundle.main.path(
