@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Song: Decodable {
+class Song: Codable {
     var id: String
     var name: String
     var duration: String // - TODO: make duration Int in seconds
@@ -18,24 +18,32 @@ class Song: Decodable {
         case name
         case duration
         
-        enum DurationKeys: String, CodingKey {
+        enum DurationKey: String, CodingKey {
             case duration
         }
         
-        enum NameKeys: String, CodingKey {
+        enum NameKey: String, CodingKey {
             case title
         }
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        let nameContainer = try container.nestedContainer(keyedBy: CodingKeys.NameKey.self, forKey: .name)
+        let durationContainer = try container.nestedContainer(keyedBy: CodingKeys.DurationKey.self, forKey: .duration)
         
         id = try container.decode(String.self, forKey: .id)
-        
-        let nameContainer = try container.nestedContainer(keyedBy: CodingKeys.NameKeys.self, forKey: .name)
         name = try nameContainer.decode(String.self, forKey: .title)
-        
-        let durationContainer = try container.nestedContainer(keyedBy: CodingKeys.DurationKeys.self, forKey: .duration)
         duration = try durationContainer.decode(String.self, forKey: .duration)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        var nameContainer = container.nestedContainer(keyedBy: CodingKeys.NameKey.self, forKey: .name)
+        var durationContainer = container.nestedContainer(keyedBy: CodingKeys.DurationKey.self, forKey: .duration)
+        
+        try container.encode(id, forKey: .id)
+        try nameContainer.encode(name, forKey: .title)
+        try durationContainer.encode(duration, forKey: .duration)
     }
 }
