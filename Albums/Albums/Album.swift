@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Album: Decodable {
+class Album: Codable {
     var id: String
     var name: String
     var artist: String
@@ -31,14 +31,15 @@ class Album: Decodable {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
         
         id = try container.decode(String.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         artist = try container.decode(String.self, forKey: .artist)
         genres = try container.decode([String].self, forKey: .genres)
+        songs = try container.decode([Song].self, forKey: .songs)
         
         coverArtURLs = []
-        var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
         while !coverArtContainer.isAtEnd {
             let coverArtURLContainer = try coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArtKey.self)
             let coverArtURLString = try coverArtURLContainer.decode(String.self, forKey: .url)
@@ -46,7 +47,21 @@ class Album: Decodable {
                 coverArtURLs.append(coverArtURL)
             }
         }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        var coverArtObjectsContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
         
-        songs = try container.decode([Song].self, forKey: .songs)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(artist, forKey: .artist)
+        try container.encode(genres, forKey: .genres)
+        try container.encode(songs, forKey: .songs)
+        
+        try coverArtURLs.forEach {
+            var coverArtContainer = coverArtObjectsContainer.nestedContainer(keyedBy: CodingKeys.CoverArtKey.self)
+            try coverArtContainer.encode($0.absoluteString, forKey: .url)
+        }
     }
 }

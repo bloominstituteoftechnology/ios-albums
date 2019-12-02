@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             let album = try AlbumController().testDecodingExampleAlbum()
             print(album.artist, " - ", album.name, album.songs.map { "\($0.name) - \($0.duration)" })
+            print("art: \(album.coverArtURLs)")
         } catch {
             print("error decoding example album: \(error)")
         }
