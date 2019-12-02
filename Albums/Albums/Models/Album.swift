@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Album: Codable {
+struct Album: Codable, Equatable {
     
     enum AlbumKeys: String, CodingKey {
         case artist
@@ -23,12 +23,23 @@ struct Album: Codable {
         }
     }
     
-    let artist: String
-    let coverArt: String
-    let genres: [String]
-    let id: String
-    let name: String
-    let songs: [Song]
+    var artist: String
+    var coverArt: String
+    var genres: [String]
+    var id: String
+    var name: String
+    var songs: [Song]
+    
+    init(artist: String, coverArt: String,
+         genres: [String], id: String,
+         name: String, songs: [Song]) {
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.id = id
+        self.name = name
+        self.songs = songs
+    }
     
     init(from decoder: Decoder) throws {
         
@@ -80,6 +91,12 @@ struct Song: Codable {
     let duration: String
     let id: String
     let name: String
+    
+    init(duration: String, id: String, name: String) {
+        self.duration = duration
+        self.id = id
+        self.name = name
+    }
     
     init(from decoder: Decoder) throws {
         
