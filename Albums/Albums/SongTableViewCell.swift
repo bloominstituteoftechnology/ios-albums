@@ -12,6 +12,7 @@ class SongTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var durationField: UITextField!
+    @IBOutlet weak var addSongButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
