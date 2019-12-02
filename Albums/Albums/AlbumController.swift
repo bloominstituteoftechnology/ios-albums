@@ -9,6 +9,33 @@
 import Foundation
 
 class AlbumController {
+    var albums: [Album] = []
+    
+    let baseURL: URL = URL(string: "https://lambda-ios-testbed.firebaseio.com/")!
+    
+    func getAlbums(completion: @escaping (Result<[Album],Error>) -> ()) {
+        var request = URLRequest(url: baseURL)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Album fetching failed with response:\n\(response?.description ?? "???")")
+                completion(.failure(error ?? NSError()))
+                return
+            }
+            do {
+                let albumsDict = try JSONDecoder().decode([String:Album].self, from: data)
+                self.albums = albumsDict.map { (_, album) -> Album in
+                    return album
+                }
+                completion(.success(self.albums))
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    
+    // MARK: - Test Data Methods
     func testDecodingExampleAlbum() throws -> Album {
         guard let exampleAlbumPath = Bundle.main.path(
             forResource: "exampleAlbum",
