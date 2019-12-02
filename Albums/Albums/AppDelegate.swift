@@ -12,10 +12,18 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let albumController = AlbumController()
+        
         do {
-            let album = try AlbumController().testDecodingExampleAlbum()
+            let album = try albumController.testDecodingExampleAlbum()
             print(album.artist, " - ", album.name, album.songs.map { "\($0.name) - \($0.duration)" })
             print("art: \(album.coverArtURLs)")
+            
+            let albumJSONData = try albumController.testEncodingExampleAlbum(album)
+            if let albumJSONString = String(data: albumJSONData, encoding: .utf8) {
+                print(albumJSONString)
+            }
         } catch {
             print("error decoding example album: \(error)")
         }

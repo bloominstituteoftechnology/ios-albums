@@ -22,4 +22,8 @@ class AlbumController {
         let albumData = try Data(contentsOf: exampleAlbumURL)
         return try JSONDecoder().decode(Album.self, from: albumData)
     }
+    
+    func testEncodingExampleAlbum(_ album: Album) throws -> Data {
+        return try JSONEncoder().encode(album)
+    }
 }
