@@ -16,6 +16,17 @@ class Album: Codable {
     var coverArtURLs: [URL]
     var songs: [Song]
     
+    init(name: String, artist: String, genres: [String], songs: [Song], coverArtURLs: [URL]) {
+        self.name = name
+        self.artist = artist
+        self.genres = genres
+        self.songs = songs
+        self.coverArtURLs = coverArtURLs
+        
+        self.id = UUID().uuidString
+        self.coverArtURLs = []
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id
         case name
