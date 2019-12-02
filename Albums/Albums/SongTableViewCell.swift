@@ -19,6 +19,12 @@ class SongTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    override func prepareForReuse() {
+        titleField.text = ""
+        durationField.text = ""
+        addSongButton.isHidden = false
+    }
+    
     func updateViews() {
         guard let song = song else { return }
         titleField.text = song.name
