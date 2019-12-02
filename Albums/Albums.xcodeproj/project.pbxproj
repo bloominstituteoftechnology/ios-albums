@@ -13,6 +13,11 @@
 		BBB10F4C23959F97001E55F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBB10F4B23959F97001E55F8 /* Assets.xcassets */; };
 		BBB10F4F23959F97001E55F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB10F4D23959F97001E55F8 /* LaunchScreen.storyboard */; };
 		BBB10F5723959FE3001E55F8 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB10F5623959FE3001E55F8 /* AlbumsTableViewController.swift */; };
+		BBB10F592395A3C8001E55F8 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB10F582395A3C8001E55F8 /* AlbumDetailTableViewController.swift */; };
+		BBB10F5C2395A770001E55F8 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB10F5B2395A770001E55F8 /* SongTableViewCell.swift */; };
+		BBB10F5F2395A9B9001E55F8 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB10F5E2395A9B9001E55F8 /* Album.swift */; };
+		BBB10F612395AED7001E55F8 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = BBB10F602395AED7001E55F8 /* exampleAlbum.json */; };
+		BBB10F632395AEEB001E55F8 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB10F622395AEEB001E55F8 /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		BBB10F4E23959F97001E55F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BBB10F5023959F97001E55F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBB10F5623959FE3001E55F8 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		BBB10F582395A3C8001E55F8 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		BBB10F5B2395A770001E55F8 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		BBB10F5E2395A9B9001E55F8 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		BBB10F602395AED7001E55F8 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
+		BBB10F622395AEEB001E55F8 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +69,49 @@
 				BBB10F4223959F8F001E55F8 /* AppDelegate.swift */,
 				BBB10F4423959F8F001E55F8 /* SceneDelegate.swift */,
 				BBB10F4823959F8F001E55F8 /* Main.storyboard */,
-				BBB10F5623959FE3001E55F8 /* AlbumsTableViewController.swift */,
+				BBB10F602395AED7001E55F8 /* exampleAlbum.json */,
+				BBB10F652395AEFC001E55F8 /* Model Controllers */,
+				BBB10F642395AEEF001E55F8 /* Models */,
+				BBB10F5A2395A3D2001E55F8 /* View Controllers */,
+				BBB10F5D2395A775001E55F8 /* Views */,
 				BBB10F4B23959F97001E55F8 /* Assets.xcassets */,
 				BBB10F4D23959F97001E55F8 /* LaunchScreen.storyboard */,
 				BBB10F5023959F97001E55F8 /* Info.plist */,
 			);
 			path = Albums;
+			sourceTree = "<group>";
+		};
+		BBB10F5A2395A3D2001E55F8 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BBB10F582395A3C8001E55F8 /* AlbumDetailTableViewController.swift */,
+				BBB10F5623959FE3001E55F8 /* AlbumsTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		BBB10F5D2395A775001E55F8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BBB10F5B2395A770001E55F8 /* SongTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BBB10F642395AEEF001E55F8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BBB10F5E2395A9B9001E55F8 /* Album.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BBB10F652395AEFC001E55F8 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BBB10F622395AEEB001E55F8 /* AlbumController.swift */,
+			);
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +174,7 @@
 			files = (
 				BBB10F4F23959F97001E55F8 /* LaunchScreen.storyboard in Resources */,
 				BBB10F4C23959F97001E55F8 /* Assets.xcassets in Resources */,
+				BBB10F612395AED7001E55F8 /* exampleAlbum.json in Resources */,
 				BBB10F4A23959F8F001E55F8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,7 +188,11 @@
 			files = (
 				BBB10F4323959F8F001E55F8 /* AppDelegate.swift in Sources */,
 				BBB10F5723959FE3001E55F8 /* AlbumsTableViewController.swift in Sources */,
+				BBB10F5C2395A770001E55F8 /* SongTableViewCell.swift in Sources */,
+				BBB10F592395A3C8001E55F8 /* AlbumDetailTableViewController.swift in Sources */,
+				BBB10F632395AEEB001E55F8 /* AlbumController.swift in Sources */,
 				BBB10F4523959F8F001E55F8 /* SceneDelegate.swift in Sources */,
+				BBB10F5F2395A9B9001E55F8 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
