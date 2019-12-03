@@ -80,8 +80,9 @@ class AlbumController {
     }
     
     func update(for album: Album, artist: String, coverArt: String, genres: [String], id: String, name: String, songs: [Song]) {
-        
+
         guard let albumIndex = albums.firstIndex(of: album) else { return }
+        
         albums[albumIndex].artist = artist
         albums[albumIndex].coverArt = coverArt
         albums[albumIndex].genres = genres

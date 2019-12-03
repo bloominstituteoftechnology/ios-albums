@@ -72,7 +72,7 @@ struct Album: Codable, Equatable {
     
 }
 
-struct Song: Codable {
+struct Song: Codable, Equatable {
     
     enum SongKeys: String, CodingKey {
         case duration
