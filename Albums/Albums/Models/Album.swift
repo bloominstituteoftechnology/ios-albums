@@ -24,13 +24,13 @@ struct Album: Codable, Equatable {
     }
     
     var artist: String
-    var coverArt: String
+    var coverArt: [String]
     var genres: [String]
     var id: String
     var name: String
     var songs: [Song]
     
-    init(artist: String, coverArt: String,
+    init(artist: String, coverArt: [String],
          genres: [String], id: String,
          name: String, songs: [Song]) {
         self.artist = artist
@@ -50,9 +50,16 @@ struct Album: Codable, Equatable {
         self.name = try container.decode(String.self, forKey: .name)
         self.genres = try container.decode([String].self, forKey: .genres)
         self.songs = try container.decode([Song].self, forKey: .songs)
+        
         var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
-        let coverArtURLContainer = try coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKey.self)
-        self.coverArt = try coverArtURLContainer.decode(String.self, forKey: .url)
+        var coverArtURLStrings = [String]()
+        while !coverArtContainer.isAtEnd {
+            let coverArtURLContainer = try coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKey.self)
+            let coverArtString = try coverArtURLContainer.decode(String.self, forKey: .url)
+            coverArtURLStrings.append(coverArtString)
+        }
+        
+        self.coverArt = coverArtURLStrings
     }
     
     func encode(to encoder: Encoder) throws {
@@ -62,7 +69,11 @@ struct Album: Codable, Equatable {
         
         var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
         var coverArtURLContainer = coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKey.self)
-        try coverArtURLContainer.encode(coverArt, forKey: .url)
+        for coverArtURLStrings in coverArt {
+             try coverArtURLContainer.encode(coverArtURLStrings, forKey: .url)
+        }
+        
+       
        
         try container.encode(genres, forKey: .genres)
         try container.encode(id, forKey: .id)

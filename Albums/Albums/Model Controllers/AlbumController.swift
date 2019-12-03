@@ -22,8 +22,10 @@ class AlbumController {
     func getAlbums(completion: @escaping (Error?) -> Void) {
         
         let requestURL = baseURL.appendingPathExtension("json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "GET"
         
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
             
             if let error = error {
                 print(error)
@@ -35,7 +37,8 @@ class AlbumController {
             
             let jsonDecoder = JSONDecoder()
             do {
-                self.albums = try jsonDecoder.decode([Album].self, from: data)
+                let albumResults = try jsonDecoder.decode(Album.self, from: data)
+                self.albums.append(albumResults)
                 completion(nil)
             } catch {
                 print("Error Decoding")
@@ -49,8 +52,7 @@ class AlbumController {
     
     func put(album: Album) {
         
-        let uuid = UUID()
-        let requestURL = baseURL.appendingPathComponent(uuid.uuidString).appendingPathComponent("json")
+        let requestURL = baseURL.appendingPathComponent(album.id).appendingPathComponent("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
         
@@ -69,7 +71,7 @@ class AlbumController {
         }.resume()
     }
     
-    func createAlbum(artist: String, coverArt: String, genres: [String], id: String, name: String, songs: [Song]) {
+    func createAlbum(artist: String, coverArt: [String], genres: [String], id: String, name: String, songs: [Song]) {
         let album = Album(artist: artist, coverArt: coverArt, genres: genres, id: id, name: name, songs: songs)
         albums.append(album)
         put(album: album)
@@ -79,7 +81,7 @@ class AlbumController {
         return Song(duration: duration, id: id, name: name)
     }
     
-    func update(for album: Album, artist: String, coverArt: String, genres: [String], id: String, name: String, songs: [Song]) {
+    func update(for album: Album, artist: String, coverArt: [String], genres: [String], id: String, name: String, songs: [Song]) {
 
         guard let albumIndex = albums.firstIndex(of: album) else { return }
         
