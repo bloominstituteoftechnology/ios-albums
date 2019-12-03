@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        testEncodingExampleAlbum()
         return true
     }
 
@@ -31,7 +32,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    func testDecodingExampleAlbum() {
+        let url = URL(fileReferenceLiteralResourceName: "exampleAlbum.json")
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let album = try JSONDecoder().decode(Album.self, from: data)
+            print(album)
+        } catch {
+            print("Error")
+        }
+    }
+    
+    func testEncodingExampleAlbum() {
+        let data = try! Data(contentsOf: URL(fileReferenceLiteralResourceName: "exampleAlbum.json"))
 
+        do {
+            let decoder = JSONDecoder()
+            let album = try decoder.decode(Album.self, from: data)
+
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            let albumData = try encoder.encode(album)
+
+            let dataString = String(data: albumData, encoding: .utf8)!
+            print(dataString)
+        } catch {
+            print("Encoding Error")
+        }
+    }
 
 }
 
