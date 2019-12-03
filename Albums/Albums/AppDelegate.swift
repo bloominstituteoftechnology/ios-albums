@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        /*
+        // test data
         let albumController = AlbumController()
         
         do {
@@ -27,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("error decoding example album: \(error)")
         }
+        */
         return true
     }
 

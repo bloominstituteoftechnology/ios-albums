@@ -76,3 +76,9 @@ class Album: Codable {
         }
     }
 }
+
+extension Album: Equatable {
+    static func == (lhs: Album, rhs: Album) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

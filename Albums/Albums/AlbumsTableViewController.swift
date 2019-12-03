@@ -10,27 +10,28 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
     
-    var albumController: AlbumController? = AlbumController()
+    var albumController: AlbumController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        albumController = AlbumController()
+        
         albumController?.getAlbums(completion: { result in
             do {
                 let _ = try result.get()
             } catch {
                 print("Error fetching albums: \(error)")
-                return
             }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         })
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -50,7 +51,7 @@ class AlbumsTableViewController: UITableViewController {
     }
 
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let albumDetailVC = segue.destination as? AlbumDetailViewController {
             albumDetailVC.albumController = albumController
@@ -59,5 +60,4 @@ class AlbumsTableViewController: UITableViewController {
             }
         }
     }
-
 }

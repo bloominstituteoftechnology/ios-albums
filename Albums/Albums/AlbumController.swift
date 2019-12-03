@@ -23,14 +23,29 @@ class AlbumController {
                 completion(.failure(error ?? NSError()))
                 return
             }
+            
+            var testAlbum: Album? = nil
+            do {
+                testAlbum = try self.testDecodingExampleAlbum()
+            } catch {
+                completion(.failure(error))
+                return
+            }
+            
             do {
                 let albumsDict = try JSONDecoder().decode([String:Album].self, from: data)
                 self.albums = albumsDict.map { (_, album) -> Album in
                     return album
                 }
                 completion(.success(self.albums))
+                return
             } catch {
                 completion(.failure(error))
+            }
+            
+            if let testAlbum = testAlbum, !(self.albums.contains(testAlbum)) {
+                self.albums.append(testAlbum)
+                self.put(album: testAlbum)
             }
         }.resume()
     }
@@ -41,6 +56,14 @@ class AlbumController {
             .appendingPathExtension("json")
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            request.httpBody = try JSONEncoder().encode(album)
+        } catch {
+            print("Error encoding album to upload: \(error)")
+            return
+        }
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {

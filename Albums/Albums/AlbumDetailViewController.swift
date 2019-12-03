@@ -11,11 +11,7 @@ import UIKit
 class AlbumDetailViewController: UITableViewController {
     
     var albumController: AlbumController?
-    var album: Album? {
-        didSet {
-            updateViews()
-        }
-    }
+    var album: Album?
     
     var tempSongs: [Song] = []
     
@@ -50,11 +46,11 @@ class AlbumDetailViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongTableViewCell else { return UITableViewCell() }
-
-        let index = indexPath.row
         
         cell.delegate = self
-        cell.song = index == tempSongs.count ? tempSongs[index] : nil
+        if indexPath.row < tempSongs.count {
+            cell.song = tempSongs[indexPath.row]
+        }
 
         return cell
     }
@@ -93,7 +89,10 @@ class AlbumDetailViewController: UITableViewController {
 
 extension AlbumDetailViewController: SongTableViewCellDelegate {
     func addSong(withName name: String, duration: String) {
-        guard let song = albumController?.createSong(withName: name, duration: duration) else { return }
+        guard let song = albumController?.createSong(withName: name, duration: duration) else {
+            print("no album controller to save song with")
+            return
+        }
         tempSongs.append(song)
         tableView.reloadData()
         tableView.scrollToRow(at: IndexPath(row: tempSongs.count - 1, section: 0), at: .none, animated: true)
