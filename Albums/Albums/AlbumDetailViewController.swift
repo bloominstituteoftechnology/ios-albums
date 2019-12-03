@@ -60,6 +60,34 @@ class AlbumDetailViewController: UITableViewController {
     }
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
+        guard let albumName = albumNameField.text, !albumName.isEmpty,
+            let artist = artistField.text, !artist.isEmpty,
+            let commaSeparatedGenres = genresField.text,
+            let commaSeparatedCoverArtURLs = coverURLsField.text
+            else { return }
+        let genres = commaSeparatedGenres.split(separator: ",").map { String($0) }
+        let coverArtURLs = commaSeparatedCoverArtURLs.split(separator: ",").map {
+            URL(string: String($0))!
+        }
+        
+        if let album = album {
+            albumController?.update(
+                album: album,
+                withName: albumName,
+                artist: artist,
+                genres: genres,
+                songs: tempSongs,
+                coverArtURLs: coverArtURLs)
+        } else {
+            albumController?.createAlbum(
+                withName: albumName,
+                artist: artist,
+                genres: genres,
+                songs: tempSongs,
+                coverArtURLs: coverArtURLs)
+        }
+        
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 
