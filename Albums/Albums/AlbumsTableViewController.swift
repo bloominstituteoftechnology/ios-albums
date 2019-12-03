@@ -10,7 +10,7 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
     
-    var albumController: AlbumController?
+    var albumController: AlbumController? = AlbumController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
