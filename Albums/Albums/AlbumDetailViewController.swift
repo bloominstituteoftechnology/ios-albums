@@ -61,15 +61,13 @@ class AlbumDetailViewController: UITableViewController {
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
     }
-    
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension AlbumDetailViewController: SongTableViewCellDelegate {
+    func addSong(withName name: String, duration: String) {
+        guard let song = albumController?.createSong(withName: name, duration: duration) else { return }
+        tempSongs.append(song)
+        tableView.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: tempSongs.count - 1, section: 0), at: .none, animated: true)
     }
-    */
-
 }
