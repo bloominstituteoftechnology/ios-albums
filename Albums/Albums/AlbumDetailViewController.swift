@@ -27,6 +27,18 @@ class AlbumDetailViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    func updateViews() {
+        albumNameField.text = album?.name
+        artistField.text = album?.artist
+        genresField.text = album?.genres.joined(separator: ",")
+        if let coverArtURLs = album?.coverArtURLs {
+            let coverArtStrings = coverArtURLs.map { $0.absoluteString }
+            coverURLsField.text = coverArtStrings.joined(separator: ",")
+        }
+        title = album?.name ?? "New Album"
+        tempSongs = album?.songs ?? tempSongs
+    }
 
     // MARK: - Table view data source
 
