@@ -8,8 +8,16 @@
 
 import Foundation
 
-struct Album: Codable {
+struct Album: Codable, Equatable {
     
+    static func == (lhs: Album, rhs: Album) -> Bool {
+        if lhs.id != rhs.id {
+            return false
+        } else {
+            return true
+        }
+    }
+
     var artist: String
     var coverArt: [URL]
     var genres: [String]
@@ -28,6 +36,15 @@ struct Album: Codable {
         enum CoverArtKeys: String, CodingKey {
             case url
         }
+    }
+    
+    init(artist: String, coverArt: [URL], genres: [String], id: UUID, name: String, songs: [Song]) {
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.id = id
+        self.name = name
+        self.songs = songs
     }
     
     init(from decoder: Decoder) throws {
@@ -101,6 +118,12 @@ struct Song: Codable {
         enum NameKeys: String, CodingKey {
             case title
         }
+    }
+    
+    init(duration: String, id: UUID, name: String) {
+        self.duration = duration
+        self.id = id
+        self.name = name 
     }
     
     init(from decoder: Decoder) throws {
