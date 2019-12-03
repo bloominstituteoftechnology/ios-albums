@@ -7,19 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD76AA83239695AF00D0A361 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76AA82239695AF00D0A361 /* AlbumsTableViewController.swift */; };
+		DD76AA85239695FA00D0A361 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76AA84239695FA00D0A361 /* AlbumDetailTableViewController.swift */; };
+		DD76AA8723969A7E00D0A361 /* SongsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76AA8623969A7E00D0A361 /* SongsTableViewCell.swift */; };
+		DD76AA8923969AAF00D0A361 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76AA8823969AAF00D0A361 /* Album.swift */; };
+		DD76AA8B23969AEA00D0A361 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = DD76AA8A23969AEA00D0A361 /* exampleAlbum.json */; };
+		DD76AA8D23969D3E00D0A361 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76AA8C23969D3E00D0A361 /* AlbumController.swift */; };
 		DDBA2D9A2342A7EC00746168 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA2D992342A7EC00746168 /* AppDelegate.swift */; };
 		DDBA2D9C2342A7EC00746168 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA2D9B2342A7EC00746168 /* SceneDelegate.swift */; };
-		DDBA2D9E2342A7EC00746168 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA2D9D2342A7EC00746168 /* ViewController.swift */; };
 		DDBA2DA12342A7EC00746168 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDBA2D9F2342A7EC00746168 /* Main.storyboard */; };
 		DDBA2DA32342A7ED00746168 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDBA2DA22342A7ED00746168 /* Assets.xcassets */; };
 		DDBA2DA62342A7ED00746168 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDBA2DA42342A7ED00746168 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD76AA82239695AF00D0A361 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		DD76AA84239695FA00D0A361 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		DD76AA8623969A7E00D0A361 /* SongsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsTableViewCell.swift; sourceTree = "<group>"; };
+		DD76AA8823969AAF00D0A361 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		DD76AA8A23969AEA00D0A361 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
+		DD76AA8C23969D3E00D0A361 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 		DDBA2D962342A7EC00746168 /* Albums.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albums.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDBA2D992342A7EC00746168 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDBA2D9B2342A7EC00746168 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DDBA2D9D2342A7EC00746168 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DDBA2DA02342A7EC00746168 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DDBA2DA22342A7ED00746168 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDBA2DA52342A7ED00746168 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,8 +68,13 @@
 			children = (
 				DDBA2D992342A7EC00746168 /* AppDelegate.swift */,
 				DDBA2D9B2342A7EC00746168 /* SceneDelegate.swift */,
-				DDBA2D9D2342A7EC00746168 /* ViewController.swift */,
+				DD76AA8A23969AEA00D0A361 /* exampleAlbum.json */,
 				DDBA2D9F2342A7EC00746168 /* Main.storyboard */,
+				DD76AA8823969AAF00D0A361 /* Album.swift */,
+				DD76AA8C23969D3E00D0A361 /* AlbumController.swift */,
+				DD76AA8623969A7E00D0A361 /* SongsTableViewCell.swift */,
+				DD76AA84239695FA00D0A361 /* AlbumDetailTableViewController.swift */,
+				DD76AA82239695AF00D0A361 /* AlbumsTableViewController.swift */,
 				DDBA2DA22342A7ED00746168 /* Assets.xcassets */,
 				DDBA2DA42342A7ED00746168 /* LaunchScreen.storyboard */,
 				DDBA2DA72342A7ED00746168 /* Info.plist */,
@@ -127,6 +142,7 @@
 			files = (
 				DDBA2DA62342A7ED00746168 /* LaunchScreen.storyboard in Resources */,
 				DDBA2DA32342A7ED00746168 /* Assets.xcassets in Resources */,
+				DD76AA8B23969AEA00D0A361 /* exampleAlbum.json in Resources */,
 				DDBA2DA12342A7EC00746168 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +154,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDBA2D9E2342A7EC00746168 /* ViewController.swift in Sources */,
+				DD76AA8723969A7E00D0A361 /* SongsTableViewCell.swift in Sources */,
 				DDBA2D9A2342A7EC00746168 /* AppDelegate.swift in Sources */,
+				DD76AA83239695AF00D0A361 /* AlbumsTableViewController.swift in Sources */,
+				DD76AA85239695FA00D0A361 /* AlbumDetailTableViewController.swift in Sources */,
+				DD76AA8D23969D3E00D0A361 /* AlbumController.swift in Sources */,
 				DDBA2D9C2342A7EC00746168 /* SceneDelegate.swift in Sources */,
+				DD76AA8923969AAF00D0A361 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
