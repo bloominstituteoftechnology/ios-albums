@@ -24,7 +24,6 @@ class Album: Codable {
         self.coverArtURLs = coverArtURLs
         
         self.id = UUID().uuidString
-        self.coverArtURLs = []
     }
     
     enum CodingKeys: String, CodingKey {
