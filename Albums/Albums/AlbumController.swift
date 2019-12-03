@@ -14,7 +14,7 @@ class AlbumController {
     let baseURL: URL = URL(string: "https://lambda-ios-testbed.firebaseio.com/")!
     
     func getAlbums(completion: @escaping (Result<[Album],Error>) -> ()) {
-        var request = URLRequest(url: baseURL)
+        var request = URLRequest(url: baseURL.appendingPathComponent(".json"))
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { data, response, error in
