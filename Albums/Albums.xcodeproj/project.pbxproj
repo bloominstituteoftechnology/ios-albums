@@ -7,23 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C03A18542395A9C2001D16D1 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03A18532395A9C2001D16D1 /* AlbumController.swift */; };
+		C03A18572395AB71001D16D1 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = C03A18562395AB71001D16D1 /* exampleAlbum.json */; };
 		C0746F7823955ADF00491080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0746F7723955ADF00491080 /* AppDelegate.swift */; };
 		C0746F7A23955ADF00491080 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0746F7923955ADF00491080 /* SceneDelegate.swift */; };
-		C0746F7C23955ADF00491080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0746F7B23955ADF00491080 /* ViewController.swift */; };
 		C0746F7F23955ADF00491080 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0746F7D23955ADF00491080 /* Main.storyboard */; };
 		C0746F8123955AE100491080 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0746F8023955AE100491080 /* Assets.xcassets */; };
 		C0746F8423955AE100491080 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0746F8223955AE100491080 /* LaunchScreen.storyboard */; };
+		C0746F8C23955B8400491080 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0746F8B23955B8400491080 /* AlbumsTableViewController.swift */; };
+		C0746F8F23955E6B00491080 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0746F8E23955E6B00491080 /* AlbumDetailTableViewController.swift */; };
+		C0746F91239560BF00491080 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0746F90239560BF00491080 /* SongTableViewCell.swift */; };
+		C0746F942395621900491080 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0746F932395621900491080 /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C03A18532395A9C2001D16D1 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
+		C03A18562395AB71001D16D1 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleAlbum.json; sourceTree = "<group>"; };
 		C0746F7423955ADF00491080 /* Albums.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albums.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0746F7723955ADF00491080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0746F7923955ADF00491080 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C0746F7B23955ADF00491080 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C0746F7E23955ADF00491080 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0746F8023955AE100491080 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0746F8323955AE100491080 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0746F8523955AE100491080 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0746F8B23955B8400491080 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		C0746F8E23955E6B00491080 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		C0746F90239560BF00491080 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		C0746F932395621900491080 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,11 +47,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C03A18552395A9D8001D16D1 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C03A18532395A9C2001D16D1 /* AlbumController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
 		C0746F6B23955ADF00491080 = {
 			isa = PBXGroup;
 			children = (
 				C0746F7623955ADF00491080 /* Albums */,
 				C0746F7523955ADF00491080 /* Products */,
+				C03A18562395AB71001D16D1 /* exampleAlbum.json */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +77,41 @@
 			children = (
 				C0746F7723955ADF00491080 /* AppDelegate.swift */,
 				C0746F7923955ADF00491080 /* SceneDelegate.swift */,
-				C0746F7B23955ADF00491080 /* ViewController.swift */,
 				C0746F7D23955ADF00491080 /* Main.storyboard */,
+				C0746F8D23955B9000491080 /* View Controllers */,
+				C0746F92239560C700491080 /* Views */,
+				C03A18552395A9D8001D16D1 /* Model Controllers */,
+				C0746F952395622600491080 /* Models */,
 				C0746F8023955AE100491080 /* Assets.xcassets */,
 				C0746F8223955AE100491080 /* LaunchScreen.storyboard */,
 				C0746F8523955AE100491080 /* Info.plist */,
 			);
 			path = Albums;
+			sourceTree = "<group>";
+		};
+		C0746F8D23955B9000491080 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C0746F8B23955B8400491080 /* AlbumsTableViewController.swift */,
+				C0746F8E23955E6B00491080 /* AlbumDetailTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C0746F92239560C700491080 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C0746F90239560BF00491080 /* SongTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C0746F952395622600491080 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C0746F932395621900491080 /* Album.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +174,7 @@
 			files = (
 				C0746F8423955AE100491080 /* LaunchScreen.storyboard in Resources */,
 				C0746F8123955AE100491080 /* Assets.xcassets in Resources */,
+				C03A18572395AB71001D16D1 /* exampleAlbum.json in Resources */,
 				C0746F7F23955ADF00491080 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +186,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0746F7C23955ADF00491080 /* ViewController.swift in Sources */,
+				C0746F8C23955B8400491080 /* AlbumsTableViewController.swift in Sources */,
 				C0746F7823955ADF00491080 /* AppDelegate.swift in Sources */,
+				C0746F91239560BF00491080 /* SongTableViewCell.swift in Sources */,
+				C0746F8F23955E6B00491080 /* AlbumDetailTableViewController.swift in Sources */,
+				C03A18542395A9C2001D16D1 /* AlbumController.swift in Sources */,
 				C0746F7A23955ADF00491080 /* SceneDelegate.swift in Sources */,
+				C0746F942395621900491080 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +337,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8M5GPJQ6L5;
 				INFOPLIST_FILE = Albums/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -303,6 +356,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8M5GPJQ6L5;
 				INFOPLIST_FILE = Albums/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
