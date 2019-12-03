@@ -11,7 +11,13 @@ import UIKit
 class AlbumDetailViewController: UITableViewController {
     
     var albumController: AlbumController?
-    var album: Album?
+    var album: Album? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    var tempSongs: [Song] = []
     
     @IBOutlet weak var albumNameField: UITextField!
     @IBOutlet weak var artistField: UITextField!
@@ -21,11 +27,7 @@ class AlbumDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        updateViews()
     }
     
     func updateViews() {
