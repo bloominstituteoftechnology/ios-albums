@@ -37,8 +37,9 @@ class AlbumController {
             
             let jsonDecoder = JSONDecoder()
             do {
-                let albumResults = try jsonDecoder.decode(Album.self, from: data)
-                self.albums.append(albumResults)
+                let decodedAlbums = try jsonDecoder.decode([String: Album].self, from: data)
+                //self.albums.append(decodedAlbums)
+                self.albums = Array(decodedAlbums.values)
                 completion(nil)
             } catch {
                 print("Error Decoding")
@@ -50,14 +51,14 @@ class AlbumController {
         
     }
     
-    func put(album: Album) {
+    func put(album: Album, completion: @escaping () -> Void = {  }) {
         
-        let requestURL = baseURL.appendingPathComponent(album.id).appendingPathComponent("json")
+        let requestURL = baseURL.appendingPathComponent(album.id).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
         
+        let jsonEncoder = JSONEncoder()
         do {
-            let jsonEncoder = JSONEncoder()
             request.httpBody = try jsonEncoder.encode(album)
         } catch {
             print("Error encoding album \(error)")
@@ -67,7 +68,9 @@ class AlbumController {
         URLSession.shared.dataTask(with: request) { _, _, error in
             if let error = error {
                 print("Error PUTing album to server \(error)")
+                return
             }
+            completion()
         }.resume()
     }
     
@@ -110,6 +113,7 @@ class AlbumController {
             let jsonDecoder = JSONDecoder()
             do {
                 let album = try jsonDecoder.decode(Album.self, from: data)
+                //self.put(album: album)
                 print(album)
             } catch {
                 print("Error Decoding")

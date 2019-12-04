@@ -19,6 +19,7 @@ class AlbumsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //albumController.testDecodingExampleAlbum()
         albumController.getAlbums(completion: { (error) in
             if let error = error {
                 print("\(error)")
