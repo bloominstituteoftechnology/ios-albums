@@ -40,6 +40,20 @@ struct Album: Codable {
         coverArt = coverArtURLs
         songs = try container.decode([Song].self, forKey: .songs)
     }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: AlbumKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(artist, forKey: .artist)
+        try container.encode(genres, forKey: .genres)
+        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        var coverArtInnerContainer = coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
+        for coverArtURL in coverArt {
+            try coverArtInnerContainer.encode(coverArtURL, forKey: .url)
+        }
+        try container.encode(songs, forKey: .songs)
+    }
 }
 
 struct Song: Codable {
@@ -66,5 +80,14 @@ struct Song: Codable {
         name = try nameContainer.decode(String.self, forKey: .title)
         let durationContainer = try container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
         duration = try durationContainer.decode(String.self, forKey: .duration)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: SongKeys.self)
+        try container.encode(id, forKey: .id)
+        var nameContainer = container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
+        try nameContainer.encode(name, forKey: .title)
+        var durationContainer = container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
+        try durationContainer.encode(duration, forKey: .duration)
     }
 }
