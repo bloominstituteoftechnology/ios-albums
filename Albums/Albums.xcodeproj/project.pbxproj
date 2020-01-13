@@ -75,12 +75,12 @@
 				E382135C23CD0D5C00F3CE17 /* SongTableViewCell.swift */,
 				E382135823CD089300F3CE17 /* AlbumsTableViewController.swift */,
 				E382135A23CD0BBA00F3CE17 /* AlbumDetialTableViewController.swift */,
+				E382136023CD1D1C00F3CE17 /* AlbumController.swift */,
 				E382134B23CD06C600F3CE17 /* Assets.xcassets */,
 				E382134D23CD06C600F3CE17 /* LaunchScreen.storyboard */,
 				E382135023CD06C600F3CE17 /* Info.plist */,
 				E382134823CD06C200F3CE17 /* Albums.xcdatamodeld */,
 				E382135623CD070E00F3CE17 /* exampleAlbum.json */,
-				E382136023CD1D1C00F3CE17 /* AlbumController.swift */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
