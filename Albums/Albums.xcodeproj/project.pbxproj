@@ -16,6 +16,7 @@
 		63D9EF1723CD089300126E68 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D9EF1623CD089300126E68 /* AlbumsTableViewController.swift */; };
 		63D9EF1923CD0B9500126E68 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D9EF1823CD0B9500126E68 /* AlbumDetailTableViewController.swift */; };
 		63D9EF1C23CD0E7100126E68 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D9EF1B23CD0E7100126E68 /* SongTableViewCell.swift */; };
+		63D9EF1E23CD110A00126E68 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D9EF1D23CD110A00126E68 /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		63D9EF1623CD089300126E68 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		63D9EF1823CD0B9500126E68 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		63D9EF1B23CD0E7100126E68 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		63D9EF1D23CD110A00126E68 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		6371D75A23CCF68D0097698E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				63D9EF1D23CD110A00126E68 /* Album.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				63D9EF1C23CD0E7100126E68 /* SongTableViewCell.swift in Sources */,
 				63D9EF1923CD0B9500126E68 /* AlbumDetailTableViewController.swift in Sources */,
 				6371D74523CCF6120097698E /* SceneDelegate.swift in Sources */,
+				63D9EF1E23CD110A00126E68 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
