@@ -20,7 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-        albumController.testDecodingExampleAlbum()
+        //albumController.testDecodingExampleAlbum()
+        //albumController.testEncodingExampleAlbum()
+        let url = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        let decoder = JSONDecoder()
+        let album = try! decoder.decode(Album.self, from: data)
+        albumController.create(id: album.id, name: album.name, artist: album.artist, genres: album.genres, coverArt: album.coverArt, songs: album.songs)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
