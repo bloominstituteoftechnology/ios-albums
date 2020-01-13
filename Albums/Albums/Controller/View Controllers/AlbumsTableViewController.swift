@@ -10,6 +10,8 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
     
+    let albumController = AlbumController()
+    
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {

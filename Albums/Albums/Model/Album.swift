@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Album: Codable {
+struct Album: Codable, Equatable {
     var id: String
     var name: String
     var artist: String
@@ -22,6 +22,15 @@ struct Album: Codable {
         enum CoverArtKeys: String, CodingKey {
             case url
         }
+    }
+    
+    init(id: String, name: String, artist: String, genres: [String], coverArt: [URL], songs: [Song]) {
+        self.id = id
+        self.name = name
+        self.artist = artist
+        self.genres = genres
+        self.coverArt = coverArt
+        self.songs = songs
     }
     
     init(from decoder: Decoder) throws {
@@ -54,6 +63,10 @@ struct Album: Codable {
         }
         try container.encode(songs, forKey: .songs)
     }
+    
+    static func == (lhs: Album, rhs: Album) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 struct Song: Codable {
@@ -71,6 +84,12 @@ struct Song: Codable {
         enum NameKeys: String, CodingKey {
             case title
         }
+    }
+    
+    init(id: String, name: String, duration: String) {
+        self.id = id
+        self.name = name
+        self.duration = duration
     }
     
     init(from decoder: Decoder) throws {
