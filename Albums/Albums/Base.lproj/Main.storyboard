@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="bpU-c6-JAw" detailTextLabel="kMX-cl-GRP" style="IBUITableViewCellStyleSubtitle" id="9AB-nh-O0X">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumCell" textLabel="bpU-c6-JAw" detailTextLabel="kMX-cl-GRP" style="IBUITableViewCellStyleSubtitle" id="9AB-nh-O0X">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9AB-nh-O0X" id="e1f-q4-N0o">
@@ -39,7 +39,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="6Wm-pf-YoT" kind="show" id="x3a-Fj-nye"/>
+                                    <segue destination="6Wm-pf-YoT" kind="show" identifier="ShowAlbumDetialSegue" id="x3a-Fj-nye"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -51,7 +51,7 @@
                     <navigationItem key="navigationItem" id="JTi-WR-oTM">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="O8O-lO-8cA">
                             <connections>
-                                <segue destination="6Wm-pf-YoT" kind="show" id="rs8-aW-3Yx"/>
+                                <segue destination="6Wm-pf-YoT" kind="show" identifier="ShowDDAlbumSegue" id="rs8-aW-3Yx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

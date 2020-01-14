@@ -19,6 +19,7 @@
 		E382135D23CD0D5C00F3CE17 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E382135C23CD0D5C00F3CE17 /* SongTableViewCell.swift */; };
 		E382135F23CD110000F3CE17 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = E382135E23CD110000F3CE17 /* Album.swift */; };
 		E382136123CD1D1C00F3CE17 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E382136023CD1D1C00F3CE17 /* AlbumController.swift */; };
+		E382136323CD3ADA00F3CE17 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E382136223CD3ADA00F3CE17 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		E382135C23CD0D5C00F3CE17 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		E382135E23CD110000F3CE17 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		E382136023CD1D1C00F3CE17 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
+		E382136223CD3ADA00F3CE17 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				E382133F23CD06C200F3CE17 /* AppDelegate.swift */,
 				E382134123CD06C200F3CE17 /* SceneDelegate.swift */,
 				E382134523CD06C200F3CE17 /* Main.storyboard */,
+				E382136223CD3ADA00F3CE17 /* Constants.swift */,
 				E382135E23CD110000F3CE17 /* Album.swift */,
 				E382135C23CD0D5C00F3CE17 /* SongTableViewCell.swift */,
 				E382135823CD089300F3CE17 /* AlbumsTableViewController.swift */,
@@ -165,6 +168,7 @@
 				E382136123CD1D1C00F3CE17 /* AlbumController.swift in Sources */,
 				E382135F23CD110000F3CE17 /* Album.swift in Sources */,
 				E382135923CD089300F3CE17 /* AlbumsTableViewController.swift in Sources */,
+				E382136323CD3ADA00F3CE17 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
