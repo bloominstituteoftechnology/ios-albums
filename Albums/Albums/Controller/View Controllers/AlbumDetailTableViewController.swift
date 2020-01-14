@@ -18,6 +18,11 @@ class AlbumDetailTableViewController: UITableViewController {
     @IBOutlet weak var coverArtTextField: UITextField!
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Properties
+    var albumController: AlbumController?
+    var album: Album?
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()

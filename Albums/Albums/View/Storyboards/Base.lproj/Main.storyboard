@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="U95-eL-yNi" detailTextLabel="HL0-MT-LeK" style="IBUITableViewCellStyleSubtitle" id="Xd3-7m-fg7">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumCell" textLabel="U95-eL-yNi" detailTextLabel="HL0-MT-LeK" style="IBUITableViewCellStyleSubtitle" id="Xd3-7m-fg7">
                                 <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xd3-7m-fg7" id="YTC-Ov-DlB">
@@ -39,7 +39,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="2bk-3W-c76" kind="show" id="rzn-XN-jbA"/>
+                                    <segue destination="2bk-3W-c76" kind="show" identifier="ShowAlbumDetailSegue" id="rzn-XN-jbA"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -51,7 +51,7 @@
                     <navigationItem key="navigationItem" title="Albums" id="VNF-Xi-IyR">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nSk-Fj-kIr">
                             <connections>
-                                <segue destination="2bk-3W-c76" kind="show" id="5iV-pW-s9T"/>
+                                <segue destination="2bk-3W-c76" kind="show" identifier="ShowAddAlbumSegue" id="5iV-pW-s9T"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
