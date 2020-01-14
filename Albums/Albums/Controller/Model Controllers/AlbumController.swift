@@ -50,7 +50,7 @@ class AlbumController {
     }
     
     func getAlbums(completion: @escaping (Error?) -> ()) {
-        guard let url = baseURL else { return }
+        guard let url = baseURL?.appendingPathExtension("json") else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {

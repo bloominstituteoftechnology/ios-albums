@@ -12,13 +12,13 @@ class AlbumsTableViewController: UITableViewController {
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
-    var albumController: AlbumController?
+    var albumController = AlbumController()
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        albumController?.getAlbums { [weak self] error in
+        albumController.getAlbums { [weak self] error in
             guard let self = self else { return }
             if let error = error {
                 self.showAlert(title: "Error", message: error.localizedDescription)
@@ -46,7 +46,7 @@ class AlbumsTableViewController: UITableViewController {
         case Segues.showAlbumDetailSegue:
             guard let albumDetailVC = segue.destination as? AlbumDetailTableViewController, let indexPath = tableView.indexPathForSelectedRow else { return }
             albumDetailVC.albumController = albumController
-            albumDetailVC.album = albumController?.albums[indexPath.row]
+            albumDetailVC.album = albumController.albums[indexPath.row]
         default:
             break
         }
@@ -59,14 +59,14 @@ class AlbumsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return albumController?.albums.count ?? 0
+        return albumController.albums.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.albumCell, for: indexPath)
-        let album = albumController?.albums[indexPath.row]
-        cell.textLabel?.text = album?.name
-        cell.detailTextLabel?.text = album?.artist
+        let album = albumController.albums[indexPath.row]
+        cell.textLabel?.text = album.name
+        cell.detailTextLabel?.text = album.artist
         return cell
     }
 }

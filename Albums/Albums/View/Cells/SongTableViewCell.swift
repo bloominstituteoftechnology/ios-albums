@@ -22,7 +22,11 @@ class SongTableViewCell: UITableViewCell {
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
-    var song: Song?
+    var song: Song? {
+        didSet {
+            updateViews()
+        }
+    }
     weak var delegate: SongTableViewCellDelegate?
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---

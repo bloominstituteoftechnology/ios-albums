@@ -10,6 +10,7 @@ import Foundation
 
 struct Cells {
     static let albumCell = "AlbumCell"
+    static let songCell = "SongCell"
 }
 
 struct Segues {
