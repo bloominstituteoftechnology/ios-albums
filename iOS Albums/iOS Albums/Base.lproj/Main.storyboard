@@ -122,7 +122,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Add a Song"/>
                                             <connections>
-                                                <action selector="addNewSongButton:" destination="2cl-Du-Ehs" eventType="touchUpInside" id="iae-Bw-bCH"/>
+                                                <action selector="addTapped:" destination="2cl-Du-Ehs" eventType="touchUpInside" id="XXf-PG-H74"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -136,6 +136,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addSongButton" destination="cwJ-F1-3Zp" id="m5u-ZN-Mde"/>
                                     <outlet property="newSongNameLengthTextField" destination="stR-hj-fVl" id="mEU-iE-gSk"/>
                                     <outlet property="newSongNameTextField" destination="Pls-Jj-K0B" id="2gb-9K-GoD"/>
                                 </connections>
@@ -147,7 +148,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Album" id="w1Z-9q-zpw">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hgF-sG-7f2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hgF-sG-7f2">
+                            <connections>
+                                <action selector="saveTapped:" destination="9XH-iP-2KT" id="z6F-jr-1nG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="albumNameTextField" destination="Ydp-ei-viY" id="34m-Wz-PEv"/>

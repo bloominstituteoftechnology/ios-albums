@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Song: Codable {
+struct Song: Codable, Equatable {
     let duration: String
     let id: String
     let name: String
@@ -62,13 +62,13 @@ struct Song: Codable {
 
 
 
-struct Album: Codable {
+struct Album: Codable, Equatable {
     
-    let artist: String
-    let coverArt: [URL]
-    let id: String
-    let genres: [String]
-    let name: String
+    var artist: String
+    var coverArt: [URL]
+    var id: String
+    var genres: [String]
+    var name: String
     var songs: [Song]
     
     

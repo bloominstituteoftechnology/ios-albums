@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9345A86A23D2D114004E87E5 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 9345A86923D2D114004E87E5 /* exampleAlbum.json */; };
+		9345A86C23D2D1AA004E87E5 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9345A86B23D2D1AA004E87E5 /* AlbumController.swift */; };
 		93B6CF4B23D00CE40029FFA2 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6CF4A23D00CE40029FFA2 /* AlbumsTableViewController.swift */; };
 		93B6CF4D23D029E10029FFA2 /* AlbumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6CF4C23D029E10029FFA2 /* AlbumDetailViewController.swift */; };
 		93B6CF4F23D02A9B0029FFA2 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6CF4E23D02A9B0029FFA2 /* SongTableViewCell.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		9345A86923D2D114004E87E5 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../exampleAlbum.json; sourceTree = "<group>"; };
+		9345A86B23D2D1AA004E87E5 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 		93B6CF4A23D00CE40029FFA2 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		93B6CF4C23D029E10029FFA2 /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; };
 		93B6CF4E23D02A9B0029FFA2 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				93B6CF4A23D00CE40029FFA2 /* AlbumsTableViewController.swift */,
 				93B6CF4C23D029E10029FFA2 /* AlbumDetailViewController.swift */,
 				93B6CF4E23D02A9B0029FFA2 /* SongTableViewCell.swift */,
+				9345A86B23D2D1AA004E87E5 /* AlbumController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				93B6CF4B23D00CE40029FFA2 /* AlbumsTableViewController.swift in Sources */,
 				93B6CF4D23D029E10029FFA2 /* AlbumDetailViewController.swift in Sources */,
 				93BFAD1323D0087A009129E3 /* AppDelegate.swift in Sources */,
+				9345A86C23D2D1AA004E87E5 /* AlbumController.swift in Sources */,
 				93B6CF5223D02BC70029FFA2 /* Album.swift in Sources */,
 				93BFAD1523D0087A009129E3 /* SceneDelegate.swift in Sources */,
 			);
