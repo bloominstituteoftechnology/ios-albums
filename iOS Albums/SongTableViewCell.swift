@@ -9,7 +9,14 @@
 import UIKit
 
 class SongTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var newSongNameTextField: UITextField!
+    
+    @IBOutlet weak var newSongNameLengthTextField: UITextField!
+    
+    @IBAction func addNewSongButton(_ sender: UIButton) {
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

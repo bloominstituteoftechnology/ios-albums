@@ -121,6 +121,9 @@
                                             <rect key="frame" x="168" y="106" width="79" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Add a Song"/>
+                                            <connections>
+                                                <action selector="addNewSongButton:" destination="2cl-Du-Ehs" eventType="touchUpInside" id="iae-Bw-bCH"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -132,6 +135,10 @@
                                         <constraint firstItem="Pls-Jj-K0B" firstAttribute="leading" secondItem="BCf-0s-eEj" secondAttribute="leadingMargin" id="nRN-x2-pbI"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="newSongNameLengthTextField" destination="stR-hj-fVl" id="mEU-iE-gSk"/>
+                                    <outlet property="newSongNameTextField" destination="Pls-Jj-K0B" id="2gb-9K-GoD"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -143,9 +150,10 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="hgF-sG-7f2"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="addASongButton" destination="cwJ-F1-3Zp" id="eP1-vz-2Qh"/>
-                        <outlet property="lengthTextField" destination="stR-hj-fVl" id="BfT-eb-hZ7"/>
-                        <outlet property="songNameTextField" destination="Pls-Jj-K0B" id="h0U-VE-wWT"/>
+                        <outlet property="albumNameTextField" destination="Ydp-ei-viY" id="34m-Wz-PEv"/>
+                        <outlet property="artistNameTextField" destination="zHd-jd-bSM" id="smq-cB-dXa"/>
+                        <outlet property="genreTextField" destination="I1r-4j-hZP" id="FR6-jj-AFC"/>
+                        <outlet property="urlTextField" destination="HdO-Xl-ciq" id="THb-1t-cTC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAm-RZ-KKK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

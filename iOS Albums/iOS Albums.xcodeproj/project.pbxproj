@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9345A86A23D2D114004E87E5 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 9345A86923D2D114004E87E5 /* exampleAlbum.json */; };
 		93B6CF4B23D00CE40029FFA2 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6CF4A23D00CE40029FFA2 /* AlbumsTableViewController.swift */; };
 		93B6CF4D23D029E10029FFA2 /* AlbumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6CF4C23D029E10029FFA2 /* AlbumDetailViewController.swift */; };
 		93B6CF4F23D02A9B0029FFA2 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6CF4E23D02A9B0029FFA2 /* SongTableViewCell.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9345A86923D2D114004E87E5 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../exampleAlbum.json; sourceTree = "<group>"; };
 		93B6CF4A23D00CE40029FFA2 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		93B6CF4C23D029E10029FFA2 /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; };
 		93B6CF4E23D02A9B0029FFA2 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9345A86823D2D0D4004E87E5 /* JSON File */ = {
+			isa = PBXGroup;
+			children = (
+				9345A86923D2D114004E87E5 /* exampleAlbum.json */,
+			);
+			name = "JSON File";
+			sourceTree = "<group>";
+		};
 		93B6CF4923D00C0D0029FFA2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +76,7 @@
 		93BFAD0623D00879009129E3 = {
 			isa = PBXGroup;
 			children = (
+				9345A86823D2D0D4004E87E5 /* JSON File */,
 				93B6CF5023D02BAD0029FFA2 /* Models */,
 				93B6CF4923D00C0D0029FFA2 /* Controllers */,
 				93BFAD1123D0087A009129E3 /* iOS Albums */,
@@ -155,6 +166,7 @@
 			files = (
 				93BFAD1F23D00889009129E3 /* LaunchScreen.storyboard in Resources */,
 				93BFAD1C23D00889009129E3 /* Assets.xcassets in Resources */,
+				9345A86A23D2D114004E87E5 /* exampleAlbum.json in Resources */,
 				93BFAD1A23D0087A009129E3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
