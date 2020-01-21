@@ -47,6 +47,8 @@ class AlbumsDetailTableViewController: UITableViewController, SongTableViewCellD
         
         if let album = album {
             albumController?.update(album: album, with: name, artist: artist, coverArtURLs: coverURLs, genres: genres, songs: tempSongs)
+        } else {
+            albumController?.createAlbum(with: name, artist: artist, coverArtURLs: coverURLs, genres: genres, songs: tempSongs)
         }
         
         navigationController?.popViewController(animated: true)
