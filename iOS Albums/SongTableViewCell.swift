@@ -31,6 +31,7 @@ class SongTableViewCell: UITableViewCell {
         addSongButton.isHidden = false
     }
     
+    //This function allows the songs to show on the tableView.
     func updateViews() {
         if let song = song {
             addSongButton.isHidden = true
@@ -46,6 +47,7 @@ class SongTableViewCell: UITableViewCell {
             let duration = newSongNameLengthTextField.text else {return}
         
         delegate?.addSong(with: title, duration: duration)
+        
     }
     
             
