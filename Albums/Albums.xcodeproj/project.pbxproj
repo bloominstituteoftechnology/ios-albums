@@ -17,6 +17,9 @@
 		1F65AE7923D003FA0054FE36 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F65AE7823D003F90054FE36 /* exampleAlbum.json */; };
 		1F65AE7B23D004D70054FE36 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F65AE7A23D004D70054FE36 /* AlbumsTableViewController.swift */; };
 		1F65AE7D23D00C110054FE36 /* AlbumsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F65AE7C23D00C110054FE36 /* AlbumsDetailTableViewController.swift */; };
+		1F65AE7F23D0235D0054FE36 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F65AE7E23D0235D0054FE36 /* SongTableViewCell.swift */; };
+		1F65AE8123D027350054FE36 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F65AE8023D027350054FE36 /* Album.swift */; };
+		1F8017A023D374640002A76F /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F80179F23D374640002A76F /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		1F65AE7823D003F90054FE36 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
 		1F65AE7A23D004D70054FE36 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		1F65AE7C23D00C110054FE36 /* AlbumsDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsDetailTableViewController.swift; sourceTree = "<group>"; };
+		1F65AE7E23D0235D0054FE36 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		1F65AE8023D027350054FE36 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		1F80179F23D374640002A76F /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +74,11 @@
 				1F65AE7823D003F90054FE36 /* exampleAlbum.json */,
 				1F65AE6223D002500054FE36 /* AppDelegate.swift */,
 				1F65AE6423D002500054FE36 /* SceneDelegate.swift */,
+				1F65AE8023D027350054FE36 /* Album.swift */,
+				1F80179F23D374640002A76F /* AlbumController.swift */,
 				1F65AE7A23D004D70054FE36 /* AlbumsTableViewController.swift */,
 				1F65AE7C23D00C110054FE36 /* AlbumsDetailTableViewController.swift */,
+				1F65AE7E23D0235D0054FE36 /* SongTableViewCell.swift */,
 				1F65AE6623D002500054FE36 /* ViewController.swift */,
 				1F65AE6823D002500054FE36 /* Main.storyboard */,
 				1F65AE6B23D002520054FE36 /* Assets.xcassets */,
@@ -152,10 +161,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F65AE7F23D0235D0054FE36 /* SongTableViewCell.swift in Sources */,
 				1F65AE6723D002500054FE36 /* ViewController.swift in Sources */,
 				1F65AE7B23D004D70054FE36 /* AlbumsTableViewController.swift in Sources */,
 				1F65AE6323D002500054FE36 /* AppDelegate.swift in Sources */,
 				1F65AE7D23D00C110054FE36 /* AlbumsDetailTableViewController.swift in Sources */,
+				1F8017A023D374640002A76F /* AlbumController.swift in Sources */,
+				1F65AE8123D027350054FE36 /* Album.swift in Sources */,
 				1F65AE6523D002500054FE36 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

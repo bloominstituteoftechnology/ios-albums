@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Albums Table View Controller-->
+        <!--Albums-->
         <scene sceneID="OIR-X7-dCR">
             <objects>
                 <tableViewController id="0N5-6Q-hZV" customClass="AlbumsTableViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="3eY-bi-DgB" detailTextLabel="1Ck-g2-aKJ" style="IBUITableViewCellStyleSubtitle" id="pyz-aT-ZSV">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumCell" textLabel="3eY-bi-DgB" detailTextLabel="1Ck-g2-aKJ" style="IBUITableViewCellStyleSubtitle" id="pyz-aT-ZSV">
                                 <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pyz-aT-ZSV" id="wk8-hO-8iC">
@@ -48,7 +48,7 @@
                             <outlet property="delegate" destination="0N5-6Q-hZV" id="pGS-JP-cbv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="TEL-hb-ian">
+                    <navigationItem key="navigationItem" title="Albums" id="TEL-hb-ian">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2Lo-hD-A2C">
                             <connections>
                                 <segue destination="0pO-vv-ISl" kind="show" identifier="AddSegue" id="EOK-tm-g85"/>
@@ -58,7 +58,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0LC-Fp-LWK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1277" y="183"/>
+            <point key="canvasLocation" x="1286" y="168"/>
         </scene>
         <!--New Album-->
         <scene sceneID="Wk4-Bi-vVw">
@@ -107,7 +107,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="141" id="5Md-Iu-gkF">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="141" id="5Md-Iu-gkF" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="204" width="414" height="141"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Md-Iu-gkF" id="6TK-lm-9sO">
@@ -135,6 +135,9 @@ EExlbmd0aDo
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9G-Sm-G4D">
                                             <rect key="frame" x="40" y="100" width="334" height="30"/>
                                             <state key="normal" title="Add a Song"/>
+                                            <connections>
+                                                <action selector="addTapped:" destination="5Md-Iu-gkF" eventType="touchUpInside" id="6rr-k3-41s"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -147,6 +150,11 @@ EExlbmd0aDo
                                         <constraint firstAttribute="trailingMargin" secondItem="Je4-Q7-Vtt" secondAttribute="trailing" id="xre-YJ-3tc"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addButton" destination="L9G-Sm-G4D" id="neo-TV-hsa"/>
+                                    <outlet property="duration" destination="p6E-PZ-aBU" id="7Qh-cF-c1h"/>
+                                    <outlet property="songTitle" destination="Uob-jx-Clm" id="D1b-5N-9Nw"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -157,7 +165,7 @@ EExlbmd0aDo
                     <navigationItem key="navigationItem" title="New Album" id="Zvn-be-anY">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="RuN-LH-Lh1">
                             <connections>
-                                <action selector="saveButtonPressed:" destination="0pO-vv-ISl" id="xeD-jq-MxH"/>
+                                <action selector="saveTapped:" destination="0pO-vv-ISl" id="akN-4Y-sHZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -170,7 +178,7 @@ EExlbmd0aDo
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yEh-oe-T3g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2189.8550724637685" y="182.8125"/>
+            <point key="canvasLocation" x="2136" y="167"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9FO-Wt-tAW">
