@@ -100,7 +100,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="147" id="2cl-Du-Ehs" customClass="SongTableViewCell" customModule="iOS_Albums" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" rowHeight="147" id="2cl-Du-Ehs" customClass="SongTableViewCell" customModule="iOS_Albums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="216" width="414" height="147"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2cl-Du-Ehs" id="BCf-0s-eEj">
@@ -157,8 +157,8 @@
                     <connections>
                         <outlet property="albumNameTextField" destination="Ydp-ei-viY" id="34m-Wz-PEv"/>
                         <outlet property="artistNameTextField" destination="zHd-jd-bSM" id="smq-cB-dXa"/>
+                        <outlet property="coverURLsTextField" destination="HdO-Xl-ciq" id="THb-1t-cTC"/>
                         <outlet property="genreTextField" destination="I1r-4j-hZP" id="FR6-jj-AFC"/>
-                        <outlet property="urlTextField" destination="HdO-Xl-ciq" id="THb-1t-cTC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAm-RZ-KKK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

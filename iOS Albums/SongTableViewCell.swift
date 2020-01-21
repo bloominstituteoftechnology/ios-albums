@@ -8,28 +8,36 @@
 
 import UIKit
 
+protocol SongTableViewCellDelegate: AnyObject {
+    func addSong(with title: String, duration: String)
+}
+
+
 class SongTableViewCell: UITableViewCell {
     
-    //MARK: Outlets
-    
-    @IBOutlet weak var newSongNameTextField: UITextField!
-    
-    @IBOutlet weak var newSongNameLengthTextField: UITextField!
-    
-    @IBOutlet weak var addSongButton: UIButton!
-    
-    
     //MARK: Preperties
+       
+       var song: Song? {
+           didSet {
+               updateViews()
+           }
+       }
+       
+       weak var delegate: SongTableViewCellDelegate?
     
-    var song: Song? {
-        didSet {
-            updateViews()
-        }
+    override func prepareForReuse() {
+        newSongNameTextField.text = ""
+        newSongNameLengthTextField.text = ""
+        addSongButton.isHidden = false
     }
     
-    weak var delegate: SongTableViewCellDelegate?
-    
-    //MARK: Lifecycle Methods
+    func updateViews() {
+        if let song = song {
+            addSongButton.isHidden = true
+            newSongNameTextField.text = song.title
+            newSongNameLengthTextField.text = song.duration
+        }
+    }
     
     //MARK: Actions
     
@@ -40,26 +48,29 @@ class SongTableViewCell: UITableViewCell {
         delegate?.addSong(with: title, duration: duration)
     }
     
+            
+    
+    //MARK: Outlets
+    
+    @IBOutlet weak var newSongNameTextField: UITextField!
+    
+    @IBOutlet weak var newSongNameLengthTextField: UITextField!
+    
+    @IBOutlet weak var addSongButton: UIButton!
+    
+    
+   
+    
+    //MARK: Lifecycle Methods
+    
+    
     
     //MARK: Functions
     
-    func updateViews() {
-        if let song = song {
-            addSongButton.isHidden = true
-            
-            newSongNameLengthTextField.text = song.name
-            newSongNameLengthTextField.text = song.duration
-        }
-    }
     
-    override func prepareForReuse() {
-        newSongNameTextField.text = ""
-        newSongNameLengthTextField.text = ""
-    }
+    
+    
 }
 
-//MARK: Protocol
 
-protocol SongTableViewCellDelegate: AnyObject {
-    func addSong(with title: String, duration: String)
-}
+
