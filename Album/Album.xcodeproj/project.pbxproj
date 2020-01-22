@@ -13,6 +13,8 @@
 		BAEE909823D1334F0090EE8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAEE909723D1334F0090EE8C /* Assets.xcassets */; };
 		BAEE909B23D1334F0090EE8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAEE909923D1334F0090EE8C /* LaunchScreen.storyboard */; };
 		BAEE90A323D133C70090EE8C /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEE90A223D133C70090EE8C /* AlbumsTableViewController.swift */; };
+		BAEE90A523D7F7C00090EE8C /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEE90A423D7F7C00090EE8C /* Album.swift */; };
+		BAEE90A723D7F7E20090EE8C /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEE90A623D7F7E20090EE8C /* Song.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		BAEE909A23D1334F0090EE8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAEE909C23D1334F0090EE8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAEE90A223D133C70090EE8C /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		BAEE90A423D7F7C00090EE8C /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		BAEE90A623D7F7E20090EE8C /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +63,22 @@
 				BAEE908E23D1334E0090EE8C /* AppDelegate.swift */,
 				BAEE909023D1334E0090EE8C /* SceneDelegate.swift */,
 				BAEE909423D1334E0090EE8C /* Main.storyboard */,
+				BAEE90A823D7F8240090EE8C /* Models */,
 				BAEE90A223D133C70090EE8C /* AlbumsTableViewController.swift */,
 				BAEE909723D1334F0090EE8C /* Assets.xcassets */,
 				BAEE909923D1334F0090EE8C /* LaunchScreen.storyboard */,
 				BAEE909C23D1334F0090EE8C /* Info.plist */,
 			);
 			path = Album;
+			sourceTree = "<group>";
+		};
+		BAEE90A823D7F8240090EE8C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BAEE90A423D7F7C00090EE8C /* Album.swift */,
+				BAEE90A623D7F7E20090EE8C /* Song.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +155,8 @@
 				BAEE908F23D1334E0090EE8C /* AppDelegate.swift in Sources */,
 				BAEE90A323D133C70090EE8C /* AlbumsTableViewController.swift in Sources */,
 				BAEE909123D1334E0090EE8C /* SceneDelegate.swift in Sources */,
+				BAEE90A523D7F7C00090EE8C /* Album.swift in Sources */,
+				BAEE90A723D7F7E20090EE8C /* Song.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
