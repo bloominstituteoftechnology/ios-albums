@@ -10,7 +10,8 @@ import Foundation
 
 class AlbumController {
     // MARK: - Properties
-    var albums: [Album] = []
+    var albums = [Album]()
+    var songList = [Song]()
     let baseURL = URL(string: "https://journal-cd569.firebaseio.com/albums")!
     
     // MARK: - Methods
