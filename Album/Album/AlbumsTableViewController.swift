@@ -29,13 +29,20 @@ class AlbumsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath)
-
+        
         let album = albumController.albums[indexPath.row]
         
         cell.textLabel?.text = album.name
         cell.detailTextLabel?.text = album.artist
-
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            albumController.albums.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
     
     // MARK: - Navigation
@@ -45,6 +52,7 @@ class AlbumsTableViewController: UITableViewController {
             guard let destinationVC = segue.destination as? AlbumDetailViewController else { return }
             
             destinationVC.albumController = albumController
+            albumController.songList.removeAll()
             
         } else if segue.identifier == "detailSegue" {
             guard let destinationVC = segue.destination as? AlbumDetailViewController,
@@ -57,17 +65,3 @@ class AlbumsTableViewController: UITableViewController {
         }
     }
 }
-
-
-   
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */

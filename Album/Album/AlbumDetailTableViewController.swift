@@ -21,7 +21,7 @@ class AlbumDetailViewController: UITableViewController, SongTableViewCellDelegat
     @IBOutlet weak var genreTextField: UITextField!
     @IBOutlet weak var coverURLsTextField: UITextField!
     
-
+    
     // MARK: - View
     
     override func viewDidLoad() {
@@ -98,19 +98,14 @@ class AlbumDetailViewController: UITableViewController, SongTableViewCellDelegat
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            albumController?.songList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 }
 
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
 
-   
