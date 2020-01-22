@@ -24,6 +24,7 @@ class SongTableViewCell: UITableViewCell {
     @IBOutlet weak var songDurationTextField: UITextField!
     @IBOutlet weak var saveSongButton: UIButton!
     
+    
     // MARK: - View
     override func prepareForReuse() {
         songNameTextField.text = ""
@@ -41,7 +42,7 @@ class SongTableViewCell: UITableViewCell {
     
     // MARK: - Actions
     
-    @IBAction func addTapped(_ sender: Any) {
+    @IBAction func saveSongTapped(_ sender: Any) {
         guard let title = songNameTextField.text,
             let duration = songDurationTextField.text else {return}
         

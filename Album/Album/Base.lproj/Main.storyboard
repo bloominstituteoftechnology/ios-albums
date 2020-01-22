@@ -63,7 +63,7 @@
         <!--Album-->
         <scene sceneID="FEs-IG-fNY">
             <objects>
-                <tableViewController id="ZDo-Pb-xO4" sceneMemberID="viewController">
+                <tableViewController id="ZDo-Pb-xO4" customClass="AlbumDetailViewController" customModule="Album" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rgp-9b-eza">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" id="rf1-hK-IqA">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" id="rf1-hK-IqA" customClass="SongTableViewCell" customModule="Album" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="263" width="414" height="150.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rf1-hK-IqA" id="TNB-oV-pMb">
@@ -131,6 +131,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrN-IT-Xk8">
                                                     <rect key="frame" x="0.0" y="88" width="364" height="30.5"/>
                                                     <state key="normal" title="Save Song"/>
+                                                    <connections>
+                                                        <action selector="saveSongTapped:" destination="rf1-hK-IqA" eventType="touchUpInside" id="P4C-Uh-q5f"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -142,6 +145,11 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="edA-qt-yc7" secondAttribute="bottom" constant="5" id="gWQ-q0-H7o"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="saveSongButton" destination="yrN-IT-Xk8" id="WrE-oT-wmj"/>
+                                    <outlet property="songDurationTextField" destination="5Ya-l4-ls7" id="ani-pV-M6C"/>
+                                    <outlet property="songNameTextField" destination="rjP-Iy-lnW" id="PgF-eH-2bg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -150,8 +158,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Album" id="JWJ-IO-FrT">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ajr-d5-3HO"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ajr-d5-3HO">
+                            <connections>
+                                <action selector="saveTapped:" destination="ZDo-Pb-xO4" id="wWE-we-AYr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="albumNameTextField" destination="u4u-d4-sDG" id="V6B-67-6tw"/>
+                        <outlet property="artistNameTextField" destination="5PV-Lb-9Hb" id="Zpz-Nx-ooe"/>
+                        <outlet property="coverURLsTextField" destination="qUF-tU-Dda" id="0gi-Lv-Yej"/>
+                        <outlet property="genreTextField" destination="wGz-gG-YWi" id="Tzb-Ne-wMm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r9y-LM-sHQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
