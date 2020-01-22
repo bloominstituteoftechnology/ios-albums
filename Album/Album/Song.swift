@@ -29,7 +29,7 @@ class Song: Codable {
     let title: String
     let identifier: UUID
     let duration: String
-
+    
     // MARK: - Initializers
     init(title: String, identifier: UUID = UUID(), duration: String) {
         self.title = title

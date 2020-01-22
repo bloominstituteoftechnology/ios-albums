@@ -15,6 +15,7 @@
 		BAEE90A323D133C70090EE8C /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEE90A223D133C70090EE8C /* AlbumsTableViewController.swift */; };
 		BAEE90A523D7F7C00090EE8C /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEE90A423D7F7C00090EE8C /* Album.swift */; };
 		BAEE90A723D7F7E20090EE8C /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEE90A623D7F7E20090EE8C /* Song.swift */; };
+		BAEE90AA23D7FA540090EE8C /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEE90A923D7FA540090EE8C /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		BAEE90A223D133C70090EE8C /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		BAEE90A423D7F7C00090EE8C /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		BAEE90A623D7F7E20090EE8C /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		BAEE90A923D7FA540090EE8C /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				BAEE908E23D1334E0090EE8C /* AppDelegate.swift */,
 				BAEE909023D1334E0090EE8C /* SceneDelegate.swift */,
 				BAEE909423D1334E0090EE8C /* Main.storyboard */,
+				BAEE90A923D7FA540090EE8C /* AlbumController.swift */,
 				BAEE90A823D7F8240090EE8C /* Models */,
 				BAEE90A223D133C70090EE8C /* AlbumsTableViewController.swift */,
 				BAEE909723D1334F0090EE8C /* Assets.xcassets */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAEE908F23D1334E0090EE8C /* AppDelegate.swift in Sources */,
+				BAEE90AA23D7FA540090EE8C /* AlbumController.swift in Sources */,
 				BAEE90A323D133C70090EE8C /* AlbumsTableViewController.swift in Sources */,
 				BAEE909123D1334E0090EE8C /* SceneDelegate.swift in Sources */,
 				BAEE90A523D7F7C00090EE8C /* Album.swift in Sources */,
