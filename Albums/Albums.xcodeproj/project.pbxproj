@@ -14,6 +14,8 @@
 		D504C0E823F1EF17009F7CC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D504C0E723F1EF17009F7CC2 /* Assets.xcassets */; };
 		D504C0EB23F1EF17009F7CC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D504C0E923F1EF17009F7CC2 /* LaunchScreen.storyboard */; };
 		D504C0F323F1EFB8009F7CC2 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D504C0F223F1EFB8009F7CC2 /* AlbumsTableViewController.swift */; };
+		D504C0F723F1F582009F7CC2 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D504C0F623F1F582009F7CC2 /* AlbumDetailTableViewController.swift */; };
+		D504C0F923F1F82C009F7CC2 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D504C0F823F1F82C009F7CC2 /* SongTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		D504C0EA23F1EF17009F7CC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D504C0EC23F1EF17009F7CC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D504C0F223F1EFB8009F7CC2 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		D504C0F623F1F582009F7CC2 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		D504C0F823F1F82C009F7CC2 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				D504C0E223F1EF14009F7CC2 /* ViewController.swift */,
 				D504C0E423F1EF14009F7CC2 /* Main.storyboard */,
 				D504C0F223F1EFB8009F7CC2 /* AlbumsTableViewController.swift */,
+				D504C0F623F1F582009F7CC2 /* AlbumDetailTableViewController.swift */,
+				D504C0F823F1F82C009F7CC2 /* SongTableViewCell.swift */,
 				D504C0E723F1EF17009F7CC2 /* Assets.xcassets */,
 				D504C0E923F1EF17009F7CC2 /* LaunchScreen.storyboard */,
 				D504C0EC23F1EF17009F7CC2 /* Info.plist */,
@@ -141,8 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D504C0F923F1F82C009F7CC2 /* SongTableViewCell.swift in Sources */,
 				D504C0E323F1EF14009F7CC2 /* ViewController.swift in Sources */,
 				D504C0F323F1EFB8009F7CC2 /* AlbumsTableViewController.swift in Sources */,
+				D504C0F723F1F582009F7CC2 /* AlbumDetailTableViewController.swift in Sources */,
 				D504C0DF23F1EF14009F7CC2 /* AppDelegate.swift in Sources */,
 				D504C0E123F1EF14009F7CC2 /* SceneDelegate.swift in Sources */,
 			);
