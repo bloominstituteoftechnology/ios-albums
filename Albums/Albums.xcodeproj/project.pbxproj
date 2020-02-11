@@ -16,6 +16,7 @@
 		D504C0F323F1EFB8009F7CC2 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D504C0F223F1EFB8009F7CC2 /* AlbumsTableViewController.swift */; };
 		D504C0F723F1F582009F7CC2 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D504C0F623F1F582009F7CC2 /* AlbumDetailTableViewController.swift */; };
 		D504C0F923F1F82C009F7CC2 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D504C0F823F1F82C009F7CC2 /* SongTableViewCell.swift */; };
+		D504C0FB23F1F94B009F7CC2 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = D504C0FA23F1F94B009F7CC2 /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D504C0F223F1EFB8009F7CC2 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		D504C0F623F1F582009F7CC2 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		D504C0F823F1F82C009F7CC2 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		D504C0FA23F1F94B009F7CC2 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				D504C0F223F1EFB8009F7CC2 /* AlbumsTableViewController.swift */,
 				D504C0F623F1F582009F7CC2 /* AlbumDetailTableViewController.swift */,
 				D504C0F823F1F82C009F7CC2 /* SongTableViewCell.swift */,
+				D504C0FA23F1F94B009F7CC2 /* Album.swift */,
 				D504C0E723F1EF17009F7CC2 /* Assets.xcassets */,
 				D504C0E923F1EF17009F7CC2 /* LaunchScreen.storyboard */,
 				D504C0EC23F1EF17009F7CC2 /* Info.plist */,
@@ -152,6 +155,7 @@
 				D504C0F323F1EFB8009F7CC2 /* AlbumsTableViewController.swift in Sources */,
 				D504C0F723F1F582009F7CC2 /* AlbumDetailTableViewController.swift in Sources */,
 				D504C0DF23F1EF14009F7CC2 /* AppDelegate.swift in Sources */,
+				D504C0FB23F1F94B009F7CC2 /* Album.swift in Sources */,
 				D504C0E123F1EF14009F7CC2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
