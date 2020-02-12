@@ -49,6 +49,10 @@ The whole purpose of this project is to help you understand how `Codable` works 
 4. Add the "exampleAlbum.json" file to your project. Make sure you check "Copy file(s) if needed", and add it to your target.
 5. Create a new Swift file called "AlbumController.swift". Create an `AlbumController` class.
 6. Create a function in the `AlbumController` called `testDecodingExampleAlbum()`. This should:
+    - Load the resource from your App bundle: 
+         ```swift
+         let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")
+         ```
     - Get the JSON data from the "exampleAlbum.json" file. (`Data(contentsOf: URL)`)
     - Try to decode the JSON using JSONDecoder just like you would if you got this data from an API.
     - Check for errors. This is important because it will help you make sure you've correctly implemented the `init(from decoder: Decoder) throws` initializer in your model objects by giving you an error about what you have potentially done wrong.
