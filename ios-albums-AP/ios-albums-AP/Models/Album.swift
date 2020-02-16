@@ -8,7 +8,42 @@
 
 import Foundation
 
-struct Album: Decodable {
+
+    
+/* Album JSON
+ {
+ "artist" : "Weezer",
+ "coverArt" : [ {
+   "url" : "https://lastfm-img2.akamaized.net/i/u/174s/1918fe81bb68441d96b2247682bfda21.png"
+ } ],
+ "genres" : [ "Alternative" ],
+ "id" : "5E58FA0F-7DBD-4F1D-956F-89756CF1EB22",
+ "name" : "Weezer (The Blue Album)",
+ "songs" : [ {
+   "duration" : {
+     "duration" : "3:25"
+   },
+   "id" : "82BDE132-E492-4FED-9A77-B49CADBC2BFD",
+   "name" : {
+     "title" : "My Name Is Jonas"
+   }
+ }...
+ */
+
+/* Song JSON
+[... {
+  "duration" : {
+    "duration" : "3:25"
+  },
+  "id" : "82BDE132-E492-4FED-9A77-B49CADBC2BFD",
+  "name" : {
+    "title" : "My Name Is Jonas"
+  }
+} ...]
+*/
+
+struct Album: Codable {
+    
     var artist: String
     var coverArt: [URL]
     var genres: [String]
@@ -23,100 +58,126 @@ struct Album: Decodable {
         case id
         case name
         case songs
+        
+        enum CoverArtKeys: String, CodingKey {
+            case url
+        }
     }
     
-    /*
-     {
-     "artist" : "Weezer",
-     "coverArt" : [ {
-       "url" : "https://lastfm-img2.akamaized.net/i/u/174s/1918fe81bb68441d96b2247682bfda21.png"
-     } ],
-     "genres" : [ "Alternative" ],
-     "id" : "5E58FA0F-7DBD-4F1D-956F-89756CF1EB22",
-     "name" : "Weezer (The Blue Album)",
-     "songs" : [ {
-       "duration" : {
-         "duration" : "3:25"
-       },
-       "id" : "82BDE132-E492-4FED-9A77-B49CADBC2BFD",
-       "name" : {
-         "title" : "My Name Is Jonas"
-       }
-     }...
-     */
-    
+    // DECODE
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumKeys.self)
         
-        // artist
         artist = try container.decode(String.self, forKey: .artist)
         
-        // coverArt
-        coverArt = try container.decode([URL].self, forKey: .coverArt)
+        var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
         
-        // genres
+        var coverArtArray = [URL]()
+        
+        while coverArtContainer.isAtEnd == false {
+            let coverArtURLContainer = try coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
+            let url = try coverArtURLContainer.decode(URL.self, forKey: .url)
+            coverArtArray.append(url)
+        }
+        
+        coverArt = coverArtArray
         genres = try container.decode([String].self, forKey: .genres)
-        
-        // id
         id = try container.decode(String.self, forKey: .id)
-        
-        // name
         name = try container.decode(String.self, forKey: .name)
-        
-        // songs
         songs = try container.decode([Song].self, forKey: .songs)
+    }
+    
+    // ENCODE
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: AlbumKeys.self)
         
+        try container.encode(artist, forKey: .artist)
+        try container.encode(genres, forKey: .genres)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        let coverArtURLStrings = coverArt.map {
+            value in value.absoluteString
+        }
+        try container.encode(coverArtURLStrings, forKey: .coverArt)
+        var songsContainer = container.nestedUnkeyedContainer(forKey: .songs)
+        for song in songs {
+            try songsContainer.encode(song)
+        }
     }
 }
 
-struct Song: Decodable {
-    var duration: String // ?
+struct Song: Codable {
+    
+    var duration: String
     var id: String
     var name: String
-    
+        
     enum SongKeys: String, CodingKey {
-        case duration
+        case durationDescription = "duration"
         case id
         case name
-        
+                
         enum DurationKeys: String, CodingKey {
             case duration
         }
-        
+            
         enum NameKeys: String, CodingKey {
-            case name
+            case title
         }
     }
-    
+     
+    // DECODE
     init(from decoder: Decoder) throws {
-        
-        /*
-         [... {
-           "duration" : {
-             "duration" : "3:25"
-           },
-           "id" : "82BDE132-E492-4FED-9A77-B49CADBC2BFD",
-           "name" : {
-             "title" : "My Name Is Jonas"
-           }
-         } ...]
-         */
-        
         let container = try decoder.container(keyedBy: SongKeys.self)
         
-        // duration
-        let durationContainer = try container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
-        duration = try durationContainer.decode(String.self, forKey: .duration)
-        
-        // id
+        let durationDescriptionContainer = try container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .durationDescription)
+            
+        duration = try durationDescriptionContainer.decode(String.self, forKey: .duration)
+            
         id = try container.decode(String.self, forKey: .id)
-        
-        // name
+            
         let nameContainer = try container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
-        name = try nameContainer.decode(String.self, forKey: .name)
+            
+        name = try nameContainer.decode(String.self, forKey: .title)
+    }
+    
+    // ENCODE
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: SongKeys.self)
+        
+        var durationDescriptionContainer = container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .durationDescription)
+        try durationDescriptionContainer.encode(duration, forKey: .duration)
+        
+        var nameContainer = container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
+        try nameContainer.encode(name, forKey: .title)
     }
 }
 
+    
+    
+    // My original
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: AlbumKeys.self)
+//
+//        // artist
+//        artist = try container.decode(String.self, forKey: .artist)
+//
+//        // coverArt
+//        coverArt = try container.decode([URL].self, forKey: .coverArt)
+//
+//        // genres
+//        genres = try container.decode([String].self, forKey: .genres)
+//
+//        // id
+//        id = try container.decode(String.self, forKey: .id)
+//
+//        // name
+//        name = try container.decode(String.self, forKey: .name)
+//
+//        // songs
+//        songs = try container.decode([Song].self, forKey: .songs)
+//
+//    }
 
 // Example JSON
 /*
@@ -212,4 +273,157 @@ struct Song: Decodable {
  }
 
 
+ struct Album: Codable {
+     var artist: String
+     var coverArt: [URL]
+     var genres: [String]
+     var id: String
+     var name: String
+     var songs: [Song]
+     
+     enum AlbumKeys: String, CodingKey {
+         case artist
+         case coverArt
+         case genres
+         case id
+         case name
+         case songs
+         
+         enum CoverArtKeys: String, CodingKey {
+             case url
+         }
+     }
+     
+     init(from decoder: Decoder) throws {
+         let container = try decoder.container(keyedBy: AlbumKeys.self)
+         
+         artist = try container.decode(String.self, forKey: .artist)
+         
+         var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+         
+         var coverArtArray = [URL]()
+         
+         while coverArtContainer.isAtEnd == false {
+             let coverArtURLContainer = try coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
+             let url = try coverArtURLContainer.decode(URL.self, forKey: .url)
+             coverArtArray.append(url)
+         }
+         
+         coverArt = coverArtArray
+         genres = try container.decode([String].self, forKey: .genres)
+         id = try container.decode(String.self, forKey: .id)
+         name = try container.decode(String.self, forKey: .name)
+         songs = try container.decode([Song].self, forKey: .songs)
+     }
+     
+     func encode(to encoder: Encoder) throws {
+         var container = encoder.container(keyedBy: AlbumKeys.self)
+         
+         try container.encode(artist, forKey: .artist)
+         try container.encode(genres, forKey: .genres)
+         try container.encode(id, forKey: .id)
+         try container.encode(name, forKey: .name)
+         let coverArtURLStrings = coverArt.map {
+             value in value.absoluteString
+         }
+         try container.encode(coverArtURLStrings, forKey: .coverArt)
+         var songsContainer = container.nestedUnkeyedContainer(forKey: .songs)
+         for song in songs {
+             try songsContainer.encode(song)
+         }
+     }
+ }
+ struct Song: Codable {
+     var duration: String
+     var id: String
+     var name: String
+         
+     enum SongKeys: String, CodingKey {
+         case durationDescription = "duration"
+         case id
+         case name
+                 
+         enum DurationKeys: String, CodingKey {
+             case duration
+                 
+         }
+             
+         enum NameKeys: String, CodingKey {
+             case title
+         }
+     }
+         
+     init(from decoder: Decoder) throws {
+         let container = try decoder.container(keyedBy: SongKeys.self)
+         
+         let durationDescriptionContainer = try container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .durationDescription)
+             
+         duration = try durationDescriptionContainer.decode(String.self, forKey: .duration)
+             
+         id = try container.decode(String.self, forKey: .id)
+             
+         let nameContainer = try container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
+             
+         name = try nameContainer.decode(String.self, forKey: .title)
+     }
+     
+     func encode(to encoder: Encoder) throws {
+         var container = encoder.container(keyedBy: SongKeys.self)
+         
+         var durationDescriptionContainer = container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .durationDescription)
+         try durationDescriptionContainer.encode(duration, forKey: .duration)
+         
+         var nameContainer = container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
+         try nameContainer.encode(name, forKey: .title)
+     }
+ }
+
+ 
+ CC chat
+ 
+ required init(from decoder: Decoder) throws {
+   let container = try decoder.container(keyedBy: CodingKeys.self)
+   let name = try container.decode(String.self, forKey: .name)
+   let artist = try container.decode(String.self, forKey: .artist)
+   let identifier = try container.decode(UUID.self, forKey: .id)
+   var coverArt: [URL] = []
+    
+   if container.contains(.coverArt) {
+     var coverArtArray = try container.nestedUnkeyedContainer(forKey: .coverArt)
+     while !coverArtArray.isAtEnd {
+       let coverArtDictionary = try coverArtArray.nestedContainer(keyedBy: CodingKeys.CoverArtKeys.self)
+        
+       let url = try coverArtDictionary.decode(URL.self, forKey: .url)
+       coverArt.append(url)
+     }
+   }
+    
+   var genres: [String] = []
+   if container.contains(.genres) {
+     var genresContainer = try container.nestedUnkeyedContainer(forKey: .genres)
+      
+     while !genresContainer.isAtEnd {
+       let genre = try genresContainer.decode(String.self)
+       genres.append(genre)
+     }
+   }
+    
+   var songs: [Song] = []
+   if container.contains(.songs) {
+     var songsContainer = try container.nestedUnkeyedContainer(forKey: .songs)
+      
+     while !songsContainer.isAtEnd {
+       let song = try songsContainer.decode(Song.self)
+       songs.append(song)
+     }
+   }
+   self.name = name
+   self.artist = artist
+   self.identifier = identifier
+   self.coverArt = coverArt
+   self.genres = genres
+   self.songs = songs
+ }
+ 
+ 
  */

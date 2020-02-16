@@ -13,36 +13,46 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
 
+    // MARK: - Properties
+    
+    // Add this back?
+    // var albumController: AlbumController?
+    var albumController = AlbumController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let albumController = AlbumController()
-        albumController.testDecodingExampleAlbum()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        albumController = AlbumController()
+        //albumController.testDecodingExampleAlbum()
+        // This way the tableview always starts with the JSON album for testing
+        albumController.testEncodingExampleAlbum()
+        
+        albumController.getAlbums(completion: { (error) in
+            if let error = error {
+                print("error gettingAlbums in ATVC: \(error)")
+            }
+            DispatchQueue.main.async {
+                print("SUCCESS in getting albums")
+                self.tableView.reloadData()
+            }
+        })
+        
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return albumController.albums.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        // Configure the cell...
-
+        let album = albumController.albums[indexPath.row]
+        cell.textLabel?.text = album.name
+        cell.detailTextLabel?.text = album.artist
+        
         return cell
     }
     
@@ -82,14 +92,27 @@ class AlbumsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        // pass albumController
+        if segue.identifier == "AddSegue" {
+            print("ADD")
+            guard let detailVC = segue.destination as? AlbumDetailTableViewController else {return}
+            detailVC.albumController = self.albumController
+        }
+        
+        // pass albumController AND the album that corresponds to the cell
+        if segue.identifier == "DetailSegue" {
+            print("DETAIL")
+            guard let detailVC = segue.destination as? AlbumDetailTableViewController, let indexPath = tableView.indexPathForSelectedRow else {return}
+            let album = self.albumController.albums[indexPath.row]
+            detailVC.albumController = self.albumController
+            detailVC.album = album
+        }
     }
-    */
-
 }
+
