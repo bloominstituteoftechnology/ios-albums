@@ -64,27 +64,58 @@ struct Album: Codable {
         }
     }
     
+    /// Regular init
+    init(artist: String, coverArt: [URL], genres: [String], id: String = UUID().uuidString, name: String, songs: [Song]) {
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.id = id
+        self.name = name
+        self.songs = songs
+    }
+    
     // DECODE
     init(from decoder: Decoder) throws {
+        
         let container = try decoder.container(keyedBy: AlbumKeys.self)
         
-        artist = try container.decode(String.self, forKey: .artist)
-        
-        var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
-        
         var coverArtArray = [URL]()
+        if container.contains(.coverArt) {
+            var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+            while coverArtContainer.isAtEnd == false {
+                let coverArtURLContainer = try coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
+                let url = try coverArtURLContainer.decode(URL.self, forKey: .url)
+                coverArtArray.append(url)
+            }
+        }
         
-        while coverArtContainer.isAtEnd == false {
-            let coverArtURLContainer = try coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
-            let url = try coverArtURLContainer.decode(URL.self, forKey: .url)
-            coverArtArray.append(url)
+        var songsArray = [Song]()
+        if container.contains(.songs) {
+            var songsContainer = try container.nestedUnkeyedContainer(forKey: .songs)
+            
+            while songsContainer.isAtEnd == false {
+                let song = try songsContainer.decode(Song.self)
+                songsArray.append(song)
+            }
+        }
+        
+        var genreArray = [String]()
+        if container.contains(.genres) {
+            var genresContainer = try container.nestedUnkeyedContainer(forKey: .genres)
+            
+            while genresContainer.isAtEnd == false {
+                let genre = try genresContainer.decode(String.self)
+                genreArray.append(genre)
+            }
+            
         }
         
         coverArt = coverArtArray
-        genres = try container.decode([String].self, forKey: .genres)
+        songs = songsArray
+        genres = genreArray
         id = try container.decode(String.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
-        songs = try container.decode([Song].self, forKey: .songs)
+        artist = try container.decode(String.self, forKey: .artist)
     }
     
     // ENCODE
@@ -125,6 +156,13 @@ struct Song: Codable {
             case title
         }
     }
+    
+    /// Regular init
+    init(name: String, id: String = UUID().uuidString, duration: String) {
+           self.duration = duration
+           self.id = id
+           self.name = name
+    }
      
     // DECODE
     init(from decoder: Decoder) throws {
@@ -155,7 +193,7 @@ struct Song: Codable {
 
     
     
-    // My original
+    
 //    init(from decoder: Decoder) throws {
 //        let container = try decoder.container(keyedBy: AlbumKeys.self)
 //

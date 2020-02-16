@@ -164,21 +164,34 @@ class AlbumController {
     }
             
     /// A function called createAlbum. It should take in the necessary properties as parameters in order to initialize a new Album. Create an Album from the method parameters, then append it to the albums array. Then call the put(album: Album) method so the new Album gets saved to the API.
-    func createAlbum() {
+    func createAlbum(artist: String, coverArt: [URL], genres: [String], id: String = UUID().uuidString, name: String, songs: [Song]) {
         print("called createAlbum")
+        
+        let album = Album(artist: artist, coverArt: coverArt, genres: genres, id: id, name: name, songs: songs)
+        albums.append(album)
+        put(album: album)
     }
     
     /// A function called createSong. It should take in the necessary properties as parameters to be able to initialize a Song. The function should return a Song. In the method, simply initialize a new song from the method parameters and return it.
-    func createSong() {
+    func createSong(title: String, duration: String) -> Song {
         print("called createSong")
+        
+        return Song(name: title, id: UUID().uuidString, duration: duration)
     }
     
     /// A  function called update. This should take in an Album and a parameter for each of the Album object's properties that can be changed (This should be every property). Update the values of the Album parameter, then send those changes to the API by calling the put(album: Album) method.
-    func update() {
+    func update(albumToUpdate: Album, artist: String, coverArt: [URL], genres: [String], name: String, songs: [Song]) {
         print("called update")
+        
+        var album = albumToUpdate
+        album.artist = artist
+        album.coverArt = coverArt
+        album.genres = genres
+        album.name = name
+        album.songs = songs
+        put(album: album)
     }
 }
-    // ADD APPENDINGPATHEXTENSION
 
     /*
      INSTRUCTIONS
