@@ -42,6 +42,7 @@ import Foundation
 } ...]
 */
 
+/// Main part of this project
 struct Album: Codable {
     
     var artist: String

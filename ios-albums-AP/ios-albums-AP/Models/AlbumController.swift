@@ -86,9 +86,8 @@ class AlbumController {
         print("called getAlbums")
         
         let getAlbumsURL = baseURL.appendingPathExtension("json")
-        let request = URLRequest(url: getAlbumsURL)
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
+        URLSession.shared.dataTask(with: getAlbumsURL) { (data, _, error) in
             
             if let error = error {
                 print("Error fetching albums: \(error)")
@@ -109,7 +108,6 @@ class AlbumController {
             let decoder = JSONDecoder()
             
             do {
-                
                 let albums = Array(try decoder.decode([String: Album].self, from: data).values)
                 self.albums = albums
                 DispatchQueue.main.async {
@@ -121,7 +119,6 @@ class AlbumController {
                     completion(error)
                 }
             }
-            
         }.resume()
     }
     

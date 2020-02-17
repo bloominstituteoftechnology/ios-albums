@@ -25,28 +25,25 @@ class AlbumDetailTableViewController: UITableViewController {
             updateViews()
         }
     }
-    
-    /*
-    Finally, in the action of the "Save" bar button item:
-        Using optional binding, unwrap the text from the text fields.
-        If there is an album, call the update(album: ...) method, if not, call the createAlbum method using the unwrapped text, and the tempSongs array.
-        Pop the view controller from the navigation controller.
-    */
-    
+
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
         print("save tapped")
         guard let albumName = albumTextField.text, let artistName = artistTextField.text, let genreName = genreTextField.text, let urlName = urlTextField.text, !albumName.isEmpty, !artistName.isEmpty, !genreName.isEmpty, !urlName.isEmpty else {return}
         
+        let genres = genreName.components(separatedBy: ", ")
+        // turns into URLs
+        let coverArts = urlName.components(separatedBy: ", ").compactMap({ URL(string: $0) })
+        
         // using the 4 fields either update or create an album
+        
         // Detail / Update
         if let album = album {
-            //albumController?.update()
+            albumController?.update(albumToUpdate: album, artist: artistName, coverArt: coverArts, genres: genres, name: albumName, songs: tempSongs)
         }
+            
         // Add / Create
         else {
-            //albumController?.createAlbum()
-            // then add to tempSongs
-            //tempSongs.append(contentsOf: <#T##Sequence#>)
+            albumController?.createAlbum(artist: artistName, coverArt: coverArts, genres: genres, name: albumName, songs: tempSongs)
         }
         navigationController?.popViewController(animated: true)
     }
@@ -59,119 +56,54 @@ class AlbumDetailTableViewController: UITableViewController {
             albumTextField.text = album.name
             artistTextField.text = album.artist
             genreTextField.text = album.genres.joined(separator: ", ")
-            urlTextField.text = "\(album.coverArt)"
+            urlTextField.text = album.coverArt.map({ $0.absoluteString }).joined(separator: ", ")
             tempSongs = album.songs
         }
         else {
             title = "New Album"
         }
-                
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-        
-//        // FOR TESTING ONLY DELETE LATER
-//        guard let album = album else {return}
-//        tempSongs.append(album.songs[0])
-//        // FOR TESTING ONLY DELETE LATER
-        
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tempSongs.count + 1 // So there's an empty cell for the user to add a new song to
     }
     
-    /*
-     Implement the heightForRowAt method. Set the cell's height to something that looks good. Account for the cells whose buttons will be hidden, and the last cell whose button should be unhidden. In the screen recording, the hidden button cells' height is 100, and the last cell's height is 140.
-     */
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        // if last cell, set to 140
+        if indexPath.row == tempSongs.count {
+            return 140
+        } else { return 100}
     }
-    
-    /*
-     Implement the cellForRowAt method. Set this table view controller as the cell's delegate.
-     */
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongTableViewCell else { return UITableViewCell() }
         
+        cell.delegate = self
+        
+        // so you don't go out of range
+        if indexPath.row < tempSongs.count {
+            let song = tempSongs[indexPath.row]
+            cell.song = song
+        }
 
         return cell
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
-
-/*
- Add the addSong method from the delegate you just adopted. In it:
-     Create a Song using the createSong method in the albumController.
-     Append the song to the tempSongs array
-     Reload the table view
-     Call tableView.scrollToRow(at: IndexPath, ...) method. You will need to manually create an IndexPath. Use 0 for the section and the count of the tempSongs for the row.
- */
 
 extension AlbumDetailTableViewController: SongTableViewCellDelegate {
     
     func addSong(with title: String, duration: String) {
-        albumController?.createSong()
-        // append the newly created song to the tempSongs array
-        //tempSongs.append(contentsOf: )
+        print("addSong")
+        guard let unwrappedSong = albumController?.createSong(title: title, duration: duration) else {return}
+        tempSongs.append(unwrappedSong)
         tableView.reloadData()
-        // change .none to something else?
-        tableView.scrollToRow(at: IndexPath(row: tempSongs.count, section: 0), at: .none, animated: true)
+        tableView.scrollToRow(at: IndexPath(row: tempSongs.count, section: 0), at: .bottom, animated: true)
     }
 }

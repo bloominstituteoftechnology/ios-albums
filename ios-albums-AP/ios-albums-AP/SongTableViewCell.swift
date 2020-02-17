@@ -42,6 +42,8 @@ class SongTableViewCell: UITableViewCell {
         }
         else {
             print("Add")
+            songTextField.text = ""
+            durationTextField.text = ""
             addButtonLabel.isHidden = false
         }
     }
@@ -52,16 +54,4 @@ class SongTableViewCell: UITableViewCell {
         guard let songTitle = songTextField.text, let duration = durationTextField.text, !songTitle.isEmpty, !duration.isEmpty else {return}
         delegate?.addSong(with: songTitle, duration: duration)
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
