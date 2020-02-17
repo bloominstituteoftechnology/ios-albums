@@ -108,7 +108,8 @@ class AlbumController {
             let decoder = JSONDecoder()
             
             do {
-                let albums = Array(try decoder.decode([String: Album].self, from: data).values)
+                let albums = Array(try decoder.decode([String : Album].self, from: data).values)
+                print("ALBUMS = \(albums)")
                 self.albums = albums
                 DispatchQueue.main.async {
                     completion(nil)

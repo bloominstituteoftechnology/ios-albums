@@ -127,10 +127,13 @@ struct Album: Codable {
         try container.encode(genres, forKey: .genres)
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
-        let coverArtURLStrings = coverArt.map {
-            value in value.absoluteString
+        
+        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        var coverArtURLContainer = coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
+        for url in coverArt {
+            try coverArtURLContainer.encode(url, forKey: .url)
         }
-        try container.encode(coverArtURLStrings, forKey: .coverArt)
+        
         var songsContainer = container.nestedUnkeyedContainer(forKey: .songs)
         for song in songs {
             try songsContainer.encode(song)
