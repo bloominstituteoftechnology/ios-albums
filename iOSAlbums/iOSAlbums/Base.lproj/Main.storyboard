@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MS3-An-BhF">
+    <device id="retina6_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Albums-->
+        <scene sceneID="rF1-e0-ggz">
+            <objects>
+                <tableViewController id="mj4-Xz-1F5" customClass="AlbumsTableViewController" customModule="iOSAlbums" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WiZ-YK-7MZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumCell" textLabel="NnO-QD-V7X" detailTextLabel="dZX-QZ-ySE" rowHeight="69" style="IBUITableViewCellStyleSubtitle" id="7UC-U8-UFi">
+                                <rect key="frame" x="0.0" y="28" width="414" height="69"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7UC-U8-UFi" id="jtC-nf-cyk">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="68.666666666666671"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NnO-QD-V7X">
+                                            <rect key="frame" x="20" y="6.3333333333333339" width="39" height="27.333333333333332"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dZX-QZ-ySE">
+                                            <rect key="frame" x="20.000000000000004" y="37.333333333333329" width="59.333333333333336" height="23.333333333333332"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="mbx-hj-Qi2" kind="show" identifier="showCellAlbumDetail" id="Nfa-Ab-DI9"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mj4-Xz-1F5" id="qpM-og-icQ"/>
+                            <outlet property="delegate" destination="mj4-Xz-1F5" id="j0k-VS-MoO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Albums" id="crR-Qy-ppj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iDv-Yi-UGS">
+                            <connections>
+                                <segue destination="mbx-hj-Qi2" kind="show" identifier="showAddAlbum" id="b81-Fh-85u"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKu-vl-sjz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="911.59420289855075" y="98.4375"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="AHB-aC-GLK">
+            <objects>
+                <tableViewController id="mbx-hj-Qi2" customClass="AlbumDetailTableViewController" customModule="iOSAlbums" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uIt-ZD-t0N">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="2sP-vr-aTg">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="389"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="z1l-cz-hCf">
+                                    <rect key="frame" x="16" y="8" width="382" height="373"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="NIg-F4-rn7">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="189"/>
+                                        </imageView>
+                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Album" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T3o-Pk-eSX">
+                                            <rect key="frame" x="0.0" y="205" width="382" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7bK-Bq-IEE">
+                                            <rect key="frame" x="0.0" y="251" width="382" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Genre(s)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iXi-wM-WWp">
+                                            <rect key="frame" x="0.0" y="297" width="382" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Image URL(s)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-Kj-Clt">
+                                            <rect key="frame" x="0.0" y="343" width="382" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="z1l-cz-hCf" secondAttribute="bottom" constant="8" id="0rr-lg-uwd"/>
+                                <constraint firstItem="z1l-cz-hCf" firstAttribute="top" secondItem="2sP-vr-aTg" secondAttribute="top" constant="8" id="34p-ce-LP0"/>
+                                <constraint firstItem="z1l-cz-hCf" firstAttribute="leading" secondItem="2sP-vr-aTg" secondAttribute="leading" constant="16" id="Jcy-kr-AxY"/>
+                                <constraint firstAttribute="trailing" secondItem="z1l-cz-hCf" secondAttribute="trailing" constant="16" id="e1Q-fa-KNZ"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="171" id="MjP-vn-Rhp" customClass="SongTableViewCell" customModule="iOSAlbums" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="417" width="414" height="171"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MjP-vn-Rhp" id="zCP-SZ-ZYA">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="170.66666666666666"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bib-Ba-bX9">
+                                            <rect key="frame" x="16" y="25.333333333333329" width="382" height="119.99999999999999"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AAv-x4-HhB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="34.666666666666664"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hTT-lF-pWk">
+                                                    <rect key="frame" x="0.0" y="42.666666666666671" width="382" height="34.666666666666671"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zny-yD-1zs">
+                                                    <rect key="frame" x="0.0" y="85.333333333333343" width="382" height="34.666666666666657"/>
+                                                    <color key="backgroundColor" red="0.3621942131" green="0.68152742160000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                                    <color key="tintColor" red="0.3621942131" green="0.68152742160000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Add song">
+                                                        <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <state key="selected">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addSongButtonTapped:" destination="MjP-vn-Rhp" eventType="touchUpInside" id="Q7K-dg-8AQ"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="120" id="QiD-5b-TVB"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Bib-Ba-bX9" firstAttribute="centerX" secondItem="zCP-SZ-ZYA" secondAttribute="centerX" id="qBI-wV-8Gb"/>
+                                        <constraint firstItem="Bib-Ba-bX9" firstAttribute="centerY" secondItem="zCP-SZ-ZYA" secondAttribute="centerY" id="seE-r7-xG8"/>
+                                        <constraint firstItem="Bib-Ba-bX9" firstAttribute="leading" secondItem="zCP-SZ-ZYA" secondAttribute="leading" constant="16" id="vEI-vN-YpO"/>
+                                        <constraint firstAttribute="trailing" secondItem="Bib-Ba-bX9" secondAttribute="trailing" constant="16" id="yVu-FL-OLF"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="addSongButton" destination="zny-yD-1zs" id="GZO-xR-CKI"/>
+                                    <outlet property="durationLabel" destination="hTT-lF-pWk" id="fUA-c0-OgM"/>
+                                    <outlet property="songTitleLabel" destination="AAv-x4-HhB" id="HcK-Qt-zmq"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mbx-hj-Qi2" id="fUJ-hC-Af8"/>
+                            <outlet property="delegate" destination="mbx-hj-Qi2" id="GDR-Nw-L8k"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="gEe-1J-rtC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="XFy-bo-HbP">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="mbx-hj-Qi2" id="3mx-0R-1gb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="albumImage" destination="NIg-F4-rn7" id="ss9-Gb-bPg"/>
+                        <outlet property="albumTextField" destination="T3o-Pk-eSX" id="VuK-w4-zxO"/>
+                        <outlet property="artistTextField" destination="7bK-Bq-IEE" id="lLA-Lj-WdJ"/>
+                        <outlet property="genreTextField" destination="iXi-wM-WWp" id="dXH-OZ-mJw"/>
+                        <outlet property="imageTextField" destination="Sf3-Kj-Clt" id="N31-er-XeY"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="esi-Ns-4PX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1626.0869565217392" y="97.767857142857139"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YxS-BF-nC2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MS3-An-BhF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="aeM-DW-w6E">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mj4-Xz-1F5" kind="relationship" relationship="rootViewController" id="vOp-Bg-mut"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1wx-vP-fMO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26.399999999999999" y="98.50074962518741"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="b81-Fh-85u"/>
+    </inferredMetricsTieBreakers>
+</document>
