@@ -15,6 +15,10 @@
 		832DC5302416D3070012987B /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DC52F2416D3070012987B /* AlbumsTableViewController.swift */; };
 		832DC5322416D8180012987B /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DC5312416D8180012987B /* AlbumDetailTableViewController.swift */; };
 		832DC5352416D9940012987B /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DC5342416D9940012987B /* SongTableViewCell.swift */; };
+		832DC5382416DD5A0012987B /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DC5372416DD5A0012987B /* Album.swift */; };
+		832DC53A2416DD930012987B /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 832DC5392416DD930012987B /* exampleAlbum.json */; };
+		832DC53C2416DF200012987B /* Songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DC53B2416DF200012987B /* Songs.swift */; };
+		832DC53F2416FA0F0012987B /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DC53E2416FA0F0012987B /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		832DC52F2416D3070012987B /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		832DC5312416D8180012987B /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		832DC5342416D9940012987B /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		832DC5372416DD5A0012987B /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		832DC5392416DD930012987B /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
+		832DC53B2416DF200012987B /* Songs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Songs.swift; sourceTree = "<group>"; };
+		832DC53E2416FA0F0012987B /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,8 @@
 		832DC5192416D20D0012987B /* ios-albums */ = {
 			isa = PBXGroup;
 			children = (
+				832DC53D2416FA040012987B /* Controllers */,
+				832DC5362416DD4C0012987B /* Models */,
 				832DC52E2416D2E70012987B /* ViewControllers */,
 				832DC51A2416D20D0012987B /* AppDelegate.swift */,
 				832DC51C2416D20D0012987B /* SceneDelegate.swift */,
@@ -67,6 +77,7 @@
 				832DC5232416D2140012987B /* Assets.xcassets */,
 				832DC5252416D2140012987B /* LaunchScreen.storyboard */,
 				832DC5282416D2140012987B /* Info.plist */,
+				832DC5392416DD930012987B /* exampleAlbum.json */,
 			);
 			path = "ios-albums";
 			sourceTree = "<group>";
@@ -87,6 +98,23 @@
 				832DC5342416D9940012987B /* SongTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		832DC5362416DD4C0012987B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				832DC5372416DD5A0012987B /* Album.swift */,
+				832DC53B2416DF200012987B /* Songs.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		832DC53D2416FA040012987B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				832DC53E2416FA0F0012987B /* AlbumController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +177,7 @@
 			files = (
 				832DC5272416D2140012987B /* LaunchScreen.storyboard in Resources */,
 				832DC5242416D2140012987B /* Assets.xcassets in Resources */,
+				832DC53A2416DD930012987B /* exampleAlbum.json in Resources */,
 				832DC5222416D20D0012987B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,11 +189,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				832DC53C2416DF200012987B /* Songs.swift in Sources */,
 				832DC51B2416D20D0012987B /* AppDelegate.swift in Sources */,
 				832DC5302416D3070012987B /* AlbumsTableViewController.swift in Sources */,
 				832DC5352416D9940012987B /* SongTableViewCell.swift in Sources */,
 				832DC5322416D8180012987B /* AlbumDetailTableViewController.swift in Sources */,
+				832DC53F2416FA0F0012987B /* AlbumController.swift in Sources */,
 				832DC51D2416D20D0012987B /* SceneDelegate.swift in Sources */,
+				832DC5382416DD5A0012987B /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
