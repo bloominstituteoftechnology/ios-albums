@@ -7,6 +7,11 @@
 //
 
 import UIKit
+extension UINavigationController {
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,6 +22,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().prefersLargeTitles = true
+        UINavigationBar.appearance().barTintColor = UIColor.red
+        
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            UINavigationBar.appearance().tintColor = .white
+            appearance.backgroundColor = UIColor.red
+            appearance.largeTitleTextAttributes = [.foregroundColor : UIColor.white] //portrait title
+            appearance.titleTextAttributes = [.foregroundColor : UIColor.white] //landscape title
+            UINavigationBar.appearance().tintColor = .white
+            UINavigationBar.appearance().standardAppearance = appearance //landscape
+            UINavigationBar.appearance().compactAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance //portrait
+        } else {
+            
+            UINavigationBar.appearance().isTranslucent = false
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            
+        }
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 
