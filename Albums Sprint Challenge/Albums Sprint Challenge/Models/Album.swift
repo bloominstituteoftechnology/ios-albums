@@ -69,8 +69,8 @@ enum CodingKeys: String, CodingKey {
             self.genres = genres
             self.songs = songs
         }
+    
     // MARK: - Encodable
-        
          func encode(to encoder: Encoder) throws {
             var container = encoder.container(keyedBy: CodingKeys.self)
 

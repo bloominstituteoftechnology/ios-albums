@@ -98,39 +98,38 @@ class AlbumController {
 
     }
         
-    func testDecodingExampleAlbum() {
-        
-        guard let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else {
-            print("URL not functioning")
-            return
-        }
-        
-        do {
-            let exampleAlbumData = try Data(contentsOf: url)
-            var album = try JSONDecoder().decode(Album.self, from: exampleAlbumData)
+   func testDecodingExampleAlbum() {
             
+            guard let url = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else {
+                print("URL not functioning")
+                return
+            }
+            
+            do {
+                let exampleAlbumData = try Data(contentsOf: url)
+                var album = try JSONDecoder().decode(Album.self, from: exampleAlbumData)
+                
                 print(album)
                 print("SUCCESS!")
-        } catch {
+            } catch {
                 print("Error retrieving data: \(error)")
         }
     }
-    
+        
     func testEncodingExampleAlbum() {
         guard let url = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else {
-                    print("URL not functioning")
-                    return
-                }
-
-                do {
-                    let exampleAlbumData = try Data(contentsOf: url)
-                var album = try JSONDecoder().decode(Album.self, from: exampleAlbumData)
-                print(album)
-               let encodedAlbum = try JSONEncoder().encode(album)
-                print(String(data: encodedAlbum, encoding: .utf8)!)
-                print("SUCCESS!")
+            print("URL not functioning")
+            return
+        }
+          do {
+            let exampleAlbumData = try Data(contentsOf: url)
+         var album = try JSONDecoder().decode(Album.self, from: exampleAlbumData)
+            print(album)
+         let encodedAlbum = try JSONEncoder().encode(album)
+            print(String(data: encodedAlbum, encoding: .utf8)!)
+            print("SUCCESS!")
         } catch {
-                print("Error retrieving data: \(error)")
+            print("Error retrieving data: \(error)")
         }
     }
 }
