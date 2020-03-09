@@ -13,6 +13,8 @@ class AlbumsTableViewController: UITableViewController {
     
     
     
+    //MARK:- View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
