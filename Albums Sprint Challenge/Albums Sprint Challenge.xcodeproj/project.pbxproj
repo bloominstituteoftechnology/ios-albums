@@ -9,20 +9,23 @@
 /* Begin PBXBuildFile section */
 		B5686BB82416D5C50028FDE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5686BB72416D5C50028FDE2 /* AppDelegate.swift */; };
 		B5686BBA2416D5C50028FDE2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5686BB92416D5C50028FDE2 /* SceneDelegate.swift */; };
-		B5686BBC2416D5C50028FDE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5686BBB2416D5C50028FDE2 /* ViewController.swift */; };
 		B5686BBF2416D5C50028FDE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5686BBD2416D5C50028FDE2 /* Main.storyboard */; };
 		B5686BC12416D5C80028FDE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686BC02416D5C80028FDE2 /* Assets.xcassets */; };
 		B5686BC42416D5C80028FDE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5686BC22416D5C80028FDE2 /* LaunchScreen.storyboard */; };
 		B5686BCC2416D62C0028FDE2 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5686BCB2416D62C0028FDE2 /* AlbumsTableViewController.swift */; };
 		B5686BCE2416D92F0028FDE2 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5686BCD2416D92F0028FDE2 /* AlbumDetailTableViewController.swift */; };
 		B5686BD02416DAFC0028FDE2 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5686BCF2416DAFC0028FDE2 /* SongTableViewCell.swift */; };
+		B5686BD22416DBC50028FDE2 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5686BD12416DBC50028FDE2 /* Album.swift */; };
+		B5686BD52416DCFA0028FDE2 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5686BD42416DCFA0028FDE2 /* Song.swift */; };
+		B5686BD72416DD8A0028FDE2 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = B5686BD62416DD8A0028FDE2 /* exampleAlbum.json */; };
+		B5686BD92416DE670028FDE2 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5686BD82416DE670028FDE2 /* AlbumController.swift */; };
+		B5686BDC2416E49B0028FDE2 /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5686BDB2416E49B0028FDE2 /* GoogleService-Info-2.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B5686BB42416D5C50028FDE2 /* Albums Sprint Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Albums Sprint Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5686BB72416D5C50028FDE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5686BB92416D5C50028FDE2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B5686BBB2416D5C50028FDE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B5686BBE2416D5C50028FDE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5686BC02416D5C80028FDE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5686BC32416D5C80028FDE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +33,11 @@
 		B5686BCB2416D62C0028FDE2 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		B5686BCD2416D92F0028FDE2 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		B5686BCF2416DAFC0028FDE2 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		B5686BD12416DBC50028FDE2 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		B5686BD42416DCFA0028FDE2 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		B5686BD62416DD8A0028FDE2 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleAlbum.json; sourceTree = "<group>"; };
+		B5686BD82416DE670028FDE2 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
+		B5686BDB2416E49B0028FDE2 /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info-2.plist"; path = "../../../../../Downloads/GoogleService-Info-2.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,18 +70,38 @@
 		B5686BB62416D5C50028FDE2 /* Albums Sprint Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				B5686BDA2416DF630028FDE2 /* View Controllers */,
+				B5686BD32416DBCB0028FDE2 /* Models */,
 				B5686BB72416D5C50028FDE2 /* AppDelegate.swift */,
 				B5686BB92416D5C50028FDE2 /* SceneDelegate.swift */,
-				B5686BBB2416D5C50028FDE2 /* ViewController.swift */,
 				B5686BBD2416D5C50028FDE2 /* Main.storyboard */,
-				B5686BCD2416D92F0028FDE2 /* AlbumDetailTableViewController.swift */,
-				B5686BCF2416DAFC0028FDE2 /* SongTableViewCell.swift */,
-				B5686BCB2416D62C0028FDE2 /* AlbumsTableViewController.swift */,
 				B5686BC02416D5C80028FDE2 /* Assets.xcassets */,
 				B5686BC22416D5C80028FDE2 /* LaunchScreen.storyboard */,
 				B5686BC52416D5C80028FDE2 /* Info.plist */,
+				B5686BDB2416E49B0028FDE2 /* GoogleService-Info-2.plist */,
 			);
 			path = "Albums Sprint Challenge";
+			sourceTree = "<group>";
+		};
+		B5686BD32416DBCB0028FDE2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B5686BD12416DBC50028FDE2 /* Album.swift */,
+				B5686BD42416DCFA0028FDE2 /* Song.swift */,
+				B5686BD62416DD8A0028FDE2 /* exampleAlbum.json */,
+				B5686BD82416DE670028FDE2 /* AlbumController.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B5686BDA2416DF630028FDE2 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5686BCD2416D92F0028FDE2 /* AlbumDetailTableViewController.swift */,
+				B5686BCB2416D62C0028FDE2 /* AlbumsTableViewController.swift */,
+				B5686BCF2416DAFC0028FDE2 /* SongTableViewCell.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,8 +162,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5686BDC2416E49B0028FDE2 /* GoogleService-Info-2.plist in Resources */,
 				B5686BC42416D5C80028FDE2 /* LaunchScreen.storyboard in Resources */,
 				B5686BC12416D5C80028FDE2 /* Assets.xcassets in Resources */,
+				B5686BD72416DD8A0028FDE2 /* exampleAlbum.json in Resources */,
 				B5686BBF2416D5C50028FDE2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,10 +178,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5686BD02416DAFC0028FDE2 /* SongTableViewCell.swift in Sources */,
-				B5686BBC2416D5C50028FDE2 /* ViewController.swift in Sources */,
+				B5686BD92416DE670028FDE2 /* AlbumController.swift in Sources */,
 				B5686BCC2416D62C0028FDE2 /* AlbumsTableViewController.swift in Sources */,
 				B5686BCE2416D92F0028FDE2 /* AlbumDetailTableViewController.swift in Sources */,
+				B5686BD52416DCFA0028FDE2 /* Song.swift in Sources */,
 				B5686BB82416D5C50028FDE2 /* AppDelegate.swift in Sources */,
+				B5686BD22416DBC50028FDE2 /* Album.swift in Sources */,
 				B5686BBA2416D5C50028FDE2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
