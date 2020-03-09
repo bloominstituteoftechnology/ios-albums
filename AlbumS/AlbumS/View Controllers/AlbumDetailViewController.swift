@@ -18,6 +18,9 @@ class AlbumDetailViewController: UITableViewController {
     @IBOutlet weak var genresTextField: UITextField!
     @IBOutlet weak var urlTextField: UITextField!
     
+    var albumController: AlbumController?
+    var album: Album?
+    
     
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
