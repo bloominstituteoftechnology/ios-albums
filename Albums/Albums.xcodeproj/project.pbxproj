@@ -13,6 +13,8 @@
 		5C2DF31E2416CDBF00751308 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C2DF31D2416CDBF00751308 /* Assets.xcassets */; };
 		5C2DF3212416CDBF00751308 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2DF31F2416CDBF00751308 /* LaunchScreen.storyboard */; };
 		5C2DF3292416CFA200751308 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2DF3282416CFA200751308 /* AlbumsTableViewController.swift */; };
+		5C2DF32B2416D6B800751308 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2DF32A2416D6B800751308 /* AlbumDetailTableViewController.swift */; };
+		5C2DF32D2416DA4500751308 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2DF32C2416DA4500751308 /* SongTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		5C2DF3202416CDBF00751308 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C2DF3222416CDBF00751308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C2DF3282416CFA200751308 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		5C2DF32A2416D6B800751308 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		5C2DF32C2416DA4500751308 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				5C2DF3142416CDBE00751308 /* AppDelegate.swift */,
 				5C2DF3162416CDBE00751308 /* SceneDelegate.swift */,
 				5C2DF31A2416CDBE00751308 /* Main.storyboard */,
+				5C2DF32C2416DA4500751308 /* SongTableViewCell.swift */,
+				5C2DF32A2416D6B800751308 /* AlbumDetailTableViewController.swift */,
 				5C2DF3282416CFA200751308 /* AlbumsTableViewController.swift */,
 				5C2DF31D2416CDBF00751308 /* Assets.xcassets */,
 				5C2DF31F2416CDBF00751308 /* LaunchScreen.storyboard */,
@@ -140,6 +146,8 @@
 			files = (
 				5C2DF3152416CDBE00751308 /* AppDelegate.swift in Sources */,
 				5C2DF3292416CFA200751308 /* AlbumsTableViewController.swift in Sources */,
+				5C2DF32D2416DA4500751308 /* SongTableViewCell.swift in Sources */,
+				5C2DF32B2416D6B800751308 /* AlbumDetailTableViewController.swift in Sources */,
 				5C2DF3172416CDBE00751308 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
