@@ -31,6 +31,9 @@ struct Album : Codable {
     let songs: [Song]
   
 }
+
+
+
 struct Song: Codable {
     enum SongKeys: String, CodingKey {
         case duration
@@ -43,5 +46,22 @@ struct Song: Codable {
         enum NameKeys: String,CodingKey {
             case title
         }
+    }
+    
+    let duration: String
+    let id: String
+    let name: String
+    
+    
+    init(from decoder: Decoder ) throws {
+        let container = try decoder.container(keyedBy: SongKeys.self)
+        
+       let durationContainer = try container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
+        duration = try durationContainer.decode(String.self, forKey: .duration)
+        let nameContainer = try container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
+        name = try nameContainer.decode(String.self, forKey: .title)
+         id = try container.decode(String.self, forKey: .id)
+        
+        
     }
 }
