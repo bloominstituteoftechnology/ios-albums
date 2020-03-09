@@ -21,4 +21,25 @@ class AlbumController {
             print(error)
         }
     }
+    
+    func testEncodingExampleAlbum() {
+        let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
+        do {
+            let data = try! Data(contentsOf: urlPath)
+            let decoder = JSONDecoder()
+            let album = try decoder.decode(Album.self, from: data)
+            print(album)
+            
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            
+            let json = try encoder.encode(album)
+            let dataAsString = String(data: json, encoding: .utf8)!
+            print(dataAsString)
+            
+        } catch {
+            print(error)
+        }
+        
+    }
 }
