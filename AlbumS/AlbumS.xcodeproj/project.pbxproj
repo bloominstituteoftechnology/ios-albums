@@ -16,6 +16,7 @@
 		B6B62B232416CC270098FFD6 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B62B222416CC270098FFD6 /* AlbumsTableViewController.swift */; };
 		B6B62B252416CD960098FFD6 /* AlbumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B62B242416CD960098FFD6 /* AlbumDetailViewController.swift */; };
 		B6B62B272416CDE40098FFD6 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B62B262416CDE40098FFD6 /* Helper.swift */; };
+		B6B62B2B2416D16F0098FFD6 /* SongTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B62B2A2416D16F0098FFD6 /* SongTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		B6B62B222416CC270098FFD6 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		B6B62B242416CD960098FFD6 /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; };
 		B6B62B262416CDE40098FFD6 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		B6B62B2A2416D16F0098FFD6 /* SongTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				B6B62B282416CE170098FFD6 /* View Controllers */,
 				B6B62B1B2416CBAF0098FFD6 /* Info.plist */,
 				B6B62B212416CBB60098FFD6 /* Resources */,
+				B6B62B2A2416D16F0098FFD6 /* SongTableCell.swift */,
 			);
 			path = AlbumS;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			files = (
 				B6B62B122416CBAE0098FFD6 /* ViewController.swift in Sources */,
 				B6B62B232416CC270098FFD6 /* AlbumsTableViewController.swift in Sources */,
+				B6B62B2B2416D16F0098FFD6 /* SongTableCell.swift in Sources */,
 				B6B62B252416CD960098FFD6 /* AlbumDetailViewController.swift in Sources */,
 				B6B62B0E2416CBAE0098FFD6 /* AppDelegate.swift in Sources */,
 				B6B62B102416CBAE0098FFD6 /* SceneDelegate.swift in Sources */,
