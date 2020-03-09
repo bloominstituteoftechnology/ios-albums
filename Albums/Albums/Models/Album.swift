@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Album: Codable {
+struct Album: Codable, Equatable {
     
     enum AlbumKeys: String, CodingKey {
         case id
@@ -31,6 +31,14 @@ struct Album: Codable {
     var coverArtURLs: [URL]
     var songs: [Song]
     
+    init(id: UUID, name: String, genres: [String], artist: String, coverArtURLs: [URL], songs: [Song] = []) {
+        self.name = name
+        self.id = id
+        self.genres = genres
+        self.artist = artist
+        self.coverArtURLs = coverArtURLs
+        self.songs = songs
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumKeys.self)
@@ -70,10 +78,14 @@ struct Album: Codable {
         }
         
     }
+    
+    static func == (lhs: Album, rhs: Album) -> Bool {
+        return lhs.id == rhs.id
+    }
 
 }
 
-struct Song: Codable {
+struct Song: Codable, Equatable {
     
     enum SongKeys: String, CodingKey {
         case id
@@ -87,14 +99,17 @@ struct Song: Codable {
         enum NameDescriptionKeys: String, CodingKey {
             case title
         }
-        
-        
-        
     }
     
     var duration: String
     var id: UUID
     var title: String
+    
+    init(id: UUID, duration: String, title: String) {
+        self.id = id
+        self.title = title
+        self.duration = duration
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: SongKeys.self)
@@ -118,6 +133,10 @@ struct Song: Codable {
         
         var nameContainer = container.nestedContainer(keyedBy: SongKeys.NameDescriptionKeys.self, forKey: .name)
         try nameContainer.encode(title, forKey: .title)
+    }
+    
+    static func == (lhs: Song, rhs: Song) -> Bool {
+        return lhs.id == rhs.id
     }
 
 }
