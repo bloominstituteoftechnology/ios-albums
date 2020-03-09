@@ -11,4 +11,5 @@ struct Helper {
     static let albumCell = "AlbumCell"
     static let cellSegue = "AlbumCellSegue"
     static let addButtonSegue = "AddButtonSegue"
+    static let songTableCell = "SongTableCell"
 }
