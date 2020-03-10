@@ -47,8 +47,8 @@ class AlbumDetailViewController: UITableViewController, SongTableCellDelegate {
             let artistName = artistNameTextField.text,
             let genres = genresTextField.text,
             let url = urlTextField.text else { return }
-        let arrayGenres = genres.split(separator: ",").compactMap { String($0)}
-        let arrayURL = url.split(separator: ",").compactMap { URL(string: String($0))}
+        let arrayGenres = genres.components(separatedBy: ",")
+        let arrayURL = url.components(separatedBy: ",").compactMap { URL(string: $0)}
         
         if let album = album {
             albumController?.update(album: album, artist: artistName, coverArt:arrayURL, genres: arrayGenres, id: UUID().uuidString, name: name, songs: tempSongs)
