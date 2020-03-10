@@ -8,7 +8,15 @@
 
 import UIKit
 
+protocol SongTableViewCellDelegate: class {
+    func addSong(with title: String, duration: String)
+}
+
 class SongTableViewCell: UITableViewCell {
+    
+    // MARK: - Variables
+    var song: Song?
+    weak var delegate: SongTableViewCellDelegate?
     
     // MARK: - IBOutlets
     @IBOutlet weak var songTextField: UITextField!
@@ -17,7 +25,23 @@ class SongTableViewCell: UITableViewCell {
     
     // MARK: - IBActions
     @IBAction func addSongTapped(_ sender: UIButton) {
-        
+        guard let title = songDurationTextField.text, let duration = songDurationTextField.text else { return }
+        delegate?.addSong(with: title, duration: duration)
+    }
+    
+    // MARK: - Functions
+    func updateViews() {
+        if let song = song {
+            songTextField.text = song.title
+            songDurationTextField.text = song.duration
+            addSongButton.isHidden = true
+        }
+    }
+    
+    override func prepareForReuse() {
+        addSongButton.isHidden = false
+        songTextField.text = ""
+        songDurationTextField.text = ""
     }
     
 }
