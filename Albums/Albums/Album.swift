@@ -26,7 +26,7 @@ class Album: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let name = try container.decode(String.self, forKey: .name)
         let artist = try container.decode(String.self, forKey: .artist)
-        let identifier = try container.decode(UUID.self, forKey: .id)
+        let identifier = try container.decode(String.self, forKey: .id)
         
         var covertArt: [URL] = []
         
@@ -84,7 +84,7 @@ class Album: Codable {
         }
     }
     
-    init(name: String, artist: String, identifier: UUID = UUID(), coverArt: [URL], genres: [String], songs: [Song]) {
+    init(name: String, artist: String, identifier: String, coverArt: [URL], genres: [String], songs: [Song]) {
         self.name = name
         self.artist = artist
         self.identifier = identifier
@@ -95,7 +95,7 @@ class Album: Codable {
     
     var artist: String
     var name: String
-    var identifier: UUID
+    var identifier: String
     var coverArt: [URL]
     var genres: [String]
     var songs: [Song]
@@ -117,7 +117,7 @@ class Song: Codable {
         }
     }
     
-    init(title: String, identifier: UUID = UUID(), duration: String) {
+    init(title: String, identifier: String, duration: String) {
         self.title = title
         self.identifier = identifier
         self.duration = duration
@@ -125,7 +125,7 @@ class Song: Codable {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let identifier = try container.decode(UUID.self, forKey: .id)
+        let identifier = try container.decode(String.self, forKey: .id)
         let nameContainer = try container.nestedContainer(keyedBy: CodingKeys.NameCodingKeys.self, forKey: .name)
         let title = try nameContainer.decode(String.self, forKey: .title)
         let durationContainer = try container.nestedContainer(keyedBy: CodingKeys.DurationCodingKeys.self, forKey: .duration)
@@ -145,6 +145,6 @@ class Song: Codable {
     }
     
     let title: String
-    let identifier: UUID
+    let identifier: String
     let duration: String
 }
