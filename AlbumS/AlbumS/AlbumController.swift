@@ -19,7 +19,7 @@ class AlbumController {
     
     
     var albums: [Album] = []
-    let baseURL = URL(string: "https://album-840eb.firebaseio.com/")!
+   private let baseURL = URL(string: "https://album-840eb.firebaseio.com/")!
     
     func getAlbums(completion: @escaping (Error?) -> Void) {
         let requestURL = baseURL.appendingPathExtension("json")
@@ -103,13 +103,18 @@ class AlbumController {
     
     
     func update(album: Album, artist:String,coverArt:[URL],genres:[String],id:String,name:String,songs:[Song] ) {
+     
+    guard let index = albums.firstIndex(of: album) else { return }
         var scratchAlbum = album
+        
         scratchAlbum.artist = artist
         scratchAlbum.coverArt = coverArt
         scratchAlbum.genres = genres
         scratchAlbum.id = id
         scratchAlbum.name = name
         scratchAlbum.songs =  songs
+        
+        albums[index] = scratchAlbum
         put(album: scratchAlbum)
     }
     

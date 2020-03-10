@@ -24,12 +24,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().prefersLargeTitles = true
-        UINavigationBar.appearance().barTintColor = UIColor.red
+        UINavigationBar.appearance().barTintColor = UIColor.link
         
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             UINavigationBar.appearance().tintColor = .white
-            appearance.backgroundColor = UIColor.red
+            appearance.backgroundColor = UIColor.link
             appearance.largeTitleTextAttributes = [.foregroundColor : UIColor.white] //portrait title
             appearance.titleTextAttributes = [.foregroundColor : UIColor.white] //landscape title
             UINavigationBar.appearance().tintColor = .white

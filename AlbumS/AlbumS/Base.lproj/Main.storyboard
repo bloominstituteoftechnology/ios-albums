@@ -49,7 +49,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Albums" id="so0-As-o3p">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="vJn-I7-Ylt">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vJn-I7-Ylt">
                             <connections>
                                 <action selector="addTapped:" destination="z41-oo-PYG" id="oLB-KF-dfY"/>
                                 <segue destination="FwW-DH-QN9" kind="show" identifier="AddButtonSegue" id="HBo-dG-ysH"/>
@@ -65,7 +65,7 @@
         <scene sceneID="0Ta-B4-XLN">
             <objects>
                 <tableViewController id="FwW-DH-QN9" customClass="AlbumDetailViewController" customModule="AlbumS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="172" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ipe-bF-pYl">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="301" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ipe-bF-pYl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -107,28 +107,28 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongTableCell" rowHeight="172" id="qDw-RI-PUS" customClass="SongTableCell" customModule="AlbumS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="228" width="414" height="172"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongTableCell" rowHeight="301" id="qDw-RI-PUS" customClass="SongTableCell" customModule="AlbumS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="228" width="414" height="301"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qDw-RI-PUS" id="ytc-Xy-n7m">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="172"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="301"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="L94-bW-eC2">
-                                            <rect key="frame" x="8" y="8" width="398" height="156"/>
+                                            <rect key="frame" x="32" y="32" width="350" height="237"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Song Title:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uY5-Xi-UIl">
-                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="42.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="69.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Duration:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xIL-6c-0Ne">
-                                                    <rect key="frame" x="0.0" y="56.5" width="398" height="43"/>
+                                                    <rect key="frame" x="0.0" y="83.5" width="350" height="70"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgi-n2-vYG">
-                                                    <rect key="frame" x="0.0" y="113.5" width="398" height="42.5"/>
+                                                    <rect key="frame" x="0.0" y="167.5" width="350" height="69.5"/>
                                                     <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" title="Add Song">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -141,10 +141,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="L94-bW-eC2" firstAttribute="top" secondItem="ytc-Xy-n7m" secondAttribute="top" constant="8" id="EJj-i9-DcH"/>
-                                        <constraint firstAttribute="trailing" secondItem="L94-bW-eC2" secondAttribute="trailing" constant="8" id="jD1-ee-IiC"/>
-                                        <constraint firstItem="L94-bW-eC2" firstAttribute="leading" secondItem="ytc-Xy-n7m" secondAttribute="leading" constant="8" id="mB2-VX-4Gn"/>
-                                        <constraint firstAttribute="bottom" secondItem="L94-bW-eC2" secondAttribute="bottom" constant="8" id="pu8-H1-QH6"/>
+                                        <constraint firstItem="L94-bW-eC2" firstAttribute="top" secondItem="ytc-Xy-n7m" secondAttribute="top" constant="32" id="EJj-i9-DcH"/>
+                                        <constraint firstAttribute="trailing" secondItem="L94-bW-eC2" secondAttribute="trailing" constant="32" id="jD1-ee-IiC"/>
+                                        <constraint firstItem="L94-bW-eC2" firstAttribute="leading" secondItem="ytc-Xy-n7m" secondAttribute="leading" constant="32" id="mB2-VX-4Gn"/>
+                                        <constraint firstAttribute="bottom" secondItem="L94-bW-eC2" secondAttribute="bottom" constant="32" id="pu8-H1-QH6"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

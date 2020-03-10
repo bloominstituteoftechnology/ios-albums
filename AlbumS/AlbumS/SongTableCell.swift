@@ -14,13 +14,18 @@ protocol SongTableCellDelegate: AnyObject {
 
 class SongTableCell: UITableViewCell {
 
-    var song: Song?
+    var song: Song? {
+        didSet {
+            updateViews()
+        }
+    }
     weak var delegate: SongTableCellDelegate?
 
     func updateViews() {
         if let song = song {
             songTitleTextField.text = song.name
             songDurationTextField.text = song.duration
+            
             addSongButton.isHidden = true
         }
     }
@@ -38,7 +43,8 @@ class SongTableCell: UITableViewCell {
    
     
     @IBAction func addSongTapped(_ sender: UIButton) {
-        guard let title = songDurationTextField.text, let duration = songDurationTextField.text else { return }
+        guard let title = songTitleTextField.text,
+            let duration = songDurationTextField.text else { return }
         delegate?.didAddSong(with: title, duration: duration)
     }
     

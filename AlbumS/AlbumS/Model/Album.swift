@@ -8,7 +8,9 @@
 
 import Foundation
 
-struct Album : Codable {
+struct Album : Codable, Equatable {
+    
+    
     
     enum AlbumKeys: String, CodingKey {
         case artist
@@ -89,7 +91,7 @@ struct Album : Codable {
 }
 
 
-struct Song: Codable {
+struct Song: Codable, Equatable {
     enum SongKeys: String, CodingKey {
         case duration
         case id
