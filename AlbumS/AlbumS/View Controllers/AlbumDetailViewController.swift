@@ -47,11 +47,13 @@ class AlbumDetailViewController: UITableViewController, SongTableCellDelegate {
             let artistName = artistNameTextField.text,
             let genres = genresTextField.text,
             let url = urlTextField.text else { return }
+        let arrayGenres = genres.split(separator: ",").compactMap { String($0)}
+        let arrayURL = url.split(separator: ",").compactMap { URL(string: String($0))}
         
         if let album = album {
-            albumController?.update(album: album, artist: artistName, coverArt: [URL(string: url)!], genres: [genres], id: UUID().uuidString, name: name, songs: tempSongs)
+            albumController?.update(album: album, artist: artistName, coverArt:arrayURL, genres: arrayGenres, id: UUID().uuidString, name: name, songs: tempSongs)
         } else {
-            albumController?.createAlbum(artist: artistName, coverArt: [URL(string: url)!], genres:[genres], id: UUID().uuidString, name: name, songs: tempSongs)
+            albumController?.createAlbum(artist: artistName, coverArt: arrayURL, genres:arrayGenres, id: UUID().uuidString, name: name, songs: tempSongs)
         }
         navigationController?.popViewController(animated: true)
     }
