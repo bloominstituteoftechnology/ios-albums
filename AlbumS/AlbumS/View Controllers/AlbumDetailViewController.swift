@@ -38,7 +38,7 @@ class AlbumDetailViewController: UITableViewController, SongTableCellDelegate {
             updateViews()
         }
     }
-    var tempSongs: [Song] = []
+   private var tempSongs: [Song] = []
     
     
     

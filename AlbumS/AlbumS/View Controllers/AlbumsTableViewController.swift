@@ -10,7 +10,7 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
 
-    let albumController = AlbumController()
+   private let albumController = AlbumController()
     
     
     //MARK:- View Life Cycle

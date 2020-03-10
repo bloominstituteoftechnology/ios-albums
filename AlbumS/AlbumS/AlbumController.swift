@@ -117,31 +117,7 @@ class AlbumController {
         albums[index] = scratchAlbum
         put(album: scratchAlbum)
     }
-    
-
    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     func testDecodingExampleAlbum() {
         let urlPath =  Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
