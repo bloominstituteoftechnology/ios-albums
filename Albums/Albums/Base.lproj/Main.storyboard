@@ -39,7 +39,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="RW3-hF-WbE" kind="show" id="Laa-A9-9wm"/>
+                                    <segue destination="RW3-hF-WbE" kind="show" identifier="DetailSegue" id="Laa-A9-9wm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -52,7 +52,7 @@
                     <navigationItem key="navigationItem" id="wjG-Nl-hD2">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3Qo-cA-meS">
                             <connections>
-                                <segue destination="RW3-hF-WbE" kind="show" id="A4b-Tb-urR"/>
+                                <segue destination="RW3-hF-WbE" kind="show" identifier="AddSegue" id="A4b-Tb-urR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -181,6 +181,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="A4b-Tb-urR"/>
+        <segue reference="Laa-A9-9wm"/>
     </inferredMetricsTieBreakers>
 </document>

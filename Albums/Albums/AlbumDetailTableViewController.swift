@@ -20,10 +20,22 @@ class AlbumDetailTableViewController: UITableViewController {
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
     }
     
+    // MARK: - Variables
+    var albumController: AlbumController?
+    var album: Album? {
+        didSet {
+            updateViews()
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    // MARK: - Functions
+    func updateViews() {
+        
     }
 
     // MARK: - Table view data source
