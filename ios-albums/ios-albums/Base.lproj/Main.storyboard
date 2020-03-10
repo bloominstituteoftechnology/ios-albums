@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FirstTVCell" textLabel="z1m-Ya-FPi" detailTextLabel="yED-pb-793" style="IBUITableViewCellStyleSubtitle" id="pfO-4S-8tr">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumCell" textLabel="z1m-Ya-FPi" detailTextLabel="yED-pb-793" style="IBUITableViewCellStyleSubtitle" id="pfO-4S-8tr">
                                 <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pfO-4S-8tr" id="5nG-Vb-3ri">
@@ -39,7 +39,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ZPY-52-K3i" kind="show" id="MrV-Um-cmp"/>
+                                    <segue destination="ZPY-52-K3i" kind="show" identifier="DetailSegue" id="MrV-Um-cmp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -51,7 +51,7 @@
                     <navigationItem key="navigationItem" id="Wdt-vw-LFI">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Lre-0N-aPv">
                             <connections>
-                                <segue destination="ZPY-52-K3i" kind="show" id="Vdx-Uh-B9e"/>
+                                <segue destination="ZPY-52-K3i" kind="show" identifier="AddSegue" id="Vdx-Uh-B9e"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -107,7 +107,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="secondTVCell" rowHeight="140" id="iP9-Xz-HYL" customClass="SongTableViewCell" customModule="ios_albums" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongTableViewCell" rowHeight="140" id="iP9-Xz-HYL" customClass="SongTableViewCell" customModule="ios_albums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="242" width="414" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iP9-Xz-HYL" id="mJU-QO-WEr">
@@ -145,6 +145,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addButton" destination="EOz-3J-YtB" id="q74-0T-p4a"/>
                                     <outlet property="songDurationTextField" destination="cTR-de-3kM" id="xAd-hV-QsX"/>
                                     <outlet property="songTitleTxtField" destination="VJr-Lc-fp9" id="DpB-Pc-DDY"/>
                                 </connections>
@@ -156,8 +157,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="cJK-Ar-MYw">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="8hc-dF-Fa2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="8hc-dF-Fa2">
+                            <connections>
+                                <action selector="savePressed:" destination="ZPY-52-K3i" id="3sH-u1-j16"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="albumNameTextField" destination="8ll-JT-78T" id="Cm8-Tm-YUP"/>
+                        <outlet property="artistNameTextField" destination="WBE-zU-1YZ" id="UWZ-dL-FKB"/>
+                        <outlet property="coverArtURLTextField" destination="rnS-5w-EVH" id="x7e-mw-E8e"/>
+                        <outlet property="genresTextField" destination="O7R-Zb-Cbq" id="eLL-GN-W2u"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nac-zN-VO0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
