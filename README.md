@@ -8,7 +8,7 @@ Please look at the screen recording below to know what the finished project shou
 
 ## Instructions
 
-Please fork and clone this repository. This repository does not have a starter project but, so create one inside of the cloned repository folder. This repository does contain a file with example JSON that you will need in order to set up your model objects.
+Please fork and clone this repository. This repository does not have a starter project, so create one inside of the cloned repository folder. This repository does contain a file with example JSON that you will need in order to set up your model objects.
 
 ### Part 1 - Storyboard Setup
 
@@ -56,6 +56,7 @@ The whole purpose of this project is to help you understand how `Codable` works 
     - Get the JSON data from the "exampleAlbum.json" file. (`Data(contentsOf: URL)`)
     - Try to decode the JSON using JSONDecoder just like you would if you got this data from an API.
     - Check for errors. This is important because it will help you make sure you've correctly implemented the `init(from decoder: Decoder) throws` initializer in your model objects by giving you an error about what you have potentially done wrong.
+    
 7. Run this function in the `AppDelegate`. Make sure you don't get any errors when decoding the example JSON before you move on.
 8. Back in the "Album.swift" file, now adopt `Codable` in both model objects. 
 9. Implement the `encode(to encoder:  Encoder) throws` function. This function should encode the JSON back into its original nested state (i.e. the encoded JSON should match the structure of the example JSON exactly). 
@@ -70,6 +71,9 @@ Now you will add the functionality to fetch Albums from and send them to an API.
 3. A function called `getAlbums`. It should have a completion handler that takes in an optional `Error`. This function should perform a `URLSessionDataTask` that fetches the albums from the `baseURL`, decodes them, and sets the `albums` array to the decoded albums. **Note:** You should decode the JSON data as `[String: Album].self` here.
 4. A function called `put(album: Album)`. This should use a `URLSessionDataTask` to PUT the album passed into the function to the API. Add the album's identifier to the base URL so it gets put in a unique location in the API.
 5. A function called `createAlbum`. It should take in the necessary properties as parameters in order to initialize a new `Album`. Create an `Album` from the method parameters, then append it to the `albums` array. Then call the `put(album: Album)` method so the new `Album` gets saved to the API.
+
+couldnt create an album without an instance of the album so i can pass in the parameters.
+
 6. A function called `createSong`. It should take in the necessary properties as parameters to be able to initialize a `Song`. The function should return a `Song`. In the method, simply initialize a new song from the method parameters and return it.
 7. A function called `update`. This should take in an `Album` and a parameter for each of the `Album` object's properties that can be changed (This should be every property). Update the values of the `Album` parameter, then send those changes to the API by calling the `put(album: Album)` method.
 
@@ -82,6 +86,7 @@ In the `AlbumsTableViewController`:
 1. Create an `albumController: AlbumController?` variable.
 2. In the `viewDidLoad`, call the `getAlbums` method of the `albumController`. Reload the table view in its completion closure.
 3. Implement the required `UITableViewDataSource` methods. The table view should display the albums in the `albumController`'s `albums` array. The cells should show the album's name and artist.
+
 4. Go to the `AlbumDetailTableViewController`. Add the following:
     - An `albumController: AlbumController?` variable.
     - An `album: Album?` variable.
@@ -97,12 +102,15 @@ In the `SongTableViewCell`:
 4. Create a class protocol above or below the `SongTableViewCell` class called `SongTableViewCellDelegate`. It should have a single function: `func addSong(with title: String, duration: String)`.
 5. Create a `weak var delegate: SongTableViewCellDelegate?`.
 6. In the action of the bar button item, call `delegate?.addSong(with title: ...)`. Pass in the unwrapped text from the text fields for the parameters to the method.
+//DOESNT SAY WHERE TO CALL THESE FUNCTIONS
 
 In the `AlbumDetailTableViewController`:
 
 1. Create a `tempSongs: [Song] = []` array. This will be used to temporarily hold the songs the user adds until they tap the Save bar button item to save the album (or changes to it).
 2. Create an `updateViews` method. It should
     - Take the appropriate values from the `album` (if it isn't nil) and place them in the corresponding text fields. You can use the `.joined(separator: ...)` method to combine the urls and genres into strings.
+    //NOT SURE ABOUT JOINEDSEPARATOR
+    
     - Set the title of the view controller to the album's name or "New Album" if the album is nil.
     - Set the `tempSongs` array to the album's array of `Songs`.
 3. Call `updateViews()` in the `didSet` property observer of the `album` variable, and in the `viewDidLoad()`. Remember to make sure the view is loaded before trying to set the values of the outlets or the app will crash.
@@ -112,8 +120,12 @@ In the `AlbumDetailTableViewController`:
     - Append the song to the `tempSongs` array
     - Reload the table view
     - Call `tableView.scrollToRow(at: IndexPath, ...)` method. You will need to manually create an `IndexPath`. Use 0 for the section and the `count` of the `tempSongs` for the row.
+    // CANT FIGURE THIS OUT
+    
 4. Implement the `numberOfRowsInSection` method using the `tempSongs` array. Return the amount of items in the array plus one. This will allow there to be an empty cell for the user to add a new song to.
 5. Implement the `cellForRowAt` method. Set this table view controller as the cell's `delegate`.
+// DELEGATES ARE GIVING ME ISSUES
+
 6. Implement the `heightForRowAt` method. Set the cell's height to something that looks good. Account for the cells whose buttons will be hidden, and the last cell whose button should be unhidden. In the screen recording, the hidden button cells' height is 100, and the last cell's height is 140.
 7. Finally, in the action of the "Save" bar button item:
     - Using optional binding, unwrap the text from the text fields.

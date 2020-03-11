@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>415506417466-dka4fhmcbl05d3d54ss3lg5eo6c4i3of.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.415506417466-dka4fhmcbl05d3d54ss3lg5eo6c4i3of</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDcUyA4G6_ztZtVa1LWt901WwOEpn3fPyc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>415506417466</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.BobbyKeffury.Albums</string>
+	<key>PROJECT_ID</key>
+	<string>albums-f4f46</string>
+	<key>STORAGE_BUCKET</key>
+	<string>albums-f4f46.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:415506417466:ios:46a9b3a682f9c85b7b3203</string>
+	<key>DATABASE_URL</key>
+	<string>https://albums-f4f46.firebaseio.com</string>
+</dict>
+</plist>
