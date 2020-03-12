@@ -113,6 +113,10 @@ import Foundation
 
 
 struct Album {
+//    static func == (lhs: Album, rhs: Album) -> Bool {
+//        <#code#>
+//    }
+    
     
     var artist: String
     var coverArt: String
@@ -136,6 +140,8 @@ struct Album {
 }
 
 extension Album: Codable {
+
+    
     init(from decoder: Decoder) throws {
         let jsonConatiner = try decoder.container(keyedBy: AlbumCodingKeys.self)
         artist = try jsonConatiner.decode(String.self, forKey: .artist)
