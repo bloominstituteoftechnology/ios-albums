@@ -9,9 +9,9 @@
 import Foundation
 
 struct Song {
-    let duration: String
-    let id: String
-    let title: String
+    var duration: String
+    var id: String
+    var title: String
     
     enum SongKeys: String, CodingKey {
         case duration

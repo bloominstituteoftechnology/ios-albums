@@ -12,12 +12,12 @@ struct Album {
     
     // MARK: - Properties
 
-    let artist: String
+    var artist: String
     var coverArtURLs: [URL]
-    let genres: [String]
-    let id: String
-    let name: String
-    let songs: [Song]
+    var genres: [String]
+    var id: String
+    var name: String
+    var songs: [Song]
     
     enum AlbumKeys: String, CodingKey {
         case id
