@@ -124,6 +124,12 @@
                     <navigationItem key="navigationItem" title="Title" id="PEM-xc-Fcc">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="6SS-3e-JCP"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="albumTitleTextField" destination="yef-K4-DDy" id="U80-W2-4mF"/>
+                        <outlet property="artURLSTextField" destination="uKA-jq-3CG" id="2mQ-hJ-1En"/>
+                        <outlet property="artistTextField" destination="bra-bV-Qvk" id="LGJ-pB-2wA"/>
+                        <outlet property="genreListTextField" destination="eM0-A1-0Uq" id="Xdk-DL-f1A"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m75-zx-Ckv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

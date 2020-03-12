@@ -10,6 +10,12 @@ import UIKit
 
 class AlbumDetailTableViewController: UITableViewController {
 
+    @IBOutlet weak var albumTitleTextField: UITextField!
+    @IBOutlet weak var artistTextField: UITextField!
+    @IBOutlet weak var genreListTextField: UITextField!
+    @IBOutlet weak var artURLSTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
