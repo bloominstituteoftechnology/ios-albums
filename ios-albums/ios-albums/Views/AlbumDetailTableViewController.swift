@@ -5,7 +5,29 @@
 //  Created by denis cedeno on 3/11/20.
 //  Copyright © 2020 DenCedeno Co. All rights reserved.
 //
+/**
+ In the AlbumDetailTableViewController:
 
+ Create a tempSongs: [Song] = [] array. This will be used to temporarily hold the songs the user adds until they tap the Save bar button item to save the album (or changes to it).
+ Create an updateViews method. It should
+ Take the appropriate values from the album (if it isn't nil) and place them in the corresponding text fields. You can use the .joined(separator: ...) method to combine the urls and genres into strings.
+ Set the title of the view controller to the album's name or "New Album" if the album is nil.
+ Set the tempSongs array to the album's array of Songs.
+ Call updateViews() in the didSet property observer of the album variable, and in the viewDidLoad(). Remember to make sure the view is loaded before trying to set the values of the outlets or the app will crash.
+ Adopt the SongTableViewCellDelegate protocol.
+ Add the addSong method from the delegate you just adopted. In it:
+ Create a Song using the createSong method in the albumController.
+ Append the song to the tempSongs array
+ Reload the table view
+ Call tableView.scrollToRow(at: IndexPath, ...) method. You will need to manually create an IndexPath. Use 0 for the section and the count of the tempSongs for the row.
+ Implement the numberOfRowsInSection method using the tempSongs array. Return the amount of items in the array plus one. This will allow there to be an empty cell for the user to add a new song to.
+ Implement the cellForRowAt method. Set this table view controller as the cell's delegate.
+ Implement the heightForRowAt method. Set the cell's height to something that looks good. Account for the cells whose buttons will be hidden, and the last cell whose button should be unhidden. In the screen recording, the hidden button cells' height is 100, and the last cell's height is 140.
+ Finally, in the action of the "Save" bar button item:
+ Using optional binding, unwrap the text from the text fields.
+ If there is an album, call the update(album: ...) method, if not, call the createAlbum method using the unwrapped text, and the tempSongs array.
+ Pop the view controller from the navigation controller.
+ */
 import UIKit
 
 class AlbumDetailTableViewController: UITableViewController {

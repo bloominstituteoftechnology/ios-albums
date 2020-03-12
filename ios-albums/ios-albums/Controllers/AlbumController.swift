@@ -36,8 +36,9 @@ class AlbumController {
     var albums: [Album] = []
     
     ///A function called getAlbums. It should have a completion handler that takes in an optional Error. This function should perform a URLSessionDataTask that fetches the albums from the baseURL, decodes them, and sets the albums array to the decoded albums. Note: You should decode the JSON data as [String: Album].self here. = []
-    func getAlbums(completion: @escaping (Error?) -> ()) {
-        let requestUrl = (baseURL.appendingPathExtension("json"))
+    func getAlbums(completion: @escaping (Error?) -> Void ) {
+        let requestUrl = baseURL.appendingPathExtension("json")
+        print(requestUrl)
         URLSession.shared.dataTask(with: requestUrl) { (data, _, error) in
             if let error = error {
                 print("error fetching data: \(error)")
@@ -52,7 +53,8 @@ class AlbumController {
             
             let jsonDecoder = JSONDecoder()
             do {
-                self.albums = try jsonDecoder.decode([Album].self , from: data)
+                self.albums = try jsonDecoder.decode([String: Album].self , from: data).map {$0.value}
+                print(self.albums)
                 completion(nil)
             } catch {
                 print("Error decoding Album: \(error)")
@@ -64,9 +66,8 @@ class AlbumController {
     
     ///A function called put(album: Album). This should use a URLSessionDataTask to PUT the album passed into the function to the API. Add the album's identifier to the base URL so it gets put in a unique location in the API.
     func put(album: Album, completion: @escaping () -> () = { }) {
-        let uuid = UUID()
         let requestURL = (baseURL
-            .appendingPathComponent(uuid.uuidString)
+            .appendingPathComponent(album.id)
             .appendingPathExtension("json"))
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
