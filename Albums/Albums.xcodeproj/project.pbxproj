@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		955B5DDF2419C2D1001E526A /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B5DDE2419C2D1001E526A /* AlbumDetailTableViewController.swift */; };
+		955B5DE12419C71D001E526A /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B5DE02419C71D001E526A /* SongTableViewCell.swift */; };
 		95BDE236241897CC00828AC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BDE235241897CC00828AC7 /* AppDelegate.swift */; };
 		95BDE238241897CC00828AC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BDE237241897CC00828AC7 /* SceneDelegate.swift */; };
 		95BDE23D241897CC00828AC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95BDE23B241897CC00828AC7 /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		955B5DDE2419C2D1001E526A /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		955B5DE02419C71D001E526A /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		95BDE232241897CC00828AC7 /* Albums.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albums.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95BDE235241897CC00828AC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95BDE237241897CC00828AC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 		95BDE24A2418986400828AC7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				955B5DE02419C71D001E526A /* SongTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -92,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				95BDE24F241898E500828AC7 /* AlbumsTableViewController.swift */,
+				955B5DDE2419C2D1001E526A /* AlbumDetailTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -188,6 +194,8 @@
 			files = (
 				95BDE236241897CC00828AC7 /* AppDelegate.swift in Sources */,
 				95BDE250241898E500828AC7 /* AlbumsTableViewController.swift in Sources */,
+				955B5DE12419C71D001E526A /* SongTableViewCell.swift in Sources */,
+				955B5DDF2419C2D1001E526A /* AlbumDetailTableViewController.swift in Sources */,
 				95BDE238241897CC00828AC7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
