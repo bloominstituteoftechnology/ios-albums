@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Song {
+struct Song { // is an element of an unkeyed container
     var id: String // Single Value
     var name: String // nested keyed container with a Single Value
     var duration: String // nested keyed Container with a single Value
