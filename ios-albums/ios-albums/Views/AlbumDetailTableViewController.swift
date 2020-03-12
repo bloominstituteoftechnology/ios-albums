@@ -32,32 +32,30 @@ import UIKit
 
 class AlbumDetailTableViewController: UITableViewController {
 
+    var albumController: AlbumController?
+    var album: Album? 
+    
     @IBOutlet weak var albumNameTextField: UITextField!
     @IBOutlet weak var artistNameTextField: UITextField!
     @IBOutlet weak var genresTextField: UITextField!
     @IBOutlet weak var URLTextField: UITextField!
     @IBAction func saveButton(_ sender: Any) {
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return albumController?.albums.count ?? 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return albumController?.albums.count ?? 1
     }
 
     /*

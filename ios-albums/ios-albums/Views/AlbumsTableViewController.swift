@@ -5,15 +5,7 @@
 //  Created by denis cedeno on 3/11/20.
 //  Copyright © 2020 DenCedeno Co. All rights reserved.
 //
-/**
- In the AlbumsTableViewController:
- 
- Go to the AlbumDetailTableViewController. Add the following:
- An albumController: AlbumController? variable.
- An album: Album? variable.
- Back in the AlbumsTableViewController, implement the prepare(for segue: ...) method. If the segue is triggered from the bar button item, it should pass the albumController. If it's triggered from tapping a cell, it should pass the albumController and the Album that corresponds to the cell.
- 
- */
+
 import UIKit
 
 class AlbumsTableViewController: UITableViewController {
@@ -73,9 +65,14 @@ class AlbumsTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "addAlbumSegue" {
+            guard let destinationVC = segue.destination as? AlbumDetailTableViewController else { return }
+            destinationVC.albumController = albumController
+        } else if segue.identifier == "detailViewSegue" {
+            guard let detinationVC = segue.destination as? AlbumDetailTableViewController,
+            let indexPath = tableView.indexPathForSelectedRow else { return }
+            detinationVC.album = albumController.albums[indexPath.row]
+            detinationVC.albumController = albumController
+        }
     }
-    
-
 }
