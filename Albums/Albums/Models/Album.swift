@@ -10,8 +10,6 @@ import Foundation
 
 struct Album {
     
-    // MARK: - Properties
-
     var artist: String
     var coverArtURLs: [URL]
     var genres: [String]

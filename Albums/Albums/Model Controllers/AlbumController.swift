@@ -33,8 +33,13 @@ class AlbumController {
     // MARK: - Properties
 
     var albums: [Album] = []
-    
     let baseURL = URL(string: "https://albums-fbe98.firebaseio.com/")!
+    
+    // MARK: - Initializers
+
+    init() {
+        getAlbums()
+    }
 
     // MARK: - CRUD
 
@@ -88,9 +93,8 @@ class AlbumController {
             }
             
             do {
-                self.albums = Array(try JSONDecoder().decode([String: Album].self, from: data).values)
-                //let albumsData = try JSONDecoder().decode([Album].self, from: data)
-                //try self.updatePlants(with: plantRepresentations)
+                //self.albums = Array(try JSONDecoder().decode([String: Album].self, from: data).values)
+                self.albums = try JSONDecoder().decode([Album].self, from: data)
                 DispatchQueue.main.async { completion(nil) }
             } catch {
                 print("Error decoding data from the server: \(error)")
@@ -131,7 +135,7 @@ class AlbumController {
     
 }
 
-// MARK: - Codable Testing
+// MARK: - Codable Testing Functions
 
 extension AlbumController {
     func testDecodingExampleAlbum() {
@@ -150,6 +154,7 @@ extension AlbumController {
         
         print("Successfully decoded data from JSON file!")
     }
+    
     func testEncodingExampleAlbum() {
         guard let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else {
             print("Error: Could not locate JSON file in App bundle.")

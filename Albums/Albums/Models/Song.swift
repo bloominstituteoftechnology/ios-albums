@@ -32,9 +32,7 @@ extension Song: Codable {
     
     init(from decoder: Decoder) throws {
         let jsonContainer = try decoder.container(keyedBy: SongKeys.self)
-        
         let durationKeyedContainer = try jsonContainer.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
-        
         let nameKeyedContainer = try jsonContainer.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
         
         self.duration = try durationKeyedContainer.decode(String.self, forKey: .duration)
@@ -44,9 +42,7 @@ extension Song: Codable {
     
     func encode(to encoder: Encoder) throws {
         var jsonContainer = encoder.container(keyedBy: SongKeys.self)
-        
         var durationKeyedContainer = jsonContainer.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
-               
         var nameKeyedContainer = jsonContainer.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
         
         try! jsonContainer.encode(self.id, forKey: .id)
