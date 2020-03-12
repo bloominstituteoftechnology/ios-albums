@@ -16,8 +16,9 @@ class AlbumController {
             
         do {
             let dataFromURL = try Data(contentsOf: urlPath)
-            let decodedSong: Song = try JSONDecoder().decode(Song.self, from: dataFromURL)
-            print(decodedSong)
+            let decodedAlbum = try JSONDecoder().decode(Album.self, from: dataFromURL)
+            //let decodedSongs: [Song] = try JSONDecoder().decode([Song].self, from: dataFromURL)
+            print(decodedAlbum)
         } catch {
             print("Error decoding song objects: \(error)")
             return
