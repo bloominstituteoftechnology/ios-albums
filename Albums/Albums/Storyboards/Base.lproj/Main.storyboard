@@ -39,7 +39,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="mbZ-L8-AIS" kind="show" id="IsD-6l-bBr"/>
+                                    <segue destination="mbZ-L8-AIS" kind="show" identifier="AlbumDetailShowSegue" id="IsD-6l-bBr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -51,7 +51,7 @@
                     <navigationItem key="navigationItem" title="Albums" id="gR9-UJ-Ejj">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZaO-hO-CAx">
                             <connections>
-                                <segue destination="mbZ-L8-AIS" kind="show" id="igM-8Y-xBg"/>
+                                <segue destination="mbZ-L8-AIS" kind="show" identifier="AddAlbumShowSegue" id="igM-8Y-xBg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -63,7 +63,7 @@
         <!--Title-->
         <scene sceneID="BkB-GL-bCv">
             <objects>
-                <tableViewController id="mbZ-L8-AIS" sceneMemberID="viewController">
+                <tableViewController id="mbZ-L8-AIS" customClass="AlbumDetailTableViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ViU-Dr-j9j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
