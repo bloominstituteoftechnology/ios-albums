@@ -9,7 +9,41 @@
 import Foundation
 
 struct Song {
-    let id: String
-    let songTitle: String
-    let singDuration: String
+    var id: String // Single Value
+    var name: String // nested keyed container with a Single Value
+    var duration: String // nested keyed Container with a single Value
+    
+    enum SongTopLevelKeys: String, CodingKey {
+        case id
+        case name
+        case duration
+        
+        enum SongNameKeys: String, CodingKey {
+            case title
+        }
+        
+        enum SongDurationKeys: String, CodingKey {
+            case duration
+        }
+    }
+}
+
+extension Song: Decodable {
+    init(from decoder: Decoder) throws {
+        
+        let jsonContainer = try decoder.container(keyedBy: SongTopLevelKeys.self)
+        
+        id = try jsonContainer.decode(String.self, forKey: .id)
+        
+        let nameKeyedContainer = try jsonContainer.nestedContainer(keyedBy:
+            SongTopLevelKeys.SongNameKeys.self, forKey: .name)
+        
+        name = try nameKeyedContainer.decode(String.self, forKey: .title)
+        
+        let durationKeyedContainer = try jsonContainer.nestedContainer(keyedBy:
+            SongTopLevelKeys.SongDurationKeys.self, forKey: .duration)
+        
+        duration = try durationKeyedContainer.decode(String.self, forKey: .duration)
+        
+    }
 }
