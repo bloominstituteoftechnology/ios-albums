@@ -32,8 +32,8 @@ class AlbumController {
         do {
             let dataFromURL = try Data(contentsOf: urlPath)
             let encodedAlbum = try JSONEncoder().encode(dataFromURL)
-            //let decodedSongs: [Song] = try JSONDecoder().decode([Song].self, from: dataFromURL)
-            print(encodedAlbum)
+            let stringAlbum = String(data: encodedAlbum, encoding: .utf8)
+            print(stringAlbum)
         } catch {
             print("Error encoding album objects: \(error)")
             return
