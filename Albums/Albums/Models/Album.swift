@@ -10,9 +10,11 @@ import Foundation
 
 struct Album {
     let artist: String // Single Value inside a keyed Container
-    var coverArt: [Dictionary<String, String>] = [] // unkeyed Container has "url" property as a Keyed container Value
+//    var coverArt: [Dictionary<String, String>] = [] // unkeyed Container has "url" property as a Keyed container Value
+//    var coverArt: [String] = [] // unkeyed Container has "url" property as a Keyed container Value
+    var coverArt: [URL] = []
     let genres: [String] // unkeyed container
-    let id: String // Singel Value in a keyed container
+    let id: String // Single Value in a keyed container
     let name: String // Album name as a Single Value in a keyed container
     let songs: [Song] // an array (unkeyed container) of keyed containers with:
                       // duration (a keyed container with property "duration : ..."),
@@ -24,15 +26,11 @@ struct Album {
         case coverArt // unkeyed container with keyed container inside
         case genres // unkeyed container
         case id
-        case name // keyed container
+        case name
         case songs // unkeyed containter, containing keyed containers
         
         enum CoverArtKeys: String, CodingKey {
             case url
-        }
-        
-        enum NameKeys: String, CodingKey {
-            case title
         }
     }
 }
@@ -43,22 +41,19 @@ extension Album: Decodable {
         let jsonContainer = try decoder.container(keyedBy: AlbumTopLevelKeys.self)
         
         artist = try jsonContainer.decode(String.self, forKey: .artist)
-
+        
         var coverArtUnkeyedContainer = try jsonContainer.nestedUnkeyedContainer(forKey: .coverArt)
         while !coverArtUnkeyedContainer.isAtEnd {
             let coverArtContainer = try coverArtUnkeyedContainer.nestedContainer(keyedBy: AlbumTopLevelKeys.CoverArtKeys.self)
-            let coverArtURLS = try coverArtContainer.decode([Dictionary<String, String>].self, forKey: .url)
-            coverArt = coverArtURLS
+            //            let coverArtURLS = try coverArtContainer.decode([Dictionary<String, String>].self, forKey: .url)
+            //            let coverArtURLS = try coverArtContainer.decode([String].self, forKey: .url)
+            let coverArtURLS = try coverArtContainer.decode(URL.self, forKey: .url)
+            coverArt.append(coverArtURLS)
         }
-        //coverArt = try jsonContainer.decode([String].self, forKey: .coverArt)
         
         genres = try jsonContainer.decode([String].self, forKey: .genres)
         id = try jsonContainer.decode(String.self, forKey: .id)
-        
-        let nameKeyedContainer = try jsonContainer.nestedContainer(keyedBy:
-            AlbumTopLevelKeys.NameKeys.self, forKey: .name)
-        
-        name = try nameKeyedContainer.decode(String.self, forKey: .title)
+        name = try jsonContainer.decode(String.self, forKey: .name)
         songs = try jsonContainer.decode([Song].self, forKey: .songs)
     }
 }
