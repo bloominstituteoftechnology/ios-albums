@@ -17,6 +17,7 @@
 		E0FE7BAD2419CB3C0040ACA2 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FE7BAC2419CB3C0040ACA2 /* SongTableViewCell.swift */; };
 		E0FE7BB22419CD230040ACA2 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FE7BB12419CD230040ACA2 /* Album.swift */; };
 		E0FE7BB6241A5BE80040ACA2 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = E0FE7BB5241A5BE80040ACA2 /* exampleAlbum.json */; };
+		E0FE7BB9241A67E00040ACA2 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FE7BB8241A67E00040ACA2 /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E0FE7BAC2419CB3C0040ACA2 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		E0FE7BB12419CD230040ACA2 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		E0FE7BB5241A5BE80040ACA2 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
+		E0FE7BB8241A67E00040ACA2 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				E0FE7BB5241A5BE80040ACA2 /* exampleAlbum.json */,
 				E0FE7BB02419CCE20040ACA2 /* View Controllers */,
 				E0FE7BAE2419CCBA0040ACA2 /* Models */,
+				E0FE7BB7241A67BE0040ACA2 /* Model Controller */,
 				E0FE7BAF2419CCC10040ACA2 /* Views */,
 				E0FE7B942419C6990040ACA2 /* AppDelegate.swift */,
 				E0FE7B962419C6990040ACA2 /* SceneDelegate.swift */,
@@ -101,6 +104,14 @@
 				E0FE7BAA2419C9500040ACA2 /* AlbumDetailTableViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E0FE7BB7241A67BE0040ACA2 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E0FE7BB8241A67E00040ACA2 /* AlbumController.swift */,
+			);
+			path = "Model Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 				E0FE7BA92419C6F80040ACA2 /* AlbumsTableViewController.swift in Sources */,
 				E0FE7BAD2419CB3C0040ACA2 /* SongTableViewCell.swift in Sources */,
 				E0FE7BAB2419C9500040ACA2 /* AlbumDetailTableViewController.swift in Sources */,
+				E0FE7BB9241A67E00040ACA2 /* AlbumController.swift in Sources */,
 				E0FE7B972419C6990040ACA2 /* SceneDelegate.swift in Sources */,
 				E0FE7BB22419CD230040ACA2 /* Album.swift in Sources */,
 			);
