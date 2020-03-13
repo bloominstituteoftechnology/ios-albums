@@ -56,4 +56,23 @@ extension Album: Decodable {
         name = try jsonContainer.decode(String.self, forKey: .name)
         songs = try jsonContainer.decode([Song].self, forKey: .songs)
     }
+    
+    func encode(to encoder: Encoder) throws {
+        var jsonContainer = encoder.container(keyedBy: AlbumTopLevelKeys.self)
+            
+        try! jsonContainer.encode(artist, forKey: .artist)
+        
+        let coverArtStrings = coverArt.map { $0.absoluteString }
+        var coverArtContainer = encoder.container(keyedBy: AlbumTopLevelKeys.CoverArtKeys.self)
+        for art in coverArtStrings {
+            try! coverArtContainer.encode(art, forKey: .url)
+        }
+        
+        try! jsonContainer.encode(coverArtStrings, forKey: .coverArt)
+        try! jsonContainer.encode(genres, forKey: .genres)
+        try! jsonContainer.encode(id, forKey: .id)
+        try! jsonContainer.encode(name, forKey: .name)
+        try! jsonContainer.encode(songs, forKey: .songs)
+
+    }
 }
