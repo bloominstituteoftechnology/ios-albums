@@ -113,11 +113,7 @@ import Foundation
 
 
 struct Album {
-//    static func == (lhs: Album, rhs: Album) -> Bool {
-//        <#code#>
-//    }
-    
-    
+
     var artist: String
     var coverArt: String
     var genres: [String]
