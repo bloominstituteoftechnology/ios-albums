@@ -28,7 +28,7 @@ struct Song { // is an element of an unkeyed container
     }
 }
 
-extension Song: Decodable {
+extension Song: Codable {
     init(from decoder: Decoder) throws {
         
         let jsonContainer = try decoder.container(keyedBy: SongTopLevelKeys.self)
