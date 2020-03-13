@@ -16,8 +16,6 @@ enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
-
-
 class AlbumController {
     
     // type alias - sort of shortcut for function - put outsude class to use throughout class.
@@ -61,24 +59,57 @@ class AlbumController {
     }
     
     
-    
-    // Put Albums
-    
-    
-    
+    // Put Albums in Server
+    func putAlbumsInServer(album: Album, completion: @escaping (Error?) -> () = { error in}) {
+        guard let requestURL = baseURL?.appendingPathComponent(album.id).appendingPathExtension("json") else { return }
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.put.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let albumData = try JSONEncoder().encode(album)
+            request.httpBody = albumData
+        } catch {
+            print("Error encoding entry: \(error)")
+            completion(error)
+            return
+        }
+        
+        // send Album to Firebase
+         URLSession.shared.dataTask(with: request) { (data, _, error) in
+             guard error == nil else {
+                 print("Error PUTing tasks to server: \(error!)")
+                 DispatchQueue.main.async {
+                     completion(error)
+                 }
+                 return
+             }
+             DispatchQueue.main.async {
+                     completion(nil)
+             }
+         }.resume()
+    }
     
     // Create Albums
-    
+    func createAlbum(id: String, name: String, artist: String, genres: [String], coverArt: [URL], songs: [Song]) {
+        let newAlbum = Album(artist: artist, coverArt: coverArt, genres: genres, id: id, name: name, songs: songs)
+        albums.append(newAlbum)
+        putAlbumsInServer(album: newAlbum)
+    }
     
     
     // Create songs
     
-    
+    func createSong(id: String, name: String, duration: String) -> Song {
+        return Song(id: id, name: name, duration: duration)
+    }
     
     // Update Songs
-    
-    
-    
+    func update(album: Album, name: String, artist: String, genres: [String], coverArt: [URL], songs: [Song]){
+        
+        
+        
+    }
     
     
     

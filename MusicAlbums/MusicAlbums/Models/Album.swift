@@ -29,7 +29,7 @@ struct Album: Codable {
         }
     }
     
-    // For Codable ( not decodable)
+    // For Codable
     init(artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) {
         self.artist = artist
         self.coverArt = coverArt
@@ -38,7 +38,6 @@ struct Album: Codable {
         self.name = name
         self.songs = songs
     }
-    
     
     
     init(from decoder: Decoder) throws {
@@ -73,6 +72,8 @@ struct Album: Codable {
         }
         
     }
+    
+    
     
     
     struct Song: Codable {
@@ -121,4 +122,5 @@ struct Album: Codable {
         }    
 }
 }
+
 
