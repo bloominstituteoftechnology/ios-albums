@@ -10,6 +10,35 @@ import Foundation
 
 class AlbumController {
     
+    var albums: [Album] = []
+    
+    private let baseURL = URL(string: "https://lambdaalbumscodableproject.firebaseio.com/")
+    
+    func getAlbums(completion: @escaping (Error?) -> Void = { _ in }) {
+        guard let baseURL = baseURL else { return }
+        let requestURL = baseURL.appendingPathExtension("json")
+        
+        URLSession.shared.dataTask(with: requestURL) { data, _,  error in
+            guard error == nil else {
+                print("Error getting albums from server: \(error)")
+                completion(error)
+                return
+            }
+            
+            guard let data = data else {
+                print("No data returned")
+                completion(NSError())
+                return
+            }
+            
+            do {
+                
+            } catch {
+                
+            }
+        }
+        
+    }
     func testDecodingExampleAlbum() {
         
         let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
