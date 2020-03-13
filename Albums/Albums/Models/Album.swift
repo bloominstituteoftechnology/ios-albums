@@ -61,10 +61,13 @@ extension Album: Decodable {
         var jsonContainer = encoder.container(keyedBy: AlbumTopLevelKeys.self)
             
         try! jsonContainer.encode(artist, forKey: .artist)
+        
         let coverArtStrings = coverArt.map { $0.absoluteString }
+        var coverArtContainer = encoder.container(keyedBy: AlbumTopLevelKeys.CoverArtKeys.self)
         for art in coverArtStrings {
-            try! jsonContainer.encode(art, forKey: .url)
+            try! coverArtContainer.encode(art, forKey: .url)
         }
+        
         try! jsonContainer.encode(coverArtStrings, forKey: .coverArt)
         try! jsonContainer.encode(genres, forKey: .genres)
         try! jsonContainer.encode(id, forKey: .id)
