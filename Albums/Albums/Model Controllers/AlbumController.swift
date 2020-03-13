@@ -20,7 +20,7 @@ class AlbumController {
             //let decodedSongs: [Song] = try JSONDecoder().decode([Song].self, from: dataFromURL)
             print(decodedAlbum)
         } catch {
-            print("Error decoding song objects: \(error)")
+            print("Error decoding album objects: \(error)")
             return
         }
     }
