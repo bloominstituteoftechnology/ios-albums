@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let albumController = AlbumController()
         albumController.testDecodingExampleAlbum()
+        albumController.testEncodingExampleAlbum()
         
         return true
     }
