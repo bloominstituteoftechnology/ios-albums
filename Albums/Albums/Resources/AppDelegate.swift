@@ -16,7 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let albumController = AlbumController()
         albumController.testDecodingExampleAlbum()
         albumController.testEncodingExampleAlbum()
-        
+        albumController.createAlbum(artist: "Weezer",
+                                    coverArt: [URL(string: "https://lastfm-img2.akamaized.net/i/u/174s/1918fe81bb68441d96b2247682bfda21.png")!],
+                                    genres: ["Alternatjve"],
+                                    id: "5E58FA0F-7DBD-4F1D-956F-89756CF1EB22",
+                                    name: "Weezer (The Blue Album)",
+                                    songs: [])
         return true
     }
 
