@@ -19,7 +19,7 @@ class SongTableViewCell: UITableViewCell {
     @IBOutlet weak var addSongButton: UIButton!
     
     var song: Song?
-    weak var delegate: SongTableViewCellDelegate?
+    var delegate: SongTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,6 +49,8 @@ class SongTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        <#code#>
+        songTitleTextField.text = ""
+        songDurationTextField.text = ""
+        addSongButton.isHidden = false
     }
 }
