@@ -39,6 +39,32 @@ class AlbumDetailTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     @IBAction func saveAlbumButtonPressed(_ sender: UIBarButtonItem) {
+        if let albumTitle = albumTitleTextField?.text,
+            let artist = artistTextField?.text,
+            let genreList = genreListTextField?.text,
+            let coverArt = artURLSTextField?.text,
+            !albumTitle.isEmpty,
+            !artist.isEmpty,
+            !genreList.isEmpty,
+            !coverArt.isEmpty {
+            
+            
+            if let album = album {
+                albumController?.update(album: album,
+                                        artist: artist,
+                                        //coverArt: [URL(string: coverArt)], // coverArt still needs to be parsed properly
+                                        genres: genreList,
+                                        id: album.id,
+                                        name: albumTitle,
+                                        songs: tempSongs)
+            } else {
+                albumController?.createAlbum(artist: artist, coverArt: <#T##[URL]#>, genres: [genreList], id: "", name: albumTitle, songs: tempSongs)
+            }
+            
+        }
+        
+        
+
     }
     
     func updateViews() {
