@@ -101,13 +101,21 @@ class AlbumController {
     // Create songs
     
     func createSong(id: String, name: String, duration: String) -> Song {
-        return Song(id: id, name: name, duration: duration)
+        return Song(id: id, duration: duration, name: name)
     }
     
     // Update Songs
-    func update(album: Album, name: String, artist: String, genres: [String], coverArt: [URL], songs: [Song]){
-        
-        
+    func update(album: Album, id: String, name: String, artist: String, genres: [String], coverArt: [URL], songs: [Song]){
+        guard let albumList = albums.firstIndex(of: album) else { return }
+        var album = album
+        album.id = id
+        album.name = name
+        album.artist = artist
+        album.genres = genres
+        album.coverArt = coverArt
+        album.songs = songs
+        albums[albumList] = album
+        putAlbumsInServer(album: album)
         
     }
     

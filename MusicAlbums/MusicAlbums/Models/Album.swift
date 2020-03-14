@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Album: Codable {
-    let artist: String
-    let coverArt: [URL]
-    let genres: [String]
-    let id: String
-    let name: String
+struct Album: Codable, Equatable {
+    var artist: String
+    var coverArt: [URL]
+    var genres: [String]
+    var id: String
+    var name: String
     var songs: [Song]
     
     enum AlbumKeys: String, CodingKey {
@@ -73,7 +73,10 @@ struct Album: Codable {
         
     }
     
-    
+    static func == (lhs: Album, rhs: Album) -> Bool {
+        return lhs.id == rhs.id
+    }
+ }
     
     
     struct Song: Codable {
@@ -121,6 +124,6 @@ struct Album: Codable {
             try durationContainer.encode(duration, forKey: .duration)
         }    
 }
-}
+
 
 
