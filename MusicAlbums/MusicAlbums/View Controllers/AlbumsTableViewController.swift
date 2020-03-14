@@ -53,18 +53,19 @@ class AlbumsTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailVC = segue.destination as? AlbumDetailTableViewController,
-            let indexPath = tableView.indexPathForSelectedRow {
-            //        Use Switch Statement
-            switch segue.identifier {
+        
+        switch segue.identifier {
             case "ShowDetailViewSegue":
-                detailVC.albumcontroller = albumController
-            case "AddAlbumSegue":
+                guard let detailVC = segue.destination as? AlbumDetailTableViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
                 detailVC.albumcontroller = albumController
                 detailVC.album = albumController?.albums[indexPath.row]
+            case "AddAlbumSegue":
+                guard let detailVC = segue.destination as? AlbumDetailTableViewController else { return }
+                detailVC.albumcontroller = albumController
             default:
-                return
-            }
+                break
         }
+        
     }
 }
