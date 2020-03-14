@@ -39,7 +39,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="9EJ-yz-GZc" kind="show" identifier="CellDetailViewSegue" id="fRB-VR-RR2"/>
+                                    <segue destination="9EJ-yz-GZc" kind="show" identifier="ShowDetailViewSegue" id="fRB-VR-RR2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
