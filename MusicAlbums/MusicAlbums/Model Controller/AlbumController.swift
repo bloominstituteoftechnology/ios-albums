@@ -119,12 +119,7 @@ class AlbumController {
         
     }
     
-    
-    
-    
-    
-    
-    
+    // Test functionality ( encoding/decoding ) using a local .json file 
     func testDecodingExampleAlbum() {
         let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
     
