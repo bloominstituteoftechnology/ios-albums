@@ -41,12 +41,16 @@ struct Album: Codable {
     }
     
     init(from decoder: Decoder) throws {
+        //created the container
         let container = try decoder.container(keyedBy: AlbumKeys.self)
-        
+        //assigned the artist initilized to any album in the containter with the key of .artist
         self.artist = try container.decode(String.self, forKey: .artist)
         
+        //created an array to hold all the cover art URLs
         var coverArts: [URL] = []
+        //the json is nested, so we dig deeper into the container.
         var coverArtsContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+        //if the cover art container isnt at its end index, keep on decoding urls and appending them to coverArts until finished.
         while !coverArtsContainer.isAtEnd {
             let urlContainer = try coverArtsContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
             let url = try urlContainer.decode(URL.self, forKey: .url)
@@ -62,7 +66,7 @@ struct Album: Codable {
         
         self.songs = try container.decode([Song].self, forKey: .songs)
     }
-    
+    //encoding is essentially the same as decoding. just creating containers to PUT things into. 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: AlbumKeys.self)
         

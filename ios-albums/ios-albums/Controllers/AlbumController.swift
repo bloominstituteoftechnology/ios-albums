@@ -115,7 +115,9 @@ class AlbumController {
     }
     
     func update(with album: Album, artist: String, coverArt: [String], genres: [String], id: String, name: String, songs: [Song]) {
+        
         let updateAlbum = Album(artist: artist, coverArt: coverArt, genres: genres, id: album.id, name: name, songs: songs)
+        //this is making sure that we dont already have an album with the corresponding ID
         if let index = albums.firstIndex(where: { $0.id == album.id }) {
             albums[index] = updateAlbum
         }
