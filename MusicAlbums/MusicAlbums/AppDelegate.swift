@@ -14,13 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let albumController = AlbumController()
-        albumController.testDecodingExampleAlbum()
-        albumController.testEncodingExample()
-        let song1 = albumController.createSong(id: "1", name: "My Song 1", duration: "2:20")
-        let song2 = albumController.createSong(id: "2", name: "Song 2", duration: "4:20")
-        let songs = [song1, song2]
-        albumController.createAlbum(id: "1212121", name: "Test Album", artist: "Test Artist", genres: ["Rock"], coverArt: [URL(fileURLWithPath: "http://google.com")], songs: songs)
+//        let albumController = AlbumController()
+//        albumController.testDecodingExampleAlbum()
+//        albumController.testEncodingExample()
+//        let song1 = albumController.createSong(id: "1", name: "My Song 1", duration: "2:20")
+//        let song2 = albumController.createSong(id: "2", name: "Song 2", duration: "4:20")
+//        let songs = [song1, song2]
+//        albumController.createAlbum(id: "1212121", name: "Test Album", artist: "Test Artist", genres: ["Rock"], coverArt: [URL(fileURLWithPath: "http://google.com")], songs: songs)
         return true
     }
 

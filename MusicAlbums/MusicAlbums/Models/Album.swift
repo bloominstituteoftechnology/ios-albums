@@ -46,7 +46,7 @@ struct Album: Codable, Equatable {
         name = try container.decode(String.self, forKey: .name)
         artist = try container.decode(String.self, forKey: .artist)
         genres = try container.decode([String].self, forKey: .genres)
-        songs = try container.decode([Song].self, forKey: .songs)
+        
         var coverArtURLs = [URL]()
         var coverArtOuterContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
         while !coverArtOuterContainer.isAtEnd {
@@ -55,6 +55,7 @@ struct Album: Codable, Equatable {
             coverArtURLs.append(coverArtURL)
         }
         coverArt = coverArtURLs
+        songs = try container.decode([Song].self, forKey: .songs)
     }
     
     // encoder - From SWIFT to Json
@@ -64,15 +65,18 @@ struct Album: Codable, Equatable {
         try container.encode(name, forKey: .name)
         try container.encode(artist, forKey: .artist)
         try container.encode(genres, forKey: .genres)
-        try container.encode(songs, forKey: .songs)
+        
         var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
-        var coverArtInnerContainer = container.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self, forKey: .coverArt)
+//        var coverArtInnerContainer = container.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
+        var coverArtInnerContainer = coverArtContainer.nestedContainer(keyedBy: AlbumKeys.CoverArtKeys.self)
+        
         for coverArtURL in coverArt {
             try coverArtInnerContainer.encode(coverArtURL, forKey: .url)
         }
+        try container.encode(songs, forKey: .songs)
         
     }
-    
+    // equatable
     static func == (lhs: Album, rhs: Album) -> Bool {
         return lhs.id == rhs.id
     }
@@ -102,6 +106,7 @@ struct Album: Codable, Equatable {
             self.duration = duration
             self.name = name
     }
+        
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: SongKeys.self)
             id = try container.decode(String.self, forKey: .id)

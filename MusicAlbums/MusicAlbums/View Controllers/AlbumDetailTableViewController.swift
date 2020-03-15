@@ -18,7 +18,7 @@ class AlbumDetailTableViewController: UITableViewController {
         }
     }
     
-    var tempSongs: [Song] = []
+    var tempSongs : [Song] = []
     
     // IB Outlets
     @IBOutlet weak var albumNameTxtField: UITextField!
@@ -32,12 +32,26 @@ class AlbumDetailTableViewController: UITableViewController {
         updateViews()
     }
 
+    // MARK: - UpdateViews
+        // configure views
+        func updateViews() {
+            //Remember to make sure the view is loaded or the app will crash. isViewLoaded
+            guard let album = album, self.isViewLoaded else { return }
+            albumNameTxtField.text = album.name
+            artistNameTxtField.text = album.artist
+    //        genresTxtField.text = "\(album.genres)" // originl Way
+            genresTxtField.text = album.genres.joined(separator: ", ")
+            albumURLSTxtField.text = "\(album.coverArt)"
+            tempSongs = album.songs
+            
+        }
+    
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -47,6 +61,11 @@ class AlbumDetailTableViewController: UITableViewController {
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddSongCell", for: indexPath) as? SongTableViewCell else { return UITableViewCell() }
+        if indexPath.row == 0 {
+            cell.song = nil
+        } else {
+            cell.song = tempSongs[indexPath.row - 1]
+        }
         cell.delegate = self
         return cell
     }
@@ -60,26 +79,13 @@ class AlbumDetailTableViewController: UITableViewController {
     }
 
     
-    // configure views
-    func updateViews() {
-        //Remember to make sure the view is loaded or the app will crash. isViewLoaded
-        guard let album = album, self.isViewLoaded else { return }
-        albumNameTxtField.text = album.name
-        artistNameTxtField.text = album.artist
-//        genresTxtField.text = "\(album.genres)" // originl Way
-        genresTxtField.text = album.genres.joined(separator: ", ")
-        albumURLSTxtField.text = "\(album.coverArt)"
-        tempSongs = album.songs
-        
-    }
-    
     // IB Actions
-    @IBAction func saveBtnWasPressed(_ sender: UIBarButtonItem) {
+    @IBAction func saveBtnWasPressed(_ sender: Any) {
         //Using optional binding, unwrap the text from the text fields.
-        guard let albumName = albumNameTxtField.text,
-            let artist = artistNameTxtField.text,
-            let genreString = genresTxtField.text,
-            let coverURLString = albumURLSTxtField.text else { return }
+        guard let name = albumNameTxtField.text, !name.isEmpty,
+            let artist = artistNameTxtField.text, !artist.isEmpty,
+            let genreString = genresTxtField.text, !genreString.isEmpty,
+            let coverURLString = albumURLSTxtField.text, !coverURLString.isEmpty else { return }
         
         let genres = genreString.components(separatedBy: ", ")
         let coverArtURLs = coverURLString.components(separatedBy: ", ").compactMap { URL(string: $0) }
@@ -87,14 +93,12 @@ class AlbumDetailTableViewController: UITableViewController {
         //If there is an album, call the update(album: ...) method,
         //if not, call the createAlbum method using the unwrapped text, and the tempSongs array.
         if let album = album {
-            albumcontroller?.update(album: album, id: album.id, name: albumName, artist: artist, genres: genres, coverArt: coverArtURLs, songs: tempSongs)
+            albumcontroller?.update(album: album, id: album.id, name: name, artist: artist, genres: genres, coverArt: coverArtURLs, songs: tempSongs)
         } else {
-            albumcontroller?.createAlbum(id: UUID().uuidString, name: albumName, artist: artist, genres: genres, coverArt: coverArtURLs, songs: tempSongs)
+            albumcontroller?.createAlbum(id: UUID().uuidString, name: name, artist: artist, genres: genres, coverArt: coverArtURLs, songs: tempSongs)
         }
         navigationController?.popViewController(animated: true)
     }
-    
-
 }
 
 extension AlbumDetailTableViewController: SongTableViewCellDelegate {
