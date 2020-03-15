@@ -34,23 +34,19 @@ class AlbumController {
 
     var albums: [Album] = []
     let baseURL = URL(string: "https://albums-fbe98.firebaseio.com/")!
-    
-    // MARK: - Initializers
-
-    init() {
-        getAlbums()
-    }
 
     // MARK: - CRUD
 
     // CREATE
-    func createAlbum(albumName: String, artist: String, songs: [Song], coverArt: [URL], genres: [String], id: String) {
-        let newAlbum = Album(artist: artist, coverArtURLs: coverArt, genres: genres, id: id, name: albumName, songs: songs)
+    func createAlbum(albumName: String, artist: String, songs: [Song] = [], coverArt: [URL] = [], genres: [String] = [], id: String = UUID().uuidString) {
+        let newAlbum = Album(name: albumName, artist: artist, songs: songs, coverArtURLs: coverArt, genres: genres, id: id)
+        
         albums.append(newAlbum)
+        
         put(album: newAlbum)
     }
     
-    func createSong(title: String, duration: String, id: String) -> Song {
+    func createSong(title: String, duration: String, id: String = UUID().uuidString) -> Song {
         return Song(duration: duration, id: id, title: title)
     }
     
@@ -81,20 +77,23 @@ class AlbumController {
         URLSession.shared.dataTask(with: requestURL) { data, response, error in
             
             guard error == nil else {
-                print("Error fetching data from server: \(error!)")
+                print("Error fetching album data from server: \(error!)")
                 DispatchQueue.main.async { completion(.otherError) }
                 return
             }
             
             guard let data = data else {
-                print("No data returned by data task.")
+                print("No album data returned by data task.")
                 DispatchQueue.main.async { completion(.badData) }
                 return
             }
             
             do {
-                //self.albums = Array(try JSONDecoder().decode([String: Album].self, from: data).values)
-                self.albums = try JSONDecoder().decode([Album].self, from: data)
+                self.albums = Array(try JSONDecoder().decode([String: Album].self, from: data).values)
+                print("Successfully decoded data from server for \(self.albums.count) albums!")
+                for album in self.albums {
+                    print("\t\"\(album.name)\"")
+                }
                 DispatchQueue.main.async { completion(nil) }
             } catch {
                 print("Error decoding data from the server: \(error)")
@@ -106,25 +105,30 @@ class AlbumController {
     
     // PUT data to server
     private func put(album: Album, completion: @escaping CompletionHandler = { _ in }) {
-        let requestURL = baseURL.appendingPathExtension("json")
+        let requestURL = baseURL
+            .appendingPathComponent(album.id)
+            .appendingPathExtension("json")
+        
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
         
         do {
-            request.httpBody = try JSONEncoder().encode(albums)
+            request.httpBody = try JSONEncoder().encode(album)
+            print("Successfully encoded album data for \"\(album.name)\"!")
         } catch {
-            print("Error encoding data: \(error)")
+            print("Error encoding data for \"\(album.name)\": \(error)")
             completion(.encodingError)
             return
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             guard error == nil else {
-                print("Error PUTting data to server: \(error!)")
+                print("Error PUTting data to server for \"\(album.name)\": \(error!)")
                 DispatchQueue.main.async { completion(.otherError) }
                 return
             }
             
+            print("Successfully PUT album data for \"\(album.name)\" to server!")
             DispatchQueue.main.async { completion(nil) }
             
         }.resume()
@@ -138,47 +142,38 @@ class AlbumController {
 // MARK: - Codable Testing Functions
 
 extension AlbumController {
-    func testDecodingExampleAlbum() {
+    @discardableResult func testDecodingExampleAlbum() -> Album? {
+        defer { print("DONE: AlbumController.testDecodingExampleAlbum()\n") }
+        print("AlbumController.testDecodingExampleAlbum()")
         guard let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else {
             print("Error: Could not locate JSON file in App bundle.")
-            return
+            return nil
         }
         
         do {
             let jsonData = try Data(contentsOf: urlPath)
-            let _ = try JSONDecoder().decode(Album.self, from: jsonData)
+            let decodedData = try JSONDecoder().decode(Album.self, from: jsonData)
+            print("Successfully decoded data from JSON file!")
+            //print(String(data: jsonData, encoding: .utf8)!)
+            return decodedData
         } catch {
             print("Error decoding data from JSON file: \(error).")
-            return
+            return nil
         }
-        
-        print("Successfully decoded data from JSON file!")
     }
     
     func testEncodingExampleAlbum() {
-        guard let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else {
-            print("Error: Could not locate JSON file in App bundle.")
-            return
+        defer { print("DONE: AlbumController.testEncodingExampleAlbum()\n") }
+        print("AlbumController.testEncodingExampleAlbum()")
+        if let decodedData = testDecodingExampleAlbum() {
+            print("AlbumController.testEncodingExampleAlbum()")
+            do {
+                let _ = try JSONEncoder().encode(decodedData)
+                print("Successfully encoded data back into JSON!")
+                //print(String(data: encodedData, encoding: .utf8)!)
+            } catch {
+                print("Error encoding album back into JSON: \(error).")
+            }
         }
-        
-        let album: Album
-        
-        do {
-            let jsonData = try Data(contentsOf: urlPath)
-            album = try JSONDecoder().decode(Album.self, from: jsonData)
-        } catch {
-            print("Error decoding data from JSON file: \(error).")
-            return
-        }
-                
-        do {
-            let _ = try JSONEncoder().encode(album)
-        } catch {
-            print("Error encoding album back into JSON: \(error).")
-            return
-        }
-        
-        print("Successfully encoded data back into JSON!")
-        
     }
 }

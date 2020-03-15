@@ -9,10 +9,15 @@
 import Foundation
 
 struct Song {
+    
+    // MARK: - Properties
+
     var duration: String
     var id: String
     var title: String
     
+    // MARK: - Coding Keys
+
     enum SongKeys: String, CodingKey {
         case duration
         case id
@@ -30,6 +35,8 @@ struct Song {
 
 extension Song: Codable {
     
+    // MARK: - Decoder
+
     init(from decoder: Decoder) throws {
         let jsonContainer = try decoder.container(keyedBy: SongKeys.self)
         let durationKeyedContainer = try jsonContainer.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
@@ -40,6 +47,8 @@ extension Song: Codable {
         self.title = try nameKeyedContainer.decode(String.self, forKey: .title)
     }
     
+    // MARK: - Encoder
+
     func encode(to encoder: Encoder) throws {
         var jsonContainer = encoder.container(keyedBy: SongKeys.self)
         var durationKeyedContainer = jsonContainer.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)

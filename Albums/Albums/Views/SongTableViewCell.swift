@@ -8,6 +8,7 @@
 
 protocol SongTableViewCellDelegate: class {
     func addSong(with title: String, duration: String)
+    func updateSong(_ song: Song)
 }
 
 import UIKit
@@ -16,7 +17,12 @@ class SongTableViewCell: UITableViewCell {
     
     // MARK: - Properties
 
-    var song: Song?
+    var song: Song? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     weak var delegate: SongTableViewCellDelegate?
     
     // MARK: - Outlets
@@ -26,6 +32,20 @@ class SongTableViewCell: UITableViewCell {
     @IBOutlet weak var addSongButton: UIButton!
     
     // MARK: - Actions
+    
+    @IBAction func songTitleTextFieldWasEdited(_ sender: UITextField) {
+        guard song != nil,
+            let songTitle = sender.text else { return }
+        song!.title = songTitle
+        delegate?.updateSong(song!)
+    }
+    
+    @IBAction func durationTextFieldWasEdited(_ sender: UITextField) {
+        guard song != nil,
+            let duration = sender.text else { return }
+        song!.duration = duration
+        delegate?.updateSong(song!)
+    }
     
     @IBAction func addSongButtonTapped(_ sender: UIButton) {
         guard let title = songTitleTextField.text,
@@ -43,6 +63,8 @@ class SongTableViewCell: UITableViewCell {
             songTitleTextField.text = song.title
             durationTextField.text = song.duration
             addSongButton.isHidden = true
+        } else {
+            addSongButton.isHidden = false
         }
     }
     

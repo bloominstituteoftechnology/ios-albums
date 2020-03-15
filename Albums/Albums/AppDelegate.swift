@@ -11,23 +11,12 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let ac = AlbumController()
+        
 //        ac.testDecodingExampleAlbum()
 //        ac.testEncodingExampleAlbum()
-        let song1 = ac.createSong(title: "Song 1", duration: "1:00", id: "1")
-        let song2 = ac.createSong(title: "Song 2", duration: "2:00", id: "2")
-        let song3 = ac.createSong(title: "Song 3", duration: "3:00", id: "3")
-        let songs = [song1, song2, song3]
-        ac.createAlbum(albumName: "Test Album Name",
-                       artist: "Test Artist",
-                       songs: songs,
-                       coverArt: [URL(fileURLWithPath: "http://blog.iso50.com/wp-content/uploads/2013/12/Awake-450.jpg")],
-                       genres: ["test genre"],
-                       id: "1")
+        
         return true
     }
 

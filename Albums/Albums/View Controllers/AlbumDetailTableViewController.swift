@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol AlbumDetailTableViewControllerDelegate: class {
+    func updatedAlbumDataSource()
+}
 class AlbumDetailTableViewController: UITableViewController {
 
     // MARK: - Properties
@@ -21,6 +24,8 @@ class AlbumDetailTableViewController: UITableViewController {
     }
 
     var tempSongs: [Song] = []
+    
+    weak var delegate: AlbumDetailTableViewControllerDelegate?
     
     // MARK: - Outlets
     
@@ -38,7 +43,7 @@ class AlbumDetailTableViewController: UITableViewController {
             let coverURLsString = coverURLsTextField.text else { return }
         
         let genres = genresString.components(separatedBy: ", ")
-        let coverArtURLs = coverURLsString.components(separatedBy: ", ").map { URL(fileURLWithPath: $0) }
+        let coverArtURLs = coverURLsString.components(separatedBy: ", ").compactMap { URL(string: $0) }
         
         if let album = album {
             albumController?.update(album: album,
@@ -56,6 +61,9 @@ class AlbumDetailTableViewController: UITableViewController {
                                          genres: genres,
                                          id: UUID().uuidString)
         }
+        
+        delegate?.updatedAlbumDataSource()
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Private Methods
@@ -63,14 +71,13 @@ class AlbumDetailTableViewController: UITableViewController {
     private func updateViews() {
         self.title = album?.name ?? "New Album"
         
-        if let album = album {
-            albumNameTextField.text = album.name
-            artistTextField.text = album.artist
-            genresTextField.text = album.genres.joined(separator: ", ")
-            let urlStrings = album.coverArtURLs.map { $0.absoluteString }
-            coverURLsTextField.text = urlStrings.joined(separator: ", ")
-            tempSongs = album.songs
-        }
+        guard let album = album, self.isViewLoaded else { return }
+        
+        albumNameTextField.text = album.name
+        artistTextField.text = album.artist
+        genresTextField.text = album.genres.joined(separator: ", ")
+        coverURLsTextField.text = album.coverArtURLs.map { $0.absoluteString }.joined(separator: ", ")
+        tempSongs = album.songs
     }
     
     // MARK: - View Controller Lifecycle
@@ -90,15 +97,21 @@ class AlbumDetailTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongTableViewCell else { return UITableViewCell() }
 
         cell.delegate = self
+        
+        if indexPath.row < tempSongs.count {
+            cell.song = tempSongs[indexPath.row]
+        }
 
         return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row > tempSongs.count {
-            return 140.0
+        if indexPath.row == tempSongs.count {
+            // Set height of last tableView cell (numRows = tempSongs.count + 1)
+            return 141.0
         }
-        return 100.0
+        // Set height of all other cells
+        return 98.0
     }
 }
 
@@ -108,8 +121,17 @@ extension AlbumDetailTableViewController: SongTableViewCellDelegate {
     func addSong(with title: String, duration: String) {
         let song = Song(duration: duration, id: UUID().uuidString, title: title)
         tempSongs.append(song)
+        
         tableView.reloadData()
+        
         let indexPath = IndexPath(row: tempSongs.count, section: 0)
         tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+    }
+    
+    func updateSong(_ song: Song) {
+        guard let songIndex = tempSongs.firstIndex(where: { $0.id == song.id }) else { return }
+        
+        tempSongs[songIndex].title = song.title
+        tempSongs[songIndex].duration = song.duration
     }
 }
