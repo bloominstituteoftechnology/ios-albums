@@ -10,26 +10,6 @@ import Foundation
 
 class AlbumController {
     
-    // MARK: - Custom Types
-
-    enum HTTPMethod: String {
-        case get = "GET"
-        case post = "POST"
-        case put = "PUT"
-        case delete = "DELETE"
-    }
-
-    enum NetworkError: Error {
-        case noAuth
-        case badAuth
-        case otherError
-        case badData
-        case decodingError
-        case encodingError
-    }
-    
-    typealias CompletionHandler = (NetworkError?) -> Void
-    
     // MARK: - Properties
 
     var albums: [Album] = []
@@ -38,32 +18,32 @@ class AlbumController {
     // MARK: - CRUD
 
     // CREATE
-    func createAlbum(albumName: String, artist: String, songs: [Song] = [], coverArt: [URL] = [], genres: [String] = [], id: String = UUID().uuidString) {
-        let newAlbum = Album(name: albumName, artist: artist, songs: songs, coverArtURLs: coverArt, genres: genres, id: id)
+    func createAlbum(albumName: String, artist: String, coverArt: [URL] = [], genres: [String] = [], songs: [Song] = []) {
+        let newAlbum = Album(name: albumName, artist: artist, identifier: UUID(), coverArt: coverArt, genres: genres, songs: songs)
         
         albums.append(newAlbum)
         
         put(album: newAlbum)
     }
     
-    func createSong(title: String, duration: String, id: String = UUID().uuidString) -> Song {
-        return Song(duration: duration, id: id, title: title)
+    func createSong(title: String, duration: String) -> Song {
+        return Song(title: title, duration: duration, identifier: UUID())
     }
     
     // UPDATE
-    func update(album: Album, albumName: String, artist: String, songs: [Song], coverArt: [URL], genres: [String], id: String) {
-        guard let index = albums.firstIndex(where: { $0.id == id }) else { return }
+    func update(album: Album, withName albumName: String, artist: String, coverArt: [URL], genres: [String], songs: [Song]) {
+        guard let index = albums.firstIndex(where: { $0.identifier == album.identifier }) else { return }
         
+        // Update local array
         albums[index].name = albumName
         albums[index].artist = artist
-        albums[index].songs = songs
-        albums[index].coverArtURLs = coverArt
+        albums[index].coverArt = coverArt
         albums[index].genres = genres
-        albums[index].id = id
+        albums[index].songs = songs
         
+        // Update server API database
         put(album: albums[index])
     }
-    
     
     // DELETE
     // Not part of MVP
@@ -75,38 +55,39 @@ class AlbumController {
         let requestURL = baseURL.appendingPathExtension("json")
         
         URLSession.shared.dataTask(with: requestURL) { data, response, error in
-            
             guard error == nil else {
-                print("Error fetching album data from server: \(error!)")
+                print("Error fetching data from server: \(error!)")
                 DispatchQueue.main.async { completion(.otherError) }
                 return
             }
             
             guard let data = data else {
-                print("No album data returned by data task.")
+                print("No data returned by data task.")
                 DispatchQueue.main.async { completion(.badData) }
                 return
             }
             
             do {
+                // [{String: Album}] --> [Album]
                 self.albums = Array(try JSONDecoder().decode([String: Album].self, from: data).values)
                 print("Successfully decoded data from server for \(self.albums.count) albums!")
+                var albumCount = 0
                 for album in self.albums {
-                    print("\t\"\(album.name)\"")
+                    albumCount += 1
+                    print("\t\(albumCount). \"\(album.name)\"")
                 }
                 DispatchQueue.main.async { completion(nil) }
             } catch {
                 print("Error decoding data from the server: \(error)")
                 DispatchQueue.main.async { completion(.decodingError) }
             }
-            
         }.resume()
     }
     
     // PUT data to server
     private func put(album: Album, completion: @escaping CompletionHandler = { _ in }) {
         let requestURL = baseURL
-            .appendingPathComponent(album.id)
+            .appendingPathComponent(album.identifier.uuidString)
             .appendingPathExtension("json")
         
         var request = URLRequest(url: requestURL)
@@ -121,7 +102,7 @@ class AlbumController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
+        URLSession.shared.dataTask(with: request) { _, _, error in
             guard error == nil else {
                 print("Error PUTting data to server for \"\(album.name)\": \(error!)")
                 DispatchQueue.main.async { completion(.otherError) }
@@ -139,8 +120,22 @@ class AlbumController {
     
 }
 
-// MARK: - Codable Testing Functions
+// MARK: - Helper Enums
 
+extension AlbumController {
+    typealias CompletionHandler = (NetworkError?) -> Void
+    
+    enum HTTPMethod: String {
+        case get = "GET", post = "POST", put = "PUT", delete = "DELETE"
+    }
+    
+    enum NetworkError: Error {
+        case noAuth, badAuth, otherError, badData, decodingError, encodingError
+    }
+}
+
+// MARK: - Codable Testing Functions
+/*
 extension AlbumController {
     @discardableResult func testDecodingExampleAlbum() -> Album? {
         defer { print("DONE: AlbumController.testDecodingExampleAlbum()\n") }
@@ -177,3 +172,4 @@ extension AlbumController {
         }
     }
 }
+*/

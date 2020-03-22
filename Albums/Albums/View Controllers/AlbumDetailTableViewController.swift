@@ -34,6 +34,13 @@ class AlbumDetailTableViewController: UITableViewController {
     @IBOutlet weak var genresTextField: UITextField!
     @IBOutlet weak var coverURLsTextField: UITextField!
     
+    // MARK: - View Controller Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViews()
+    }
+    
     // MARK: - Actions
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
@@ -47,22 +54,20 @@ class AlbumDetailTableViewController: UITableViewController {
         
         if let album = album {
             albumController?.update(album: album,
-                                    albumName: albumName,
+                                    withName: albumName,
                                     artist: artist,
-                                    songs: tempSongs,
                                     coverArt: coverArtURLs,
                                     genres: genres,
-                                    id: album.id)
+                                    songs: tempSongs)
         } else {
             albumController?.createAlbum(albumName: albumName,
                                          artist: artist,
-                                         songs: tempSongs,
                                          coverArt: coverArtURLs,
                                          genres: genres,
-                                         id: UUID().uuidString)
+                                         songs: tempSongs)
         }
         
-        delegate?.updatedAlbumDataSource()
+        delegate?.updatedAlbumDataSource() // Only needed if presented modally
         navigationController?.popViewController(animated: true)
     }
     
@@ -71,20 +76,13 @@ class AlbumDetailTableViewController: UITableViewController {
     private func updateViews() {
         self.title = album?.name ?? "New Album"
         
-        guard let album = album, self.isViewLoaded else { return }
+        guard let album = album, isViewLoaded else { return }
         
         albumNameTextField.text = album.name
         artistTextField.text = album.artist
         genresTextField.text = album.genres.joined(separator: ", ")
-        coverURLsTextField.text = album.coverArtURLs.map { $0.absoluteString }.joined(separator: ", ")
+        coverURLsTextField.text = album.coverArt.map { $0.absoluteString }.joined(separator: ", ")
         tempSongs = album.songs
-    }
-    
-    // MARK: - View Controller Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateViews()
     }
 
     // MARK: - Table view data source
@@ -106,30 +104,25 @@ class AlbumDetailTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == tempSongs.count {
-            // Set height of last tableView cell (numRows = tempSongs.count + 1)
-            return 141.0
-        }
-        // Set height of all other cells
-        return 98.0
+        return indexPath.row == tempSongs.count ? 141.0 : 98.0
     }
 }
 
 // MARK: - Song TableViewCell Delegate
 
 extension AlbumDetailTableViewController: SongTableViewCellDelegate {
-    func addSong(with title: String, duration: String) {
-        let song = Song(duration: duration, id: UUID().uuidString, title: title)
-        tempSongs.append(song)
+    func addSong(title: String, duration: String) {
+        guard let song = albumController?.createSong(title: title, duration: duration) else { return }
         
+        tempSongs.append(song)
         tableView.reloadData()
         
         let indexPath = IndexPath(row: tempSongs.count, section: 0)
-        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
     
     func updateSong(_ song: Song) {
-        guard let songIndex = tempSongs.firstIndex(where: { $0.id == song.id }) else { return }
+        guard let songIndex = tempSongs.firstIndex(where: { $0.identifier == song.identifier }) else { return }
         
         tempSongs[songIndex].title = song.title
         tempSongs[songIndex].duration = song.duration

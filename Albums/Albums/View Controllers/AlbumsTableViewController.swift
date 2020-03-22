@@ -12,7 +12,7 @@ class AlbumsTableViewController: UITableViewController {
 
     // MARK: - Properties
 
-    var albumController = AlbumController()
+    let albumController = AlbumController()
     
     // MARK: - ViewController Lifecycle
 
@@ -20,27 +20,34 @@ class AlbumsTableViewController: UITableViewController {
         super.viewDidLoad()
         fetchAlbums()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchAlbums()
+    }
 
     // MARK: - Private Methods
     
     private func fetchAlbums() {
-        albumController.getAlbums(completion: { (error) in
-            if error == nil {
-                self.tableView.reloadData()
+        albumController.getAlbums { error in
+            if let error = error {
+                print("Error getting albums: \(error)")
             }
-        })
+            DispatchQueue.main.async { self.tableView.reloadData() }
+        }
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return albumController.albums.count// ?? 0
+        return albumController.albums.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
-
         let album = albumController.albums[indexPath.row]
+        
         cell.textLabel?.text = album.name
         cell.detailTextLabel?.text = album.artist
 
@@ -53,23 +60,22 @@ class AlbumsTableViewController: UITableViewController {
         if let detailVC = segue.destination as? AlbumDetailTableViewController {
             
             switch segue.identifier {
-                
             case "ShowAddAlbumSegue":
                 detailVC.albumController = albumController
                 detailVC.delegate = self
-                
             case "ShowAlbumDetailSegue":
                 guard let indexPath = tableView.indexPathForSelectedRow else { return }
                 detailVC.albumController = albumController
-                detailVC.album = albumController.albums[indexPath.row]
                 detailVC.delegate = self
-                
+                detailVC.album = albumController.albums[indexPath.row]
             default:
                 return
             }
         }
     }
 }
+
+// MARK: - Album DetailVC Delegate
 
 extension AlbumsTableViewController: AlbumDetailTableViewControllerDelegate {
     func updatedAlbumDataSource() {

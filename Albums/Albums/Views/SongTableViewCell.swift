@@ -6,12 +6,12 @@
 //  Copyright © 2020 David Wright. All rights reserved.
 //
 
+import UIKit
+
 protocol SongTableViewCellDelegate: class {
-    func addSong(with title: String, duration: String)
+    func addSong(title: String, duration: String)
     func updateSong(_ song: Song)
 }
-
-import UIKit
 
 class SongTableViewCell: UITableViewCell {
     
@@ -50,10 +50,10 @@ class SongTableViewCell: UITableViewCell {
     @IBAction func addSongButtonTapped(_ sender: UIButton) {
         guard let title = songTitleTextField.text,
             let duration = durationTextField.text,
-            !duration.isEmpty,
-            !title.isEmpty else { return }
+            !title.isEmpty,
+            !duration.isEmpty else { return }
         
-        delegate?.addSong(with: title, duration: duration)
+        delegate?.addSong(title: title, duration: duration)
     }
 
     // MARK: - Private Methods
