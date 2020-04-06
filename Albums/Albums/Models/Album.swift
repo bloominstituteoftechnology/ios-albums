@@ -37,7 +37,17 @@ struct Album: Codable {
     let name: String
     let songs: [Song]
     
-    // MARK: - Initializer
+    // MARK: - Initializers
+    
+    init(artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) {
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.id = id
+        self.name = name
+        self.songs = songs
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumCodey.self)
         

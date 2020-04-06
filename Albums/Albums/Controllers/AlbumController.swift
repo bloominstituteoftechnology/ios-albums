@@ -72,6 +72,21 @@ class AlbumController {
         
     }
     
+    func createAlbum(artist: String, coverArt: [String], name: String, songs: [Song], genres: [String]) {
+        let URLs = coverArt.compactMap { URL(string: $0) }
+        
+        let newAlbum = Album(artist: artist, coverArt: URLs, genres: genres, id: UUID().uuidString, name: name, songs: songs)
+        
+        self.albums.append(newAlbum)
+        
+        put(album: newAlbum) { (error) in
+            if let error = error {
+                NSLog("Error sending newly created album to the API : \(error)")
+            }
+        }
+        
+    }
+    
     func testDecodingExampleAlbum() {
         let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
         let codedData = try! Data(contentsOf: urlPath)
