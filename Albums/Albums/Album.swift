@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct CoverArt: Decodable {
+    let url: String
+}
+
 struct Album: Decodable {
     
     /// This is about conforming to the data that we are reading in. So case name doesn't have to match fullname
@@ -24,8 +28,8 @@ struct Album: Decodable {
     var id: UUID         // 5E58FA0F-7DBD-4F1D-956F-89756CF1EB22
     var album: String    // Weezer (The Blue Album)
     var artist: String   // Weezer
-    var genres: [String] // Alternative
-    var coverArt: [URL]  // https://lastfm-img2.akamaized.net/i/u/174s/1918fe81bb68441d96b2247682bfda21.png
+    var genres: String   // Alternative
+    var coverArt: String // https://lastfm-img2.akamaized.net/i/u/174s/1918fe81bb68441d96b2247682bfda21.png
     var songs: [Song]
 
     init(from decoder: Decoder) throws {
@@ -35,13 +39,25 @@ struct Album: Decodable {
         album = try container.decode(String.self, forKey: .album)
         artist = try container.decode(String.self, forKey: .artist)
 
-        coverArt = try container.decode([URL].self, forKey: .coverArt)
+        let coverArtArray = try container.decode([CoverArt].self, forKey: .coverArt)
+        coverArt = [String](coverArtArray.map { $0.url }).joined(separator:", ")
+        print("\(coverArt)")
 
         // URL is codable, so we can decode an array of them
-        genres = try container.decode([String].self, forKey: .genres)
+        let genresArray = try container.decode([String].self, forKey: .genres)
+        genres = genresArray.joined(separator:", ")
+        print("\(genresArray)")
 
         songs = try container.decode([Song].self, forKey: .songs)
     }
+}
+
+struct SongDuration: Decodable {
+    let duration: String
+}
+
+struct SongTitle: Decodable {
+    let title: String
 }
 
 struct Song: Decodable {

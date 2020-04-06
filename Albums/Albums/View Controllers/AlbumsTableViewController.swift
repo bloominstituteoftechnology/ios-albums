@@ -10,6 +10,8 @@ import UIKit
 
 class AlbumsTableViewController: UITableViewController {
 
+    let albumController = AlbumController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +20,8 @@ class AlbumsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        albumController.testDecodingExampleAlbum()
     }
 
     // MARK: - Table view data source
