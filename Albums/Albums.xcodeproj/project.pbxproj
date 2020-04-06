@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		BBC5B166243BC292005CB6AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5B165243BC292005CB6AB /* AppDelegate.swift */; };
 		BBC5B168243BC292005CB6AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5B167243BC292005CB6AB /* SceneDelegate.swift */; };
-		BBC5B16A243BC292005CB6AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5B169243BC292005CB6AB /* ViewController.swift */; };
 		BBC5B16D243BC292005CB6AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC5B16B243BC292005CB6AB /* Main.storyboard */; };
 		BBC5B16F243BC295005CB6AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBC5B16E243BC295005CB6AB /* Assets.xcassets */; };
 		BBC5B172243BC295005CB6AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC5B170243BC295005CB6AB /* LaunchScreen.storyboard */; };
+		BBC5B17F243BC9D5005CB6AB /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5B17E243BC9D5005CB6AB /* AlbumsTableViewController.swift */; };
+		BBC5B181243BCC32005CB6AB /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5B180243BCC32005CB6AB /* AlbumDetailTableViewController.swift */; };
+		BBC5B183243BCE30005CB6AB /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5B182243BCE30005CB6AB /* SongTableViewCell.swift */; };
+		BBC5B185243BCF8D005CB6AB /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5B184243BCF8D005CB6AB /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BBC5B162243BC292005CB6AB /* Albums.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albums.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC5B165243BC292005CB6AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBC5B167243BC292005CB6AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BBC5B169243BC292005CB6AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BBC5B16C243BC292005CB6AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BBC5B16E243BC295005CB6AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBC5B171243BC295005CB6AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BBC5B173243BC295005CB6AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBC5B17E243BC9D5005CB6AB /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		BBC5B180243BCC32005CB6AB /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		BBC5B182243BCE30005CB6AB /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		BBC5B184243BCF8D005CB6AB /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +94,9 @@
 		BBC5B17B243BC2E6005CB6AB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BBC5B169243BC292005CB6AB /* ViewController.swift */,
+				BBC5B17E243BC9D5005CB6AB /* AlbumsTableViewController.swift */,
+				BBC5B180243BCC32005CB6AB /* AlbumDetailTableViewController.swift */,
+				BBC5B182243BCE30005CB6AB /* SongTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -96,6 +104,7 @@
 		BBC5B17C243BC314005CB6AB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BBC5B184243BCF8D005CB6AB /* Album.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,9 +187,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBC5B16A243BC292005CB6AB /* ViewController.swift in Sources */,
+				BBC5B17F243BC9D5005CB6AB /* AlbumsTableViewController.swift in Sources */,
 				BBC5B166243BC292005CB6AB /* AppDelegate.swift in Sources */,
+				BBC5B183243BCE30005CB6AB /* SongTableViewCell.swift in Sources */,
+				BBC5B181243BCC32005CB6AB /* AlbumDetailTableViewController.swift in Sources */,
 				BBC5B168243BC292005CB6AB /* SceneDelegate.swift in Sources */,
+				BBC5B185243BCF8D005CB6AB /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
