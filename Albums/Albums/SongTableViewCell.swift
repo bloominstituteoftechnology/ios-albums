@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SongTableViewCellDelegate: AnyObject {
-    func addSong(with title: String, duration: String)
+    func addSong(withTitle title: String, duration: String)
 }
 
 class SongTableViewCell: UITableViewCell {
@@ -26,6 +26,9 @@ class SongTableViewCell: UITableViewCell {
     
     // MARK: - IBActions
     @IBAction func addSongTapped(_ sender: UIButton) {
+        guard let title = titleTextField.text, !title.isEmpty,
+            let duration = durationTextField.text, !duration.isEmpty else { return }
+        delegate?.addSong(withTitle: title, duration: duration)
     }
     
     // MARK: - Private
