@@ -13,6 +13,7 @@
 		9C105B22243BC11000CC3714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C105B21243BC11000CC3714 /* Assets.xcassets */; };
 		9C105B25243BC11000CC3714 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C105B23243BC11000CC3714 /* LaunchScreen.storyboard */; };
 		9C105B32243BC75100CC3714 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C105B31243BC75100CC3714 /* AlbumDetailTableViewController.swift */; };
+		9C105B34243BC8C400CC3714 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C105B33243BC8C400CC3714 /* SongTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9C105B24243BC11000CC3714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C105B26243BC11000CC3714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C105B31243BC75100CC3714 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		9C105B33243BC8C400CC3714 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		9C105B2D243BC13800CC3714 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9C105B33243BC8C400CC3714 /* SongTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C105B34243BC8C400CC3714 /* SongTableViewCell.swift in Sources */,
 				9C105B19243BC10B00CC3714 /* AppDelegate.swift in Sources */,
 				9C105B32243BC75100CC3714 /* AlbumDetailTableViewController.swift in Sources */,
 				9C105B1B243BC10B00CC3714 /* SceneDelegate.swift in Sources */,
