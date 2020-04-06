@@ -17,6 +17,8 @@
 		C4491591243BBBCA0087CB06 /* AlbumListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4491590243BBBCA0087CB06 /* AlbumListUITests.swift */; };
 		C44915A0243BBD1F0087CB06 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C449159F243BBD1F0087CB06 /* AlbumsTableViewController.swift */; };
 		C44915A2243BC0950087CB06 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44915A1243BC0950087CB06 /* AlbumDetailTableViewController.swift */; };
+		C44915A5243BC5860087CB06 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44915A4243BC5860087CB06 /* SongTableViewCell.swift */; };
+		C44915A8243BC84C0087CB06 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44915A7243BC84C0087CB06 /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		C4491592243BBBCA0087CB06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C449159F243BBD1F0087CB06 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		C44915A1243BC0950087CB06 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		C44915A4243BC5860087CB06 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		C44915A7243BC84C0087CB06 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 		C449156D243BBBC50087CB06 /* AlbumList */ = {
 			isa = PBXGroup;
 			children = (
+				C44915A6243BC83B0087CB06 /* Model */,
+				C44915A3243BC5620087CB06 /* Views */,
 				C449159E243BBCEB0087CB06 /* View Controllers */,
 				C449156E243BBBC50087CB06 /* AppDelegate.swift */,
 				C4491570243BBBC50087CB06 /* SceneDelegate.swift */,
@@ -140,6 +146,22 @@
 				C44915A1243BC0950087CB06 /* AlbumDetailTableViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C44915A3243BC5620087CB06 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C44915A4243BC5860087CB06 /* SongTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C44915A6243BC83B0087CB06 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C44915A7243BC84C0087CB06 /* Album.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,10 +295,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C44915A5243BC5860087CB06 /* SongTableViewCell.swift in Sources */,
 				C4491573243BBBC50087CB06 /* ViewController.swift in Sources */,
 				C44915A0243BBD1F0087CB06 /* AlbumsTableViewController.swift in Sources */,
 				C44915A2243BC0950087CB06 /* AlbumDetailTableViewController.swift in Sources */,
 				C449156F243BBBC50087CB06 /* AppDelegate.swift in Sources */,
+				C44915A8243BC84C0087CB06 /* Album.swift in Sources */,
 				C4491571243BBBC50087CB06 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
