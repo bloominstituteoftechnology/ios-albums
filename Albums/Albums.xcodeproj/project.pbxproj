@@ -67,12 +67,12 @@
 			isa = PBXGroup;
 			children = (
 				92015100243BCB62003C0270 /* Album.swift */,
+				92015108243BE1B1003C0270 /* AlbumController.swift */,
 				92015106243BE166003C0270 /* exampleAlbum.json */,
 				920150F5243BB922003C0270 /* Resources */,
 				920150FE243BCAA2003C0270 /* SongTableViewCell.swift */,
 				920150F6243BB92B003C0270 /* Storyboards */,
 				920150FD243BC230003C0270 /* View Controllers */,
-				92015108243BE1B1003C0270 /* AlbumController.swift */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
