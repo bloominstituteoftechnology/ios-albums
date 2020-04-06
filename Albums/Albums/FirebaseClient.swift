@@ -20,6 +20,7 @@ enum NetworkError: Error {
 class FirebaseClient {
     func getAlbums(completion: @escaping (Result<[Album], NetworkError>) -> Void) {
         let request = URLRequest(url: baseURL.appendingPathExtension("json"))
+        
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(.clientError(error)))
@@ -42,6 +43,25 @@ class FirebaseClient {
             } catch {
                 completion(.failure(.decodingError(error)))
             }
+        }
+    }
+    
+    func putAlbum(_ album: Album, completion: @escaping (NetworkError?) -> Void) {
+        var request = URLRequest(url: baseURL.appendingPathComponent(album.id).appendingPathExtension("json"))
+        request.httpMethod = "PUT"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.clientError(error))
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
+                completion(.invalidResponseCode(response.statusCode))
+                return
+            }
+            
+            completion(nil)
         }
     }
 }
