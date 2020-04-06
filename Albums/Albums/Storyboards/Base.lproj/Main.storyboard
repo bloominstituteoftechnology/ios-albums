@@ -60,10 +60,10 @@
             </objects>
             <point key="canvasLocation" x="1413.0434782608697" y="-80.357142857142847"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Album Detail Table View Controller-->
         <scene sceneID="NYg-XI-2rb">
             <objects>
-                <tableViewController id="ByQ-fJ-yOm" sceneMemberID="viewController">
+                <tableViewController id="ByQ-fJ-yOm" customClass="AlbumDetailTableViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZCG-SE-hj6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,8 +115,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="jEF-e4-ptn">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="KOe-X1-a7i"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="KOe-X1-a7i">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="ByQ-fJ-yOm" id="hmo-SU-NbQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="albumNameField" destination="tR7-Us-tzt" id="uAK-3A-aN1"/>
+                        <outlet property="artistNameField" destination="KpE-Mn-0yg" id="l5h-Qs-B5k"/>
+                        <outlet property="coverURLsField" destination="A7D-EI-CMw" id="oWc-1M-8rX"/>
+                        <outlet property="genresField" destination="TbJ-bp-wss" id="kjx-ik-DYw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uRK-vf-PTf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
