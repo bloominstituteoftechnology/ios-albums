@@ -39,7 +39,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="SuU-Ka-IJ1" kind="show" id="jhC-Jm-Q6d"/>
+                                    <segue destination="SuU-Ka-IJ1" kind="show" identifier="ShowAlbumDetailSegue" id="jhC-Jm-Q6d"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -51,7 +51,7 @@
                     <navigationItem key="navigationItem" title="Albums" id="LEK-PB-AVw">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6Va-dJ-si1">
                             <connections>
-                                <segue destination="SuU-Ka-IJ1" kind="show" id="9BV-Md-O0q"/>
+                                <segue destination="SuU-Ka-IJ1" kind="show" identifier="ShowNewAlbumSegue" id="9BV-Md-O0q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

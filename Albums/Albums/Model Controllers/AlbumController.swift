@@ -83,10 +83,9 @@ class AlbumController {
             }
             
             do {
-                //.values will return us just the values and ignore the String key
                 let album = Array(try JSONDecoder().decode([String : Album].self, from: data).values)
-                self.albums.append(contentsOf: album)
-                #warning("may need to do something else here")
+                self.albums = album
+                completion(nil)
             } catch {
                 NSLog("Error decoding or saving data from Firebase: \(error)")
                 completion(error)
