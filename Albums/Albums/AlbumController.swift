@@ -15,13 +15,15 @@ class AlbumController {
     
     func getAlbums(completion: @escaping (Bool) -> Void) {
         firebaseClient.getAlbums { result in
-            switch result {
-            case .failure(let networkError):
-                print(networkError)
-                completion(false)
-            case .success(let albums):
-                self.albums = albums
-                completion(true)
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let networkError):
+                    print(networkError)
+                    completion(false)
+                case .success(let albums):
+                    self.albums = albums
+                    completion(true)
+                }
             }
         }
     }

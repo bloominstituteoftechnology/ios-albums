@@ -10,6 +10,11 @@ import UIKit
 
 class AlbumDetailTableViewController: UITableViewController {
     
+    // MARK: - Public Properties
+    
+    var albumController: AlbumController?
+    var album: Album?
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var nameTextField: UITextField!
