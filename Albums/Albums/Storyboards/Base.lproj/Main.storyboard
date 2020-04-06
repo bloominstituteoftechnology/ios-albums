@@ -63,7 +63,7 @@
         <!--Title-->
         <scene sceneID="d2G-q0-SWp">
             <objects>
-                <tableViewController id="gOB-K9-9PC" sceneMemberID="viewController">
+                <tableViewController id="gOB-K9-9PC" customClass="AlbumDetailTableViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dvo-6K-c8L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -122,8 +122,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="8VP-vE-7DK">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="31F-bf-Epy"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="31F-bf-Epy">
+                            <connections>
+                                <action selector="saveButton:" destination="gOB-K9-9PC" id="UuB-Ru-jSA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="albumTextField" destination="SDD-b1-5bk" id="JOu-lp-Gqk"/>
+                        <outlet property="artistTextField" destination="azD-11-Dd8" id="z5k-Fq-Yg3"/>
+                        <outlet property="coverArtTextField" destination="nW1-kA-kxv" id="bIK-F6-nEV"/>
+                        <outlet property="genreTextField" destination="lRp-hy-hIJ" id="UIJ-vJ-Pca"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I0h-z5-jMv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
