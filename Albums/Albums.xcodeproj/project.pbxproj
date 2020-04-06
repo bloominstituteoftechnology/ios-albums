@@ -15,6 +15,7 @@
 		920150F8243BBB34003C0270 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920150F7243BBB34003C0270 /* AlbumsTableViewController.swift */; };
 		920150FC243BC227003C0270 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920150FB243BC227003C0270 /* AlbumDetailTableViewController.swift */; };
 		920150FF243BCAA2003C0270 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920150FE243BCAA2003C0270 /* SongTableViewCell.swift */; };
+		92015101243BCB62003C0270 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92015100243BCB62003C0270 /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		920150F7243BBB34003C0270 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		920150FB243BC227003C0270 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		920150FE243BCAA2003C0270 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		92015100243BCB62003C0270 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				920150F5243BB922003C0270 /* Resources */,
 				920150FE243BCAA2003C0270 /* SongTableViewCell.swift */,
+				92015100243BCB62003C0270 /* Album.swift */,
 				920150F6243BB92B003C0270 /* Storyboards */,
 				920150FD243BC230003C0270 /* View Controllers */,
 			);
@@ -173,6 +176,7 @@
 				920150FF243BCAA2003C0270 /* SongTableViewCell.swift in Sources */,
 				920150FC243BC227003C0270 /* AlbumDetailTableViewController.swift in Sources */,
 				920150E4243BB902003C0270 /* SceneDelegate.swift in Sources */,
+				92015101243BCB62003C0270 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
