@@ -39,8 +39,9 @@ struct Album: Decodable {
         name = try container.decode(String.self, forKey: .name)
         songs = try container.decode([Song].self, forKey: .songs)
         
-        let coverartContainer = try container.nestedContainer(keyedBy: CoverArtKeys.self, forKey: .coverArt)
-        let coverArtURLString = try coverartContainer.decode(String.self, forKey: .url)
+        //let coverartContainer = try container.nestedContainer(keyedBy: CoverArtKeys.self, forKey: .coverArt)
+        var coverartContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
+        let coverArtURLString = try coverartContainer.decode(String.self)
         var coverArtURLs: [URL] = []
         
         if let coverArtURL = URL(string: coverArtURLString) {

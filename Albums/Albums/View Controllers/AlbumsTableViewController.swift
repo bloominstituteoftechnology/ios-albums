@@ -9,10 +9,14 @@
 import UIKit
 
 class AlbumsTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    
+    let albumController = AlbumController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        albumController.testDecodingExampleAlbum()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
