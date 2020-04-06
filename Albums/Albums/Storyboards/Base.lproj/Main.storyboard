@@ -38,6 +38,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="gOB-K9-9PC" kind="show" identifier="ViewAlbum" id="WEH-vq-JzF"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -46,12 +49,47 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Albums" id="LCe-5o-40b">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="zrH-Kf-wL1"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="zrH-Kf-wL1">
+                            <connections>
+                                <segue destination="gOB-K9-9PC" kind="show" identifier="AddAlbum" id="zdB-PL-Csr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WXj-gn-iZz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-130" y="107"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="d2G-q0-SWp">
+            <objects>
+                <tableViewController id="gOB-K9-9PC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dvo-6K-c8L">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="PFS-dL-ZDB">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PFS-dL-ZDB" id="jBU-Bd-A0s">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gOB-K9-9PC" id="tCI-u4-kE0"/>
+                            <outlet property="delegate" destination="gOB-K9-9PC" id="heq-4b-SxT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="8VP-vE-7DK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="31F-bf-Epy"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I0h-z5-jMv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="613" y="106"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fvZ-mg-BbN">
@@ -70,4 +108,7 @@
             <point key="canvasLocation" x="-1049" y="107"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="WEH-vq-JzF"/>
+    </inferredMetricsTieBreakers>
 </document>
