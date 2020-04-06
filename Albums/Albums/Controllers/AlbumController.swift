@@ -91,6 +91,29 @@ class AlbumController {
         return Song(duration: duration, id: UUID().uuidString, title: title)
     }
     
+    func update(for album: Album, artist: String, coverArt: [String], genres: [String], name: String, songs: [Song]) {
+        
+        let editAlbumIndex = albums.firstIndex(where: {$0.id == album.id})!
+        
+        albums[editAlbumIndex].artist = artist
+        
+        let URLs = coverArt.compactMap { URL(string: $0) }
+        
+        albums[editAlbumIndex].coverArt = URLs
+        
+        albums[editAlbumIndex].name = name
+        
+        albums[editAlbumIndex].genres = genres
+        
+        albums[editAlbumIndex].songs = songs
+        
+        put(album: albums[editAlbumIndex]) { error in
+            if let error = error {
+                NSLog("Error error sending updated album to API : \(error)")
+            }
+        }
+        
+    }
     
     func testDecodingExampleAlbum() {
         let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!

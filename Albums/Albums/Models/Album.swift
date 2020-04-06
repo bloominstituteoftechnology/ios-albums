@@ -30,12 +30,12 @@ struct Album: Codable {
     
     // MARK: - Properties
     
-    let artist: String
-    let coverArt : [URL]
-    let genres: [String]
+    var artist: String
+    var coverArt : [URL]
+    var genres: [String]
     let id: String
-    let name: String
-    let songs: [Song]
+    var name: String
+    var songs: [Song]
     
     // MARK: - Initializers
     
