@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Albums-->
         <scene sceneID="1LS-NL-uTK">
             <objects>
-                <tableViewController id="HjL-G9-QWy" sceneMemberID="viewController">
+                <tableViewController id="HjL-G9-QWy" customClass="AlbumsTableViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NkC-kw-Iv0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,7 +48,7 @@
                             <outlet property="delegate" destination="HjL-G9-QWy" id="Okz-wN-Ftf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="zwZ-fQ-ll4">
+                    <navigationItem key="navigationItem" title="Albums" id="zwZ-fQ-ll4">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DYQ-Di-tqS">
                             <connections>
                                 <segue destination="zvm-gm-iVN" kind="show" identifier="AddAlbumSegue" id="wci-6W-zaT"/>

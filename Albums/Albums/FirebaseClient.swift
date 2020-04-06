@@ -8,7 +8,7 @@
 
 import Foundation
 
-private let baseURL = URL(string: "https://albums-shawngee.firebaseio.com")!
+private let baseURL = URL(string: "https://albums-shawngee.firebaseio.com/")!
 
 enum NetworkError: Error {
     case clientError(Error)
@@ -39,6 +39,8 @@ class FirebaseClient {
             }
             
             do {
+                let dataString  = String(data: data, encoding: .utf8)!
+                print(dataString)
                 let albums = try Array(JSONDecoder().decode([String: Album].self, from: data).values)
                 completion(.success(albums))
             } catch {
