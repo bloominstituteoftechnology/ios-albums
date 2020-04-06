@@ -8,7 +8,12 @@
 
 import Foundation
 
+
 class AlbumController {
+    
+    var albums = [Album]()
+    
+    
     
     static func testDecodingExampleAlbum() {
         let url = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!

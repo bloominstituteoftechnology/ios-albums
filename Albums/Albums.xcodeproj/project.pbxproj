@@ -18,6 +18,7 @@
 		0466E9A5243BC2380009D326 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466E9A4243BC2380009D326 /* Album.swift */; };
 		0466E9A7243BCA300009D326 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 0466E9A6243BCA300009D326 /* exampleAlbum.json */; };
 		0466E9A9243BCA4A0009D326 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466E9A8243BCA4A0009D326 /* AlbumController.swift */; };
+		04D436B1243BD32D001CDF18 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D436B0243BD32D001CDF18 /* FirebaseClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		0466E9A4243BC2380009D326 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		0466E9A6243BCA300009D326 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
 		0466E9A8243BCA4A0009D326 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
+		04D436B0243BD32D001CDF18 /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				0466E9A0243BBE8D0009D326 /* AlbumDetailTableViewController.swift */,
 				0466E9A4243BC2380009D326 /* Album.swift */,
 				0466E9A8243BCA4A0009D326 /* AlbumController.swift */,
+				04D436B0243BD32D001CDF18 /* FirebaseClient.swift */,
 				0466E98A243BBD6F0009D326 /* AppDelegate.swift */,
 				0466E98C243BBD6F0009D326 /* SceneDelegate.swift */,
 				0466E990243BBD6F0009D326 /* Main.storyboard */,
@@ -161,6 +164,7 @@
 				0466E9A9243BCA4A0009D326 /* AlbumController.swift in Sources */,
 				0466E98D243BBD6F0009D326 /* SceneDelegate.swift in Sources */,
 				0466E9A5243BC2380009D326 /* Album.swift in Sources */,
+				04D436B1243BD32D001CDF18 /* FirebaseClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
