@@ -17,6 +17,7 @@
 		920150FF243BCAA2003C0270 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920150FE243BCAA2003C0270 /* SongTableViewCell.swift */; };
 		92015101243BCB62003C0270 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92015100243BCB62003C0270 /* Album.swift */; };
 		92015107243BE166003C0270 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 92015106243BE166003C0270 /* exampleAlbum.json */; };
+		92015109243BE1B1003C0270 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92015108243BE1B1003C0270 /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		920150FE243BCAA2003C0270 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		92015100243BCB62003C0270 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		92015106243BE166003C0270 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleAlbum.json; sourceTree = "<group>"; };
+		92015108243BE1B1003C0270 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				920150FE243BCAA2003C0270 /* SongTableViewCell.swift */,
 				920150F6243BB92B003C0270 /* Storyboards */,
 				920150FD243BC230003C0270 /* View Controllers */,
+				92015108243BE1B1003C0270 /* AlbumController.swift */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				920150E2243BB902003C0270 /* AppDelegate.swift in Sources */,
 				920150FF243BCAA2003C0270 /* SongTableViewCell.swift in Sources */,
 				920150FC243BC227003C0270 /* AlbumDetailTableViewController.swift in Sources */,
+				92015109243BE1B1003C0270 /* AlbumController.swift in Sources */,
 				920150E4243BB902003C0270 /* SceneDelegate.swift in Sources */,
 				92015101243BCB62003C0270 /* Album.swift in Sources */,
 			);
