@@ -52,18 +52,18 @@ struct Album: Decodable {
     }
 }
 
-struct SongDuration: Decodable {
-    let duration: String
-}
-
 struct SongTitle: Decodable {
     let title: String
+}
+
+struct SongDuration: Decodable {
+    let duration: String
 }
 
 struct Song: Decodable {
     enum SongKeys: String, CodingKey {
         case id
-        case title
+        case title = "name"
         case duration
     }
 
@@ -71,8 +71,12 @@ struct Song: Decodable {
         let container = try decoder.container(keyedBy: SongKeys.self)
         
         id = try container.decode(UUID.self, forKey: .id)
-        title = try container.decode(String.self, forKey: .title)
-        duration = try container.decode(String.self, forKey: .duration)
+
+        let songTitle = try container.decode(SongTitle.self, forKey: .title)
+        title = songTitle.title
+
+        let songDuration = try container.decode(SongDuration.self, forKey: .duration)
+        duration = songDuration.duration
     }
 
     var id: UUID
