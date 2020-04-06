@@ -13,7 +13,7 @@ class AlbumController {
     // MARK: - Properties
     
     
-    // MARK: - Decoding
+    // MARK: - Coding
     func testDecodingExampleAlbum() {
         let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
         let data = try! Data(contentsOf: urlPath)
@@ -22,5 +22,23 @@ class AlbumController {
         let weezer = try! decoder.decode(Album.self, from: data)
         
         print("\(weezer)")
+    }
+    
+    func testEncodingExampleAlbum() {
+        let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
+        let data = try! Data(contentsOf: urlPath)
+        
+        let decoder = JSONDecoder()
+        let weezer = try! decoder.decode(Album.self, from: data)
+        
+        print("\(weezer)")
+        
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        
+        let weezerData = try! encoder.encode(weezer)
+        
+        let dataAsString = String(data: weezerData, encoding: .utf8)!
+        print(dataAsString)
     }
 }
