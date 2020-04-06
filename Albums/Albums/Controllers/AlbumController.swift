@@ -46,6 +46,32 @@ class AlbumController {
         }.resume()
     }
     
+    func put(album: Album, completion: @escaping (Error?) -> () ) {
+        let id = album.id
+        let requestURL = baseURL.appendingPathComponent(id).appendingPathExtension("json")
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "PUT"
+        
+        do {
+            request.httpBody = try JSONEncoder().encode(album)
+        } catch {
+            NSLog("Error Encoding album and assigning it to httpBody")
+            completion(error)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { _, _, error in
+            if let error = error {
+                NSLog("Error initiating request after encoding album : \(error)")
+                completion(error)
+                return
+            }
+            completion(nil)
+        }.resume()
+        
+    }
+    
     func testDecodingExampleAlbum() {
         let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
         let codedData = try! Data(contentsOf: urlPath)
