@@ -124,6 +124,14 @@ struct Song: Codable {
     let id : String
     let title: String
     
+    // MARK: - Initializers
+    
+    init(duration: String, id: String, title: String) {
+        self.duration = duration
+        self.id = id
+        self.title = title
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: SongyCodey.self)
         

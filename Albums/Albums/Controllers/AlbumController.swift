@@ -87,6 +87,11 @@ class AlbumController {
         
     }
     
+    func createSong(duration: String, title: String) -> Song {
+        return Song(duration: duration, id: UUID().uuidString, title: title)
+    }
+    
+    
     func testDecodingExampleAlbum() {
         let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
         let codedData = try! Data(contentsOf: urlPath)
