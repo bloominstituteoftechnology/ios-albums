@@ -41,11 +41,15 @@ struct Album: Decodable {
         
         //let coverartContainer = try container.nestedContainer(keyedBy: CoverArtKeys.self, forKey: .coverArt)
         var coverartContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
-        let coverArtURLString = try coverartContainer.decode(String.self)
+        let coverArtDict = try coverartContainer.decode([String : String].self)
         var coverArtURLs: [URL] = []
         
-        if let coverArtURL = URL(string: coverArtURLString) {
-            coverArtURLs.append(coverArtURL)
+        for coverArt in coverArtDict {
+            let coverArtURLString = coverArt.value
+            
+            if let coverArtURL = URL(string: coverArtURLString) {
+                coverArtURLs.append(coverArtURL)
+            }
         }
         
         self.coverArt = coverArtURLs
