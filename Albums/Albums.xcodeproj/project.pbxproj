@@ -16,6 +16,7 @@
 		920150FC243BC227003C0270 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920150FB243BC227003C0270 /* AlbumDetailTableViewController.swift */; };
 		920150FF243BCAA2003C0270 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920150FE243BCAA2003C0270 /* SongTableViewCell.swift */; };
 		92015101243BCB62003C0270 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92015100243BCB62003C0270 /* Album.swift */; };
+		92015107243BE166003C0270 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 92015106243BE166003C0270 /* exampleAlbum.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		920150FB243BC227003C0270 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		920150FE243BCAA2003C0270 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		92015100243BCB62003C0270 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		92015106243BE166003C0270 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleAlbum.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +64,10 @@
 		920150E0243BB902003C0270 /* Albums */ = {
 			isa = PBXGroup;
 			children = (
+				92015100243BCB62003C0270 /* Album.swift */,
+				92015106243BE166003C0270 /* exampleAlbum.json */,
 				920150F5243BB922003C0270 /* Resources */,
 				920150FE243BCAA2003C0270 /* SongTableViewCell.swift */,
-				92015100243BCB62003C0270 /* Album.swift */,
 				920150F6243BB92B003C0270 /* Storyboards */,
 				920150FD243BC230003C0270 /* View Controllers */,
 			);
@@ -160,6 +163,7 @@
 			files = (
 				920150EE243BB905003C0270 /* LaunchScreen.storyboard in Resources */,
 				920150EB243BB905003C0270 /* Assets.xcassets in Resources */,
+				92015107243BE166003C0270 /* exampleAlbum.json in Resources */,
 				920150E9243BB902003C0270 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
