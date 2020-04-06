@@ -13,6 +13,8 @@
 		13E949EB243BBC6200BB2F99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13E949EA243BBC6200BB2F99 /* Assets.xcassets */; };
 		13E949EE243BBC6200BB2F99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E949EC243BBC6200BB2F99 /* LaunchScreen.storyboard */; };
 		13E949F6243BBCBE00BB2F99 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E949F5243BBCBE00BB2F99 /* AlbumsTableViewController.swift */; };
+		13E949FB243BBFF600BB2F99 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E949FA243BBFF600BB2F99 /* AlbumDetailTableViewController.swift */; };
+		13E949FD243BC14F00BB2F99 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E949FC243BC14F00BB2F99 /* SongTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		13E949ED243BBC6200BB2F99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13E949EF243BBC6200BB2F99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13E949F5243BBCBE00BB2F99 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		13E949FA243BBFF600BB2F99 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		13E949FC243BC14F00BB2F99 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 				13E949F9243BBCE600BB2F99 /* Resources */,
 				13E949F7243BBCD100BB2F99 /* Storyboards */,
 				13E949F8243BBCDD00BB2F99 /* View Controllers */,
+				13E949FE243BC15300BB2F99 /* Views */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -76,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				13E949F5243BBCBE00BB2F99 /* AlbumsTableViewController.swift */,
+				13E949FA243BBFF600BB2F99 /* AlbumDetailTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -89,6 +95,14 @@
 				13E949EF243BBC6200BB2F99 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		13E949FE243BC15300BB2F99 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				13E949FC243BC14F00BB2F99 /* SongTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +178,8 @@
 			files = (
 				13E949F6243BBCBE00BB2F99 /* AlbumsTableViewController.swift in Sources */,
 				13E949E2243BBC6000BB2F99 /* AppDelegate.swift in Sources */,
+				13E949FD243BC14F00BB2F99 /* SongTableViewCell.swift in Sources */,
+				13E949FB243BBFF600BB2F99 /* AlbumDetailTableViewController.swift in Sources */,
 				13E949E4243BBC6000BB2F99 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
