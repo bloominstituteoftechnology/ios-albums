@@ -15,6 +15,7 @@ enum NetworkError: Error {
     case invalidResponseCode(Int)
     case noData
     case decodingError(Error)
+    case encodingError(Error)
 }
 
 class FirebaseClient {
@@ -43,12 +44,19 @@ class FirebaseClient {
             } catch {
                 completion(.failure(.decodingError(error)))
             }
-        }
+        }.resume()
     }
     
     func putAlbum(_ album: Album, completion: @escaping (NetworkError?) -> Void) {
         var request = URLRequest(url: baseURL.appendingPathComponent(album.id).appendingPathExtension("json"))
         request.httpMethod = "PUT"
+        
+        do {
+            request.httpBody = try JSONEncoder().encode(album)
+        } catch {
+            completion(.encodingError(error))
+            return
+        }
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -62,6 +70,6 @@ class FirebaseClient {
             }
             
             completion(nil)
-        }
+        }.resume()
     }
 }
