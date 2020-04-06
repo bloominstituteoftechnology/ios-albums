@@ -56,15 +56,31 @@
 		920150E0243BB902003C0270 /* Albums */ = {
 			isa = PBXGroup;
 			children = (
-				920150E1243BB902003C0270 /* AppDelegate.swift */,
-				920150E3243BB902003C0270 /* SceneDelegate.swift */,
+				920150F5243BB922003C0270 /* Resources */,
+				920150F6243BB92B003C0270 /* Storyboards */,
 				920150E5243BB902003C0270 /* ViewController.swift */,
-				920150E7243BB902003C0270 /* Main.storyboard */,
-				920150EA243BB905003C0270 /* Assets.xcassets */,
-				920150EC243BB905003C0270 /* LaunchScreen.storyboard */,
-				920150EF243BB905003C0270 /* Info.plist */,
 			);
 			path = Albums;
+			sourceTree = "<group>";
+		};
+		920150F5243BB922003C0270 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				920150E1243BB902003C0270 /* AppDelegate.swift */,
+				920150EA243BB905003C0270 /* Assets.xcassets */,
+				920150EF243BB905003C0270 /* Info.plist */,
+				920150E3243BB902003C0270 /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		920150F6243BB92B003C0270 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				920150EC243BB905003C0270 /* LaunchScreen.storyboard */,
+				920150E7243BB902003C0270 /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,7 +302,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4ZDYKHFRDV;
-				INFOPLIST_FILE = Albums/Info.plist;
+				INFOPLIST_FILE = Albums/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +320,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4ZDYKHFRDV;
-				INFOPLIST_FILE = Albums/Info.plist;
+				INFOPLIST_FILE = Albums/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
