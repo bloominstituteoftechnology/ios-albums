@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol SongTableViewCellDelegate: AnyObject {
+    func addSong(with title: String, duration: String)
+}
+
 class SongTableViewCell: UITableViewCell {
     
     // MARK: - Public Properties
     
     var song: Song? { didSet { updateViews() }}
+    weak var delegate: SongTableViewCellDelegate?
 
     // MARK: - IBOutlets
     @IBOutlet weak var titleTextField: UITextField!
