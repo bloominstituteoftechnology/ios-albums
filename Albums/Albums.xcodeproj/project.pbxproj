@@ -15,6 +15,7 @@
 		0466E99F243BBDC20009D326 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466E99E243BBDC20009D326 /* AlbumsTableViewController.swift */; };
 		0466E9A1243BBE8D0009D326 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466E9A0243BBE8D0009D326 /* AlbumDetailTableViewController.swift */; };
 		0466E9A3243BC0B70009D326 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466E9A2243BC0B70009D326 /* SongTableViewCell.swift */; };
+		0466E9A5243BC2380009D326 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466E9A4243BC2380009D326 /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		0466E99E243BBDC20009D326 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		0466E9A0243BBE8D0009D326 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		0466E9A2243BC0B70009D326 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		0466E9A4243BC2380009D326 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				0466E99E243BBDC20009D326 /* AlbumsTableViewController.swift */,
 				0466E9A0243BBE8D0009D326 /* AlbumDetailTableViewController.swift */,
+				0466E9A4243BC2380009D326 /* Album.swift */,
 				0466E98A243BBD6F0009D326 /* AppDelegate.swift */,
 				0466E98C243BBD6F0009D326 /* SceneDelegate.swift */,
 				0466E990243BBD6F0009D326 /* Main.storyboard */,
@@ -149,6 +152,7 @@
 				0466E9A3243BC0B70009D326 /* SongTableViewCell.swift in Sources */,
 				0466E9A1243BBE8D0009D326 /* AlbumDetailTableViewController.swift in Sources */,
 				0466E98D243BBD6F0009D326 /* SceneDelegate.swift in Sources */,
+				0466E9A5243BC2380009D326 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
