@@ -13,6 +13,21 @@ class AlbumController {
     
     var albums = [Album]()
     
+    func createAlbum(artist: String, coverArtURLs: [URL], genres: [String], id: String, name: String, songs: [Song]) {
+        let album = Album(artist: artist, coverArtURLs: coverArtURLs, genres: genres, id: id, name: name, songs: songs)
+        albums.append(album)
+        firebaseClient.putAlbum(album) { error in
+            if let error = error {
+                print(error)
+            }
+        }
+    }
+    
+    func createSong(duration: String, id: String, title: String) -> Song {
+        Song(duration: duration, id: id, title: title)
+    }
+    
+    private let firebaseClient = FirebaseClient()
     
     
     static func testDecodingExampleAlbum() {

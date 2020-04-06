@@ -8,14 +8,16 @@
 
 import Foundation
 
-struct Album: Codable {
+struct Album {
     let artist: String
     let coverArtURLs: [URL]
     let genres: [String]
     let id: String
     let name: String
     let songs: [Song]
-    
+}
+
+extension Album: Codable {
     enum AlbumCodingKeys: String, CodingKey {
         case artist, coverArt, genres, id, name, songs
     }
@@ -57,11 +59,13 @@ struct Album: Codable {
     }
 }
 
-struct Song: Codable {
+struct Song {
     let duration: String
     let id: String
     let title: String
-    
+}
+
+extension Song: Codable {
     enum SongCodingKeys: String, CodingKey {
         case duration, id, name
     }
