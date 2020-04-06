@@ -10,7 +10,41 @@ import Foundation
 
 class AlbumController {
     
+    // MARK: - Properties
+    
+    var albums: [Album] = []
+    let baseURL: URL = URL(string: "https://ios-albums-ff76b.firebaseio.com/")!
+    
+    
     // MARK: - Methods
+    
+    func getAlbums(completion: @escaping (Error?) -> ()) {
+        let requestUrl = baseURL.appendingPathExtension("json")
+        
+        URLSession.shared.dataTask(with: requestUrl) { data, _, error in
+            if let error = error {
+                NSLog("Error fetching albums : \(error)")
+                completion(error)
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("No data returned by data task")
+                completion(NSError())
+                return
+            }
+            
+            do {
+                let decodedAlbums = try JSONDecoder().decode([String : Album].self, from: data)
+                self.albums = Array(decodedAlbums.values)
+                completion(nil)
+            } catch {
+                NSLog("Error decoding albums: \(error)")
+                completion(error)
+            }
+            
+        }.resume()
+    }
     
     func testDecodingExampleAlbum() {
         let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
