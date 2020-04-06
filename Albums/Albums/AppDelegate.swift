@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         //AlbumController().testDecodingExampleAlbum()
-        AlbumController().createAlbum(artist: "U2", coverArtURLs: [URL(string: "http://www.google.com")!], genres: ["Pop", "Rock"], id: "30923049803284", name: "Joshua Tree", songs: [Song(duration: "3:23", id: "23409823048", title: "Where The Streets Have No Name")])
+        AlbumController().createAlbum(artist: "U2", coverArtURLs: ["http://www.google.com"], genres: ["Pop", "Rock"], id: "30923049803284", name: "Joshua Tree", songs: [Song(duration: "3:23", id: "23409823048", title: "Where The Streets Have No Name")])
         return true
     }
 

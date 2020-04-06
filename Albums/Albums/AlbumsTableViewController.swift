@@ -80,8 +80,6 @@ class AlbumsTableViewController: UITableViewController {
     }
     */
 
-
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let albumDetailVC = segue.destination as? AlbumDetailTableViewController {
             albumDetailVC.albumController = albumController

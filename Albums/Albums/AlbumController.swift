@@ -28,7 +28,7 @@ class AlbumController {
         }
     }
     
-    func createAlbum(artist: String, coverArtURLs: [URL], genres: [String], id: String, name: String, songs: [Song]) {
+    func createAlbum(artist: String, coverArtURLs: [String], genres: [String], id: String, name: String, songs: [Song]) {
         let album = Album(artist: artist, coverArtURLs: coverArtURLs, genres: genres, id: id, name: name, songs: songs)
         albums.append(album)
         firebaseClient.putAlbum(album) { error in
@@ -42,7 +42,7 @@ class AlbumController {
         Song(duration: duration, id: id, title: title)
     }
     
-    func update(_ album: Album, artist: String, coverArtURLs: [URL], genres: [String], id: String, name: String, songs: [Song]) {
+    func update(_ album: Album, artist: String, coverArtURLs: [String], genres: [String], id: String, name: String, songs: [Song]) {
         guard let albumIndex = albums.firstIndex(where: { $0.id == album.id }) else {
             createAlbum(artist: artist, coverArtURLs: coverArtURLs, genres: genres, id: id, name: name, songs: songs)
             return

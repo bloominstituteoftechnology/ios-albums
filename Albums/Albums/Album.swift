@@ -10,7 +10,7 @@ import Foundation
 
 struct Album {
     let artist: String
-    let coverArtURLs: [URL]
+    let coverArtURLs: [String]
     let genres: [String]
     let id: String
     let name: String
@@ -32,10 +32,10 @@ extension Album: Codable {
         songs = try container.decode([Song].self, forKey: .songs)
         
         var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
-        var coverArtURLs = [URL]()
+        var coverArtURLs = [String]()
         
         while !coverArtContainer.isAtEnd {
-            let coverArtURLDict = try coverArtContainer.decode([String: URL].self)
+            let coverArtURLDict = try coverArtContainer.decode([String: String].self)
             coverArtURLs.append(contentsOf: coverArtURLDict.values)
         }
         

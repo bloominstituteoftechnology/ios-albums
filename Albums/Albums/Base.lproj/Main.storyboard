@@ -39,7 +39,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="zvm-gm-iVN" kind="show" identifier="ShowAlbumSegue" id="IOc-Bo-Uae"/>
+                                    <segue destination="zvm-gm-iVN" kind="show" identifier="ShowAlbumSegue" id="ZpZ-0f-Wlk"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -192,6 +192,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wci-6W-zaT"/>
+        <segue reference="ZpZ-0f-Wlk"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -26,7 +26,19 @@ class AlbumDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
+    }
+    
+    // MARK: - Private
+    
+    var tempSongs = [Song]()
+    
+    func updateViews() {
+        guard let album = album else { return }
+        nameTextField.text = album.name
+        artistTextField.text = album.artist
+        genresTextField.text = album.genres.joined(separator: ", ")
+        coverArtURLsTextField.text = album.coverArtURLs.joined(separator: ", ")
     }
     
     // MARK: - Actions
