@@ -28,13 +28,41 @@ class AlbumDetailTableViewController: UITableViewController {
     
     // MARK: - IBActions
     @IBAction func saveButtonTapped(_ sender: Any) {
+        guard let name = albumTextField.text,
+            let artist = artistTextField.text,
+            let genresSubstrings = genresTextField.text?.split(separator: ","),
+            let urlsStrings = urlsTextField.text?.split(separator: ",")
+            else {
+                return
+        }
+        
+        var urls: [URL] = []
+        for string in urlsStrings {
+            if let url = URL(string: String(string)) {
+                urls.append(url)
+            }
+        }
+        
+        var genres: [String] = []
+        for genre in genresSubstrings {
+            genres.append(String(genre))
+        }
+        
+        if let album = album {
+            albumController?.update(album: album, artist: artist, coverArt: urls, genres: genres, id: "\(UUID())", name: name, songs: tempSongs)
+        } else {
+            albumController?.createAlbum(artist: artist, coverArt: urls, genres: genres, id: "\(UUID())", name: name, songs: tempSongs)
+        }
+        
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - view lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        if view.
-        updateViews()
+        if isViewLoaded {
+            updateViews()
+        }
     }
     
     func updateViews() {
@@ -65,15 +93,26 @@ class AlbumDetailTableViewController: UITableViewController {
 //    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tempSongs.count
+        return tempSongs.count + 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongTableViewCell else { return UITableViewCell() }
 
-        // Configure the cell...
+        cell.delegate = self
+        if indexPath.row < tempSongs.count {
+            cell.song = tempSongs[indexPath.row]
+        }
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row < tempSongs.count {
+            return 100
+        } else {
+            return 140
+        }
     }
 
     /*
@@ -95,30 +134,23 @@ class AlbumDetailTableViewController: UITableViewController {
         }    
     }
     */
+}
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+extension AlbumDetailTableViewController: SongTableViewCellDelegate {
+    func addSong(wth title: String, duration: String) {
+        let uuid = UUID()
+        let id = "\(uuid)"
+        let newSong = albumController?.createSong(duration: duration, id: id, name: title)
+        
+        if let newSong = newSong {
+            tempSongs.append(newSong)
+        }
+        tableView.reloadData()
+        var indexPath = IndexPath()
+        indexPath.section = 0
+        indexPath.row = tempSongs.count
+        tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }

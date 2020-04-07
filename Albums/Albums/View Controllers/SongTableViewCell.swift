@@ -12,7 +12,7 @@ class SongTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     var song: Song?
-    weak var delegate: SongTableViewCellDelegate?
+    var delegate: SongTableViewCellDelegate?
     
     // MARK: - IBOutlets
     @IBOutlet weak var songTitleTextField: UITextField!
@@ -41,8 +41,6 @@ class SongTableViewCell: UITableViewCell {
 
 }
 
-class SongTableViewCellDelegate {
-    func addSong(wth title: String, duration: String) {
-        
-    }
+protocol SongTableViewCellDelegate {
+    func addSong(wth title: String, duration: String)
 }
