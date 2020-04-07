@@ -79,11 +79,10 @@ class AlbumController {
             
             /// Unwrap the data returned in the closure.
             do {
-                var albumRepresentation: [AlbumRepresentation] = []
-                albumRepresentation = Array(try JSONDecoder().decode([String: AlbumRepresentation].self,
-                                                                     from: data).values)
+                let anAlbum = try JSONDecoder().decode([String: Album].self,
+                                                                     from: data).values
                 
-//                albums = albumRepresentation
+                self.albums.append(contentsOf: anAlbum)
 //                try self.updateMovies(with: albumRepresentation)
                 completion(nil)
                 
@@ -114,6 +113,7 @@ class AlbumController {
         print("\(albums)\n")
         
         put(album: albums[0])
+        getAlbums() { _ in print("read albums")}
     }
     
     func testEncodingExampleAlbum() {
