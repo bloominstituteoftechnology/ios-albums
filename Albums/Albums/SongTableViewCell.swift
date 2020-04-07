@@ -12,6 +12,8 @@ class SongTableViewCell: UITableViewCell {
 
     // MARK: - Properites
     var song: Song?
+    // TODO: ? Directions had us put weak in front. Doesn't compile
+    var delegate: SongTableViewCellDelegate?
     
     // MARK: - Outlets
 
@@ -22,6 +24,7 @@ class SongTableViewCell: UITableViewCell {
     // MARK: - Actions
     
     @IBAction func addSongButton(_ sender: Any) {
+        delegate?.addSong(with: titleTextField.text ?? "", duration: durationTextField.text ?? "")
     }
     
     private func updateViews() {
@@ -50,4 +53,8 @@ class SongTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+
+protocol SongTableViewCellDelegate {
+    func addSong(with title: String, duration: String)
 }
