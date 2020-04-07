@@ -38,13 +38,17 @@ class SongTableViewCell: UITableViewCell {
     private func updateViews() {
         guard let song = song else { return }
         titleTextField.text = song.title
+        titleTextField.isUserInteractionEnabled = false
         durationTextField.text = song.duration
+        durationTextField.isUserInteractionEnabled = false
         addSongButton.isHidden = true
     }
     
     override func prepareForReuse() {
         titleTextField.text = nil
+        titleTextField.isUserInteractionEnabled = true
         durationTextField.text = nil
+        durationTextField.isUserInteractionEnabled = true
         addSongButton.isHidden = false
     }
 }

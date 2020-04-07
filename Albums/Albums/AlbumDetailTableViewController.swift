@@ -29,11 +29,17 @@ class AlbumDetailTableViewController: UITableViewController {
         updateViews()
     }
     
+    // MARK: - Actions
+    
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        save()
+    }
+    
     // MARK: - Private
     
     var tempSongs = [Song]()
     
-    func updateViews() {
+    private func updateViews() {
         guard isViewLoaded else { return }
         
         if let album = album {
@@ -48,9 +54,25 @@ class AlbumDetailTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Actions
-    
-    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+    private func save() {
+        guard let name = nameTextField.text, let artist = artistTextField.text,
+            let genres = genresTextField.text, let coverArtURLs = coverArtURLsTextField.text else { return }
+        
+        let genresArray = genres.components(separatedBy: ",")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines)}
+        
+        let coverArtURLsArray = coverArtURLs.components(separatedBy: ",")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines)}
+        
+        if let album = album {
+            albumController?.update(album, artist: artist, coverArtURLs: coverArtURLsArray,
+                                    genres: genresArray, name: name, songs: tempSongs)
+        } else {
+            albumController?.createAlbum(artist: artist, coverArtURLs: coverArtURLsArray,
+                                         genres: genresArray, name: name, songs: tempSongs)
+        }
+        
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Table View Data Source
@@ -98,7 +120,7 @@ class AlbumDetailTableViewController: UITableViewController {
 extension AlbumDetailTableViewController: SongTableViewCellDelegate {
     func addSong(withTitle title: String, duration: String) {
         guard let albumController = albumController else { return }
-        let song = albumController.createSong(duration: duration, id: UUID().uuidString, title: title)
+        let song = albumController.createSong(title: title, duration: duration)
         
         tableView.performBatchUpdates({
             tempSongs.append(song)

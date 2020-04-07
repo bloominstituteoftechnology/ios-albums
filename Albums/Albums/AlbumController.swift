@@ -28,9 +28,10 @@ class AlbumController {
         }
     }
     
-    func createAlbum(artist: String, coverArtURLs: [String], genres: [String], id: String, name: String, songs: [Song]) {
-        let album = Album(artist: artist, coverArtURLs: coverArtURLs, genres: genres, id: id, name: name, songs: songs)
+    func createAlbum(artist: String, coverArtURLs: [String], genres: [String], name: String, songs: [Song]) {
+        let album = Album(artist: artist, coverArtURLs: coverArtURLs, genres: genres, id: UUID().uuidString, name: name, songs: songs)
         albums.append(album)
+        
         firebaseClient.putAlbum(album) { error in
             if let error = error {
                 print(error)
@@ -38,18 +39,19 @@ class AlbumController {
         }
     }
     
-    func createSong(duration: String, id: String, title: String) -> Song {
-        Song(duration: duration, id: id, title: title)
+    func createSong(title: String, duration: String) -> Song {
+        Song(duration: duration, id: UUID().uuidString, title: title)
     }
     
-    func update(_ album: Album, artist: String, coverArtURLs: [String], genres: [String], id: String, name: String, songs: [Song]) {
+    func update(_ album: Album, artist: String, coverArtURLs: [String], genres: [String], name: String, songs: [Song]) {
         guard let albumIndex = albums.firstIndex(where: { $0.id == album.id }) else {
-            createAlbum(artist: artist, coverArtURLs: coverArtURLs, genres: genres, id: id, name: name, songs: songs)
+            createAlbum(artist: artist, coverArtURLs: coverArtURLs, genres: genres, name: name, songs: songs)
             return
         }
-        let updatedAlbum = Album(artist: artist, coverArtURLs: coverArtURLs, genres: genres, id: id, name: name, songs: songs)
+        let updatedAlbum = Album(artist: artist, coverArtURLs: coverArtURLs, genres: genres, id: album.id, name: name, songs: songs)
         albums[albumIndex] = updatedAlbum
-        firebaseClient.putAlbum(album) { error in
+        
+        firebaseClient.putAlbum(updatedAlbum) { error in
             if let error = error {
                 print(error)
             }

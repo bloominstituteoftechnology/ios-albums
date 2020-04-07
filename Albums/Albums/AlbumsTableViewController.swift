@@ -22,6 +22,12 @@ class AlbumsTableViewController: UITableViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        tableView.reloadData()
+    }
+    
     // MARK: - Private
     
     private let albumController = AlbumController()
