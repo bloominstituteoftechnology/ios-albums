@@ -21,6 +21,7 @@ class AlbumDetailTableViewController: UITableViewController {
     @IBOutlet weak var artistTextField: UITextField!
     @IBOutlet weak var genresTextField: UITextField!
     @IBOutlet weak var coverArtURLsTextField: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     // MARK: - View Lifecycle
     
@@ -37,7 +38,11 @@ class AlbumDetailTableViewController: UITableViewController {
     
     // MARK: - Private
     
-    private var tempSongs = [Song]()
+    private var tempSongs = [Song]() {
+        didSet {
+            saveButton.isEnabled = !tempSongs.isEmpty
+        }
+    }
     
     private func updateViews() {
         guard isViewLoaded else { return }
@@ -56,7 +61,8 @@ class AlbumDetailTableViewController: UITableViewController {
     
     private func save() {
         guard let name = nameTextField.text, let artist = artistTextField.text,
-            let genres = genresTextField.text, let coverArtURLs = coverArtURLsTextField.text else { return }
+            let genres = genresTextField.text, let coverArtURLs = coverArtURLsTextField.text,
+            !tempSongs.isEmpty else { return }
         
         let genresArray = genres.components(separatedBy: ",")
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines)}
@@ -134,5 +140,8 @@ extension AlbumDetailTableViewController: SongTableViewCellDelegate {
             tableView.reloadRows(at: [IndexPath(row: tempSongs.count - 1, section: 0)], with: .automatic)
             tableView.insertRows(at: [IndexPath(row: tempSongs.count, section: 0)], with: .automatic)
         })
+        
+        let indexPath = IndexPath(row: tempSongs.count, section: 0)
+        tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
     }
 }

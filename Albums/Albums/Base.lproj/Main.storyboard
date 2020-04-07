@@ -155,7 +155,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="aK7-n5-a4Z">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="hN9-Ou-siI">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="hN9-Ou-siI">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="zvm-gm-iVN" id="TWo-Bk-CrL"/>
                             </connections>
@@ -166,6 +166,7 @@
                         <outlet property="coverArtURLsTextField" destination="wkA-yc-og9" id="H6J-TA-jUb"/>
                         <outlet property="genresTextField" destination="nib-sJ-FIv" id="u9y-D5-sba"/>
                         <outlet property="nameTextField" destination="c2N-vN-cWI" id="dyv-8E-p1o"/>
+                        <outlet property="saveButton" destination="hN9-Ou-siI" id="V0r-bx-gDd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BT0-OT-Sm6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
