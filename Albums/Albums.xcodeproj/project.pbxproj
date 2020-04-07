@@ -18,6 +18,7 @@
 		0466E9A5243BC2380009D326 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466E9A4243BC2380009D326 /* Album.swift */; };
 		0466E9A7243BCA300009D326 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 0466E9A6243BCA300009D326 /* exampleAlbum.json */; };
 		0466E9A9243BCA4A0009D326 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466E9A8243BCA4A0009D326 /* AlbumController.swift */; };
+		04A31FD5243C110000E547A9 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A31FD4243C110000E547A9 /* Song.swift */; };
 		04D436B1243BD32D001CDF18 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D436B0243BD32D001CDF18 /* FirebaseClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		0466E9A4243BC2380009D326 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		0466E9A6243BCA300009D326 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
 		0466E9A8243BCA4A0009D326 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
+		04A31FD4243C110000E547A9 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		04D436B0243BD32D001CDF18 /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 				0466E99E243BBDC20009D326 /* AlbumsTableViewController.swift */,
 				0466E9A0243BBE8D0009D326 /* AlbumDetailTableViewController.swift */,
 				0466E9A4243BC2380009D326 /* Album.swift */,
+				04A31FD4243C110000E547A9 /* Song.swift */,
 				0466E9A8243BCA4A0009D326 /* AlbumController.swift */,
 				04D436B0243BD32D001CDF18 /* FirebaseClient.swift */,
 				0466E98A243BBD6F0009D326 /* AppDelegate.swift */,
@@ -157,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A31FD5243C110000E547A9 /* Song.swift in Sources */,
 				0466E98B243BBD6F0009D326 /* AppDelegate.swift in Sources */,
 				0466E99F243BBDC20009D326 /* AlbumsTableViewController.swift in Sources */,
 				0466E9A3243BC0B70009D326 /* SongTableViewCell.swift in Sources */,
