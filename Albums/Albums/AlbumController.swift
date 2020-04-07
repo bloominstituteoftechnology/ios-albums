@@ -31,11 +31,20 @@ class AlbumController {
     // Create
     func create(album: String, artist: String, genres: String, coverArt: String) {
 
-        let id = UUID()
-
-        let albumObj = Album(
+        let newAlbum = Album(album: album, artist: artist, genres: genres, coverArt: coverArt)
         
-        put(album: albumObj)
+        albums.append(newAlbum)
+
+        put(album: newAlbum)
+    }
+
+    func createSong(album: Album, title: String, duration: String) {
+        
+        let newSong = Song(title: title, duration: duration)
+        
+        album.songs.append(newSong)
+        
+        put(album: album)
     }
 
     func put(album: Album, completion: @escaping CompletionHandler = { _ in }) {
@@ -102,6 +111,10 @@ class AlbumController {
     }
     
     // Update
+    
+    func update() {
+        // FIXME: Implement
+    }
     
     // Delete
     

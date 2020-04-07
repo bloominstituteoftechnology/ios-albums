@@ -12,7 +12,8 @@ struct CoverArt: Equatable, Codable {
     let url: String
 }
 
-struct Album: Codable {
+// TODO: ? Class or Struct. Wnat about follow on objects?
+class Album: Codable {
     
     /// This is about conforming to the data that we are reading in. So case name doesn't have to match fullname
     // TODO: ? Why String?
@@ -32,7 +33,10 @@ struct Album: Codable {
     var coverArt: String // https://lastfm-img2.akamaized.net/i/u/174s/1918fe81bb68441d96b2247682bfda21.png
     var songs: [Song]
 
-    init(album: String, artist: String, genres: String, coverArt: String, songs: [Songs] = []) {
+    init(album: String, artist: String, genres: String, coverArt: String, songs: [Song] = []) {
+
+        self.id = UUID()
+
         self.album = album
         self.artist = artist
         self.genres = genres
@@ -40,7 +44,7 @@ struct Album: Codable {
         self.songs = songs
     }
     
-    init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumKeys.self)
         
         id = try container.decode(UUID.self, forKey: .id)
@@ -94,6 +98,13 @@ struct Song: Equatable, Codable {
     var id: UUID
     var title: String
     var duration: String
+    
+    init(title: String, duration: String) {
+        
+        self.id = UUID()
+        self.title = title
+        self.duration = duration
+    }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: SongKeys.self)
