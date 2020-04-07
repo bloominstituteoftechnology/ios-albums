@@ -11,7 +11,9 @@ import Foundation
 
 class AlbumController {
     
-    var albums = [Album]()
+    // MARK: - Public
+    
+    private(set) var albums = [Album]()
     
     func getAlbums(completion: @escaping (Bool) -> Void) {
         firebaseClient.getAlbums { result in
@@ -39,10 +41,6 @@ class AlbumController {
         }
     }
     
-    func createSong(title: String, duration: String) -> Song {
-        Song(duration: duration, id: UUID().uuidString, title: title)
-    }
-    
     func update(_ album: Album, artist: String, coverArtURLs: [String], genres: [String], name: String, songs: [Song]) {
         guard let albumIndex = albums.firstIndex(where: { $0.id == album.id }) else {
             createAlbum(artist: artist, coverArtURLs: coverArtURLs, genres: genres, name: name, songs: songs)
@@ -58,25 +56,12 @@ class AlbumController {
         }
     }
     
+    func createSong(title: String, duration: String) -> Song {
+        Song(duration: duration, id: UUID().uuidString, title: title)
+    }
+    
+    // MARK: - Private
+    
     private let firebaseClient = FirebaseClient()
-    
-    
-    func testDecodingExampleAlbum() {
-        let url = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
-        let data = try! Data(contentsOf: url)
-        let album = try! JSONDecoder().decode(Album.self, from: data)
-        
-        print(album)
-        print("\n\n\n")
-        testEncodingExampleAlbum(album)
-    }
-    
-    func testEncodingExampleAlbum(_ album: Album) {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let data = try! encoder.encode(album)
-        let string = String(data: data, encoding: .utf8)!
-        
-        print(string)
-    }
+
 }

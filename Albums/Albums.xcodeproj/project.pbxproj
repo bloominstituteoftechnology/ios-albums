@@ -34,7 +34,7 @@
 		0466E9A0243BBE8D0009D326 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		0466E9A2243BC0B70009D326 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		0466E9A4243BC2380009D326 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
-		0466E9A6243BCA300009D326 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
+		0466E9A6243BCA300009D326 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleAlbum.json; sourceTree = "<group>"; };
 		0466E9A8243BCA4A0009D326 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 		04A31FD4243C110000E547A9 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		04D436B0243BD32D001CDF18 /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
@@ -70,22 +70,54 @@
 		0466E989243BBD6F0009D326 /* Albums */ = {
 			isa = PBXGroup;
 			children = (
+				0466E990243BBD6F0009D326 /* Main.storyboard */,
 				0466E99E243BBDC20009D326 /* AlbumsTableViewController.swift */,
-				0466E9A0243BBE8D0009D326 /* AlbumDetailTableViewController.swift */,
+				04A31FD8243C113A00E547A9 /* AlbumDetail */,
+				04A31FD6243C111700E547A9 /* Models */,
+				04A31FD7243C112200E547A9 /* Networking */,
+				04A31FD9243C115B00E547A9 /* Resources */,
+				0466E993243BBD700009D326 /* Assets.xcassets */,
+			);
+			path = Albums;
+			sourceTree = "<group>";
+		};
+		04A31FD6243C111700E547A9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
 				0466E9A4243BC2380009D326 /* Album.swift */,
 				04A31FD4243C110000E547A9 /* Song.swift */,
 				0466E9A8243BCA4A0009D326 /* AlbumController.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		04A31FD7243C112200E547A9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
 				04D436B0243BD32D001CDF18 /* FirebaseClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		04A31FD8243C113A00E547A9 /* AlbumDetail */ = {
+			isa = PBXGroup;
+			children = (
+				0466E9A0243BBE8D0009D326 /* AlbumDetailTableViewController.swift */,
+				0466E9A2243BC0B70009D326 /* SongTableViewCell.swift */,
+			);
+			path = AlbumDetail;
+			sourceTree = "<group>";
+		};
+		04A31FD9243C115B00E547A9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				0466E98A243BBD6F0009D326 /* AppDelegate.swift */,
 				0466E98C243BBD6F0009D326 /* SceneDelegate.swift */,
-				0466E990243BBD6F0009D326 /* Main.storyboard */,
-				0466E9A2243BC0B70009D326 /* SongTableViewCell.swift */,
-				0466E993243BBD700009D326 /* Assets.xcassets */,
 				0466E995243BBD700009D326 /* LaunchScreen.storyboard */,
 				0466E998243BBD700009D326 /* Info.plist */,
 				0466E9A6243BCA300009D326 /* exampleAlbum.json */,
 			);
-			path = Albums;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,7 +346,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 94ZMA2MYR4;
-				INFOPLIST_FILE = Albums/Info.plist;
+				INFOPLIST_FILE = Albums/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,7 +364,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 94ZMA2MYR4;
-				INFOPLIST_FILE = Albums/Info.plist;
+				INFOPLIST_FILE = Albums/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

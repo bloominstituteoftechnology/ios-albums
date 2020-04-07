@@ -60,7 +60,6 @@ class AlbumDetailTableViewController: UITableViewController {
         
         let genresArray = genres.components(separatedBy: ",")
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines)}
-        
         let coverArtURLsArray = coverArtURLs.components(separatedBy: ",")
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines)}
         
@@ -106,6 +105,8 @@ class AlbumDetailTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Table View Delegate
+    
     private let cellYPadding: CGFloat = 8.0
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -116,6 +117,8 @@ class AlbumDetailTableViewController: UITableViewController {
         }
     }
 }
+
+// MARK: - Song Table View Cell Delegate
 
 extension AlbumDetailTableViewController: SongTableViewCellDelegate {
     func addSong(withTitle title: String, duration: String) {
