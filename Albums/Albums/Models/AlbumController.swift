@@ -69,10 +69,6 @@ class AlbumController {
         Song(duration: duration, id: UUID().uuidString, title: title)
     }
     
-    func getCoverArt(for album: Album) -> [UIImage] {
-        
-    }
-    
     // MARK: - Private
     
     private let firebaseClient = FirebaseClient()
