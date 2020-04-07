@@ -8,12 +8,17 @@
 
 import UIKit
 
-class AlbumDetailTableViewController: UITableViewController {
+class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDelegate {
 
     // MARK: - Properties
     
     var albumController: AlbumController?
-    var album: Album?
+    var album: Album? {
+        didSet {
+            updateViews()
+        }
+    }
+    var tempSongs: [Song] = []
     
     // MARK: - Outlets
     @IBOutlet weak var albumTextField: UITextField!
@@ -31,14 +36,24 @@ class AlbumDetailTableViewController: UITableViewController {
         updateViews()
     }
 
+    func addSong(with title: String, duration: String) {
+        guard let album = album else { return }
+        let newSong = albumController?.createSong(album: album, title: title, duration: duration)
+        
+        guard let songToAdd = newSong else { return }
+        tempSongs.append(songToAdd)
+        tableView.scrollToRow(at: IndexPath(item: tempSongs.count, section: 0), at: .bottom, animated: true)
+    }
+    
     private func updateViews() {
         if let album = album {
             title = album.album
             albumTextField.text = album.album
             artistTextField.text = album.artist
             genreTextField.text = album.genres
-            coverArtTextField.text = album.coverArt
-
+            coverArtTextField.text = album.coverArt // FIXME: .joined(separator: ...)
+            tempSongs = album.songs
+            
         } else {
             title = "New Album"
         }
@@ -46,26 +61,28 @@ class AlbumDetailTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return tempSongs.count + 1
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as! SongTableViewCell
 
         // Configure the cell...
-
+        cell.delegate = self
+        cell.song = tempSongs[indexPath.row]
+        
         return cell
     }
-    */
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row < tempSongs.count {
+            return 100
+        } else {
+            return 140
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

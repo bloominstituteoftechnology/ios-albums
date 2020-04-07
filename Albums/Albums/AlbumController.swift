@@ -38,13 +38,15 @@ class AlbumController {
         put(album: newAlbum)
     }
 
-    func createSong(album: Album, title: String, duration: String) {
+    func createSong(album: Album, title: String, duration: String) -> Song {
         
         let newSong = Song(title: title, duration: duration)
         
         album.songs.append(newSong)
         
         put(album: album)
+        
+        return newSong
     }
 
     func put(album: Album, completion: @escaping CompletionHandler = { _ in }) {
