@@ -40,7 +40,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="gOB-K9-9PC" kind="show" identifier="ViewAlbum" id="WEH-vq-JzF"/>
+                                    <segue destination="gOB-K9-9PC" kind="show" identifier="EditSegue" id="WEH-vq-JzF"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -52,7 +52,7 @@
                     <navigationItem key="navigationItem" title="Albums" id="LCe-5o-40b">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zrH-Kf-wL1">
                             <connections>
-                                <segue destination="gOB-K9-9PC" kind="show" identifier="AddAlbum" id="zdB-PL-Csr"/>
+                                <segue destination="gOB-K9-9PC" kind="show" identifier="AddSegue" id="zdB-PL-Csr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -188,6 +188,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WEH-vq-JzF"/>
+        <segue reference="zdB-PL-Csr"/>
     </inferredMetricsTieBreakers>
 </document>

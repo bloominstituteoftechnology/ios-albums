@@ -10,6 +10,11 @@ import UIKit
 
 class AlbumDetailTableViewController: UITableViewController {
 
+    // MARK: - Properties
+    
+    var albumController: AlbumController?
+    var album: Album?
+    
     // MARK: - Outlets
     @IBOutlet weak var albumTextField: UITextField!
     @IBOutlet weak var artistTextField: UITextField!
@@ -23,11 +28,20 @@ class AlbumDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        updateViews()
+    }
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    private func updateViews() {
+        if let album = album {
+            title = album.album
+            albumTextField.text = album.album
+            artistTextField.text = album.artist
+            genreTextField.text = album.genres
+            coverArtTextField.text = album.coverArt
+
+        } else {
+            title = "New Album"
+        }
     }
 
     // MARK: - Table view data source
