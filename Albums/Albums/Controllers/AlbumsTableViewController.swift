@@ -49,14 +49,26 @@ class AlbumsTableViewController: UITableViewController {
         
         return cell
     }
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "AddAlbumSegue" {
+            guard let detailVC = segue.destination as? AlbumDetailTableViewController else { fatalError()}
+            detailVC.albumController = albumController
+        }
+        
+        if segue.identifier == "ViewAlbumSegue" {
+            guard let detailVC = segue.destination as? AlbumDetailTableViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { fatalError()}
+            detailVC.albumController = albumController
+            detailVC.album = albumController.albums[indexPath.row]
+        }
+        
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }
