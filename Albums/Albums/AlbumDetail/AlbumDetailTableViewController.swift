@@ -98,6 +98,10 @@ class AlbumDetailTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.row < tempSongs.count
+    }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tempSongs.remove(at: indexPath.row)

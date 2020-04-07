@@ -37,7 +37,7 @@ class AlbumsTableViewController: UITableViewController {
     // MARK: - Table View Data Source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        albumController.albums.count
+        return albumController.albums.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
