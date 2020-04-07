@@ -47,6 +47,54 @@ class AlbumController {
         }.resume()
     }
     
+    func put(album: Album, completion: @escaping CompletionHandler = { _ in }) {
+        let putRequest = baseURL.appendingPathComponent(album.id).appendingPathExtension("json")
+        var urlRequest = URLRequest(url: putRequest)
+        urlRequest.httpMethod = "PUT"
+        
+        do {
+            urlRequest.httpBody = try JSONEncoder().encode(album)
+        } catch {
+            NSLog("Error encoding album: \(error)")
+            completion(error)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: urlRequest) { _, _, error in
+            if let error = error {
+                NSLog("Error sending (PUT) album to the server: \(error)")
+                completion(error)
+                return
+            }
+            completion(nil)
+        }.resume()
+        
+        
+    }
+    
+    // MARK: - CRUD
+    func createAlbum(artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) {
+        let newAlbum = Album(artist: artist, coverArt: coverArt, genres: genres, id: id, name: name, songs: songs)
+        albums.append(newAlbum)
+        put(album: newAlbum)
+    }
+    
+    func createSong(duration: String, id: String, name: String) -> Song {
+        let newSong = Song(duration: duration, id: id, name: name)
+        return newSong
+    }
+    
+    func update(album: Album, artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) {
+        var album = album
+        album.artist = artist
+        album.coverArt = coverArt
+        album.genres = genres
+        album.id = id
+        album.name = name
+        album.songs = songs
+        put(album: album)
+    }
+    
 //    func testDecodingExampleAlbum() {
 //        let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
 //        let data = try! Data(contentsOf: urlPath)
@@ -57,21 +105,21 @@ class AlbumController {
 //        print("\(weezer)")
 //    }
     
-    func testEncodingExampleAlbum() {
-        let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
-        let data = try! Data(contentsOf: urlPath)
-        
-        let decoder = JSONDecoder()
-        let weezer = try! decoder.decode(Album.self, from: data)
-        
-        print("\(weezer)")
-        
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        
-        let weezerData = try! encoder.encode(weezer)
-        
-        let dataAsString = String(data: weezerData, encoding: .utf8)!
-        print(dataAsString)
-    }
+//    func testEncodingExampleAlbum() {
+//        let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
+//        let data = try! Data(contentsOf: urlPath)
+//
+//        let decoder = JSONDecoder()
+//        let weezer = try! decoder.decode(Album.self, from: data)
+//
+//        print("\(weezer)")
+//
+//        let encoder = JSONEncoder()
+//        encoder.outputFormatting = .prettyPrinted
+//
+//        let weezerData = try! encoder.encode(weezer)
+//
+//        let dataAsString = String(data: weezerData, encoding: .utf8)!
+//        print(dataAsString)
+//    }
 }

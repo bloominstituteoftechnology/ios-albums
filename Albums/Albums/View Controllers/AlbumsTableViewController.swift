@@ -16,7 +16,7 @@ class AlbumsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        albumController.testEncodingExampleAlbum()
+        //albumController.testEncodingExampleAlbum()
     }
 
     // MARK: - Table view data source
