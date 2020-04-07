@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Song {
+struct Song: Equatable {
     let duration: String
     let id: String
     let title: String

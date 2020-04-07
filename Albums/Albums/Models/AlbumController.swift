@@ -11,7 +11,7 @@ import Foundation
 
 class AlbumController {
     
-    // MARK: - Public
+    // MARK: - CRUD
     
     private(set) var albums = [Album]()
     
@@ -42,7 +42,7 @@ class AlbumController {
     }
     
     func update(_ album: Album, artist: String, coverArtURLs: [String], genres: [String], name: String, songs: [Song]) {
-        guard let albumIndex = albums.firstIndex(where: { $0.id == album.id }) else {
+        guard let albumIndex = albums.firstIndex(of: album) else {
             createAlbum(artist: artist, coverArtURLs: coverArtURLs, genres: genres, name: name, songs: songs)
             return
         }
@@ -54,6 +54,17 @@ class AlbumController {
                 print(error)
             }
         }
+    }
+    
+    func deleteAlbum(at index: Int) {
+        let album = albums.remove(at: index)
+        
+        firebaseClient.deleteAlbum(album) { error in
+            if let error = error {
+                print(error)
+            }
+        }
+        
     }
     
     func createSong(title: String, duration: String) -> Song {

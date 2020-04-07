@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Album {
+struct Album: Equatable {
     let artist: String
     let coverArtURLs: [String]
     let genres: [String]
