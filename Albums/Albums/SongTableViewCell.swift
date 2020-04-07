@@ -28,6 +28,7 @@ class SongTableViewCell: UITableViewCell {
     // MARK: - Actions
     
     @IBAction func addSongButton(_ sender: Any) {
+        // TODO: ? Is this supposed to write to Firebase now or when Save is pressed?
         delegate?.addSong(with: titleTextField.text ?? "", duration: durationTextField.text ?? "")
     }
     

@@ -64,8 +64,11 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
         
         guard let songToAdd = newSong else { return }
         tempSongs.append(songToAdd)
+        
+        tableView.reloadData()
+
         // TODO: ? Terminating app due to uncaught exception 'NSRangeException', reason: 'Attempted to scroll the table view to an out-of-bounds row (1) when there are only 1 rows in section 0.
-//        tableView.scrollToRow(at: IndexPath(item: tempSongs.count, section: 0), at: .bottom, animated: true)
+        tableView.scrollToRow(at: IndexPath(item: tempSongs.count, section: 0), at: .bottom, animated: true)
     }
     
     private func updateViews() {
@@ -74,7 +77,7 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
             albumTextField?.text = album.album
             artistTextField?.text = album.artist
             genreTextField?.text = album.genres
-            coverArtTextField?.text = album.coverArt // FIXME: .joined(separator: ...)
+            coverArtTextField?.text = album.coverArt // TODO: ? At what level? .joined(separator: ...)
             tempSongs = album.songs
             
         } else {
@@ -116,14 +119,6 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
     }
     
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -134,30 +129,4 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
         }    
     }
     */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
