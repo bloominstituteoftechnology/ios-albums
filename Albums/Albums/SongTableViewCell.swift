@@ -11,7 +11,11 @@ import UIKit
 class SongTableViewCell: UITableViewCell {
 
     // MARK: - Properites
-    var song: Song?
+    var song: Song? {
+        didSet {
+            updateViews()
+        }
+    }
     // TODO: ? Directions had us put weak in front. Doesn't compile
     var delegate: SongTableViewCellDelegate?
     
@@ -31,7 +35,6 @@ class SongTableViewCell: UITableViewCell {
         if let song = song {
             titleTextField.text = song.title
             durationTextField.text = song.duration
-        } else {
             addSongButtonOutlet.isHidden = true
         }
     }

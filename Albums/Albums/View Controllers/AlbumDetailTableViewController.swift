@@ -48,10 +48,10 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
     private func updateViews() {
         if let album = album {
             title = album.album
-            albumTextField.text = album.album
-            artistTextField.text = album.artist
-            genreTextField.text = album.genres
-            coverArtTextField.text = album.coverArt // FIXME: .joined(separator: ...)
+            albumTextField?.text = album.album
+            artistTextField?.text = album.artist
+            genreTextField?.text = album.genres
+            coverArtTextField?.text = album.coverArt // FIXME: .joined(separator: ...)
             tempSongs = album.songs
             
         } else {
@@ -70,9 +70,18 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
 
         // Configure the cell...
         cell.delegate = self
-        cell.song = tempSongs[indexPath.row]
+        if indexPath.row < tempSongs.count {
+            cell.song = tempSongs[indexPath.row]
+        }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Songs"
+        }
+        return nil
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
