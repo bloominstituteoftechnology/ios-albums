@@ -6,8 +6,7 @@
 //  Copyright © 2020 Swift Student. All rights reserved.
 //
 
-import Foundation
-
+import UIKit
 
 class AlbumController {
     
@@ -64,11 +63,14 @@ class AlbumController {
                 print(error)
             }
         }
-        
     }
     
     func createSong(title: String, duration: String) -> Song {
         Song(duration: duration, id: UUID().uuidString, title: title)
+    }
+    
+    func getCoverArt(for album: Album) -> [UIImage] {
+        
     }
     
     // MARK: - Private

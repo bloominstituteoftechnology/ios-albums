@@ -6,7 +6,7 @@
 //  Copyright © 2020 Swift Student. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 private let baseURL = URL(string: "https://albums-shawngee.firebaseio.com/")!
 
@@ -16,6 +16,7 @@ enum NetworkError: Error {
     case noData
     case decodingError(Error)
     case encodingError(Error)
+    case invalidData
 }
 
 class FirebaseClient {
@@ -39,8 +40,6 @@ class FirebaseClient {
             }
             
             do {
-                let dataString  = String(data: data, encoding: .utf8)!
-                print(dataString)
                 let albums = try Array(JSONDecoder().decode([String: Album].self, from: data).values)
                 completion(.success(albums))
             } catch {
@@ -98,6 +97,32 @@ class FirebaseClient {
             }
             
             completion(nil)
+        }.resume()
+    }
+    
+    func getImage(with url: URL, completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(.clientError(error)))
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
+                completion(.failure(.invalidResponseCode(response.statusCode)))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            guard let image = UIImage(data: data) else {
+                completion(.failure(.invalidData))
+                return
+            }
+            
+            completion(.success(image))
         }.resume()
     }
 }
