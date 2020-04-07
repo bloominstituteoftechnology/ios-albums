@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CoverArt: Codable {
+struct CoverArt: Equatable, Codable {
     let url: String
 }
 
@@ -68,15 +68,15 @@ struct Album: Codable {
     }
 }
 
-struct SongTitle: Codable {
+struct SongTitle: Equatable, Codable {
     let title: String
 }
 
-struct SongDuration: Codable {
+struct SongDuration: Equatable, Codable {
     let duration: String
 }
 
-struct Song: Codable {
+struct Song: Equatable, Codable {
     enum SongKeys: String, CodingKey {
         case id
         case title = "name"
@@ -112,3 +112,15 @@ struct Song: Codable {
         try container.encode(songDuration, forKey: .duration)
     }
 }
+
+
+struct AlbumRepresentation: Equatable, Codable {
+    
+    let id: UUID
+    let name: String
+    let artist: String
+    let genres: [String]
+    let coverArt: [CoverArt]
+    let songs: [Song]
+}
+
