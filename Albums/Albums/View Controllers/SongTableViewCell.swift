@@ -11,7 +11,11 @@ import UIKit
 class SongTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-    var song: Song?
+    var song: Song? {
+        didSet {
+            updateViews()
+        }
+    }
     var delegate: SongTableViewCellDelegate?
     
     // MARK: - IBOutlets

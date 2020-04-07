@@ -31,7 +31,8 @@ class AlbumDetailTableViewController: UITableViewController {
         guard let name = albumTextField.text,
             let artist = artistTextField.text,
             let genresSubstrings = genresTextField.text?.split(separator: ","),
-            let urlsStrings = urlsTextField.text?.split(separator: ",")
+            let urlsStrings = urlsTextField.text?.split(separator: ","),
+            !tempSongs.isEmpty
             else {
                 return
         }
@@ -67,6 +68,7 @@ class AlbumDetailTableViewController: UITableViewController {
     
     func updateViews() {
         if let album = album {
+            guard isViewLoaded else { return }
             albumTextField.text = album.name
             artistTextField.text = album.artist
             genresTextField.text = album.genres.joined(separator: ", ")
@@ -87,10 +89,10 @@ class AlbumDetailTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tempSongs.count + 1
@@ -146,9 +148,9 @@ extension AlbumDetailTableViewController: SongTableViewCellDelegate {
             tempSongs.append(newSong)
         }
         tableView.reloadData()
-        var indexPath = IndexPath()
-        indexPath.section = 0
-        indexPath.row = tempSongs.count
+        var indexPath = IndexPath(row: tempSongs.count, section: 0)
+        //indexPath.section = 0
+        //indexPath.row = tempSongs.count
         tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
     }
     

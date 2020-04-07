@@ -125,12 +125,12 @@ struct Song: Codable {
         
         try container.encode(id, forKey: .id)
         
-        var nameContainer = container.nestedUnkeyedContainer(forKey: .name)
+        //var nameContainer = container.nestedUnkeyedContainer(forKey: .name)
         let nameDict = ["title" : name]
-        try nameContainer.encode(nameDict)
+        try container.encode(nameDict, forKey: .name)
         
-        var durationContainer = container.nestedUnkeyedContainer(forKey: .duration)
+        //var durationContainer = container.nestedUnkeyedContainer(forKey: .duration)
         let durationDict = ["duration" : duration]
-        try durationContainer.encode(durationDict)
+        try container.encode(durationDict, forKey: .duration)
     }
 }
