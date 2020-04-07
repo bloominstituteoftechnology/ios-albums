@@ -28,6 +28,28 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
 
     // MARK: - Actions
     @IBAction func saveButton(_ sender: Any) {
+        
+        if album != nil {
+            albumController?.update(album: album!,
+                                    albumTitle: albumTextField?.text ?? "",
+                                    artist: artistTextField?.text ?? "",
+                                    genres: genreTextField.text ?? "",
+                                    coverArt: coverArtTextField.text ?? "",
+                                    songs: tempSongs)
+        } else {
+            albumController?.create(album: albumTextField?.text ?? "",
+                                    artist: artistTextField?.text ?? "",
+                                    genres: genreTextField?.text ?? "",
+                                    coverArt: coverArtTextField?.text ?? "")
+            
+        }
+
+        // Use this if you present modally
+        //dismiss(animated: true, completion: nil)
+        
+        // Use this if you Show
+        // TODO: Should I call it here or should the caller do it?
+        navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -42,6 +64,7 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
         
         guard let songToAdd = newSong else { return }
         tempSongs.append(songToAdd)
+        // TODO: ? Terminating app due to uncaught exception 'NSRangeException', reason: 'Attempted to scroll the table view to an out-of-bounds row (1) when there are only 1 rows in section 0.
         tableView.scrollToRow(at: IndexPath(item: tempSongs.count, section: 0), at: .bottom, animated: true)
     }
     

@@ -114,8 +114,21 @@ class AlbumController {
     
     // Update
     
-    func update() {
-        // FIXME: Implement
+    func update(album: Album,
+                albumTitle: String,
+                artist: String,
+                genres: String,
+                coverArt: String,
+                songs: [Song]) {
+
+        album.album = albumTitle
+        album.artist = artist
+        album.genres = genres
+        album.coverArt = coverArt
+        album.songs = songs
+
+        put(album: album)
+        
     }
     
     // Delete

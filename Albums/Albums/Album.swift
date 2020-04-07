@@ -70,10 +70,10 @@ class Album: Codable {
         try container.encode(album, forKey: .album)
         try container.encode(artist, forKey: .artist)
         
-        let genresArray = genres.components(separatedBy: ",")
+        let genresArray = genres.components(separatedBy: ",").map{ $0.trimmingCharacters(in: .whitespacesAndNewlines) }
         try container.encode(genresArray, forKey: .genres)
 
-        let coverArtArray = coverArt.components(separatedBy: ",").compactMap{ CoverArt(url: $0) }
+        let coverArtArray = coverArt.components(separatedBy: ",").compactMap{ CoverArt(url: $0.trimmingCharacters(in: .whitespacesAndNewlines)) }
         try container.encode(coverArtArray, forKey: .coverArt)
 
         try container.encode(songs, forKey: .songs)
