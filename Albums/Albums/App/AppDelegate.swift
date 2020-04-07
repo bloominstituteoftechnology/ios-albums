@@ -15,8 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let newSong = albController.createSong(duration: "12:00", title: "Potato Masters")
-        albController.createAlbum(artist: "Mr. Potatohead", coverArt: ["google.com"], name: "I fried my wife", songs: [newSong], genres: ["Metal"])
         albController.testEncodingExampleAlbum()
         return true
     }
