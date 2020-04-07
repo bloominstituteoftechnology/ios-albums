@@ -10,9 +10,33 @@ import UIKit
 
 class SongTableViewCell: UITableViewCell {
 
+    // MARK: - Properites
+    var song: Song?
+    
+    // MARK: - Outlets
+
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var durationTextField: UITextField!
+    @IBOutlet weak var addSongButtonOutlet: UIButton!
+    
     // MARK: - Actions
     
     @IBAction func addSongButton(_ sender: Any) {
+    }
+    
+    private func updateViews() {
+        if let song = song {
+            titleTextField.text = song.title
+            durationTextField.text = song.duration
+        } else {
+            addSongButtonOutlet.isHidden = true
+        }
+    }
+
+    override func prepareForReuse() {
+        titleTextField.text = ""
+        durationTextField.text = ""
+        addSongButtonOutlet.isHidden = false
     }
     
     override func awakeFromNib() {
