@@ -37,7 +37,7 @@ class AlbumDetailTableViewController: UITableViewController {
     
     // MARK: - Private
     
-    var tempSongs = [Song]()
+    private var tempSongs = [Song]()
     
     private func updateViews() {
         guard isViewLoaded else { return }
