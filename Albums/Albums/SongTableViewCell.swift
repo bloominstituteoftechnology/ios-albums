@@ -20,11 +20,13 @@ class SongTableViewCell: UITableViewCell {
     weak var delegate: SongTableViewCellDelegate?
 
     // MARK: - IBOutlets
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var durationTextField: UITextField!
     @IBOutlet weak var addSongButton: UIButton!
     
     // MARK: - IBActions
+    
     @IBAction func addSongTapped(_ sender: UIButton) {
         guard let title = titleTextField.text, !title.isEmpty,
             let duration = durationTextField.text, !duration.isEmpty else { return }
