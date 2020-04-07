@@ -29,6 +29,15 @@ class AlbumController {
     // MARK: - CRUD
     
     // Create
+    func create(album: String, artist: String, genres: String, coverArt: String) {
+
+        let id = UUID()
+
+        let albumObj = Album(
+        
+        put(album: albumObj)
+    }
+
     func put(album: Album, completion: @escaping CompletionHandler = { _ in }) {
         let uuid = album.id.uuidString == "" ? UUID() : album.id
         let requestURL = firebaseBaseURL.appendingPathComponent(uuid.uuidString).appendingPathExtension("json")
@@ -83,7 +92,6 @@ class AlbumController {
                                                                      from: data).values
                 
                 self.albums.append(contentsOf: anAlbum)
-//                try self.updateMovies(with: albumRepresentation)
                 completion(nil)
                 
             } catch {

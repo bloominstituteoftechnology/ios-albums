@@ -32,6 +32,14 @@ struct Album: Codable {
     var coverArt: String // https://lastfm-img2.akamaized.net/i/u/174s/1918fe81bb68441d96b2247682bfda21.png
     var songs: [Song]
 
+    init(album: String, artist: String, genres: String, coverArt: String, songs: [Songs] = []) {
+        self.album = album
+        self.artist = artist
+        self.genres = genres
+        self.coverArt = coverArt
+        self.songs = songs
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumKeys.self)
         
