@@ -50,13 +50,11 @@ class AlbumController {
     }
 
     func put(album: Album, completion: @escaping CompletionHandler = { _ in }) {
-        let uuid = album.id.uuidString == "" ? UUID() : album.id
-        let requestURL = firebaseBaseURL.appendingPathComponent(uuid.uuidString).appendingPathExtension("json")
+        let requestURL = firebaseBaseURL.appendingPathComponent(album.id.uuidString).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
 
         do {
-// FIXME:            album.id = uuid // TODO: ? What if it didn't change?
             request.httpBody = try JSONEncoder().encode(album)
 
         } catch {
@@ -77,7 +75,6 @@ class AlbumController {
 
     // Read
 
-    // searchForMovie
     func getAlbums(completion: @escaping (Error?) -> Void) {
         
         let requestURL = firebaseBaseURL.appendingPathExtension("json")

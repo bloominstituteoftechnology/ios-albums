@@ -60,7 +60,11 @@ class Album: Codable {
         genres = genresArray.joined(separator:", ")
         print("\(genresArray)")
 
-        songs = try container.decode([Song].self, forKey: .songs)
+        do {
+            songs = try container.decode([Song].self, forKey: .songs)
+        } catch {
+            songs = []
+        }
     }
 
     func encode(to encoder: Encoder) throws {

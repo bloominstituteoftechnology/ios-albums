@@ -65,7 +65,7 @@ class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDe
         guard let songToAdd = newSong else { return }
         tempSongs.append(songToAdd)
         // TODO: ? Terminating app due to uncaught exception 'NSRangeException', reason: 'Attempted to scroll the table view to an out-of-bounds row (1) when there are only 1 rows in section 0.
-        tableView.scrollToRow(at: IndexPath(item: tempSongs.count, section: 0), at: .bottom, animated: true)
+//        tableView.scrollToRow(at: IndexPath(item: tempSongs.count, section: 0), at: .bottom, animated: true)
     }
     
     private func updateViews() {
