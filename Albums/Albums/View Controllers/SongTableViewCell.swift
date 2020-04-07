@@ -11,7 +11,8 @@ import UIKit
 class SongTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-    
+    var song: Song?
+    weak var delegate: SongTableViewCellDelegate?
     
     // MARK: - IBOutlets
     @IBOutlet weak var songTitleTextField: UITextField!
@@ -20,19 +21,28 @@ class SongTableViewCell: UITableViewCell {
     
     // MARK: - IBActions
     @IBAction func addSongButtonTapped(_ sender: Any) {
+        guard let title = songTitleTextField.text, let duration = songDurationTextField.text else { return }
+        delegate?.addSong(wth: title, duration: duration)
     }
     
+    // MARK: - View lifecycle
+    func updateViews() {
+        guard let song = song else { return }
+        addSongButton.isHidden = true
+        songTitleTextField.text = song.name
+        songDurationTextField.text = song.duration
+    }
     
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    override func prepareForReuse() {
+        songDurationTextField.text = ""
+        songTitleTextField.text = ""
+        addSongButton.isHidden = false
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+}
 
-        // Configure the view for the selected state
+class SongTableViewCellDelegate {
+    func addSong(wth title: String, duration: String) {
+        
     }
-
 }

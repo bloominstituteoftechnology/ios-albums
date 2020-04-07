@@ -11,6 +11,13 @@ import UIKit
 class AlbumDetailTableViewController: UITableViewController {
     
     // MARK: - Properties
+    var albumController: AlbumController?
+    var album: Album? {
+        didSet {
+            updateViews()
+        }
+    }
+    var tempSongs: [Song] = []
     
     
     // MARK: - IBOutlets
@@ -23,26 +30,44 @@ class AlbumDetailTableViewController: UITableViewController {
     @IBAction func saveButtonTapped(_ sender: Any) {
     }
     
-    
-    
-
+    // MARK: - view lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        if view.
+        updateViews()
+    }
+    
+    func updateViews() {
+        if let album = album {
+            albumTextField.text = album.name
+            artistTextField.text = album.artist
+            genresTextField.text = album.genres.joined(separator: ", ")
+            
+            var coverArtArray: [String] = []
+            for url in album.coverArt {
+                let tempString = "\(url)"
+                coverArtArray.append(tempString)
+            }
+            
+            urlsTextField.text = coverArtArray.joined(separator: ", ")
+            title = album.name
+            tempSongs = album.songs
+        } else {
+            title = "New Album"
+        }
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return tempSongs.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
@@ -50,7 +75,6 @@ class AlbumDetailTableViewController: UITableViewController {
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
