@@ -25,9 +25,16 @@ class AlbumsTableViewController: UITableViewController {
             if let error = error {
                 NSLog("Error : \(error)")
             }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
             
-            self.tableView.reloadData()
         })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source

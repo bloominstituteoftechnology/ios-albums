@@ -8,7 +8,20 @@
 
 import UIKit
 
+protocol SongTableViewCellDelegate: AnyObject {
+    func addSong(duration: String, title: String)
+}
+
 class SongTableViewCell: UITableViewCell {
+    
+    // MARK: - Properties
+    
+    var song: Song? {
+        didSet {
+            updateViews()
+        }
+    }
+    weak var delegate: SongTableViewCellDelegate?
 
     // MARK: - Outlets
     
@@ -31,5 +44,31 @@ class SongTableViewCell: UITableViewCell {
     // MARK: - Actions
 
     @IBAction func addSongButtonTapped(_ sender: Any) {
+        
+        guard let title = songNameField.text,
+            !title.isEmpty,
+            let duration = songDurationField.text,
+            !duration.isEmpty else { return }
+        
+        delegate?.addSong(duration: duration, title: title)
     }
+    
+    // MARK: - Method
+    
+    private func updateViews() {
+        DispatchQueue.main.async {
+            if let song = self.song {
+                self.addSongButton.isHidden = true
+                self.songNameField.text = song.title
+                self.songDurationField.text = song.duration
+            }
+        }
+    }
+    
+    override func prepareForReuse() {
+        addSongButton.isHidden = false
+        songNameField.text = ""
+        songDurationField.text = ""
+    }
+    
 }
