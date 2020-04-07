@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct CoverArt: Decodable {
+struct CoverArt: Codable {
     let url: String
 }
 
-struct Album: Decodable {
+struct Album: Codable {
     
     /// This is about conforming to the data that we are reading in. So case name doesn't have to match fullname
     // TODO: ? Why String?
@@ -50,22 +50,42 @@ struct Album: Decodable {
 
         songs = try container.decode([Song].self, forKey: .songs)
     }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: AlbumKeys.self)
+        
+        try container.encode(id, forKey: .id)
+        try container.encode(album, forKey: .album)
+        try container.encode(artist, forKey: .artist)
+        
+        let genresArray = genres.components(separatedBy: ",")
+        try container.encode(genresArray, forKey: .genres)
+
+        let coverArtArray = coverArt.components(separatedBy: ",").compactMap{ CoverArt(url: $0) }
+        try container.encode(coverArtArray, forKey: .coverArt)
+
+        try container.encode(songs, forKey: .songs)
+    }
 }
 
-struct SongTitle: Decodable {
+struct SongTitle: Codable {
     let title: String
 }
 
-struct SongDuration: Decodable {
+struct SongDuration: Codable {
     let duration: String
 }
 
-struct Song: Decodable {
+struct Song: Codable {
     enum SongKeys: String, CodingKey {
         case id
         case title = "name"
         case duration
     }
+
+    var id: UUID
+    var title: String
+    var duration: String
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: SongKeys.self)
@@ -79,7 +99,16 @@ struct Song: Decodable {
         duration = songDuration.duration
     }
 
-    var id: UUID
-    var title: String
-    var duration: String
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: SongKeys.self)
+        
+        try container.encode(id, forKey: .id)
+        try container.encode(title, forKey: .title)
+
+        let songTitle = SongTitle(title: title)
+        try container.encode(songTitle, forKey: .title)
+        
+        let songDuration = SongDuration(duration: duration)
+        try container.encode(songDuration, forKey: .duration)
+    }
 }

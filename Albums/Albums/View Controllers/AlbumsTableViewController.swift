@@ -22,6 +22,7 @@ class AlbumsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         albumController.testDecodingExampleAlbum()
+        albumController.testEncodingExampleAlbum()
     }
 
     // MARK: - Table view data source
