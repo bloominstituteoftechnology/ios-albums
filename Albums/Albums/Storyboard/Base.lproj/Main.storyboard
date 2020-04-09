@@ -63,7 +63,7 @@
         <!--Title-->
         <scene sceneID="nKQ-cA-ZVK">
             <objects>
-                <tableViewController id="Fk2-hI-7HW" sceneMemberID="viewController">
+                <tableViewController id="Fk2-hI-7HW" customClass="AlbumDetailTableViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Xn3-Yh-Vqx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,13 +105,47 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="f0S-Yt-qhd">
-                                <rect key="frame" x="0.0" y="249" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="140" id="f0S-Yt-qhd" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="249" width="414" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="f0S-Yt-qhd" id="cRZ-0b-oxb">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song Title:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZ3-qm-FJ5">
+                                            <rect key="frame" x="20" y="11" width="374" height="34"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xv5-uY-WPO">
+                                            <rect key="frame" x="20" y="53" width="374" height="34"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjX-JD-Ac8">
+                                            <rect key="frame" x="165" y="99" width="84" height="30"/>
+                                            <state key="normal" title="Add Song"/>
+                                            <connections>
+                                                <action selector="addSongButtonTapped:" destination="f0S-Yt-qhd" eventType="touchUpInside" id="NpG-vO-zZd"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="qjX-JD-Ac8" secondAttribute="trailing" constant="145" id="BW3-m0-jp3"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="aZ3-qm-FJ5" secondAttribute="trailing" id="BZI-0m-CrS"/>
+                                        <constraint firstItem="Xv5-uY-WPO" firstAttribute="trailing" secondItem="cRZ-0b-oxb" secondAttribute="trailingMargin" id="Vix-1l-K1V"/>
+                                        <constraint firstItem="aZ3-qm-FJ5" firstAttribute="leading" secondItem="cRZ-0b-oxb" secondAttribute="leadingMargin" id="a5a-mX-tcZ"/>
+                                        <constraint firstItem="Xv5-uY-WPO" firstAttribute="leading" secondItem="cRZ-0b-oxb" secondAttribute="leadingMargin" id="hCA-KE-dft"/>
+                                        <constraint firstItem="qjX-JD-Ac8" firstAttribute="top" secondItem="Xv5-uY-WPO" secondAttribute="bottom" constant="12" id="kbU-tv-Kvu"/>
+                                        <constraint firstItem="aZ3-qm-FJ5" firstAttribute="top" secondItem="cRZ-0b-oxb" secondAttribute="topMargin" id="rs7-i1-Bvt"/>
+                                        <constraint firstItem="qjX-JD-Ac8" firstAttribute="leading" secondItem="cRZ-0b-oxb" secondAttribute="leadingMargin" constant="145" id="xOx-ik-fac"/>
+                                        <constraint firstItem="Xv5-uY-WPO" firstAttribute="top" secondItem="aZ3-qm-FJ5" secondAttribute="bottom" constant="8" id="zrc-FL-31j"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="durationTextField" destination="Xv5-uY-WPO" id="4Wv-em-0eP"/>
+                                    <outlet property="songTitleTextField" destination="aZ3-qm-FJ5" id="VAX-4t-X3n"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -120,8 +154,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="FLH-Rw-tp2">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="bjo-1O-Cx1"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="bjo-1O-Cx1">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="Fk2-hI-7HW" id="TWe-rG-7Gz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="albumNameTextField" destination="D82-4r-T3q" id="leg-CL-VS8"/>
+                        <outlet property="artistTextField" destination="pSF-LK-vb4" id="vkV-VK-EsH"/>
+                        <outlet property="coverURLTextField" destination="WCu-dG-Tho" id="PNp-7O-uY7"/>
+                        <outlet property="genresTextField" destination="7zW-n1-Kmv" id="4Kz-Ei-YbC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ChZ-CX-eNb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
