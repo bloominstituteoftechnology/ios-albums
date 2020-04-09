@@ -22,6 +22,15 @@ struct Album: Codable {
     let genres: [String]
     let id, name: String
     let songs: [Song]
+    
+    init(artist: String, coverArt: [CoverArt], genres: [String], id: String, name: String, songs: [Song]) {
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.id = id
+        self.name = name
+        self.songs = songs
+    }
             
     init(decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

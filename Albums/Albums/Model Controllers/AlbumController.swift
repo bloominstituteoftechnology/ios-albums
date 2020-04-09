@@ -66,7 +66,7 @@ final class AlbumController {
         .resume()
     }
     
-    func changeAlbum(album: Album, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
+    private func changeAlbum(album: Album, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         let albumURL = baseURL.appendingPathComponent(album.id)
         var request = apiRequest(for: albumURL, responseType: .put)
         
@@ -107,7 +107,7 @@ final class AlbumController {
         }
     }
     
-    func postAlbum(album: Album, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
+    func createAlbum(album: Album, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         var request = apiRequest(for: baseURL, responseType: .post)
         
         do {
@@ -139,6 +139,29 @@ final class AlbumController {
         let duration = Duration(duration: duration)
         let song = Song(name: title, duration: duration)
         return song
+    }
+    
+    func updateAlbum(album: Album, artist: String, coverArt: String, genres: String, id: String, name: String, songs: [Song]) {
+        let coverArtStringArray = coverArt.components(separatedBy: ",")
+        var coverArtArray = [CoverArt]()
+        for coverArt in coverArtStringArray {
+            guard let url = URL(string: coverArt) else { break }
+            coverArtArray.append(CoverArt(url: url))
+        }
+        
+        let genresArray = genres.components(separatedBy: ",")
+        
+        let album = Album(artist: artist, coverArt: coverArtArray, genres: genresArray, id: id, name: name, songs: songs)
+        
+        changeAlbum(album: album) { result in
+            switch result {
+            case .success(_):
+                print("Successfully updated album.")
+            case .failure(_):
+                // Maybe throw in an alert here
+                print("Failed to update album")
+            }
+        }
     }
     
     // MARK: - Helper Methods
