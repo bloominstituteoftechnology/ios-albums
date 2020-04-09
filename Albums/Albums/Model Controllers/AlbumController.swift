@@ -33,9 +33,9 @@ final class AlbumController {
     var albums = [Album]()
     let baseURL: URL = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
     
-    // MARK: - Functions
+    // MARK: - API Interaction Functions
     
-    private func getAlbumList(completion: @escaping (Result<Bool, NetworkError>) -> Void ) {
+    func getAlbumList(completion: @escaping (Result<Bool, NetworkError>) -> Void ) {
         let request = apiRequest(for: baseURL, responseType: .get)
         
         URLSession.shared.dataTask(with: request) { data, response, error in
@@ -46,7 +46,7 @@ final class AlbumController {
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 200
                 else {
-                    print("Returned bad response")
+                    print("Fetch returned with bad response")
                     return completion(.failure(.failedFetch))
             }
             guard let data = data else {
@@ -63,15 +63,82 @@ final class AlbumController {
                 completion(.failure(.failedFetch))
             }
         }
+        .resume()
     }
     
-    private func changeAlbum(for album: Album, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
+    func changeAlbum(album: Album, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         let albumURL = baseURL.appendingPathComponent(album.id)
-        let request = apiRequest(for: albumURL, responseType: .put)
+        var request = apiRequest(for: albumURL, responseType: .put)
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        do {
+            let data = try encoder.encode(album)
+            request.httpBody = data
             
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    print("Failed to change album with error: \(error.localizedDescription)")
+                    completion(.failure(.failedPut))
+                }
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    print("Change returned with bad response")
+                    return completion(.failure(.failedPut))
+                }
+                guard let data = data else {
+                    print("Data was void")
+                    return completion(.failure(.badData))
+                }
+                
+                do {
+                    // I couldnt think of how to remove the old album from the array and then add the updated one back
+                    let albums = try self.decoder.decode([Album].self, from: data)
+                    self.albums = albums
+                    completion(.success(true))
+                } catch {
+                    print("Error decoding albums: \(error.localizedDescription)")
+                    completion(.failure(.failedFetch))
+                }
+            }
+            .resume()
+            
+            completion(.success(true))
+        } catch {
+            print("Error encoding album: \(error.localizedDescription)")
+            completion(.failure(.failedPut))
         }
+    }
+    
+    func postAlbum(album: Album, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
+        var request = apiRequest(for: baseURL, responseType: .post)
+        
+        do {
+            let data = try encoder.encode(album)
+            request.httpBody = data
+            
+            URLSession.shared.dataTask(with: request) { _, response, error in
+                if let error = error {
+                    print("Failed to add album with error: \(error.localizedDescription)")
+                    completion(.failure(.failedPost))
+                }
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    print("Post returned with bad response")
+                    return completion(.failure(.failedPost))
+                }
+            }
+            .resume()
+            
+            self.albums.append(album)
+            completion(.success(true))
+        } catch {
+            print("Error encoding album: \(error.localizedDescription)")
+            completion(.failure(.failedPost))
+        }
+    }
+    
+    func createSong(title: String, duration: String) -> Song {
+        let title = Name(title: title)
+        let duration = Duration(duration: duration)
+        let song = Song(name: title, duration: duration)
+        return song
     }
     
     // MARK: - Helper Methods

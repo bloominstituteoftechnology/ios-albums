@@ -22,18 +22,16 @@ struct Album: Codable {
     let genres: [String]
     let id, name: String
     let songs: [Song]
-    
-    // Im decoding in the init of each struct instead of doing it all here. I don't know which is better but the both work
-        
-//    init(decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        self.artist = try container.decode(String.self, forKey: .artist)
-//        self.coverArt = try container.decode([CoverArt].self, forKey: .coverArt)
-//        self.genres = try container.decode([String].self, forKey: .genres)
-//        self.id = try container.decode(String.self, forKey: .id)
-//        self.name = try container.decode(String.self, forKey: .name)
-//        self.songs = try container.decode([Song].self, forKey: .songs)
-//    }
+            
+    init(decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.artist = try container.decode(String.self, forKey: .artist)
+        self.coverArt = try container.decode([CoverArt].self, forKey: .coverArt)
+        self.genres = try container.decode([String].self, forKey: .genres)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.songs = try container.decode([Song].self, forKey: .songs)
+    }
     
     func encode(to encode: Encoder) throws {
         var container = encode.container(keyedBy: CodingKeys.self)
@@ -62,28 +60,30 @@ struct CoverArt: Codable {
     }
     let url: URL
     
-    init(decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        url = try container.decode(URL.self, forKey: .url)
-    }
+//    init(decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        url = try container.decode(URL.self, forKey: .url)
+//    }
 }
 
 struct Song: Codable {
     private enum CodingKeys: String, CodingKey {
-        case duration
         case name
-        case id
+        case duration
     }
-    let duration: Duration
     let name: Name
-    let id: String
+    let duration: Duration
     
-    init(decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        duration = try container.decode(Duration.self, forKey: .duration)
-        name = try container.decode(Name.self, forKey: .name)
-        id = try container.decode(String.self, forKey: .id)
+    init(name: Name, duration: Duration) {
+        self.name = name
+        self.duration = duration
     }
+    
+//    init(decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        duration = try container.decode(Duration.self, forKey: .duration)
+//        name = try container.decode(Name.self, forKey: .name)
+//    }
 }
 
 struct Duration: Codable {
@@ -92,10 +92,14 @@ struct Duration: Codable {
     }
     let duration: String
     
-    init(decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        duration = try container.decode(String.self, forKey: .duration)
+    init(duration: String) {
+        self.duration = duration
     }
+    
+//    init(decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        duration = try container.decode(String.self, forKey: .duration)
+//    }
 }
 
 struct Name: Codable {
@@ -104,8 +108,12 @@ struct Name: Codable {
     }
     let title: String
     
-    init(decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        title = try container.decode(String.self, forKey: .title)
+    init(title: String) {
+        self.title = title
     }
+    
+//    init(decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        title = try container.decode(String.self, forKey: .title)
+//    }
 }
