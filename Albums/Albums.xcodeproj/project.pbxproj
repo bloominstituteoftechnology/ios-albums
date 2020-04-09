@@ -15,6 +15,7 @@
 		151DC5B1243FC841005EB6C9 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151DC5B0243FC841005EB6C9 /* AlbumsTableViewController.swift */; };
 		151DC5B3243FCB93005EB6C9 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151DC5B2243FCB93005EB6C9 /* AlbumDetailTableViewController.swift */; };
 		151DC5B6243FCD0B005EB6C9 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151DC5B5243FCD0B005EB6C9 /* SongTableViewCell.swift */; };
+		151DC5B9243FCDE7005EB6C9 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151DC5B8243FCDE7005EB6C9 /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		151DC5B0243FC841005EB6C9 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		151DC5B2243FCB93005EB6C9 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		151DC5B5243FCD0B005EB6C9 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		151DC5B8243FCDE7005EB6C9 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		151DC597243FC5DD005EB6C9 /* Albums */ = {
 			isa = PBXGroup;
 			children = (
+				151DC5B7243FCDD9005EB6C9 /* Model */,
 				151DC5AD243FC63B005EB6C9 /* Storyboard */,
 				151DC5AF243FC826005EB6C9 /* View Controller */,
 				151DC5B4243FCCE9005EB6C9 /* View Cell */,
@@ -111,6 +114,14 @@
 				151DC5B5243FCD0B005EB6C9 /* SongTableViewCell.swift */,
 			);
 			path = "View Cell";
+			sourceTree = "<group>";
+		};
+		151DC5B7243FCDD9005EB6C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				151DC5B8243FCDE7005EB6C9 /* Album.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +200,7 @@
 				151DC5B6243FCD0B005EB6C9 /* SongTableViewCell.swift in Sources */,
 				151DC5B3243FCB93005EB6C9 /* AlbumDetailTableViewController.swift in Sources */,
 				151DC59B243FC5DD005EB6C9 /* SceneDelegate.swift in Sources */,
+				151DC5B9243FCDE7005EB6C9 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
