@@ -23,6 +23,10 @@ class AlbumsTableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         albumController?.getAlbumList(completion: { result in
             switch result {
@@ -71,7 +75,7 @@ extension AlbumsTableViewController {
         }
     }
     
-    private func updateViews() {
+    private func update() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
         snapshot.appendSections([.main])
         dataSource.apply(snapshot, animatingDifferences: false)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlbumDetailTableViewController: UIViewController {
+class AlbumDetailTableViewController: UIViewController, SongTableViewCellDelegate {
     
     // MARK: Outlets
     
@@ -20,53 +20,97 @@ class AlbumDetailTableViewController: UIViewController {
     
     // MARK: - Properties
     
-    private lazy var dataSource = makeDataSource()
     var albumController: AlbumController?
-    var album: Album?
+    var album: Album? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    var tempSongs = [Song]()
     
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
+    }
+    
+    private func updateViews() {
+        guard let album = album else { return }
+        
+        self.title = album.name
+        albumNameTextField.text = album.name
+        artistTextField.text = album.artist
+        genresTextField.text = album.genres.joined(separator: ",")
+        let covertArt: String = {
+            var tempCoverArt = [String]()
+            for coverArt in album.coverArt {
+                do {
+                    tempCoverArt.append(try String(contentsOf: coverArt.url))
+                } catch {
+                    print("Failed to convert url to string")
+                }
+            }
+            return tempCoverArt.joined(separator: ",")
+        }()
+        coverArtTextField.text = String(covertArt)
+        
+        tempSongs = album.songs
     }
     
     // MARK: - Action Handlers
     
     @IBAction func save(_ sender: Any) {
+        guard let name = albumNameTextField.text,
+            name.isEmpty == false,
+            let artist = artistTextField.text,
+            artist.isEmpty == false,
+            let genres = genresTextField.text,
+            genres.isEmpty == false,
+            let coverArt = coverArtTextField.text,
+            coverArt.isEmpty == false
+            else { return }
+        
+        if let album = album {
+            albumController?.updateAlbum(album: album, artist: artist, coverArt: coverArt, genres: genres, name: name, songs: tempSongs)
+        } else {
+            albumController?.createAlbum(artist: artist, coverArt: coverArt, genres: genres, id: String(tempSongs.count), name: name, songs: tempSongs)
+        }
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func addSong(with title: String, duration: String) {
+        guard let song = albumController?.createSong(title: title, duration: duration) else { return }
+        tempSongs.append(song)
+        tableView.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: tempSongs.count, section: 0), at: .none, animated: true)
     }
-    */
-
 }
 
-extension AlbumDetailTableViewController {
-    enum Section {
-        case main
+extension AlbumDetailTableViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tempSongs.count + 1
     }
     
-    func makeDataSource() -> UITableViewDiffableDataSource<Section, String> {
-        UITableViewDiffableDataSource(tableView: tableView) { tableview, indexPath, name in
-            let cell = tableview.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
-            
-            return cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongsTableViewCell else {
+            fatalError("Cell did not return as custom cell")
         }
+        
+        cell.song = tempSongs[indexPath.row]
+        cell.delegate = self
+        
+        return cell
     }
     
-    private func updateViews() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
-        snapshot.appendSections([.main])
-        dataSource.apply(snapshot, animatingDifferences: false)
-        //snapshot.appendItems(albums)
-        dataSource.apply(snapshot, animatingDifferences: true)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let _ = albumController?.albums[indexPath.row] {
+            return 140
+        } else {
+            return 100
+        }
     }
 }

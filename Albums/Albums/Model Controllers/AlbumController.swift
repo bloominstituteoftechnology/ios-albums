@@ -107,7 +107,7 @@ final class AlbumController {
         }
     }
     
-    func createAlbum(album: Album, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
+    func postAlbum(album: Album, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         var request = apiRequest(for: baseURL, responseType: .post)
         
         do {
@@ -141,7 +141,7 @@ final class AlbumController {
         return song
     }
     
-    func updateAlbum(album: Album, artist: String, coverArt: String, genres: String, id: String, name: String, songs: [Song]) {
+    func createAlbum(artist: String, coverArt: String, genres: String, id: String, name: String, songs: [Song]) {
         let coverArtStringArray = coverArt.components(separatedBy: ",")
         var coverArtArray = [CoverArt]()
         for coverArt in coverArtStringArray {
@@ -152,6 +152,28 @@ final class AlbumController {
         let genresArray = genres.components(separatedBy: ",")
         
         let album = Album(artist: artist, coverArt: coverArtArray, genres: genresArray, id: id, name: name, songs: songs)
+        
+        postAlbum(album: album) { result in
+            switch result {
+            case .success(_):
+                print("Added album")
+            case .failure(_):
+                print("Failed to add album")
+            }
+        }
+    }
+    
+    func updateAlbum(album: Album, artist: String, coverArt: String, genres: String, name: String, songs: [Song]) {
+        let coverArtStringArray = coverArt.components(separatedBy: ",")
+        var coverArtArray = [CoverArt]()
+        for coverArt in coverArtStringArray {
+            guard let url = URL(string: coverArt) else { break }
+            coverArtArray.append(CoverArt(url: url))
+        }
+        
+        let genresArray = genres.components(separatedBy: ",")
+        
+        let album = Album(artist: artist, coverArt: coverArtArray, genres: genresArray, id: album.id, name: name, songs: songs)
         
         changeAlbum(album: album) { result in
             switch result {
