@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SongTableViewCellDelegate {
+    func addSong(with title: String, duration: String)
+}
+
 class SongsTableViewCell: UITableViewCell {
     
     // MARK: Outlets
@@ -18,10 +22,35 @@ class SongsTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
+    var song: Song?
+    var delegate: SongTableViewCellDelegate?
     
     // MARK: - Action Handlers
     
     @IBAction func addSong(_ sender: Any) {
+        guard let title = titleTextField.text,
+            title.isEmpty == false,
+            let duration = lengthTextField.text,
+            duration.isEmpty == false
+            else { return }
+        
+        delegate?.addSong(with: title, duration: duration)
+    }
+    
+    // MARK: - Functions
+    
+    private func updateViews() {
+        guard let song = song else { return }
+        
+        titleTextField.text = song.name.title
+        lengthTextField.text = song.duration.duration
+        addSongButton.isHidden = true
+    }
+    
+    override func prepareForReuse() {
+        titleTextField.text?.removeAll()
+        lengthTextField.text?.removeAll()
+        addSongButton.isHidden = false
     }
     
     override func awakeFromNib() {

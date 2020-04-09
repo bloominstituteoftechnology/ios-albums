@@ -21,6 +21,8 @@ class AlbumDetailTableViewController: UIViewController {
     // MARK: - Properties
     
     private lazy var dataSource = makeDataSource()
+    var albumController: AlbumController?
+    var album: Album?
     
     // MARK: - View Lifecycle
 

@@ -17,25 +17,41 @@ class AlbumsTableViewController: UIViewController {
     // MARK: - Properties
     
     private lazy var dataSource = makeDataSource()
+    var albumController: AlbumController?
     
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        albumController?.getAlbumList(completion: { result in
+            switch result {
+            case .success(_):
+                self.tableView.reloadData()
+            case .failure(_):
+                print("Could not load albums.")
+            }
+        })
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowAlbumDetail" {
+            guard let detailVC = segue.destination as? AlbumDetailTableViewController,
+                let indexPath = tableView.indexPathForSelectedRow
+                else { return }
+            
+            detailVC.albumController = albumController
+            detailVC.album = albumController?.albums[indexPath.row]
+        } else if segue.identifier == "AddAlbum" {
+            guard let detailVC = segue.destination as? AlbumDetailTableViewController else { return }
+            
+            detailVC.albumController = albumController
+        }
     }
-    */
 
 }
 
@@ -47,6 +63,9 @@ extension AlbumsTableViewController {
     func makeDataSource() -> UITableViewDiffableDataSource<Section, String> {
         UITableViewDiffableDataSource(tableView: tableView) { tableview, indexPath, name in
             let cell = tableview.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath)
+            
+            cell.textLabel?.text = self.albumController?.albums[indexPath.row].name
+            cell.detailTextLabel?.text = self.albumController?.albums[indexPath.row].artist
             
             return cell
         }
