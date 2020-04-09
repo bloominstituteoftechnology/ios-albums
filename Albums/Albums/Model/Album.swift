@@ -9,21 +9,21 @@
 import Foundation
 
 struct Album: Decodable {
-    let artist: String
-    let coverArt: [String]
-    let url: String
-    let genres: [String]
-    let name: String
-    let songs: [Song]
+    var artist: String
+    var coverArt: [String]
+    var url: String
+    var genres: [String]
+    var name: String
+    var songs: [Song]
 }
 
 struct Song: Decodable {
     enum CodingKeys: String, CodingKey {
         case duration, id, name, title
     }
-    let id: String
-    let name: Title
-    let duration: Duration
+    var id: String
+    var name: Title
+    var duration: Duration
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -35,9 +35,9 @@ struct Song: Decodable {
 }
 
 struct Title: Decodable {
-    let text: String
+    var text: String
 }
 
 struct Duration: Decodable {
-    let time: String
+    var time: String
 }
