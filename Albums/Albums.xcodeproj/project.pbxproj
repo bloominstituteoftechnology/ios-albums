@@ -15,6 +15,7 @@
 		5E5EC4D82440486D00E54940 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EC4D72440486D00E54940 /* AlbumsTableViewController.swift */; };
 		5E5EC4DA24404E7A00E54940 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EC4D924404E7A00E54940 /* AlbumDetailTableViewController.swift */; };
 		5E5EC4DC2440533300E54940 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EC4DB2440533300E54940 /* SongTableViewCell.swift */; };
+		5E5EC4DE244053BB00E54940 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EC4DD244053BB00E54940 /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5E5EC4D72440486D00E54940 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		5E5EC4D924404E7A00E54940 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		5E5EC4DB2440533300E54940 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		5E5EC4DD244053BB00E54940 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		5E5EC4D62440424800E54940 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5E5EC4DD244053BB00E54940 /* Album.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				5E5EC4DC2440533300E54940 /* SongTableViewCell.swift in Sources */,
 				5E5EC4DA24404E7A00E54940 /* AlbumDetailTableViewController.swift in Sources */,
 				5E5EC4BF24403FDF00E54940 /* SceneDelegate.swift in Sources */,
+				5E5EC4DE244053BB00E54940 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
