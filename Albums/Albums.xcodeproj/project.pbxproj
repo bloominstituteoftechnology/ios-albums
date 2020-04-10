@@ -16,7 +16,7 @@
 		FE90D489243FDB7700B36D79 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE90D488243FDB7700B36D79 /* AlbumDetailTableViewController.swift */; };
 		FE90D48B243FDC2D00B36D79 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE90D48A243FDC2D00B36D79 /* SongTableViewCell.swift */; };
 		FE90D48F243FDDC800B36D79 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE90D48E243FDDC800B36D79 /* AlbumController.swift */; };
-		FE90D498243FE1CA00B36D79 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE90D497243FE1CA00B36D79 /* Song.swift */; };
+		FE90D498243FE1CA00B36D79 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE90D497243FE1CA00B36D79 /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 		FE90D488243FDB7700B36D79 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		FE90D48A243FDC2D00B36D79 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		FE90D48E243FDDC800B36D79 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
-		FE90D497243FE1CA00B36D79 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		FE90D497243FE1CA00B36D79 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +105,7 @@
 		FE90D493243FDE1F00B36D79 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FE90D497243FE1CA00B36D79 /* Song.swift */,
+				FE90D497243FE1CA00B36D79 /* Album.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -210,7 +210,7 @@
 				FE90D487243FD99400B36D79 /* AlbumsTableViewController.swift in Sources */,
 				FE90D48B243FDC2D00B36D79 /* SongTableViewCell.swift in Sources */,
 				FE90D489243FDB7700B36D79 /* AlbumDetailTableViewController.swift in Sources */,
-				FE90D498243FE1CA00B36D79 /* Song.swift in Sources */,
+				FE90D498243FE1CA00B36D79 /* Album.swift in Sources */,
 				FE90D48F243FDDC800B36D79 /* AlbumController.swift in Sources */,
 				FE90D475243FD8BA00B36D79 /* SceneDelegate.swift in Sources */,
 			);
