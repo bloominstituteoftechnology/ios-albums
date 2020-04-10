@@ -13,6 +13,8 @@
 		5E5EC4C624403FE900E54940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E5EC4C524403FE900E54940 /* Assets.xcassets */; };
 		5E5EC4C924403FE900E54940 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E5EC4C724403FE900E54940 /* LaunchScreen.storyboard */; };
 		5E5EC4D82440486D00E54940 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EC4D72440486D00E54940 /* AlbumsTableViewController.swift */; };
+		5E5EC4DA24404E7A00E54940 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EC4D924404E7A00E54940 /* AlbumDetailTableViewController.swift */; };
+		5E5EC4DC2440533300E54940 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EC4DB2440533300E54940 /* SongTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		5E5EC4C824403FE900E54940 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E5EC4CA24403FE900E54940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E5EC4D72440486D00E54940 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		5E5EC4D924404E7A00E54940 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		5E5EC4DB2440533300E54940 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				5E5EC4D12440420500E54940 /* Storyboards */,
+				5E5EC4DB2440533300E54940 /* SongTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -105,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				5E5EC4D72440486D00E54940 /* AlbumsTableViewController.swift */,
+				5E5EC4D924404E7A00E54940 /* AlbumDetailTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -196,6 +202,8 @@
 			files = (
 				5E5EC4BD24403FDF00E54940 /* AppDelegate.swift in Sources */,
 				5E5EC4D82440486D00E54940 /* AlbumsTableViewController.swift in Sources */,
+				5E5EC4DC2440533300E54940 /* SongTableViewCell.swift in Sources */,
+				5E5EC4DA24404E7A00E54940 /* AlbumDetailTableViewController.swift in Sources */,
 				5E5EC4BF24403FDF00E54940 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
