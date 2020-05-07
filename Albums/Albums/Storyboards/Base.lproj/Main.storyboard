@@ -110,7 +110,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="135" id="4Xa-dI-cNs" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="135" id="4Xa-dI-cNs" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="222" width="414" height="135"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Xa-dI-cNs" id="K2E-t9-tS6">
@@ -140,7 +140,7 @@
                                         <constraint firstItem="sc9-N1-V9V" firstAttribute="leading" secondItem="K2E-t9-tS6" secondAttribute="leading" constant="174" id="Bri-eh-vbC"/>
                                         <constraint firstItem="iBK-f4-BJV" firstAttribute="leading" secondItem="K2E-t9-tS6" secondAttribute="leading" constant="8" id="CJh-yC-sl3"/>
                                         <constraint firstItem="iBK-f4-BJV" firstAttribute="top" secondItem="K2E-t9-tS6" secondAttribute="top" constant="20" symbolic="YES" id="Lkw-Vz-W3t"/>
-                                        <constraint firstAttribute="trailing" secondItem="sc9-N1-V9V" secondAttribute="trailing" constant="173" id="Mme-Wa-HYz"/>
+                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="sc9-N1-V9V" secondAttribute="trailing" constant="173" id="Mme-Wa-HYz"/>
                                         <constraint firstItem="ci9-zk-olv" firstAttribute="top" secondItem="iBK-f4-BJV" secondAttribute="bottom" constant="8" symbolic="YES" id="Py5-8O-DwH"/>
                                         <constraint firstAttribute="trailing" secondItem="ci9-zk-olv" secondAttribute="trailing" constant="8" id="gha-dM-YSp"/>
                                         <constraint firstAttribute="trailing" secondItem="iBK-f4-BJV" secondAttribute="trailing" constant="8" id="j5D-84-syx"/>

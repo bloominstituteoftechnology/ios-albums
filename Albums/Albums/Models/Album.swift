@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Album: Decodable {
+struct Album: Codable {
     let artist: String
     let coverArt: [URL]
     let genres: [String]
@@ -27,7 +27,6 @@ struct Album: Decodable {
         enum CoverArtCodingKeys: String, CodingKey {
             case url
         }
-        
     }
     
     init(from decoder: Decoder) throws {
@@ -40,13 +39,13 @@ struct Album: Decodable {
         id = try container.decode(String.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         
-        //MARK: - TODO
-        songs = try container.decode([Song].self, forKey: .songs)
+        //MARK: - TODO -- think I need to change from an array of songs? while loop
         
+        songs = try container.decode([Song].self, forKey: .songs)
     }
 }
 
-struct Song: Decodable {
+struct Song: Codable {
     let duration: String
     let id: String
     let title: String
@@ -63,11 +62,12 @@ struct Song: Decodable {
             case title
         }
     }
+    
     init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: SongKeys.self)
         let durationKeyContainer = try container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .duration)
-        let nameKeyContainer = try container.nestedContainer(keyedBy: SongKeys.DurationKeys.self, forKey: .name)
+        let nameKeyContainer = try container.nestedContainer(keyedBy: SongKeys.NameKeys.self, forKey: .name)
         
         duration = try durationKeyContainer.decode(String.self, forKey: .duration)
         id = try container.decode(String.self, forKey: .id)
