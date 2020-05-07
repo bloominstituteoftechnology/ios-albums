@@ -15,6 +15,7 @@
 		99458EE324649AE70050CA5B /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99458EE224649AE70050CA5B /* AlbumsTableViewController.swift */; };
 		99458EE524649DEB0050CA5B /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99458EE424649DEB0050CA5B /* AlbumDetailTableViewController.swift */; };
 		99458EE724649FD10050CA5B /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99458EE624649FD10050CA5B /* SongTableViewCell.swift */; };
+		99458EE92464A3170050CA5B /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99458EE82464A3170050CA5B /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		99458EE224649AE70050CA5B /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		99458EE424649DEB0050CA5B /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		99458EE624649FD10050CA5B /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		99458EE82464A3170050CA5B /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		99458EDE24649A2C0050CA5B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				99458EE82464A3170050CA5B /* Album.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				99458EE724649FD10050CA5B /* SongTableViewCell.swift in Sources */,
 				99458EE524649DEB0050CA5B /* AlbumDetailTableViewController.swift in Sources */,
 				99458ECD246499A90050CA5B /* SceneDelegate.swift in Sources */,
+				99458EE92464A3170050CA5B /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
