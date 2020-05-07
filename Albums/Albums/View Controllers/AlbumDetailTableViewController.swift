@@ -2,7 +2,7 @@
 //  AlbumDetailTableViewController.swift
 //  Albums
 //
-//  Created by Dahna on 4/9/20.
+//  Created by Dahna on 5/7/20.
 //  Copyright © 2020 Dahna Buenrostro. All rights reserved.
 //
 
@@ -10,14 +10,20 @@ import UIKit
 
 class AlbumDetailTableViewController: UITableViewController {
     
+    // MARK: Outlets
+    
     @IBOutlet weak var albumNameTextField: UITextField!
     @IBOutlet weak var artistTextField: UITextField!
     @IBOutlet weak var genresTextField: UITextField!
-    @IBOutlet weak var coverArtURLTextField: UITextField!
+    @IBOutlet weak var urlTextField: UITextField!
+    
+    // MARK: Actions
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
     }
     
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
