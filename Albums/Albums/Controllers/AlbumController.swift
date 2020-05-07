@@ -8,9 +8,29 @@
 
 import Foundation
 
+enum HTTPMethod: String {
+    case get = "GET"
+    case post = "POST"
+}
+
 class AlbumController {
     
-    var album: Album?
+    enum NetworkError: Error {
+        //TODO:
+    }
+    //need a better naming system and understanding of what this is
+    var albumOptional: Album?
+    
+    var albums: [Album] = []
+    baseURL: URL
+    
+    func getAlbums(completion: @escaping (Error?) -> Void ) {
+        
+    }
+    
+    
+    
+    
     
     let decoder = JSONDecoder()
     let encoder = JSONEncoder()
@@ -20,14 +40,14 @@ class AlbumController {
         
         if let data = try? Data(contentsOf: urlPath) {
             
-            album = try? decoder.decode(Album.self, from: data)
-            print("\(album)")
+            albumOptional = try? decoder.decode(Album.self, from: data)
+            print("\(albumOptional)")
             testDecodingExampleAlbum()
             
         }
     }
     func testEncodingExampleAlbum() {
-        let albumData = try! encoder.encode(album)
+        let albumData = try! encoder.encode(albumOptional)
         let albumString = String(data: albumData, encoding: .utf8)!
         print("\(albumData)")
     }
