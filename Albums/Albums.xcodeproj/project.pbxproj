@@ -94,8 +94,8 @@
 		5E5EC4D22440421000E54940 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5E5EC4D12440420500E54940 /* Storyboards */,
 				5E5EC4DB2440533300E54940 /* SongTableViewCell.swift */,
+				5E5EC4D12440420500E54940 /* Storyboards */,
 			);
 			path = Views;
 			sourceTree = "<group>";

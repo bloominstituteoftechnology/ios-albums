@@ -2,13 +2,13 @@
 //  Album.swift
 //  Albums
 //
-//  Created by Bling Morley on 4/10/20.
+//  Created by Cody Morley on 4/10/20.
 //  Copyright © 2020 Cody Morley. All rights reserved.
 //
 
 import Foundation
 
-struct Album {
+struct Album: Decodable {
     enum CodingKeys: String, CodingKey {
         case title = "name"
         case id, artist, coverArt, genres, songs
@@ -22,7 +22,7 @@ struct Album {
     let songs: [Song]
 }
 
-struct Song {
+struct Song: Decodable {
     enum CodingKeys: String, CodingKey {
         case title = "name"
         case duration
@@ -32,4 +32,8 @@ struct Song {
     let title: String
     let duration: String
     let id: String
+    
+    init(from decoder: Decoder) throws {
+        
+    }
 }
