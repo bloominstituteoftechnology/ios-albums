@@ -96,22 +96,22 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Cm-Sx-4bf">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Album Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Cm-Sx-4bf">
                                     <rect key="frame" x="8" y="63" width="376" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4IV-3C-Fmx">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4IV-3C-Fmx">
                                     <rect key="frame" x="8" y="105" width="376" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ctQ-vf-jXH">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Genres: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ctQ-vf-jXH">
                                     <rect key="frame" x="8" y="147" width="376" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pjP-HJ-sSY">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CoverArt" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pjP-HJ-sSY">
                                     <rect key="frame" x="8" y="189" width="376" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -137,26 +137,26 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="171" id="OmO-Qk-SQD" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SongCell" rowHeight="171" id="OmO-Qk-SQD" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="271" width="414" height="171"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OmO-Qk-SQD" id="hEg-GH-Wze">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="171"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Songs:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8D8-dV-Ntg">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Songs:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8D8-dV-Ntg">
                                             <rect key="frame" x="20" y="11" width="104" height="38.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eul-hY-ygQ">
-                                            <rect key="frame" x="20" y="57" width="376" height="34"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song Title: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eul-hY-ygQ">
+                                            <rect key="frame" x="20" y="57.5" width="374" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kcS-Mp-Zlu">
-                                            <rect key="frame" x="20" y="99" width="376" height="34"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kcS-Mp-Zlu">
+                                            <rect key="frame" x="20" y="99.5" width="374" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
@@ -164,7 +164,14 @@
                                     <constraints>
                                         <constraint firstItem="Eul-hY-ygQ" firstAttribute="top" secondItem="8D8-dV-Ntg" secondAttribute="bottom" constant="8" id="2me-1r-23w"/>
                                         <constraint firstItem="kcS-Mp-Zlu" firstAttribute="top" secondItem="Eul-hY-ygQ" secondAttribute="bottom" constant="8" id="DFm-Yy-gO1"/>
+                                        <constraint firstItem="Eul-hY-ygQ" firstAttribute="leading" secondItem="hEg-GH-Wze" secondAttribute="leading" constant="20" id="DS2-Bs-Led"/>
+                                        <constraint firstAttribute="trailing" secondItem="8D8-dV-Ntg" secondAttribute="trailing" constant="290" id="HNO-fp-UQx"/>
+                                        <constraint firstAttribute="trailing" secondItem="Eul-hY-ygQ" secondAttribute="trailing" constant="20" id="Lwc-HQ-DAa"/>
+                                        <constraint firstAttribute="trailing" secondItem="kcS-Mp-Zlu" secondAttribute="trailing" constant="20" id="NjP-Y2-2Wj"/>
+                                        <constraint firstItem="8D8-dV-Ntg" firstAttribute="top" secondItem="hEg-GH-Wze" secondAttribute="top" constant="11" id="ONI-7j-AOW"/>
+                                        <constraint firstItem="kcS-Mp-Zlu" firstAttribute="leading" secondItem="hEg-GH-Wze" secondAttribute="leading" constant="20" id="S9u-TM-dsY"/>
                                         <constraint firstItem="Eul-hY-ygQ" firstAttribute="top" secondItem="8D8-dV-Ntg" secondAttribute="bottom" constant="8" id="eJL-pH-4fH"/>
+                                        <constraint firstItem="8D8-dV-Ntg" firstAttribute="leading" secondItem="hEg-GH-Wze" secondAttribute="leading" constant="20" id="ncD-7i-PaY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -179,16 +186,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="unc-gr-woi">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="fQ5-DU-6Yz"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="fQ5-DU-6Yz">
+                            <connections>
+                                <action selector="addSongTapped:" destination="xGb-E8-TZE" id="C6Y-kG-qxe"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="albumNameTextField" destination="4Cm-Sx-4bf" id="d2F-0J-Ipv"/>
                         <outlet property="artistNameTextField" destination="4IV-3C-Fmx" id="kaV-Hw-fbG"/>
                         <outlet property="genreTextField" destination="ctQ-vf-jXH" id="eFi-9c-mbv"/>
                         <outlet property="imageURLTextField" destination="pjP-HJ-sSY" id="qI8-hR-SDT"/>
+                        <outlet property="saveButton" destination="fQ5-DU-6Yz" id="YDJ-cX-Ylk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJA-sB-CGc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="xGb-E8-TZE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1786.9565217391305" y="107.8125"/>
         </scene>
