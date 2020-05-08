@@ -95,22 +95,8 @@ struct Album: Decodable, Encodable {
             self.title = title
         }
     }
-    func encode(to encoder: Encoder) throws {
-        
-        var container = encoder.container(keyedBy: AlbumCodingKeys.self)
-        try container.encode(artist, forKey: .artist)
-        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
-        
-        for art in coverArtURLs {
-            try coverArtContainer.encode(art.absoluteString)
-        }
-        try container.encode(genres, forKey: .genres)
-        try container.encode(id, forKey: .id)
-        try container.encode(name, forKey: .name)
-        try container.encode(songs, forKey: .songs)
-    }
+
+
 }
-
-
 
 

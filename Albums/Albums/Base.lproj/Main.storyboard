@@ -137,11 +137,11 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SongCell" rowHeight="171" id="OmO-Qk-SQD" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="271" width="414" height="171"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SongCell" rowHeight="205" id="OmO-Qk-SQD" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="271" width="414" height="205"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OmO-Qk-SQD" id="hEg-GH-Wze">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="171"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="205"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Songs:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8D8-dV-Ntg">
@@ -152,14 +152,27 @@
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song Title: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eul-hY-ygQ">
                                             <rect key="frame" x="20" y="57.5" width="374" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="34" id="enU-al-tau"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration: " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kcS-Mp-Zlu">
                                             <rect key="frame" x="20" y="99.5" width="374" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="34" id="6n3-Hz-F4A"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFV-Aw-LQ8">
+                                            <rect key="frame" x="137" y="158.5" width="141" height="30"/>
+                                            <state key="normal" title="Add Song"/>
+                                            <connections>
+                                                <action selector="addSongTapped:" destination="OmO-Qk-SQD" eventType="touchUpInside" id="lrG-Oh-XvR"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Eul-hY-ygQ" firstAttribute="top" secondItem="8D8-dV-Ntg" secondAttribute="bottom" constant="8" id="2me-1r-23w"/>
@@ -167,14 +180,18 @@
                                         <constraint firstItem="Eul-hY-ygQ" firstAttribute="leading" secondItem="hEg-GH-Wze" secondAttribute="leading" constant="20" id="DS2-Bs-Led"/>
                                         <constraint firstAttribute="trailing" secondItem="8D8-dV-Ntg" secondAttribute="trailing" constant="290" id="HNO-fp-UQx"/>
                                         <constraint firstAttribute="trailing" secondItem="Eul-hY-ygQ" secondAttribute="trailing" constant="20" id="Lwc-HQ-DAa"/>
+                                        <constraint firstItem="QFV-Aw-LQ8" firstAttribute="leading" secondItem="hEg-GH-Wze" secondAttribute="leadingMargin" constant="117" id="MEN-js-2SI"/>
                                         <constraint firstAttribute="trailing" secondItem="kcS-Mp-Zlu" secondAttribute="trailing" constant="20" id="NjP-Y2-2Wj"/>
                                         <constraint firstItem="8D8-dV-Ntg" firstAttribute="top" secondItem="hEg-GH-Wze" secondAttribute="top" constant="11" id="ONI-7j-AOW"/>
                                         <constraint firstItem="kcS-Mp-Zlu" firstAttribute="leading" secondItem="hEg-GH-Wze" secondAttribute="leading" constant="20" id="S9u-TM-dsY"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="QFV-Aw-LQ8" secondAttribute="trailing" constant="116" id="Z1O-rL-E39"/>
                                         <constraint firstItem="Eul-hY-ygQ" firstAttribute="top" secondItem="8D8-dV-Ntg" secondAttribute="bottom" constant="8" id="eJL-pH-4fH"/>
                                         <constraint firstItem="8D8-dV-Ntg" firstAttribute="leading" secondItem="hEg-GH-Wze" secondAttribute="leading" constant="20" id="ncD-7i-PaY"/>
+                                        <constraint firstItem="QFV-Aw-LQ8" firstAttribute="top" secondItem="kcS-Mp-Zlu" secondAttribute="bottom" constant="25" id="opW-Kc-F89"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addSongButton" destination="QFV-Aw-LQ8" id="Kih-Ca-zq5"/>
                                     <outlet property="durationTextField" destination="kcS-Mp-Zlu" id="gFu-KR-N4m"/>
                                     <outlet property="songTitleTextField" destination="Eul-hY-ygQ" id="FAh-Ss-uZh"/>
                                 </connections>

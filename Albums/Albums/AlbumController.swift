@@ -23,10 +23,14 @@ enum HTTPMethod: String {
 
 class AlbumController {
     
+    private var persistentFileURL: URL? {
+        guard let filePath = Bundle.main.path(forResource: "exampleAlbum", ofType: "json") else { return nil }
+        return URL(fileURLWithPath: filePath)
+    }
     typealias completionHandler = (NetworkError?) -> Void
     var albums: [Album] = []
     
-    private let baseURL = URL(string: "https://nelson-ios-journal.firebaseio.com/")!
+    private let baseURL = URL(string: "https://albums-9535e.firebaseio.com/")!
     
     func fetchAlbums(completion: @escaping (NetworkError?) -> Void) {
         let requestURL = baseURL.appendingPathComponent("json")
@@ -101,35 +105,36 @@ class AlbumController {
         
         putAlbums(album: updatedAlbum)
     }
-    func testDecodingExampleAlbum() {
-        guard let url = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else {
-            print("URL not functioning")
-            return
-        }
-        do {
-            let exampleAlbumData = try Data(contentsOf: url)
-            _ = try JSONDecoder().decode(Album.self, from: exampleAlbumData)
-            print("Got eem!")
-        } catch {
-            print("Error retrieving data: \(error)")
-        }
-    }
+    
     func testEncodingExampleAlbum() {
-        guard let url = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else {
+        guard let url = persistentFileURL else {
             print("URL not functioning")
             return
         }
-        
-        do {
-            let albumData = try Data(contentsOf: url)
-            let album = try JSONDecoder().decode(Album.self, from: albumData)
-            print(album)
-            let encodedAlbum = try JSONEncoder().encode(album)
-            print(String(data: encodedAlbum, encoding: .utf8)!)
-            print("SUCCESS!")
-        } catch {
-            print("Error retrieving data: \(error)")
-        }
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            guard let data = data else { return }
+            
+            let jsonEncoder = JSONEncoder()
+            let jsonDecoder = JSONDecoder()
+            jsonEncoder.outputFormatting = .prettyPrinted
+            
+            do {
+                
+                let album = try jsonDecoder.decode(Album.self, from: data)
+                let encoAlbum = try jsonEncoder.encode(album)
+                let albumStr = String(data: encoAlbum, encoding: .utf8)!
+                print(albumStr)
+            } catch {
+                print("Error Encoding")
+                return
+            }
+        }.resume()
     }
-
 }
+

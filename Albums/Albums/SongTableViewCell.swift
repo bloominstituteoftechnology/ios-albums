@@ -14,6 +14,7 @@ protocol SongTableViewCellDelegate: class {
 
 class SongTableViewCell: UITableViewCell {
     
+
     @IBOutlet weak var addSongButton: UIButton!
     @IBOutlet weak var durationTextField: UITextField!
     @IBOutlet weak var songTitleTextField: UITextField!

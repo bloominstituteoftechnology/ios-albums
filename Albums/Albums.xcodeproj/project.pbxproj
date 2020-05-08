@@ -17,6 +17,7 @@
 		8E42C434246491F400207293 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E42C433246491F400207293 /* Album.swift */; };
 		8E42C438246497FB00207293 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E42C437246497FB00207293 /* AlbumController.swift */; };
 		8EFC015B2464EBDC00DBD9D6 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC015A2464EBDC00DBD9D6 /* AlbumsTableViewController.swift */; };
+		8EFC015D2464FFD700DBD9D6 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EFC015C2464FFD700DBD9D6 /* exampleAlbum.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		8E42C433246491F400207293 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		8E42C437246497FB00207293 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 		8EFC015A2464EBDC00DBD9D6 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		8EFC015C2464FFD700DBD9D6 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		8E42C419246485E500207293 /* Albums */ = {
 			isa = PBXGroup;
 			children = (
+				8EFC015C2464FFD700DBD9D6 /* exampleAlbum.json */,
 				8E42C42E2464862800207293 /* Resources */,
 				8E42C420246485E500207293 /* Main.storyboard */,
 				8E42C433246491F400207293 /* Album.swift */,
@@ -147,6 +150,7 @@
 			files = (
 				8E42C427246485E900207293 /* LaunchScreen.storyboard in Resources */,
 				8E42C424246485E900207293 /* Assets.xcassets in Resources */,
+				8EFC015D2464FFD700DBD9D6 /* exampleAlbum.json in Resources */,
 				8E42C422246485E500207293 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
