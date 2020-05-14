@@ -13,6 +13,8 @@
 		0B2BF493246DF7EB004FFABE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BF492246DF7EB004FFABE /* Assets.xcassets */; };
 		0B2BF496246DF7EB004FFABE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BF494246DF7EB004FFABE /* LaunchScreen.storyboard */; };
 		0B2BF49F246DF895004FFABE /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BF49E246DF895004FFABE /* AlbumsTableViewController.swift */; };
+		0B2BF4A1246DFA5A004FFABE /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BF4A0246DFA5A004FFABE /* AlbumDetailTableViewController.swift */; };
+		0B2BF4A3246DFC82004FFABE /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BF4A2246DFC82004FFABE /* SongTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		0B2BF495246DF7EB004FFABE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B2BF497246DF7EB004FFABE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B2BF49E246DF895004FFABE /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
+		0B2BF4A0246DFA5A004FFABE /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
+		0B2BF4A2246DFC82004FFABE /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 			isa = PBXGroup;
 			children = (
 				0B2BF49E246DF895004FFABE /* AlbumsTableViewController.swift */,
+				0B2BF4A0246DFA5A004FFABE /* AlbumDetailTableViewController.swift */,
+				0B2BF4A2246DFC82004FFABE /* SongTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -148,6 +154,8 @@
 			files = (
 				0B2BF48A246DF7E6004FFABE /* AppDelegate.swift in Sources */,
 				0B2BF49F246DF895004FFABE /* AlbumsTableViewController.swift in Sources */,
+				0B2BF4A3246DFC82004FFABE /* SongTableViewCell.swift in Sources */,
+				0B2BF4A1246DFA5A004FFABE /* AlbumDetailTableViewController.swift in Sources */,
 				0B2BF48C246DF7E6004FFABE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
