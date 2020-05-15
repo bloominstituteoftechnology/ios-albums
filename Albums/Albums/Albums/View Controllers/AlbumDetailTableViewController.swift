@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlbumDetailTableViewController: UITableViewController { //}, SongTableViewCellDelegate {
+class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDelegate {
    
     
     var albumController: AlbumController?
@@ -18,7 +18,7 @@ class AlbumDetailTableViewController: UITableViewController { //}, SongTableView
             updateViews()
         }
     }
-    // discouraged, demoralized, & dispassionate
+    
     var tempSongs: [Song] = []
 
     @IBOutlet weak var albumTitleTextField: UITextField!
@@ -44,10 +44,10 @@ class AlbumDetailTableViewController: UITableViewController { //}, SongTableView
         return 0
     }
 
-//    func addSong(with title: String, duration: String) {
-//        albumController.createSong()
-//       }
-//       
+    func addSong(with title: String, duration: String) {
+        albumController.createSong()
+       }
+       
     func updateViews() {
         guard let album = album else { return }
         title = album.name

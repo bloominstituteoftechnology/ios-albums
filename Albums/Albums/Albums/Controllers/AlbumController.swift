@@ -101,14 +101,15 @@ class AlbumController {
     }
     
 
-//    func createAlbum(with name: String, artist: String, coverArtURLs: [URL], genres: String, songs: [Song]) {
-//        let album = Album(name: name, artist: artist, coverArt: [URL], genres: String, songs: [Song])
-//    }
-//    
+    func createAlbum(with name: String, artist: String, coverArtURLs: [URL], genres: String, songs: [Song]) {
+        let album = Album(artist: artist, name: name, coverArt: coverArtURLs, genres: [genres])
+    }
     
-//    func createSong() -> Song {
-//        
-//    }
+    
+    func createSong(with name: String, artist: String, coverArtURLs: [URL], genres: String) -> Song {
+        
+        return
+    }
     
     func update(album: Album, artist: String, genre: String, name: String, coverURLs: String) {
         

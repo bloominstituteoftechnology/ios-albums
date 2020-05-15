@@ -21,7 +21,7 @@ struct Album: Codable {
     
     var artist: String
     var name: String
-    var identifier: UUID
+    var identifier: String
     var coverArt: [String]
     var genres: [String]
     var songs: [Song]
@@ -41,11 +41,21 @@ struct Album: Codable {
         let container = try decoder.container(keyedBy: AlbumKeys.self)
         artist = try container.decode(String.self, forKey: .artist)
         name = try container.decode(String.self, forKey: .artist)
-        identifier = try container.decode(UUID.self, forKey: .identifier)
+        identifier = try container.decode(String.self, forKey: .identifier)
         coverArt = try container.decode([String].self, forKey: .coverArt)
         genres = try container.decode([String].self, forKey: .genres)
         songs = try container.decode([Song].self, forKey: .songs)
     }
+    
+    init(artist: String, name: String, coverArt: [String], genres: [String], songs: [String] = [""], identifier: String = "") {
+        self.artist = artist
+        self.name = name
+        self.coverArt = coverArt
+        self.genres = genres
+        self.songs = []
+        self.identifier = identifier
+    }
+    
 }
 
 struct Song: Codable {
