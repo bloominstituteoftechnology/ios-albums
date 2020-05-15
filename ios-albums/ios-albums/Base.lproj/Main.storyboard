@@ -38,6 +38,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="DK3-M4-g6V" kind="show" identifier="ShowDetailSegue" id="oc3-UG-dSa"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -48,7 +51,7 @@
                     <navigationItem key="navigationItem" id="evP-cg-Wlb">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RDJ-Ak-ktV">
                             <connections>
-                                <segue destination="DK3-M4-g6V" kind="show" id="hJm-Ep-VfK"/>
+                                <segue destination="DK3-M4-g6V" kind="show" identifier="AddMusicSegue" id="hJm-Ep-VfK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -220,4 +223,7 @@
             <point key="canvasLocation" x="31.884057971014496" y="168.75"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="hJm-Ep-VfK"/>
+    </inferredMetricsTieBreakers>
 </document>
