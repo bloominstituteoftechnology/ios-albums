@@ -23,7 +23,7 @@ class SongTableViewCell: UITableViewCell {
     
     func updateViews() {
         guard let song = song else { return }
-        albumTitleTextField.text = song.title
+        albumTitleTextField.text = song.name
         albumDurationTextField.text = song.duration
         addSongButton.isHidden = true
     }

@@ -28,7 +28,13 @@ struct Album: Codable {
     
     func encode(to encoder: Encoder) throws {
            var container = encoder.container(keyedBy: AlbumKeys.self)
-           
+        
+        try container.encode(artist, forKey: .artist)
+        try container.encode(name, forKey: .name)
+        try container.encode(identifier, forKey: .identifier)
+        try container.encode(coverArt, forKey: .coverArt)
+        try container.encode(genres, forKey: .genres)
+        try container.encode(songs, forKey: .songs)
        }
     
     init(from decoder: Decoder) throws {
@@ -45,21 +51,27 @@ struct Album: Codable {
 struct Song: Codable {
 
 enum SongKeys: String, CodingKey {
-    case title
     case duration
+    case id
+    case name
 }
     
-    let title: String
+    let name: String
+    let id: String
     let duration: String
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: SongKeys.self)
-        title = try container.decode(String.self, forKey: .title)
+        name = try container.decode(String.self, forKey: .name)
         duration = try container.decode(String.self, forKey: .duration)
+        id = try container.decode(String.self, forKey: .id)
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: SongKeys.self)
         
+        try container.encode(name, forKey: .name)
+        try container.encode(id, forKey: .id)
+        try container.encode(duration, forKey: .duration)
     }
 }
