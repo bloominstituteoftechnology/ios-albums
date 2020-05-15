@@ -29,6 +29,15 @@ struct Album: Codable{
     let id: String
     let songs: [Song]
     
+    init(artist: String, coverArt: [URL], genres: [String], name: String, id: String, songs: [Song]){
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.name = name
+        self.id = id
+        self.songs = songs
+    }
+    
     init(from decoder: Decoder) throws {
         // Contianer to hold keys
         let container = try decoder.container(keyedBy: AlbumKeys.self)
@@ -86,6 +95,12 @@ struct Song: Codable{
     let duration: String
     let name: String
     let id: String
+    
+    init(id: String, name: String, duration:String){
+        self.id = id
+        self.name = name
+        self.duration = duration
+    }
     
     //Custom Decoder
     init(from decoder: Decoder) throws {
