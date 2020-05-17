@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Album: Decodable {
+struct Album: Codable {
     let id: String
     let name: String
     let artist: String
@@ -56,9 +56,33 @@ struct Album: Decodable {
         }
         songs = songNames
     }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: AlbumKeys.self)
+        
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(artist, forKey: .artist)
+        
+        var artContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        for artURL in coverArt {
+            var artURLContainer = artContainer.nestedContainer(keyedBy: AlbumKeys.ArtKey.self)
+            try artURLContainer.encode(artURL, forKey: .url)
+        }
+        
+        var genreContainer = container.nestedUnkeyedContainer(forKey: .genres)
+        for genre in genres {
+            try genreContainer.encode(genre)
+        }
+        
+        var songContainer = container.nestedUnkeyedContainer(forKey: .songs)
+        for song in songs {
+            try songContainer.encode(song)
+        }
+    }
 }
 
-struct Song: Decodable {
+struct Song: Codable {
     let id: String
     let name: String
     let duration: String
@@ -85,5 +109,17 @@ struct Song: Decodable {
         
         let nameContainer = try container.nestedContainer(keyedBy: SongKeys.NameKey.self, forKey: .name)
         name = try nameContainer.decode(String.self, forKey: .title)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: SongKeys.self)
+        
+        try container.encode(id, forKey: .id)
+        
+        var nameContainer = container.nestedContainer(keyedBy: SongKeys.NameKey.self, forKey: .name)
+        try nameContainer.encode(name, forKey: .title)
+        
+        var durationContainer = container.nestedContainer(keyedBy: SongKeys.DurationKey.self, forKey: .duration)
+        try durationContainer.encode(duration, forKey: .duration)
     }
 }

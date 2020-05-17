@@ -20,4 +20,21 @@ class AlbumController {
             NSLog("Error decoding test album: \(error)")
         }
     }
+    
+    func testEncodingExampleAlbum() {
+        guard let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else { return }
+        do {
+            let albumData = try Data(contentsOf: urlPath)
+            let album = try JSONDecoder().decode(Album.self, from: albumData)
+            print(album.name)
+            
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.prettyPrinted]
+            let newAlbumData = try encoder.encode(album)
+            let albumString = String(data: newAlbumData, encoding: .utf8)
+            print(albumString!)
+        } catch {
+            NSLog("Error coding test album: \(error)")
+        }
+    }
 }
