@@ -8,7 +8,36 @@
 
 import UIKit
 
+protocol SongTableViewCellDelegate: AnyObject {
+    func addSong(with title: String, duration: String)
+}
+
 class SongTableViewCell: UITableViewCell {
+    
+    var song: Song? {
+           didSet {
+               updateViews()
+           }
+       }
+       
+       weak var delegate: SongTableViewCellDelegate?
+    
+    var connection: AlbumDetailTableViewController?
+    
+    override func prepareForReuse() {
+           songTitle.text = ""
+           songDuration.text = ""
+           addSong.isHidden = false
+       }
+    
+    func updateViews() {
+        if let song = song {
+            addSong.isHidden = true
+            songTitle.text = song.title
+            songDuration.text = song.duration
+        }
+    }
+       
 
     @IBOutlet weak var songTitle: UITextField!
     
@@ -17,6 +46,11 @@ class SongTableViewCell: UITableViewCell {
     @IBOutlet weak var addSong: UIButton!
     
     @IBAction func addSong(_ sender: UIButton) {
+        guard let title = songTitle.text,
+                 let duration = songDuration.text else {return}
+             
+             delegate?.addSong(with: title, duration: duration)
+             connection?.tempSongs.append(song!)
     }
     
 }

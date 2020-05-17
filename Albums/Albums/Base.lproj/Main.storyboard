@@ -39,7 +39,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Jkr-Cb-oQC" kind="show" trigger="accessoryAction" id="P8D-1E-mAX"/>
+                                    <segue destination="Jkr-Cb-oQC" kind="show" identifier="DetailSegue" trigger="accessoryAction" id="P8D-1E-mAX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -51,7 +51,7 @@
                     <navigationItem key="navigationItem" id="42e-sE-Mw5">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="jeH-4F-lXQ">
                             <connections>
-                                <segue destination="Jkr-Cb-oQC" kind="show" id="rkn-Dk-Rty"/>
+                                <segue destination="Jkr-Cb-oQC" kind="show" identifier="AddSegue" id="rkn-Dk-Rty"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -100,7 +100,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="141" id="Mig-Ic-FQm" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="141" id="Mig-Ic-FQm" customClass="SongTableViewCell" customModule="Albums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="220" width="414" height="141"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mig-Ic-FQm" id="5d2-DY-vkf">
@@ -181,6 +181,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rkn-Dk-Rty"/>
+        <segue reference="P8D-1E-mAX"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlbumDetailTableViewController: UITableViewController {
+class AlbumDetailTableViewController: UITableViewController, SongTableViewCellDelegate {
     
     @IBOutlet weak var albumTitle: UITextField!
     
@@ -18,36 +18,81 @@ class AlbumDetailTableViewController: UITableViewController {
     
     @IBOutlet weak var coverArt: UITextField!
     
+    
+    var albumController: AlbumController?
+        var album: Album?
+        var tempSongs: [Song] = []
+     
+     override func viewDidLoad() {
+         super.viewDidLoad()
+         updateViews()
+
+     }
+    
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
+        guard let name = albumTitle.text,
+               let artist = artistTitle.text,
+               let genre = genreTitle.text,
+            let coverURLsString = coverArt.text else {return}
+        
+        let genres = genre.components(separatedBy: ", ")
+        let coverURLs = coverURLsString.components(separatedBy: ", ").compactMap({URL(string: $0) })
+        
+        if let album = album {
+            albumController?.update(album: album, with: name, artist: artist, coverArtURLs: coverURLs, genres: genres, songs: tempSongs)
+        } else {
+            albumController?.createAlbum(with: name, artist: artist, coverArtURLs: coverURLs, genres: genres, songs: tempSongs)
+        }
+           
+           navigationController?.popViewController(animated: true)
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func addSong(with title: String, duration: String) {
+           guard let song = albumController?.createSong(with: title, duration: duration) else {return}
+           
+           tempSongs.append(song)
+           tableView.reloadData()
+           
+           let indexPath = IndexPath(row: tempSongs.count, section: 0)
+           tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+       }
 
+    private func updateViews() {
+    
+    guard let album = album, isViewLoaded else {return}
+    
+    title = album.name
+    
+        albumTitle.text = album.name
+        artistTitle.text = album.artist
+        genreTitle.text = album.genres.joined(separator: ", ")
+        coverArt.text = album.coverArt.map({ $0.absoluteString}).joined(separator: ", ")
+        tempSongs = album.songs
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.row == tempSongs.count ? 140 : 100
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+     return tempSongs.count + 1
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+          guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongTableViewCell else {return UITableViewCell()}
+            
+            cell.delegate = self
+            if indexPath.row < tempSongs.count {
+                let song = tempSongs[indexPath.row]
+                
+                cell.song = song
+            }
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
