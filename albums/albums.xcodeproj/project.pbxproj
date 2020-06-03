@@ -66,17 +66,33 @@
 			children = (
 				0D379B9E2464C54E0000AA6B /* AppDelegate.swift */,
 				0D379BA02464C54E0000AA6B /* SceneDelegate.swift */,
-				0D379BA42464C54E0000AA6B /* Main.storyboard */,
-				0D379BB42464C89E0000AA6B /* AlbumDetailTableViewController.swift */,
 				0D379BB62464CAB30000AA6B /* SongTableViewCell.swift */,
-				0D379BB82464CBDA0000AA6B /* Album.swift */,
-				0DD45AE32464D7340059781F /* AlbumController.swift */,
-				0D379BB22464C5DA0000AA6B /* AlbumsTableViewController.swift */,
+				0D69A89B246758A400A6766C /* view controllers */,
+				0D69A89A2467589300A6766C /* model */,
+				0D379BA42464C54E0000AA6B /* Main.storyboard */,
 				0D379BA72464C54F0000AA6B /* Assets.xcassets */,
 				0D379BA92464C54F0000AA6B /* LaunchScreen.storyboard */,
 				0D379BAC2464C54F0000AA6B /* Info.plist */,
 			);
 			path = albums;
+			sourceTree = "<group>";
+		};
+		0D69A89A2467589300A6766C /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0DD45AE32464D7340059781F /* AlbumController.swift */,
+				0D379BB82464CBDA0000AA6B /* Album.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0D69A89B246758A400A6766C /* view controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0D379BB42464C89E0000AA6B /* AlbumDetailTableViewController.swift */,
+				0D379BB22464C5DA0000AA6B /* AlbumsTableViewController.swift */,
+			);
+			path = "view controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

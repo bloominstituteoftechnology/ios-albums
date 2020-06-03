@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class AlbumController {
     
@@ -20,16 +21,12 @@ class AlbumController {
         case failedPost
     }
     
-    let encoder: JSONEncoder = {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        return encoder
-    }()
+    let encoder = JSONEncoder()
     
     let decoder = JSONDecoder()
     
-    var albums = [Album]()
-    let baseURL: URL = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
+    var albums: [Album] = []
+    
     
     func getAlbumList(completion: @escaping (Result<Bool, NetworkError>) -> Void ) {
         let request = apiRequest(url: baseURL, responseType: .get)
@@ -38,6 +35,7 @@ class AlbumController {
             if let error = error {
                 print("fetch request failed with error: \(error)")
                 completion(.failure(.failedFetch))
+                return
             }
             
             guard let response = response as? HTTPURLResponse,
@@ -62,7 +60,7 @@ class AlbumController {
                 print("error decoding albums: \(error)")
                 completion(.failure(.failedFetch))
             }
-        }
+        }.resume
     }
     
     //  MARK: - helper method to build http method
@@ -74,6 +72,7 @@ class AlbumController {
     }
     
     func testDecodingExampleAlbum() {
+        
         guard let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else { return }
         
         do {
