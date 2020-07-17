@@ -41,8 +41,17 @@ struct Album: Codable {
     var artist: String
     var id: String
     var genres: [String]
-    var coverArt: [URL]
+    var coverArt: [String]
     var songs: [Song]
+    
+    init(name: String, artist: String, id: String, genres: [String], coverArt: [String], songs: [Song]) {
+        self.name = name
+        self.artist = artist
+        self.id = id
+        self.genres = genres
+        self.coverArt = coverArt
+        self.songs = songs
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
@@ -84,7 +93,7 @@ struct Album: Codable {
             let cover = try coverContainer.decode(String.self, forKey: .url)
             coverArtStrings.append(cover)
         }
-        coverArt = coverArtStrings.compactMap { URL(string: $0) }
+        coverArt = coverArtStrings
     }
     
     func encode(to encoder: Encoder) throws {
@@ -102,7 +111,7 @@ struct Album: Codable {
         var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
         for art in coverArt {
             var coverContainer = coverArtContainer.nestedContainer(keyedBy: Keys.CoverArtKey.self)
-            try coverContainer.encode(art.absoluteString, forKey: .url)
+            try coverContainer.encode(art, forKey: .url)
         }
         
         var songsContainer = container.nestedUnkeyedContainer(forKey: .songs)
@@ -115,7 +124,7 @@ struct Album: Codable {
             var durationContainer = songContainer.nestedContainer(keyedBy: Keys.SongKeys.DurationKey.self, forKey: .duration)
             try durationContainer.encode(song.duration, forKey: .duration)
             
-            try songContainer.encode(id, forKey: .id)
+            try songContainer.encode(song.id, forKey: .id)
         }
     }
     

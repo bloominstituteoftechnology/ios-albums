@@ -14,7 +14,8 @@ class AlbumsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        albumController.testEncodingExampleAlbum()
+        albumController.createAlbum(name: "Name", artist: "Artist", id: UUID().uuidString, genres: ["Genre"], coverArt: ["www.google.com"], songs: [Song(title: "Title", duration: "5:25", id: UUID().uuidString)])
+        print(albumController.albums)
     }
 
     // MARK: - Table view data source
