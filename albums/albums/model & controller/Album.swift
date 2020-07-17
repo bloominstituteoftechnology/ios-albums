@@ -10,11 +10,20 @@ import Foundation
 
 struct Album: Codable {
     
-    let artist: String
+    var artist: String
     var coverArt: [URL]
-    let genres: [String]
-    let id, name: String
-    let songs: [Song]
+    var genres: [String]
+    var id, name: String
+    var songs: [Song]
+    
+    init(id: String, name: String, artist: String, genres: [String], coverArt: [URL], songs: [Song]) {
+        self.id = id
+        self.name = name
+        self.artist = artist
+        self.genres = genres
+        self.coverArt = coverArt
+        self.songs = songs
+    }
     
     enum AlbumKeys: String, CodingKey {
         case artist
@@ -65,42 +74,48 @@ struct Album: Codable {
             try! coverArtKeyedContainer.encode(url, forKey: .url)
         }
     }
+}
+
+struct Song: Codable {
+    let title: String
+    let duration: String
+    let id: String
     
-    struct Song: Codable {
-        let title: String
-        let duration: String
-        let id: String
+    init(title: String, duration: String, id: String) {
+        self.title = title
+        self.duration = duration
+        self.id = id
+    }
+    
+    enum SongKeys: String, CodingKey {
+        case name, duration, id
         
-        enum SongKeys: String, CodingKey {
-            case name, duration, id
-            
-            enum DurationCodingKeys: String, CodingKey {
-                case duration
-            }
-            
-            enum NameCodingKeys: String, CodingKey {
-                case title
-            }
-        }
-        init(from decoder: Decoder) throws {
-            
-            let container = try decoder.container(keyedBy: SongKeys.self)
-            let durationKeyedContainer = try container.nestedContainer(keyedBy: SongKeys.DurationCodingKeys.self, forKey: .duration)
-            let nameKeyedContainer = try container.nestedContainer(keyedBy: SongKeys.NameCodingKeys.self, forKey: .name)
-            
-            self.duration = try durationKeyedContainer.decode(String.self, forKey: .duration)
-            self.title = try nameKeyedContainer.decode(String.self, forKey: .title)
-            self.id = try container.decode(String.self, forKey: .id)
+        enum DurationCodingKeys: String, CodingKey {
+            case duration
         }
         
-        func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: SongKeys.self)
-            var durationKeyedContainer = container.nestedContainer(keyedBy: SongKeys.DurationCodingKeys.self, forKey: .duration)
-            var nameKeyedContainer = container.nestedContainer(keyedBy: SongKeys.NameCodingKeys.self, forKey: .name)
-            
-            try! container.encode(self.id, forKey: .id)
-            try! durationKeyedContainer.encode(self.duration, forKey: .duration)
-            try! nameKeyedContainer.encode(self.title, forKey: .title)
+        enum NameCodingKeys: String, CodingKey {
+            case title
         }
+    }
+    init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: SongKeys.self)
+        let durationKeyedContainer = try container.nestedContainer(keyedBy: SongKeys.DurationCodingKeys.self, forKey: .duration)
+        let nameKeyedContainer = try container.nestedContainer(keyedBy: SongKeys.NameCodingKeys.self, forKey: .name)
+        
+        self.duration = try durationKeyedContainer.decode(String.self, forKey: .duration)
+        self.title = try nameKeyedContainer.decode(String.self, forKey: .title)
+        self.id = try container.decode(String.self, forKey: .id)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: SongKeys.self)
+        var durationKeyedContainer = container.nestedContainer(keyedBy: SongKeys.DurationCodingKeys.self, forKey: .duration)
+        var nameKeyedContainer = container.nestedContainer(keyedBy: SongKeys.NameCodingKeys.self, forKey: .name)
+        
+        try! container.encode(self.id, forKey: .id)
+        try! durationKeyedContainer.encode(self.duration, forKey: .duration)
+        try! nameKeyedContainer.encode(self.title, forKey: .title)
     }
 }

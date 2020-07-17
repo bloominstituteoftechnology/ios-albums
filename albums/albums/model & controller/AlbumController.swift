@@ -7,95 +7,129 @@
 //
 
 import Foundation
-import UIKit
 
 class AlbumController {
     
-    enum HTTPMethod: String {
-        case get = "GET"
-        case post = "POST"
+    struct HTTPMethod {
+        static let get = "GET"
+        static let put = "PUT"
     }
-    
-    enum NetworkError: Error {
-        case failedFetch, badURL, badData
-        case failedPost
-    }
-    
-    let encoder = JSONEncoder()
-    
-    let decoder = JSONDecoder()
     
     var albums: [Album] = []
     
+    let baseURL = URL(string: "https://albums-e99bf.firebaseio.com/")!
     
-    func getAlbumList(completion: @escaping (Result<Bool, NetworkError>) -> Void ) {
-        let request = apiRequest(url: baseURL, responseType: .get)
+    
+    func getAlbums(completion: @escaping (Error?) -> Void) {
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        let requestURL = baseURL.appendingPathComponent("json")
+        let request = URLRequest(url: requestURL)
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
-                print("fetch request failed with error: \(error)")
-                completion(.failure(.failedFetch))
+                print("error fetching data: \(error)")
+                completion(error)
                 return
-            }
-            
-            guard let response = response as? HTTPURLResponse,
-            response.statusCode == 200
-                else {
-                    print("fetch request returned non-200 response")
-                    completion(.failure(.failedFetch))
-                    return
             }
             
             guard let data = data else {
-                print("data not available")
-                completion(.failure(.failedFetch))
+                print("no data returned")
+                completion(nil)
                 return
             }
-                //  sets the albums array to the decoded albums
+            
+            let jsonDecoder = JSONDecoder()
             do {
-                let albums = try self.decoder.decode([Album].self, from: data)
-                self.albums = albums
-                completion(.success(true))
+                let decoded = try jsonDecoder.decode([String: Album].self, from: data).map { $0.value }
+                self.albums = decoded
+                completion(nil)
             } catch {
-                print("error decoding albums: \(error)")
-                completion(.failure(.failedFetch))
+                print("unable to decode data into object of type [Album]: \(error)")
+                completion(error)
             }
-        }.resume
+        }.resume()
     }
     
-    //  MARK: - helper method to build http method
-    private func apiRequest(url: URL, responseType: HTTPMethod) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.httpMethod = responseType.rawValue
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        return request
+    
+    
+    func put(album: Album, completion: @escaping () -> Void = { }) {
+        
+        let requestURL = baseURL.appendingPathComponent(album.id).appendingPathExtension("json")
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.put
+        
+        do {
+            let encoded = try JSONEncoder().encode(album)
+            request.httpBody = encoded
+        } catch {
+            print(error)
+        }
+        
+        URLSession.shared.dataTask(with: request) { _, _, error in
+            
+            if let error = error {
+                print("Error PUT data: \(error)")
+                completion()
+                return
+            }
+            completion()
+        }.resume()
     }
     
+    
+    func createAlbum(id: String, name: String, artist: String, genres: [String], coverArt: [URL], songs: [Song]) {
+        let album = Album(id: id, name: name, artist: artist, genres: genres, coverArt: coverArt, songs: songs)
+        
+        albums.append(album)
+        put(album: album)
+    }
+    
+    
+    func createSong(id: String, name: String, duration: String) -> Song {
+        return Song(title: name, duration: duration, id: id)
+    }
+    
+    func update(album: Album, name: String, artist: String, genres: [String], songs: [Song], coverArt: [URL]) {
+        
+        //  not sure how to address
+    }
+    
+    //  MARK: - codable testing
     func testDecodingExampleAlbum() {
         
         guard let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else { return }
         
         do {
-            let data = try Data(contentsOf: urlPath)
-            let result = try decoder.decode(Album.self, from: data)
+            let jsonData = try Data(contentsOf: urlPath)
+            let result = try JSONDecoder().decode(Album.self, from: jsonData)
             print(result)
         } catch {
-            print(error.localizedDescription)
+            print("error decoding data from JSON: \(error)")
+            return
         }
+        //  maybe use print statement here to check for success
     }
     
     func testEncodingExampleAlbum() {
+        
         guard let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json") else { return }
+        var album: Album
         
         do {
-            let data = try Data(contentsOf: urlPath)
-            let result = try decoder.decode(Album.self, from: data)
-            
-            let encoded = try encoder.encode(result)
-            print(encoded)
+            let jsonData = try Data(contentsOf: urlPath)
+            album = try JSONDecoder().decode(Album.self, from: jsonData)
+            print(album)
         } catch {
-            print(error.localizedDescription)
+            print("error decoding data from JSON: \(error)")
+            return
+        }
+        
+        do {
+            let results = try JSONEncoder().encode(album)
+        } catch {
+            print("error encoding album into JSON: \(error)")
+            return
         }
     }
-    
 }
