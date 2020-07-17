@@ -9,9 +9,12 @@
 import UIKit
 
 class AlbumsTableViewController: UITableViewController {
+    
+    let albumController = AlbumController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        albumController.testEncodingExampleAlbum()
     }
 
     // MARK: - Table view data source

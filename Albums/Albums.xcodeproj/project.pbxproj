@@ -15,6 +15,9 @@
 		1A74A5A024C1231F00DB4CB9 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A74A59F24C1231F00DB4CB9 /* AlbumsTableViewController.swift */; };
 		1A74A5A324C1259300DB4CB9 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A74A5A224C1259300DB4CB9 /* AlbumDetailTableViewController.swift */; };
 		1A74A5A524C1277000DB4CB9 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A74A5A424C1277000DB4CB9 /* SongTableViewCell.swift */; };
+		1AFAD9DE24C1306E00061CF3 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAD9DD24C1306E00061CF3 /* Album.swift */; };
+		1AFAD9E124C14E2300061CF3 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAD9E024C14E2300061CF3 /* exampleAlbum.json */; };
+		1AFAD9E324C14E7A00061CF3 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAD9E224C14E7A00061CF3 /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		1A74A59F24C1231F00DB4CB9 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		1A74A5A224C1259300DB4CB9 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		1A74A5A424C1277000DB4CB9 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		1AFAD9DD24C1306E00061CF3 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		1AFAD9E024C14E2300061CF3 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../exampleAlbum.json; sourceTree = "<group>"; };
+		1AFAD9E224C14E7A00061CF3 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +52,7 @@
 			children = (
 				1A74A58A24C122AB00DB4CB9 /* Albums */,
 				1A74A58924C122AB00DB4CB9 /* Products */,
+				1AFAD9E024C14E2300061CF3 /* exampleAlbum.json */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,6 +70,8 @@
 				1A74A58B24C122AB00DB4CB9 /* AppDelegate.swift */,
 				1A74A58D24C122AB00DB4CB9 /* SceneDelegate.swift */,
 				1A74A59124C122AB00DB4CB9 /* Main.storyboard */,
+				1AFAD9DF24C1308000061CF3 /* Models */,
+				1AFAD9E424C14E8200061CF3 /* Controllers */,
 				1A74A5A624C1277600DB4CB9 /* Views */,
 				1A74A5A124C1232500DB4CB9 /* ViewControllers */,
 				1A74A59424C122AD00DB4CB9 /* Assets.xcassets */,
@@ -87,6 +96,22 @@
 				1A74A5A424C1277000DB4CB9 /* SongTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1AFAD9DF24C1308000061CF3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1AFAD9DD24C1306E00061CF3 /* Album.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1AFAD9E424C14E8200061CF3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1AFAD9E224C14E7A00061CF3 /* AlbumController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +174,7 @@
 			files = (
 				1A74A59824C122AD00DB4CB9 /* LaunchScreen.storyboard in Resources */,
 				1A74A59524C122AD00DB4CB9 /* Assets.xcassets in Resources */,
+				1AFAD9E124C14E2300061CF3 /* exampleAlbum.json in Resources */,
 				1A74A59324C122AB00DB4CB9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,7 +190,9 @@
 				1A74A58C24C122AB00DB4CB9 /* AppDelegate.swift in Sources */,
 				1A74A5A524C1277000DB4CB9 /* SongTableViewCell.swift in Sources */,
 				1A74A5A324C1259300DB4CB9 /* AlbumDetailTableViewController.swift in Sources */,
+				1AFAD9E324C14E7A00061CF3 /* AlbumController.swift in Sources */,
 				1A74A58E24C122AB00DB4CB9 /* SceneDelegate.swift in Sources */,
+				1AFAD9DE24C1306E00061CF3 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
