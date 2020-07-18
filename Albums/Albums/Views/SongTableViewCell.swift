@@ -10,22 +10,43 @@ import UIKit
 
 class SongTableViewCell: UITableViewCell {
     
+    weak var delegate: SongTableViewCellDelegate?
+    
+    var song: Song? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     @IBOutlet weak var songTitleTextField: UITextField!
     @IBOutlet weak var durationTextField: UITextField!
     @IBOutlet weak var addSongButton: UIButton!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
     @IBAction func addSongButton(_ sender: UIButton) {
+        if let title = songTitleTextField.text,
+            !title.isEmpty,
+            let duration = durationTextField.text,
+            !duration.isEmpty {
+            delegate?.addSong(with: title, duration: duration)
+        }
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func updateViews() {
+        if let song = song {
+            songTitleTextField.text = song.title
+            durationTextField.text = song.duration
+            addSongButton.isHidden = true
+        }
     }
+    
+    override func prepareForReuse() {
+        songTitleTextField.text = ""
+        durationTextField.text = ""
+        addSongButton.isHidden = false
+    }
+    
+}
 
+protocol SongTableViewCellDelegate: AnyObject {
+    func addSong(with title: String, duration: String)
 }

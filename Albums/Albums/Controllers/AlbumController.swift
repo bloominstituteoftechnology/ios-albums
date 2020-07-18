@@ -62,7 +62,8 @@ class AlbumController {
     }
     
     func getAlbums(completion: @escaping (Result<[String: Album], NetworkError>) -> Void) {
-        var request = URLRequest(url: baseURL)
+        let getURL = baseURL.appendingPathComponent(".json")
+        var request = URLRequest(url: getURL)
         request.httpMethod = HTTPMethod.get.rawValue
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -101,7 +102,7 @@ class AlbumController {
         var request = URLRequest(url: putURL)
         request.httpMethod = HTTPMethod.put.rawValue
         do {
-            let jsonData = try JSONEncoder().encode([album.id: album])
+            let jsonData = try JSONEncoder().encode(album)
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = jsonData
             let task = URLSession.shared.dataTask(with: request) { (_, response, error) in
