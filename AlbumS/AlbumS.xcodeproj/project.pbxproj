@@ -68,9 +68,7 @@
 		B6B62B0C2416CBAD0098FFD6 /* AlbumS */ = {
 			isa = PBXGroup;
 			children = (
-				B6B62B132416CBAE0098FFD6 /* Main.storyboard */,
 				B6B62B282416CE170098FFD6 /* View Controllers */,
-				B6B62B1B2416CBAF0098FFD6 /* Info.plist */,
 				B6B62B292416CE1C0098FFD6 /* Helper */,
 				B6B62B302416D45B0098FFD6 /* exampleAlbum.json */,
 				B6B62B212416CBB60098FFD6 /* Resources */,
@@ -83,6 +81,7 @@
 		B6B62B212416CBB60098FFD6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B6B62B1B2416CBAF0098FFD6 /* Info.plist */,
 				B6B62B0D2416CBAE0098FFD6 /* AppDelegate.swift */,
 				B6B62B0F2416CBAE0098FFD6 /* SceneDelegate.swift */,
 				B6B62B162416CBAF0098FFD6 /* Assets.xcassets */,
@@ -110,6 +109,7 @@
 		B6B62B2C2416D2250098FFD6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B6B62B132416CBAE0098FFD6 /* Main.storyboard */,
 				B6B62B182416CBAF0098FFD6 /* LaunchScreen.storyboard */,
 				B6B62B2A2416D16F0098FFD6 /* SongTableCell.swift */,
 			);
@@ -350,7 +350,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4939K9623X;
-				INFOPLIST_FILE = AlbumS/Info.plist;
+				INFOPLIST_FILE = AlbumS/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -368,7 +368,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4939K9623X;
-				INFOPLIST_FILE = AlbumS/Info.plist;
+				INFOPLIST_FILE = AlbumS/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
